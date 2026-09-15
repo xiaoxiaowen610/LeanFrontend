@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head><meta charset="utf-8"/><meta content="width=device-width,initial-scale=1" name="viewport"/><title>Webpack / Vite｜前端基础题库</title><style>
+:root{--bg:#f5f7fb;--paper:#fff;--text:#172033;--muted:#667085;--line:#e4e7ec;--primary:#2563eb;--primary-soft:#eff6ff;--accent:#7c3aed;--accent-soft:#f5f3ff;--warn:#b45309;--warn-soft:#fffbeb;--danger:#b91c1c;--danger-soft:#fef2f2;--good:#047857;--good-soft:#ecfdf5;--shadow:0 10px 28px rgba(16,24,40,.07)}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;line-height:1.7}.page{max-width:1180px;margin:auto;padding:28px}.hero{background:linear-gradient(135deg,var(--primary-soft),var(--accent-soft));border:1px solid var(--line);border-radius:24px;padding:30px;box-shadow:var(--shadow)}h1{margin:4px 0 8px;font-size:32px}.hero p{margin:0;color:var(--muted)}.back{display:inline-block;margin-bottom:10px;color:var(--primary);text-decoration:none;font-size:13px}.toolbar{display:flex;gap:8px;flex-wrap:wrap;margin-top:18px}.btn{border:1px solid var(--line);background:var(--paper);padding:8px 12px;border-radius:10px;cursor:pointer}.legend{display:flex;gap:8px;flex-wrap:wrap;margin:18px 0}.pill{padding:5px 9px;border-radius:999px;border:1px solid var(--line);font-size:12px}.s{background:var(--danger-soft);color:var(--danger)}.a{background:var(--warn-soft);color:var(--warn)}.b{background:var(--good-soft);color:var(--good)}.question-card{background:var(--paper);border:1px solid var(--line);border-radius:16px;margin:12px 0;box-shadow:var(--shadow);overflow:hidden}.head{display:grid;grid-template-columns:70px 1fr;gap:12px;padding:16px 18px;cursor:pointer}.rank{font-weight:900;font-size:18px}.title{font-weight:800;font-size:17px}.meta{display:flex;gap:7px;flex-wrap:wrap;margin-top:7px}.tag{font-size:11px;padding:4px 8px;border-radius:999px;border:1px solid var(--line);background:var(--bg);color:var(--muted)}.source{background:var(--primary-soft);color:var(--primary)}.body{display:none;padding:0 18px 18px;border-top:1px solid var(--line)}.question-card.open .body{display:block}.note{margin-top:12px;background:var(--accent-soft);border-left:4px solid var(--accent);padding:12px 14px;border-radius:10px}.placeholder{margin-top:10px;background:var(--primary-soft);border-left:4px solid var(--primary);padding:12px 14px;border-radius:10px;color:var(--muted)}.section{margin:26px 0 10px;font-size:20px}.index-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:22px}.module{display:block;text-decoration:none;color:var(--text);background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:18px;box-shadow:var(--shadow)}.module:hover{border-color:var(--primary)}.module strong{font-size:19px}.module small{display:block;color:var(--muted);margin-top:4px}.footer{text-align:center;color:var(--muted);font-size:12px;padding:28px}.summary{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:18px 0}.summary div{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:14px}.summary strong{display:block;font-size:22px}
+@media(max-width:800px){.page{padding:14px}.index-grid{grid-template-columns:1fr}.summary{grid-template-columns:repeat(2,1fr)}.head{grid-template-columns:55px 1fr}}
+
+details{border:1px solid var(--line);border-radius:12px;margin-top:10px;overflow:hidden}
+summary{cursor:pointer;list-style:none;padding:11px 13px;font-weight:750;background:var(--bg)}
+summary::-webkit-details-marker{display:none} summary:before{content:"▸";margin-right:7px;color:var(--primary)} details[open] summary:before{content:"▾"}
+.detail-content{padding:13px 14px}.outline{display:grid;gap:8px}.outline-item{background:var(--primary-soft);padding:9px 11px;border-radius:9px}
+.answer{background:var(--primary-soft);border-left:4px solid var(--primary);padding:13px 15px;border-radius:10px;white-space:pre-line}
+.analysis{background:var(--accent-soft);border-left:4px solid var(--accent);padding:13px 15px;border-radius:10px}
+.qa{border:1px solid var(--line);border-radius:10px;padding:11px 12px;margin:8px 0}.qa strong{color:var(--primary)}
+.memory{background:var(--good-soft);border-left:4px solid var(--good);padding:12px 14px;border-radius:10px;font-weight:700}
+.loss{background:var(--danger-soft);border-left:4px solid var(--danger);padding:12px 14px;border-radius:10px}
+.deps{background:var(--warn-soft);border-left:4px solid var(--warn);padding:12px 14px;border-radius:10px}
+.version-note{background:#fff7ed;border-left:4px solid #ea580c;padding:12px 14px;border-radius:10px;margin-top:10px}
+</style></head>
+<body><div class="page">
+<header class="hero"><a class="back" href="index.html">← 返回总目录</a><h1>Webpack / Vite</h1><p>构建原理 + API / 配置完整性。8 道 S 级已全部补成完整折叠卡片；A/B 级保留骨架。Vite 已按当前官方文档补充版本差异。</p>
+<div class="toolbar"><button class="btn" onclick="filterGrade('ALL')">全部</button><button class="btn" onclick="filterGrade('S')">只看 S</button><button class="btn" onclick="filterGrade('A')">只看 A</button><button class="btn" onclick="filterGrade('B')">只看 B</button><button class="btn" onclick="document.querySelectorAll('.question-card').forEach(x=&gt;x.classList.remove('open'))">全部收起</button></div></header>
+<section class="summary"><div><strong>20</strong><span>总题量</span></div><div><strong>8</strong><span>S 级</span></div><div><strong>9</strong><span>A 级</span></div><div><strong>3</strong><span>B 级</span></div></section>
+<div class="legend"><span class="pill s">S：必须稳 / 深练</span><span class="pill a">A：高频扩展</span><span class="pill b">B：补充完整性</span></div>
+<h2 class="section">S 级题 · 必须优先掌握</h2>
+<article class="question-card" data-grade="S">
+<div class="head" onclick="this.parentElement.classList.toggle('open')">
+<div class="rank">#01</div>
+<div>
+<div class="title">Webpack 和 Vite 有什么区别？为什么 Vite 开发阶段更快？</div>
+<div class="meta">
+<span class="tag s">S级</span>
+<span class="tag">题型：核心原理</span>
+<span class="tag">刁钻度：★★★★☆</span>
+<span class="tag source">来源样本：字节 2026 / 好未来 / 中小厂</span>
+</div>
+</div>
+</div>
+<div class="body"><div class="note"><strong>训练目标：</strong>30 秒结论 + 90 秒展开 + 2～3 层追问</div><div class="version-note">版本提醒：旧版 Vite 常见是 esbuild 预构建 + Rollup 生产；当前官方文档已进入 Rolldown 体系。面试优先答架构思想，再注明版本差异。</div><details><summary>题目主要考察点和方向概述</summary><div class="detail-content"><div class="outline"><div class="outline-item"><strong>1.</strong> Webpack 是典型 bundler：从 entry 建依赖图，再产出 bundle。</div><div class="outline-item"><strong>2.</strong> Vite dev 基于浏览器原生 ESM，源码按需转换/提供，不需要启动前先完整 bundle 整个应用。</div><div class="outline-item"><strong>3.</strong> 依赖会预构建并缓存；HMR 基于 ESM 模块图做精准失效。</div><div class="outline-item"><strong>4.</strong> 版本注意：旧版 Vite 常见 esbuild 预构建 + Rollup 生产；当前官方文档已进入 Rolldown 体系。</div></div></div></details><details><summary>标准答案</summary><div class="detail-content"><div class="answer">Webpack 和 Vite 最大区别，我会从开发阶段的工作模型讲。
+
+Webpack 是典型静态模块打包器。它从 entry 出发解析依赖，建立 dependency graph，再把模块加工成一个或多个 bundle。传统开发服务启动时往往需要先完成较完整的依赖分析和构建，因此项目越大，冷启动和重构建成本越明显。
+
+Vite 开发阶段不是先把整个应用完整打包，而是利用浏览器原生 ESM。源码模块在浏览器真正请求到时才转换并返回，所以启动时不需要提前处理整棵业务依赖树。对于 node_modules 里稳定、复杂的第三方依赖，Vite 会做 dependency pre-bundling：兼容 CommonJS/UMD，并把过细的依赖模块合并，减少开发服务器请求数，同时做缓存。
+
+HMR 方面，Vite 基于 ESM 模块图做失效传播。某个文件变化时，通常只需要更新到最近 HMR boundary 的链路，不必重新构建整个 bundle，因此大型项目里反馈更稳定。
+
+生产阶段二者都会做真正的打包、Tree Shaking、Code Splitting 等优化。还要注意版本差异：很多旧资料里的“esbuild 预构建 + Rollup 生产”对应旧版 Vite；当前官方文档已经进入 Rolldown 体系。面试最稳的是先讲架构思想，再补项目所用版本。</div></div></details><details><summary>答案整体解析</summary><div class="detail-content"><div class="analysis">不要把“Vite 快”只归因于某个底层工具。最稳定的答案是：dev 不先全量 bundle + native ESM 按需 + 依赖预构建缓存 + 精准 HMR。</div></div></details><details><summary>高频追问 + 答案</summary><div class="detail-content"><div class="qa"><strong>追问 1：Vite 为什么还要预构建依赖？</strong><div>一是把 CommonJS/UMD 兼容成 ESM；二是把类似 lodash-es 这种大量小模块依赖合并，避免浏览器产生数百个请求。</div></div><div class="qa"><strong>追问 2：Vite 是不是完全不打包？</strong><div>不是。开发源码主要按 ESM on-demand 提供，但依赖会预构建；生产环境仍会 bundle。</div></div><div class="qa"><strong>追问 3：为什么很多资料还说 Vite 用 esbuild + Rollup？</strong><div>那是旧版本的典型实现。当前 Vite 官方文档已经演进到 Rolldown，所以面试要说明版本。</div></div><div class="qa"><strong>追问 4：Vite 项目越大启动时间就完全不变吗？</strong><div>不能绝对化。插件、依赖扫描、业务配置仍会影响启动，只是避免了传统全应用 eager bundle 的主要扩张成本。</div></div></div></details><details><summary>失分点 / 易错点</summary><div class="detail-content"><div class="loss">常见失分：只回答“Vite 用 esbuild，所以快”，既浅又容易因版本升级过时。</div></div></details><details><summary>记忆钩子</summary><div class="detail-content"><div class="memory">Webpack：先建图再 bundle；Vite dev：源码按需 ESM + 依赖预构建 + 精准 HMR。</div></div></details><details><summary>前置知识 / 关联知识</summary><div class="detail-content"><div class="deps">前置：ESM、dependency graph、bundle。关联：HMR、pre-bundling、Rolldown。</div></div></details></div>
+</article>
+<article class="question-card" data-grade="S">
+<div class="head" onclick="this.parentElement.classList.toggle('open')">
+<div class="rank">#02</div>
+<div>
+<div class="title">Webpack 的完整构建流程是什么？</div>
+<div class="meta">
+<span class="tag s">S级</span>
+<span class="tag">题型：核心原理</span>
+<span class="tag">刁钻度：★★★★☆</span>
+<span class="tag source">来源样本：高级前端高频</span>
+</div>
+</div>
+</div>
+<div class="body"><div class="note"><strong>训练目标：</strong>30 秒结论 + 90 秒展开 + 2～3 层追问</div><details><summary>题目主要考察点和方向概述</summary><div class="detail-content"><div class="outline"><div class="outline-item"><strong>1.</strong> 初始化：读取配置、创建 Compiler、注册 Plugin。</div><div class="outline-item"><strong>2.</strong> Entry 开始：resolve → loader transform → parse dependencies → 递归建立 Module Graph。</div><div class="outline-item"><strong>3.</strong> 根据 entry、动态 import、SplitChunks 等组织 Chunk / Chunk Graph。</div><div class="outline-item"><strong>4.</strong> 优化、代码生成、hash、生成 assets，最后 emit 到 output。</div></div></div></details><details><summary>标准答案</summary><div class="detail-content"><div class="answer">Webpack 构建流程我会分五层。
+
+第一步初始化：读取配置和命令行参数，创建 Compiler，并执行插件的 apply，让 Plugin 注册到生命周期 hooks。
+
+第二步从 entry 开始构建模块图。Webpack resolve 模块路径，匹配 module.rules，对模块应用 Loader 转换，再解析转换后的源码，找出 import、require、动态 import 等依赖，递归处理，最终形成 Module Graph。
+
+第三步组织 Chunk。Webpack 根据 entry、动态 import、SplitChunks 等规则，把模块组织成一个或多个 chunk，并建立 chunk 关系。
+
+第四步优化和代码生成，包括 module/chunk 优化、Tree Shaking、runtime 生成、hash、压缩等，形成待输出 assets。
+
+第五步 emit，把 JS/CSS/图片等资源写入 output 目录。整个过程中 Plugin 可通过 Compiler / Compilation hooks 介入解析、优化、生成、emit 等阶段。</div></div></details><details><summary>答案整体解析</summary><div class="detail-content"><div class="analysis">高级面试最好能区分 Module Graph 和 Chunk Graph：前者描述源码依赖，后者描述最终如何成为加载单元。</div></div></details><details><summary>高频追问 + 答案</summary><div class="detail-content"><div class="qa"><strong>追问 1：Loader 在什么时候执行？</strong><div>模块 resolve 后、加入最终依赖图前，需要先通过匹配的 Loader 转成 Webpack 可继续处理的模块内容。</div></div><div class="qa"><strong>追问 2：Module 和 Chunk 是一回事吗？</strong><div>不是。Module 是源码依赖单元；Chunk 是打包/加载单元，一个 chunk 可包含多个 modules。</div></div><div class="qa"><strong>追问 3：Compiler 和 Compilation 区别？</strong><div>Compiler 代表整体编译器生命周期；Compilation 更接近某一次具体构建产生的模块、chunk、assets 状态。</div></div><div class="qa"><strong>追问 4：动态 import 改变了什么？</strong><div>它形成异步依赖边界，使相关模块有机会生成独立 async chunk。</div></div></div></details><details><summary>失分点 / 易错点</summary><div class="detail-content"><div class="loss">常见失分：只回答“解析、打包、输出”，没有 Module Graph、Chunk、Plugin hooks。</div></div></details><details><summary>记忆钩子</summary><div class="detail-content"><div class="memory">Config/Plugin → Entry → Resolve/Loader → Module Graph → Chunk → Optimize → Assets → Emit。</div></div></details><details><summary>前置知识 / 关联知识</summary><div class="detail-content"><div class="deps">前置：模块系统、AST。关联：Loader/Plugin、SplitChunks、Tree Shaking。</div></div></details></div>
+</article>
+<article class="question-card" data-grade="S">
+<div class="head" onclick="this.parentElement.classList.toggle('open')">
+<div class="rank">#03</div>
+<div>
+<div class="title">Loader 和 Plugin 有什么区别？</div>
+<div class="meta">
+<span class="tag s">S级</span>
+<span class="tag">题型：API完整性</span>
+<span class="tag">刁钻度：★★★★☆</span>
+<span class="tag source">来源样本：社招高频</span>
+</div>
+</div>
+</div>
+<div class="body"><div class="note"><strong>训练目标：</strong>30 秒结论 + 90 秒展开 + 2～3 层追问</div><details><summary>题目主要考察点和方向概述</summary><div class="detail-content"><div class="outline"><div class="outline-item"><strong>1.</strong> Loader：模块级转换器，把某类输入转换成 Webpack 能继续处理的 module。</div><div class="outline-item"><strong>2.</strong> Plugin：基于 Compiler/Compilation hooks 扩展整个构建生命周期。</div><div class="outline-item"><strong>3.</strong> Loader 通过 module.rules 匹配；Plugin 通常通过 new XxxPlugin() 注册。</div><div class="outline-item"><strong>4.</strong> 追问：Loader 链顺序、pitch、Plugin apply/hook。</div></div></div></details><details><summary>标准答案</summary><div class="detail-content"><div class="answer">Loader 和 Plugin 最大区别可以记成：Loader 解决“一个模块怎么转换”，Plugin 解决“整个构建过程怎么扩展”。
+
+Loader 主要处理模块内容。Webpack 遇到匹配 module.rules 的文件后，会按 loader 链转换输入，例如 JS/TS、CSS、资源等，最终让这些内容纳入依赖图。它本质更像模块级 transform。
+
+Plugin 范围更广。Plugin 通过 apply(compiler) 注册到 Compiler / Compilation hooks，可以参与依赖解析、chunk 优化、资源生成、环境变量注入、进度输出、emit 等多个生命周期阶段。
+
+所以更准确的表达是：Loader 面向 module transformation，Plugin 面向 lifecycle/build extension。</div></div></details><details><summary>答案整体解析</summary><div class="detail-content"><div class="analysis">不要只背“Loader 处理文件，Plugin 做插件”。面试官通常会继续问执行阶段和为什么某能力必须做成 Plugin。</div></div></details><details><summary>高频追问 + 答案</summary><div class="detail-content"><div class="qa"><strong>追问 1：Loader 链顺序是什么？</strong><div>normal 阶段通常从右到左/从下到上执行；还存在 pitch 阶段，顺序相反。</div></div><div class="qa"><strong>追问 2：Loader 能异步吗？</strong><div>可以，通过 Loader API 如 this.async() 返回异步结果。</div></div><div class="qa"><strong>追问 3：Plugin 最核心的方法？</strong><div>通常实现 apply(compiler)，在里面对相应 hook 使用 tap/tapAsync/tapPromise 注册逻辑。</div></div><div class="qa"><strong>追问 4：为什么抽 CSS 常需要 Plugin？</strong><div>跨模块收集 CSS 并生成独立 asset 涉及整个 Compilation/asset 生命周期，不只是单模块转换。</div></div></div></details><details><summary>失分点 / 易错点</summary><div class="detail-content"><div class="loss">常见失分：没有说明作用范围和生命周期机制。</div></div></details><details><summary>记忆钩子</summary><div class="detail-content"><div class="memory">Loader 改 module；Plugin 改 build。</div></div></details><details><summary>前置知识 / 关联知识</summary><div class="detail-content"><div class="deps">前置：Webpack流程。关联：Tapable、Compiler/Compilation、CSS处理。</div></div></details></div>
+</article>
+<article class="question-card" data-grade="S">
+<div class="head" onclick="this.parentElement.classList.toggle('open')">
+<div class="rank">#04</div>
+<div>
+<div class="title">SplitChunks 的作用是什么？核心参数有哪些？</div>
+<div class="meta">
+<span class="tag s">S级</span>
+<span class="tag">题型：分包</span>
+<span class="tag">刁钻度：★★★★☆</span>
+<span class="tag source">来源样本：高级高频</span>
+</div>
+</div>
+</div>
+<div class="body"><div class="note"><strong>训练目标：</strong>30 秒结论 + 90 秒展开 + 2～3 层追问</div><details><summary>题目主要考察点和方向概述</summary><div class="detail-content"><div class="outline"><div class="outline-item"><strong>1.</strong> 目标：抽共享模块、控制 chunk 大小和请求模型，提高复用与缓存。</div><div class="outline-item"><strong>2.</strong> 核心：chunks、minSize、minChunks、maxAsyncRequests、maxInitialRequests。</div><div class="outline-item"><strong>3.</strong> cacheGroups 常用 test、priority、reuseExistingChunk、name 等做 vendor/common 分组。</div><div class="outline-item"><strong>4.</strong> 不要死背默认值；配置与 Webpack 版本、HTTP 模型和业务体积相关。</div></div></div></details><details><summary>标准答案</summary><div class="detail-content"><div class="answer">SplitChunksPlugin 的作用，是根据模块复用情况、chunk 大小和请求数量，把模块重新组织到更合适的 chunk 中。
+
+chunks 决定处理 async、initial 还是 all；minSize 控制候选拆分达到多大才值得单独成 chunk；minChunks 表示至少被多少 chunk 复用才满足公共模块抽取条件。
+
+maxInitialRequests 和 maxAsyncRequests 分别限制初始加载和异步加载时允许的并行 chunk 请求数量，本质是在“拆细提高复用/缓存”和“避免请求过多”之间做平衡。
+
+cacheGroups 是业务最常用的分组能力，例如把 node_modules 公共依赖放 vendor，把多 chunk 共享模块放 common，常配 test、priority、minChunks、reuseExistingChunk、name。
+
+工程里不要追求 bundle 越小越好，要结合首屏请求数、缓存命中率、HTTP 版本、路由粒度和真实性能验证。</div></div></details><details><summary>答案整体解析</summary><div class="detail-content"><div class="analysis">你之前拆包回答偏技术清单，这里要先讲为什么拆，再讲参数，再讲 tradeoff。</div></div></details><details><summary>高频追问 + 答案</summary><div class="detail-content"><div class="qa"><strong>追问 1：maxInitialRequests 和 maxAsyncRequests 区别？</strong><div>前者约束初始页面加载 chunk 请求数量，后者约束动态 import 等异步加载场景的请求数量。</div></div><div class="qa"><strong>追问 2：cacheGroups priority 干什么？</strong><div>模块可能同时匹配多个 group，priority 决定优先进入哪个组。</div></div><div class="qa"><strong>追问 3：为什么拆包过细会变慢？</strong><div>请求调度、header、解析执行、runtime 都有成本；最佳粒度取决于网络协议和设备。</div></div><div class="qa"><strong>追问 4：vendor 包是不是越大越稳定越好？</strong><div>不是。超大 vendor 任一依赖升级都可能导致整体 hash 变化，应按更新频率和复用情况设计。</div></div></div></details><details><summary>失分点 / 易错点</summary><div class="detail-content"><div class="loss">常见失分：背参数但不会解释参数为什么存在，也没有验证指标。</div></div></details><details><summary>记忆钩子</summary><div class="detail-content"><div class="memory">SplitChunks = 复用 + 体积 + 请求数三者平衡。</div></div></details><details><summary>前置知识 / 关联知识</summary><div class="detail-content"><div class="deps">前置：Chunk、缓存、HTTP并发。关联：dynamic import、contenthash。</div></div></details></div>
+</article>
+<article class="question-card" data-grade="S">
+<div class="head" onclick="this.parentElement.classList.toggle('open')">
+<div class="rank">#05</div>
+<div>
+<div class="title">动态 import / Code Splitting 怎么工作？</div>
+<div class="meta">
+<span class="tag s">S级</span>
+<span class="tag">题型：分包</span>
+<span class="tag">刁钻度：★★★★☆</span>
+<span class="tag source">来源样本：高频</span>
+</div>
+</div>
+</div>
+<div class="body"><div class="note"><strong>训练目标：</strong>30 秒结论 + 90 秒展开 + 2～3 层追问</div><details><summary>题目主要考察点和方向概述</summary><div class="detail-content"><div class="outline"><div class="outline-item"><strong>1.</strong> import() 是异步模块边界，返回 Promise。</div><div class="outline-item"><strong>2.</strong> Webpack 构建时可生成独立 async chunk，运行时需要时再加载。</div><div class="outline-item"><strong>3.</strong> 路由懒加载、重型低频功能是典型场景。</div><div class="outline-item"><strong>4.</strong> 注意 chunk load error、waterfall、预加载与缓存。</div></div></div></details><details><summary>标准答案</summary><div class="detail-content"><div class="answer">Code Splitting 的核心是把一次性加载的代码拆成多个可独立加载的 chunk。
+
+Webpack 中动态 import() 是最常见的异步拆分边界。构建时 Webpack 识别 import() 指向的依赖，把相关模块组织成独立 async chunk；运行时真正执行到 import() 时，Webpack runtime 再发网络请求加载 chunk，完成模块注册后 Promise resolve。
+
+路由懒加载最典型。富文本、图表、PDF、3D 编辑器等低频重功能也适合按功能懒加载。
+
+但 Code Splitting 不是拆了就一定快。要避免过深 waterfall、过多小 chunk，并考虑 ChunkLoadError、版本发布兼容和高概率资源预加载。</div></div></details><details><summary>答案整体解析</summary><div class="detail-content"><div class="analysis">面试里最好同时讲“构建时怎么拆”和“运行时怎么加载”。</div></div></details><details><summary>高频追问 + 答案</summary><div class="detail-content"><div class="qa"><strong>追问 1：import() 和静态 import 区别？</strong><div>静态 import 在模块解析阶段确定依赖；动态 import() 是运行时触发的异步边界并返回 Promise。</div></div><div class="qa"><strong>追问 2：懒加载为什么可能点击后卡一下？</strong><div>交互时才产生 RTT、下载、parse/compile/execute，可对高概率路径预加载。</div></div><div class="qa"><strong>追问 3：ChunkLoadError 怎么处理？</strong><div>可做错误提示/重试/刷新兜底，部署上避免新 HTML 引用的旧 chunk 被立即清理。</div></div><div class="qa"><strong>追问 4：Webpack runtime 做什么？</strong><div>维护模块/chunk 注册和加载逻辑，根据 chunk id/publicPath 获取对应资源。</div></div></div></details><details><summary>失分点 / 易错点</summary><div class="detail-content"><div class="loss">常见失分：只会回答“import() 可以懒加载”。</div></div></details><details><summary>记忆钩子</summary><div class="detail-content"><div class="memory">Build：import() → async chunk；Run：执行到 import() → 加载 → Promise resolve。</div></div></details><details><summary>前置知识 / 关联知识</summary><div class="detail-content"><div class="deps">前置：ESM、Promise。关联：路由懒加载、SplitChunks、prefetch。</div></div></details></div>
+</article>
+<article class="question-card" data-grade="S">
+<div class="head" onclick="this.parentElement.classList.toggle('open')">
+<div class="rank">#06</div>
+<div>
+<div class="title">Tree Shaking 的原理和前提是什么？</div>
+<div class="meta">
+<span class="tag s">S级</span>
+<span class="tag">题型：产物优化</span>
+<span class="tag">刁钻度：★★★★☆</span>
+<span class="tag source">来源样本：高频</span>
+</div>
+</div>
+</div>
+<div class="body"><div class="note"><strong>训练目标：</strong>30 秒结论 + 90 秒展开 + 2～3 层追问</div><details><summary>题目主要考察点和方向概述</summary><div class="detail-content"><div class="outline"><div class="outline-item"><strong>1.</strong> 依赖 ESM 静态结构做 import/export usage analysis。</div><div class="outline-item"><strong>2.</strong> Webpack 标记 used/unused exports，生产优化/压缩阶段删除 dead code。</div><div class="outline-item"><strong>3.</strong> sideEffects 帮助判断整个模块是否可安全移除。</div><div class="outline-item"><strong>4.</strong> CommonJS 动态性强，不利于可靠静态分析。</div></div></div></details><details><summary>标准答案</summary><div class="detail-content"><div class="answer">Tree Shaking 可以理解为基于静态模块关系做未使用代码消除。
+
+它通常依赖 ES Module，因为 import/export 在构建时更容易静态分析。Webpack 会分析哪些 exports 被使用并标记 unused exports；在 production 优化和压缩阶段，再删除能够确认无副作用的 dead code。
+
+一个关键前提是不能随便删除有副作用的模块，例如 import './global.css'、polyfill、全局补丁。package.json 的 sideEffects 字段可以帮助 Webpack 判断哪些文件可以安全整模块裁剪。
+
+另外如果 Babel 提前把 ESM 转成 CommonJS，Webpack 的静态分析能力会受影响。
+
+所以 Tree Shaking 不是“没 import 就删”，而是静态分析 + usage marking + 副作用判断 + dead code elimination。</div></div></details><details><summary>答案整体解析</summary><div class="detail-content"><div class="analysis">Tree Shaking 高频追问通常就在 ESM、sideEffects 和 Babel 配置。</div></div></details><details><summary>高频追问 + 答案</summary><div class="detail-content"><div class="qa"><strong>追问 1：为什么 ESM 更适合 Tree Shaking？</strong><div>import/export 结构静态；CommonJS 的 require/exports 更动态，构建期更难可靠确定依赖。</div></div><div class="qa"><strong>追问 2：sideEffects:false 是什么意思？</strong><div>声明模块默认没有导入即执行副作用，可更大胆删除未使用整个模块；CSS/polyfill 等需白名单保留。</div></div><div class="qa"><strong>追问 3：unused export 在哪里真正删掉？</strong><div>Webpack 先做使用情况分析/标记，最终 production minifier/优化阶段删除对应 dead code。</div></div><div class="qa"><strong>追问 4：Babel 为什么可能让 Tree Shaking 失效？</strong><div>若先把 ESM 转 CommonJS，就破坏了原本清晰的静态模块结构。</div></div></div></details><details><summary>失分点 / 易错点</summary><div class="detail-content"><div class="loss">常见失分：只回答“删除没用代码”，不提 ESM 和副作用。</div></div></details><details><summary>记忆钩子</summary><div class="detail-content"><div class="memory">ESM 静态分析 → 标 used → 判断 sideEffects → 删除 dead code。</div></div></details><details><summary>前置知识 / 关联知识</summary><div class="detail-content"><div class="deps">前置：ESM/CommonJS。关联：Babel、production mode、sideEffects。</div></div></details></div>
+</article>
+<article class="question-card" data-grade="S">
+<div class="head" onclick="this.parentElement.classList.toggle('open')">
+<div class="rank">#07</div>
+<div>
+<div class="title">Webpack 怎么优化构建速度？</div>
+<div class="meta">
+<span class="tag s">S级</span>
+<span class="tag">题型：工程化</span>
+<span class="tag">刁钻度：★★★★☆</span>
+<span class="tag source">来源样本：社招高频</span>
+</div>
+</div>
+</div>
+<div class="body"><div class="note"><strong>训练目标：</strong>30 秒结论 + 90 秒展开 + 2～3 层追问</div><details><summary>题目主要考察点和方向概述</summary><div class="detail-content"><div class="outline"><div class="outline-item"><strong>1.</strong> 先测：profile/stats/构建日志看慢在哪里。</div><div class="outline-item"><strong>2.</strong> 少做：缩小 Loader 范围、减少无效 resolve、减少重插件。</div><div class="outline-item"><strong>3.</strong> 缓存：Webpack 5 filesystem cache + 工具自身缓存。</div><div class="outline-item"><strong>4.</strong> 并行/替换工具：thread-loader 要算成本；SWC/esbuild/Rspack 等按项目评估。</div><div class="outline-item"><strong>5.</strong> 最后用 cold/warm build、rebuild 时间验证。</div></div></div></details><details><summary>标准答案</summary><div class="detail-content"><div class="answer">Webpack 构建速度优化，我会按“定位 → 减少工作量 → 缓存 → 并行/替换工具 → 验证”回答。
+
+先用 stats、profile、构建日志或分析工具确认是 Babel/TS 慢、某个 Loader/Plugin 慢、依赖解析慢还是压缩慢。
+
+然后减少无效工作：Loader 用 include/exclude 缩小范围，避免无意义扫描 node_modules；减少 resolve.extensions 等搜索尝试；开发环境关闭不必要的 production 压缩和重型分析插件。
+
+再利用缓存。Webpack 5 的 filesystem cache 能显著减少二次构建重复工作；部分转译工具也有自身缓存。
+
+最后才考虑并行和更快工具。thread-loader 有 worker 启动和 IPC 成本，并非越多越快；纯转译场景可评估 SWC/esbuild，工程允许时也可评估 Rspack/Vite。
+
+最终固定环境比较 cold build、warm build、单文件 rebuild/HMR 时间，而不是凭感觉判断。</div></div></details><details><summary>答案整体解析</summary><div class="detail-content"><div class="analysis">这是典型工程回答：先诊断，再方案，再验证。不能只列 cache/thread-loader。</div></div></details><details><summary>高频追问 + 答案</summary><div class="detail-content"><div class="qa"><strong>追问 1：thread-loader 为什么不一定越多越快？</strong><div>worker 启动、序列化、IPC 有成本，只有单任务 CPU 工作足够重时才可能获益。</div></div><div class="qa"><strong>追问 2：为什么 node_modules 常排除 Babel？</strong><div>第三方包多且大，多数已有可运行产物，全量再次转译成本高；少数现代依赖再按兼容目标处理。</div></div><div class="qa"><strong>追问 3：filesystem cache 的意义？</strong><div>持久化可复用构建结果，依赖/config 未变化时避免重复计算。</div></div><div class="qa"><strong>追问 4：怎么证明优化有效？</strong><div>固定机器、Node、缓存条件，多次记录 cold/warm/rebuild 的 P50/P95 进行前后对比。</div></div></div></details><details><summary>失分点 / 易错点</summary><div class="detail-content"><div class="loss">常见失分：一上来报 thread-loader、cache，没有定位场景，也没有验证。</div></div></details><details><summary>记忆钩子</summary><div class="detail-content"><div class="memory">先 Profiling，再少做、缓存、并行/换工具，最后量化。</div></div></details><details><summary>前置知识 / 关联知识</summary><div class="detail-content"><div class="deps">前置：Webpack流程。关联：CI、cache、SWC/Rspack/Vite。</div></div></details></div>
+</article>
+<article class="question-card" data-grade="S">
+<div class="head" onclick="this.parentElement.classList.toggle('open')">
+<div class="rank">#08</div>
+<div>
+<div class="title">Webpack 怎么优化产物体积和首屏加载？</div>
+<div class="meta">
+<span class="tag s">S级</span>
+<span class="tag">题型：工程化</span>
+<span class="tag">刁钻度：★★★★☆</span>
+<span class="tag source">来源样本：社招高频</span>
+</div>
+</div>
+</div>
+<div class="body"><div class="note"><strong>训练目标：</strong>30 秒结论 + 90 秒展开 + 2～3 层追问</div><details><summary>题目主要考察点和方向概述</summary><div class="detail-content"><div class="outline"><div class="outline-item"><strong>1.</strong> 先分析：stats / Bundle Analyzer 找大模块、重复依赖、首屏低频代码。</div><div class="outline-item"><strong>2.</strong> 减总量：Tree Shaking、按需引入、替换重库、压缩、移除重复/无用代码。</div><div class="outline-item"><strong>3.</strong> 调时机：路由/功能 lazy、SplitChunks、合理 vendor/common。</div><div class="outline-item"><strong>4.</strong> 传输缓存：contenthash、长缓存、CDN、Brotli/gzip、谨慎 preload/prefetch。</div><div class="outline-item"><strong>5.</strong> 用 LCP/FCP、JS transfer/parse/execute、waterfall 验证。</div></div></div></details><details><summary>标准答案</summary><div class="detail-content"><div class="answer">产物优化我会分成“发现问题 → 减少总量 → 调整加载时机 → 提升传输缓存 → 指标验证”。
+
+先通过 stats、Bundle Analyzer 找最大 chunk、重复依赖和首屏加载的低频模块，确认到底是总量太大还是首屏加载太多。
+
+减少总量：用 ESM + Tree Shaking 删除未使用代码；组件库/工具库按需引入；检查重复版本、超大 locale/polyfill；生产压缩；必要时换轻量依赖。
+
+调整加载时机：路由和低频重功能用动态 import 懒加载；SplitChunks 抽真正共享依赖，同时避免一个超大 vendor 包。
+
+传输缓存：静态资源 contenthash + 长缓存，配 CDN、Brotli/gzip；preload 只给真正关键资源，prefetch 给低优先级未来可能用的资源。
+
+最后不能只看 dist 从 5MB 变 3MB，还要看首屏 transferred JS、waterfall、JS parse/execute、FCP/LCP、Long Task。用户真正感知的是加载和交互。</div></div></details><details><summary>答案整体解析</summary><div class="detail-content"><div class="analysis">这题正好把“优化技术清单”升级成完整工程链路。</div></div></details><details><summary>高频追问 + 答案</summary><div class="detail-content"><div class="qa"><strong>追问 1：bundle 变小为什么 LCP 可能不变？</strong><div>减少的可能是非首屏 chunk，或瓶颈在图片、TTFB、主线程而非 JS 下载。</div></div><div class="qa"><strong>追问 2：preload 是不是越多越好？</strong><div>不是。它会提高优先级，滥用会和真正关键资源争带宽。</div></div><div class="qa"><strong>追问 3：为什么拆包后首屏可能更慢？</strong><div>过多关键请求、依赖 waterfall、runtime 开销或错误公共依赖拆分都会拖慢。</div></div><div class="qa"><strong>追问 4：第三方超大依赖怎么处理？</strong><div>先看能否 Tree Shake/按需引入/轻量替代，再决定异步拆分或 external/CDN，并评估缓存和稳定性。</div></div></div></details><details><summary>失分点 / 易错点</summary><div class="detail-content"><div class="loss">常见失分：说了 CDN/gzip/preload 等一堆方案，却没有先定位、取舍和验证。</div></div></details><details><summary>记忆钩子</summary><div class="detail-content"><div class="memory">分析 → 减总量 → 延后非关键 → 缓存传输 → 用户指标验证。</div></div></details><details><summary>前置知识 / 关联知识</summary><div class="detail-content"><div class="deps">前置：SplitChunks、Tree Shaking、HTTP缓存。关联：FCP/LCP、CDN、压缩。</div></div></details></div>
+</article><h2 class="section">A 级题 · 高频扩展</h2>
+<article class="question-card" data-grade="A">
+<div class="head" onclick="this.parentElement.classList.toggle('open')">
+<div class="rank">#09</div>
+<div>
+<div class="title">contenthash、chunkhash、hash 有什么区别？</div>
+<div class="meta">
+<span class="tag a">A级</span>
+<span class="tag">题型：缓存</span>
+<span class="tag">刁钻度：★★★☆☆</span>
+<span class="tag source">来源样本：字节 / 历史社招高频</span>
+</div>
+</div>
+</div>
+<div class="body">
+<div class="note"><strong>训练目标：</strong>30～60 秒完整回答 + 常见追问</div>
+<div class="placeholder">▶ 考察方向　▶ 标准答案　▶ 答案解析　▶ 高频追问　▶ 失分点　▶ 记忆钩子<br/>当前为题库骨架版，后续按优先级逐题补齐。</div>
+</div>
+</article>
+<article class="question-card" data-grade="A">
+<div class="head" onclick="this.parentElement.classList.toggle('open')">
+<div class="rank">#10</div>
+<div>
+<div class="title">runtimeChunk 有什么作用？</div>
+<div class="meta">
+<span class="tag a">A级</span>
+<span class="tag">题型：缓存/运行时</span>
+<span class="tag">刁钻度：★★★☆☆</span>
+<span class="tag source">来源样本：高频追问</span>
+</div>
+</div>
+</div>
+<div class="body">
+<div class="note"><strong>训练目标：</strong>30～60 秒完整回答 + 常见追问</div>
+<div class="placeholder">▶ 考察方向　▶ 标准答案　▶ 答案解析　▶ 高频追问　▶ 失分点　▶ 记忆钩子<br/>当前为题库骨架版，后续按优先级逐题补齐。</div>
+</div>
+</article>
+<article class="question-card" data-grade="A">
+<div class="head" onclick="this.parentElement.classList.toggle('open')">
+<div class="rank">#11</div>
+<div>
+<div class="title">maxInitialRequests 和 maxAsyncRequests 分别限制什么？</div>
+<div class="meta">
+<span class="tag a">A级</span>
+<span class="tag">题型：SplitChunks刁钻</span>
+<span class="tag">刁钻度：★★★★★</span>
+<span class="tag source">来源样本：真实追问型</span>
+</div>
+</div>
+</div>
+<div class="body">
+<div class="note"><strong>训练目标：</strong>30～60 秒完整回答 + 常见追问</div>
+<div class="placeholder">▶ 考察方向　▶ 标准答案　▶ 答案解析　▶ 高频追问　▶ 失分点　▶ 记忆钩子<br/>当前为题库骨架版，后续按优先级逐题补齐。</div>
+</div>
+</article>
+<article class="question-card" data-grade="A">
+<div class="head" onclick="this.parentElement.classList.toggle('open')">
+<div class="rank">#12</div>
+<div>
+<div class="title">cacheGroups 怎么配置公共包？</div>
+<div class="meta">
+<span class="tag a">A级</span>
+<span class="tag">题型：SplitChunks</span>
+<span class="tag">刁钻度：★★★☆☆</span>
+<span class="tag source">来源样本：高频追问</span>
+</div>
+</div>
+</div>
+<div class="body">
+<div class="note"><strong>训练目标：</strong>30～60 秒完整回答 + 常见追问</div>
+<div class="placeholder">▶ 考察方向　▶ 标准答案　▶ 答案解析　▶ 高频追问　▶ 失分点　▶ 记忆钩子<br/>当前为题库骨架版，后续按优先级逐题补齐。</div>
+</div>
+</article>
+<article class="question-card" data-grade="A">
+<div class="head" onclick="this.parentElement.classList.toggle('open')">
+<div class="rank">#13</div>
+<div>
+<div class="title">Source Map 常见类型和生产环境策略？</div>
+<div class="meta">
+<span class="tag a">A级</span>
+<span class="tag">题型：调试</span>
+<span class="tag">刁钻度：★★★☆☆</span>
+<span class="tag source">来源样本：社招高频</span>
+</div>
+</div>
+</div>
+<div class="body">
+<div class="note"><strong>训练目标：</strong>30～60 秒完整回答 + 常见追问</div>
+<div class="placeholder">▶ 考察方向　▶ 标准答案　▶ 答案解析　▶ 高频追问　▶ 失分点　▶ 记忆钩子<br/>当前为题库骨架版，后续按优先级逐题补齐。</div>
+</div>
+</article>
+<article class="question-card" data-grade="A">
+<div class="head" onclick="this.parentElement.classList.toggle('open')">
+<div class="rank">#14</div>
+<div>
+<div class="title">HMR 的基本原理是什么？</div>
+<div class="meta">
+<span class="tag a">A级</span>
+<span class="tag">题型：开发体验</span>
+<span class="tag">刁钻度：★★★☆☆</span>
+<span class="tag source">来源样本：高频</span>
+</div>
+</div>
+</div>
+<div class="body">
+<div class="note"><strong>训练目标：</strong>30～60 秒完整回答 + 常见追问</div>
+<div class="placeholder">▶ 考察方向　▶ 标准答案　▶ 答案解析　▶ 高频追问　▶ 失分点　▶ 记忆钩子<br/>当前为题库骨架版，后续按优先级逐题补齐。</div>
+</div>
+</article>
+<article class="question-card" data-grade="A">
+<div class="head" onclick="this.parentElement.classList.toggle('open')">
+<div class="rank">#15</div>
+<div>
+<div class="title">Babel 做了什么？核心处理流程是什么？</div>
+<div class="meta">
+<span class="tag a">A级</span>
+<span class="tag">题型：编译</span>
+<span class="tag">刁钻度：★★★☆☆</span>
+<span class="tag source">来源样本：字节 2025</span>
+</div>
+</div>
+</div>
+<div class="body">
+<div class="note"><strong>训练目标：</strong>30～60 秒完整回答 + 常见追问</div>
+<div class="placeholder">▶ 考察方向　▶ 标准答案　▶ 答案解析　▶ 高频追问　▶ 失分点　▶ 记忆钩子<br/>当前为题库骨架版，后续按优先级逐题补齐。</div>
+</div>
+</article>
+<article class="question-card" data-grade="A">
+<div class="head" onclick="this.parentElement.classList.toggle('open')">
+<div class="rank">#16</div>
+<div>
+<div class="title">Vite HMR 为什么快？</div>
+<div class="meta">
+<span class="tag a">A级</span>
+<span class="tag">题型：Vite</span>
+<span class="tag">刁钻度：★★★☆☆</span>
+<span class="tag source">来源样本：高级追问</span>
+</div>
+</div>
+</div>
+<div class="body">
+<div class="note"><strong>训练目标：</strong>30～60 秒完整回答 + 常见追问</div>
+<div class="placeholder">▶ 考察方向　▶ 标准答案　▶ 答案解析　▶ 高频追问　▶ 失分点　▶ 记忆钩子<br/>当前为题库骨架版，后续按优先级逐题补齐。</div>
+</div>
+</article>
+<article class="question-card" data-grade="A">
+<div class="head" onclick="this.parentElement.classList.toggle('open')">
+<div class="rank">#17</div>
+<div>
+<div class="title">Vite Plugin 的基本生命周期和机制是什么？</div>
+<div class="meta">
+<span class="tag a">A级</span>
+<span class="tag">题型：插件</span>
+<span class="tag">刁钻度：★★★☆☆</span>
+<span class="tag source">来源样本：字节 2025</span>
+</div>
+</div>
+</div>
+<div class="body">
+<div class="note"><strong>训练目标：</strong>30～60 秒完整回答 + 常见追问</div>
+<div class="placeholder">▶ 考察方向　▶ 标准答案　▶ 答案解析　▶ 高频追问　▶ 失分点　▶ 记忆钩子<br/>当前为题库骨架版，后续按优先级逐题补齐。</div>
+</div>
+</article><h2 class="section">B 级题 · 补充完整性</h2>
+<article class="question-card" data-grade="B">
+<div class="head" onclick="this.parentElement.classList.toggle('open')">
+<div class="rank">#18</div>
+<div>
+<div class="title">preload 和 prefetch 有什么区别？</div>
+<div class="meta">
+<span class="tag b">B级</span>
+<span class="tag">题型：加载优化</span>
+<span class="tag">刁钻度：★★★☆☆</span>
+<span class="tag source">来源样本：常见</span>
+</div>
+</div>
+</div>
+<div class="body">
+<div class="note"><strong>训练目标：</strong>知道核心定义与主要边界即可</div>
+<div class="placeholder">▶ 考察方向　▶ 标准答案　▶ 答案解析　▶ 高频追问　▶ 失分点　▶ 记忆钩子<br/>当前为题库骨架版，后续按优先级逐题补齐。</div>
+</div>
+</article>
+<article class="question-card" data-grade="B">
+<div class="head" onclick="this.parentElement.classList.toggle('open')">
+<div class="rank">#19</div>
+<div>
+<div class="title">Module Federation 解决什么问题？</div>
+<div class="meta">
+<span class="tag b">B级</span>
+<span class="tag">题型：微前端</span>
+<span class="tag">刁钻度：★★★☆☆</span>
+<span class="tag source">来源样本：补充</span>
+</div>
+</div>
+</div>
+<div class="body">
+<div class="note"><strong>训练目标：</strong>知道核心定义与主要边界即可</div>
+<div class="placeholder">▶ 考察方向　▶ 标准答案　▶ 答案解析　▶ 高频追问　▶ 失分点　▶ 记忆钩子<br/>当前为题库骨架版，后续按优先级逐题补齐。</div>
+</div>
+</article>
+<article class="question-card" data-grade="B">
+<div class="head" onclick="this.parentElement.classList.toggle('open')">
+<div class="rank">#20</div>
+<div>
+<div class="title">npm / yarn / pnpm 有什么区别？</div>
+<div class="meta">
+<span class="tag b">B级</span>
+<span class="tag">题型：包管理</span>
+<span class="tag">刁钻度：★★★★★</span>
+<span class="tag source">来源样本：真实面经常见</span>
+</div>
+</div>
+</div>
+<div class="body">
+<div class="note"><strong>训练目标：</strong>知道核心定义与主要边界即可</div>
+<div class="placeholder">▶ 考察方向　▶ 标准答案　▶ 答案解析　▶ 高频追问　▶ 失分点　▶ 记忆钩子<br/>当前为题库骨架版，后续按优先级逐题补齐。</div>
+</div>
+</article>
+<div class="footer">Front-end Interview Basic Bank · Webpack / Vite</div>
+</div>
+<script>function filterGrade(g){document.querySelectorAll('.question-card').forEach(c=>c.style.display=(g==='ALL'||c.dataset.grade===g)?'block':'none')}</script>
+</body></html>

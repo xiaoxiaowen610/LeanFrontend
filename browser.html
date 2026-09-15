@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head><meta charset="utf-8"/><meta content="width=device-width,initial-scale=1" name="viewport"/><title>浏览器｜前端基础题库</title><style>
+:root{--bg:#f5f7fb;--paper:#fff;--text:#172033;--muted:#667085;--line:#e4e7ec;--primary:#2563eb;--primary-soft:#eff6ff;--accent:#7c3aed;--accent-soft:#f5f3ff;--warn:#b45309;--warn-soft:#fffbeb;--danger:#b91c1c;--danger-soft:#fef2f2;--good:#047857;--good-soft:#ecfdf5;--shadow:0 10px 28px rgba(16,24,40,.07)}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;line-height:1.7}.page{max-width:1180px;margin:auto;padding:28px}.hero{background:linear-gradient(135deg,var(--primary-soft),var(--accent-soft));border:1px solid var(--line);border-radius:24px;padding:30px;box-shadow:var(--shadow)}h1{margin:4px 0 8px;font-size:32px}.hero p{margin:0;color:var(--muted)}.back{display:inline-block;margin-bottom:10px;color:var(--primary);text-decoration:none;font-size:13px}.toolbar{display:flex;gap:8px;flex-wrap:wrap;margin-top:18px}.btn{border:1px solid var(--line);background:var(--paper);padding:8px 12px;border-radius:10px;cursor:pointer}.legend{display:flex;gap:8px;flex-wrap:wrap;margin:18px 0}.pill{padding:5px 9px;border-radius:999px;border:1px solid var(--line);font-size:12px}.s{background:var(--danger-soft);color:var(--danger)}.a{background:var(--warn-soft);color:var(--warn)}.b{background:var(--good-soft);color:var(--good)}.question-card{background:var(--paper);border:1px solid var(--line);border-radius:16px;margin:12px 0;box-shadow:var(--shadow);overflow:hidden}.head{display:grid;grid-template-columns:70px 1fr;gap:12px;padding:16px 18px;cursor:pointer}.rank{font-weight:900;font-size:18px}.title{font-weight:800;font-size:17px}.meta{display:flex;gap:7px;flex-wrap:wrap;margin-top:7px}.tag{font-size:11px;padding:4px 8px;border-radius:999px;border:1px solid var(--line);background:var(--bg);color:var(--muted)}.source{background:var(--primary-soft);color:var(--primary)}.body{display:none;padding:0 18px 18px;border-top:1px solid var(--line)}.question-card.open .body{display:block}.note{margin-top:12px;background:var(--accent-soft);border-left:4px solid var(--accent);padding:12px 14px;border-radius:10px}.placeholder{margin-top:10px;background:var(--primary-soft);border-left:4px solid var(--primary);padding:12px 14px;border-radius:10px;color:var(--muted)}.section{margin:26px 0 10px;font-size:20px}.index-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:22px}.module{display:block;text-decoration:none;color:var(--text);background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:18px;box-shadow:var(--shadow)}.module:hover{border-color:var(--primary)}.module strong{font-size:19px}.module small{display:block;color:var(--muted);margin-top:4px}.footer{text-align:center;color:var(--muted);font-size:12px;padding:28px}.summary{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:18px 0}.summary div{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:14px}.summary strong{display:block;font-size:22px}
+@media(max-width:800px){.page{padding:14px}.index-grid{grid-template-columns:1fr}.summary{grid-template-columns:repeat(2,1fr)}.head{grid-template-columns:55px 1fr}}
+
+details{border:1px solid var(--line);border-radius:12px;margin-top:10px;overflow:hidden}
+summary{cursor:pointer;list-style:none;padding:11px 13px;font-weight:750;background:var(--bg)}
+summary::-webkit-details-marker{display:none}
+summary:before{content:"▸";display:inline-block;margin-right:7px;color:var(--primary)}
+details[open] summary:before{content:"▾"}
+.detail-content{padding:13px 14px}
+.outline{display:grid;gap:8px}
+.outline-item{background:var(--primary-soft);padding:9px 11px;border-radius:9px}
+.answer{background:var(--primary-soft);border-left:4px solid var(--primary);padding:13px 15px;border-radius:10px;white-space:pre-line}
+.analysis{background:var(--accent-soft);border-left:4px solid var(--accent);padding:13px 15px;border-radius:10px}
+.qa{border:1px solid var(--line);border-radius:10px;padding:11px 12px;margin:8px 0}
+.qa strong{color:var(--primary)}
+.memory{background:var(--good-soft);border-left:4px solid var(--good);padding:12px 14px;border-radius:10px;font-weight:700}
+.loss{background:var(--danger-soft);border-left:4px solid var(--danger);padding:12px 14px;border-radius:10px}
+.deps{background:var(--warn-soft);border-left:4px solid var(--warn);padding:12px 14px;border-radius:10px}
+</style></head>
+<body><div class="page">
+<header class="hero"><a class="back" href="index.html">← 返回总目录</a><h1>浏览器</h1><p>渲染 / 存储 / 事件 / 性能 API。8 道 S 级已全部补成完整折叠卡片；A/B 级保留骨架，后续按优先级补齐。</p>
+<div class="toolbar"><button class="btn" onclick="filterGrade('ALL')">全部</button><button class="btn" onclick="filterGrade('S')">只看 S</button><button class="btn" onclick="filterGrade('A')">只看 A</button><button class="btn" onclick="filterGrade('B')">只看 B</button><button class="btn" onclick="document.querySelectorAll('.question-card').forEach(x=&gt;x.classList.remove('open'))">全部收起</button></div></header>
+<section class="summary"><div><strong>25</strong><span>总题量</span></div><div><strong>8</strong><span>S 级</span></div><div><strong>11</strong><span>A 级</span></div><div><strong>6</strong><span>B 级</span></div></section>
+<div class="legend"><span class="pill s">S：必须稳 / 深练</span><span class="pill a">A：高频扩展</span><span class="pill b">B：补充完整性</span></div>
+<h2 class="section">S 级题 · 必须优先掌握</h2>
+<article class="question-card" data-grade="S">
+<div class="head" onclick="this.parentElement.classList.toggle('open')">
+<div class="rank">#01</div>
+<div>
+<div class="title">从输入 URL 到页面展示，浏览器经历了哪些步骤？</div>
+<div class="meta">
+<span class="tag s">S级</span>
+<span class="tag">题型：综合原理</span>
+<span class="tag">刁钻度：★★★★☆</span>
+<span class="tag source">来源样本：滴滴 / 雪球 / 好未来</span>
+</div>
+</div>
+</div>
+<div class="body"><div class="note"><strong>训练目标：</strong>30 秒结论 + 90 秒展开 + 2～3 层追问</div><details><summary>题目主要考察点和方向概述</summary><div class="detail-content"><div class="outline"><div class="outline-item"><strong>1.</strong> URL 解析：协议、域名、端口、路径；检查缓存与 HSTS 等浏览器策略。</div><div class="outline-item"><strong>2.</strong> 网络阶段：DNS → 建连（TCP；HTTPS 还要 TLS）→ HTTP 请求/响应。</div><div class="outline-item"><strong>3.</strong> 渲染阶段：HTML→DOM，CSS→CSSOM，样式计算→Layout→Paint→Composite。</div><div class="outline-item"><strong>4.</strong> 继续追问缓存、DNS、HTTP2/3、script 阻塞、首屏性能指标。</div></div></div></details><details><summary>标准答案</summary><div class="detail-content"><div class="answer">我一般把“输入 URL 到页面展示”分成四层。
+
+第一层是导航与地址解析。浏览器解析 URL，确定协议、域名、端口和路径，同时会考虑本地缓存、HSTS、Service Worker 等已有状态。
+
+第二层是网络。需要访问网络时，会先做 DNS 解析得到目标地址；随后建立连接。传统 HTTP/1.1、HTTP/2 通常基于 TCP，HTTPS 还要完成 TLS 握手；HTTP/3 则基于 QUIC。连接建立后浏览器发送 HTTP 请求并接收响应。
+
+第三层是解析。浏览器边接收 HTML 边解析形成 DOM；遇到 CSS 会下载并构建 CSSOM；遇到普通同步 script 可能暂停 HTML parser，先下载并执行脚本。DOM 和样式信息准备后进行 style calculation。
+
+第四层是渲染流水线：根据元素几何关系做 Layout，生成绘制指令 Paint，再由合成线程根据图层进行 Composite，最终把像素显示到屏幕上。
+
+后续页面并不是结束了：图片、字体、异步脚本还可能继续加载，JS 也可能继续修改 DOM/CSS，触发新的 style、layout、paint 或 composite。</div></div></details><details><summary>答案整体解析</summary><div class="detail-content"><div class="analysis">这是一道综合题，面试官通常不是要求背浏览器源码，而是在看你能否把“网络 → 解析 → 渲染”三个知识域串起来。高级岗位还会继续从其中任一点深挖。</div></div></details><details><summary>高频追问 + 答案</summary><div class="detail-content"><div class="qa"><strong>追问 1：DNS 前浏览器会不会先看缓存？</strong><div>会。HTTP 缓存、Service Worker、浏览器自身策略等都可能影响是否真的发起网络请求；DNS 自身也有多级缓存。</div></div><div class="qa"><strong>追问 2：HTTPS 比 HTTP 多了什么？</strong><div>核心多 TLS：证书校验、密钥协商与加密通道建立。具体握手次数取决于 TLS 版本、连接复用等。</div></div><div class="qa"><strong>追问 3：拿到 HTML 后为什么不是直接 Paint？</strong><div>还需要解析 DOM/CSSOM、样式计算和 Layout，浏览器才知道元素长什么样、放在哪里。</div></div><div class="qa"><strong>追问 4：这个过程中哪些指标最常用于首屏分析？</strong><div>TTFB 反映响应等待，FCP 反映首次内容绘制，LCP 反映最大内容绘制；还应结合资源瀑布、主线程 Long Task 等定位。</div></div></div></details><details><summary>失分点 / 易错点</summary><div class="detail-content"><div class="loss">常见失分：只讲 DNS/TCP/HTTP，或者只讲 DOM/CSSOM，缺少完整跨层链路。</div></div></details><details><summary>记忆钩子</summary><div class="detail-content"><div class="memory">URL → DNS/连接 → HTTP → DOM/CSSOM → Style → Layout → Paint → Composite。</div></div></details><details><summary>前置知识 / 关联知识</summary><div class="detail-content"><div class="deps">前置：DNS、TCP/TLS、HTTP、DOM/CSSOM。关联：缓存、性能指标、关键渲染路径。</div></div></details></div>
+</article>
+<article class="question-card" data-grade="S">
+<div class="head" onclick="this.parentElement.classList.toggle('open')">
+<div class="rank">#02</div>
+<div>
+<div class="title">浏览器关键渲染路径是什么？</div>
+<div class="meta">
+<span class="tag s">S级</span>
+<span class="tag">题型：渲染原理</span>
+<span class="tag">刁钻度：★★★★☆</span>
+<span class="tag source">来源样本：字节</span>
+</div>
+</div>
+</div>
+<div class="body"><div class="note"><strong>训练目标：</strong>30 秒结论 + 90 秒展开 + 2～3 层追问</div><details><summary>题目主要考察点和方向概述</summary><div class="detail-content"><div class="outline"><div class="outline-item"><strong>1.</strong> 关键渲染路径关注首次把内容变成像素所需的关键步骤。</div><div class="outline-item"><strong>2.</strong> DOM + CSSOM → Render/Style → Layout → Paint → Composite。</div><div class="outline-item"><strong>3.</strong> 要理解阻塞关系：CSS 常是渲染阻塞资源；同步 classic script 可能阻塞 HTML parser。</div></div></div></details><details><summary>标准答案</summary><div class="detail-content"><div class="answer">关键渲染路径可以理解为浏览器从拿到页面资源，到首次生成可见像素所必须经过的关键步骤。
+
+HTML 被解析成 DOM，CSS 被解析成 CSSOM。浏览器根据 DOM 和样式规则做样式计算，确定每个节点最终使用哪些样式；随后进行 Layout，计算元素的位置和尺寸；再 Paint，把背景、文本、边框、阴影等转换成绘制指令；最后 Composite，把不同图层合成为屏幕上的最终画面。
+
+性能优化时，我们关注的是如何减少关键资源数量和体积、减少解析和主线程工作、避免不必要的 Layout/Paint。例如关键 CSS 尽快到达、非关键 JS 延后、首屏资源减少、图片尺寸明确、避免长任务阻塞主线程等。</div></div></details><details><summary>答案整体解析</summary><div class="detail-content"><div class="analysis">这题与“浏览器渲染流程”类似，但重点更偏首屏关键路径和优化思路。不要把 Render Tree 当成所有现代浏览器实现都必须原样存在的固定内部对象；面试表达用 DOM/CSSOM→style→layout→paint 更稳。</div></div></details><details><summary>高频追问 + 答案</summary><div class="detail-content"><div class="qa"><strong>追问 1：CSS 为什么常被称为 render-blocking？</strong><div>页面需要样式信息才能正确完成样式计算和首次渲染；关键样式表未就绪时，浏览器通常不会贸然呈现未样式化内容。</div></div><div class="qa"><strong>追问 2：Layout 和 Paint 分别算什么？</strong><div>Layout 解决几何位置与尺寸；Paint 解决每个像素区域要绘制什么视觉内容。</div></div><div class="qa"><strong>追问 3：Composite 为什么可能不需要重新 Layout/Paint？</strong><div>某些 transform、opacity 等变化可在已有图层上直接由合成阶段处理，因此常用于高频动画。</div></div><div class="qa"><strong>追问 4：如何缩短关键渲染路径？</strong><div>减少关键请求链、压缩/拆分资源、关键 CSS、延迟非关键脚本、优化字体和首屏图片、减少主线程长任务。</div></div></div></details><details><summary>失分点 / 易错点</summary><div class="detail-content"><div class="loss">常见失分：只会背 Render Tree，却不能解释每一步解决什么问题。</div></div></details><details><summary>记忆钩子</summary><div class="detail-content"><div class="memory">DOM/CSSOM → Style → Layout → Paint → Composite。</div></div></details><details><summary>前置知识 / 关联知识</summary><div class="detail-content"><div class="deps">前置：HTML/CSS解析。关联：FCP/LCP、资源优先级、GPU合成。</div></div></details></div>
+</article>
+<article class="question-card" data-grade="S">
+<div class="head" onclick="this.parentElement.classList.toggle('open')">
+<div class="rank">#03</div>
+<div>
+<div class="title">HTML、CSS、JS 分别如何影响页面解析和渲染？</div>
+<div class="meta">
+<span class="tag s">S级</span>
+<span class="tag">题型：渲染原理</span>
+<span class="tag">刁钻度：★★★★★</span>
+<span class="tag source">来源样本：编程猫社招 / 真实高频</span>
+</div>
+</div>
+</div>
+<div class="body"><div class="note"><strong>训练目标：</strong>30 秒结论 + 90 秒展开 + 2～3 层追问</div><details><summary>题目主要考察点和方向概述</summary><div class="detail-content"><div class="outline"><div class="outline-item"><strong>1.</strong> HTML parser 可边下载边解析；CSS 通常不阻塞 HTML parser，但会影响样式计算和首次渲染。</div><div class="outline-item"><strong>2.</strong> 普通同步 classic script 可能阻塞 parser；外部脚本需先下载再执行。</div><div class="outline-item"><strong>3.</strong> 脚本执行前往往需要等待其前面的相关样式表就绪，避免脚本读取到不完整样式状态。</div><div class="outline-item"><strong>4.</strong> async/defer/module 用于改变脚本下载与执行时机。</div></div></div></details><details><summary>标准答案</summary><div class="detail-content"><div class="answer">HTML、CSS、JS 对解析和渲染的影响不一样。
+
+HTML 是 DOM 的输入，浏览器通常边接收边解析。CSS 下载时一般不会直接停止 HTML parser 继续构建 DOM，但关键样式表会影响 CSSOM 和样式计算，因此经常是渲染阻塞资源。
+
+普通没有 async/defer 的 classic script 比较特殊。parser 遇到它时，通常需要暂停 HTML 解析：如果是外部脚本先下载，再执行，执行完成后继续解析。因为 JS 可以通过 document.write、DOM API 等改变文档结构，parser 不能无条件继续向前。
+
+另外，位于脚本之前的样式表还可能影响脚本执行时机，因为脚本可能读取布局和 computed style，浏览器需要保证相关 CSS 已经可用。
+
+所以优化上通常会让关键 CSS 尽早可用，把非关键脚本 defer/async/module 化，并减少会阻塞主线程的同步脚本。</div></div></details><details><summary>答案整体解析</summary><div class="detail-content"><div class="analysis">这题最容易答错成“CSS 阻塞 HTML 解析”。更准确的说法是：CSS 通常不直接阻塞 parser 构建 DOM，但会阻塞渲染，并可能间接延迟依赖样式的脚本执行。</div></div></details><details><summary>高频追问 + 答案</summary><div class="detail-content"><div class="qa"><strong>追问 1：CSS 会阻塞 DOM 构建吗？</strong><div>通常 CSS 下载本身不会像同步 script 那样暂停 HTML parser；但它会影响 CSSOM/渲染，也可能让脚本等待。</div></div><div class="qa"><strong>追问 2：为什么普通 script 会阻塞 parser？</strong><div>因为脚本可能同步修改当前文档，浏览器需要先保证脚本执行结果，再继续按正确文档状态解析。</div></div><div class="qa"><strong>追问 3：把 script 放 body 底部和 defer 有什么区别？</strong><div>都可减少阻塞首部 HTML 解析，但 defer 更明确地允许并行下载并在文档解析后按顺序执行。</div></div><div class="qa"><strong>追问 4：CSS 加载慢为什么可能让页面白屏更久？</strong><div>关键样式没准备好，浏览器会推迟正确样式下的首次绘制；同时相关脚本也可能被延迟。</div></div></div></details><details><summary>失分点 / 易错点</summary><div class="detail-content"><div class="loss">高频易错：直接说“CSS 会阻塞 HTML 解析”，表达不够准确。</div></div></details><details><summary>记忆钩子</summary><div class="detail-content"><div class="memory">HTML 负责 DOM；CSS 多数阻塞“画”，不直接阻塞 parser；同步 script 会卡 parser。</div></div></details><details><summary>前置知识 / 关联知识</summary><div class="detail-content"><div class="deps">前置：DOM/CSSOM、script加载。关联：async/defer、FCP、关键CSS。</div></div></details></div>
+</article>
+<article class="question-card" data-grade="S">
+<div class="head" onclick="this.parentElement.classList.toggle('open')">
+<div class="rank">#04</div>
+<div>
+<div class="title">重排和重绘有什么区别？哪些操作容易触发？</div>
+<div class="meta">
+<span class="tag s">S级</span>
+<span class="tag">题型：渲染性能</span>
+<span class="tag">刁钻度：★★★★☆</span>
+<span class="tag source">来源样本：货拉拉 / 好未来</span>
+</div>
+</div>
+</div>
+<div class="body"><div class="note"><strong>训练目标：</strong>30 秒结论 + 90 秒展开 + 2～3 层追问</div><details><summary>题目主要考察点和方向概述</summary><div class="detail-content"><div class="outline"><div class="outline-item"><strong>1.</strong> Layout/Reflow：几何信息改变，需要重新计算位置和尺寸。</div><div class="outline-item"><strong>2.</strong> Paint/Repaint：视觉改变但几何不变，需要重新绘制。</div><div class="outline-item"><strong>3.</strong> Layout 通常可能继续导致 Paint；仅 Paint 不一定需要 Layout。</div><div class="outline-item"><strong>4.</strong> 读写 DOM 交错会产生 forced synchronous layout / layout thrashing。</div></div></div></details><details><summary>标准答案</summary><div class="detail-content"><div class="answer">重排通常指 Layout/Reflow，也就是元素的几何信息发生变化后，浏览器需要重新计算元素的位置和尺寸。例如修改 width、height、padding、font-size、插入/删除 DOM、窗口 resize 等，都可能影响布局。
+
+重绘 Paint 则是几何结构没有改变，但视觉效果变了，例如 color、background、box-shadow 等，需要重新生成绘制内容。
+
+一般来说 Layout 的成本更高，因为布局变化还可能影响后代、兄弟甚至更大范围，并且 Layout 后通常还要继续 Paint；单纯 Paint 不一定需要 Layout。
+
+另外一个高级前端常见问题是 layout thrashing：代码里反复写样式、马上读取 offsetWidth/getBoundingClientRect 等布局信息，浏览器为了返回最新值不得不提前同步计算 Layout。优化时应批量读、批量写，减少强制同步布局。</div></div></details><details><summary>答案整体解析</summary><div class="detail-content"><div class="analysis">这题不要机械背 CSS 属性表，因为现代渲染引擎优化很多。更重要的是理解“几何变化”和“视觉变化”的层次，以及如何避免读写交错。</div></div></details><details><summary>高频追问 + 答案</summary><div class="detail-content"><div class="qa"><strong>追问 1：transform 为什么常用于动画？</strong><div>transform 通常可以在合成阶段处理，不改变普通文档流几何，很多场景能避免 Layout，并可能避免大范围 Paint。</div></div><div class="qa"><strong>追问 2：读取 offsetWidth 为什么有时会很贵？</strong><div>如果前面存在尚未处理的样式/DOM 写操作，为了返回最新几何值，浏览器可能被迫立即 flush style/layout。</div></div><div class="qa"><strong>追问 3：如何优化大量 DOM 更新？</strong><div>减少逐个读写交错，批量修改，合理使用 class，虚拟列表/分片任务，动画优先 transform/opacity。</div></div><div class="qa"><strong>追问 4：visibility:hidden 和 display:none 哪个更可能触发布局？</strong><div>display:none 改变元素是否参与布局，通常涉及 Layout；visibility:hidden 保留布局空间，主要影响绘制/可见性。</div></div></div></details><details><summary>失分点 / 易错点</summary><div class="detail-content"><div class="loss">常见失分：把重排/重绘只背成属性名单，无法讲 forced layout 和优化方法。</div></div></details><details><summary>记忆钩子</summary><div class="detail-content"><div class="memory">Layout 算“放哪多大”；Paint 算“长什么样”；读写交错最危险。</div></div></details><details><summary>前置知识 / 关联知识</summary><div class="detail-content"><div class="deps">前置：渲染流水线。关联：Performance、rAF、CSS动画。</div></div></details></div>
+</article>
+<article class="question-card" data-grade="S">
+<div class="head" onclick="this.parentElement.classList.toggle('open')">
+<div class="rank">#05</div>
+<div>
+<div class="title">Cookie、localStorage、sessionStorage、IndexedDB 有什么区别？</div>
+<div class="meta">
+<span class="tag s">S级</span>
+<span class="tag">题型：存储 / API完整性</span>
+<span class="tag">刁钻度：★★★★★</span>
+<span class="tag source">来源样本：水滴真题 / 编程猫社招 / 好未来</span>
+</div>
+</div>
+</div>
+<div class="body"><div class="note"><strong>训练目标：</strong>30 秒结论 + 90 秒展开 + 2～3 层追问</div><details><summary>题目主要考察点和方向概述</summary><div class="detail-content"><div class="outline"><div class="outline-item"><strong>1.</strong> Cookie：小、可随请求自动发送、服务端可 Set-Cookie、安全属性丰富。</div><div class="outline-item"><strong>2.</strong> localStorage：同源、同步 API、无自动过期、适合少量非敏感状态。</div><div class="outline-item"><strong>3.</strong> sessionStorage：同源 + 当前顶级浏览上下文/标签页会话维度，关闭对应页面会话后清理。</div><div class="outline-item"><strong>4.</strong> IndexedDB：异步、结构化、大容量、本地数据库级别能力。</div></div></div></details><details><summary>标准答案</summary><div class="detail-content"><div class="answer">这四种能力我一般从容量、生命周期、是否随网络发送、API 模型和使用场景来区分。
+
+Cookie 容量很小，单条通常是几 KB。满足 Domain、Path、SameSite、Secure 等条件时会随 HTTP 请求自动发送，也可以由服务端通过 Set-Cookie 设置，因此常用于 session id、认证状态等；同时支持 HttpOnly、Secure、SameSite 等安全属性。
+
+localStorage 是同源 Web Storage，API 是同步的，通常可以保存数 MB，没有内置过期机制，适合用户偏好、少量非敏感缓存。它不会自动随请求发送。
+
+sessionStorage 也是同步 Web Storage，但除了 origin 之外，还按当前顶级浏览上下文/标签页会话隔离。当前 tab/page session 结束后通常会被清除，因此更适合单标签页会话状态。
+
+IndexedDB 则是异步的浏览器数据库，支持更大容量、结构化数据、索引和事务，更适合离线数据、大量缓存等复杂本地存储。
+
+认证敏感信息不要因为“方便”就一律放 localStorage；要结合 XSS/CSRF 风险选择方案。</div></div></details><details><summary>答案整体解析</summary><div class="detail-content"><div class="analysis">这是水滴真实失分题的扩展版。高级前端至少应该从 4~5 个固定维度比较，而不是回答“Cookie 存用户信息，localStorage 存 key-value”。</div></div></details><details><summary>高频追问 + 答案</summary><div class="detail-content"><div class="qa"><strong>追问 1：localStorage 为什么不适合大量高频数据？</strong><div>API 同步，会阻塞主线程；容量和结构能力也不如 IndexedDB。</div></div><div class="qa"><strong>追问 2：sessionStorage 两个 tab 会共享吗？</strong><div>一般按顶级浏览上下文/标签页隔离；即使同源，不应把它当成跨 tab 的共享存储。</div></div><div class="qa"><strong>追问 3：Cookie 为什么会带来额外网络开销？</strong><div>符合作用域规则的 Cookie 会附带在请求头中，过多/过大的 Cookie 会增加请求体积。</div></div><div class="qa"><strong>追问 4：跨子域为什么 Cookie 可以而 localStorage 不可以直接共享？</strong><div>Cookie 有 Domain 作用域机制；localStorage 按 origin 隔离，不提供父域共享配置。</div></div></div></details><details><summary>失分点 / 易错点</summary><div class="detail-content"><div class="loss">你的真实失分：比较维度不对，没有说请求携带、生命周期、安全和服务端能力。</div></div></details><details><summary>记忆钩子</summary><div class="detail-content"><div class="memory">Cookie 跟请求；localStorage 长存同步；sessionStorage 单会话；IndexedDB 大数据异步。</div></div></details><details><summary>前置知识 / 关联知识</summary><div class="detail-content"><div class="deps">前置：同源策略。关联：Cookie安全、SSO、离线缓存。</div></div></details></div>
+</article>
+<article class="question-card" data-grade="S">
+<div class="head" onclick="this.parentElement.classList.toggle('open')">
+<div class="rank">#06</div>
+<div>
+<div class="title">HTML 解析遇到 script 会发生什么？</div>
+<div class="meta">
+<span class="tag s">S级</span>
+<span class="tag">题型：渲染细节</span>
+<span class="tag">刁钻度：★★★★★</span>
+<span class="tag source">来源样本：真实面经高频</span>
+</div>
+</div>
+</div>
+<div class="body"><div class="note"><strong>训练目标：</strong>30 秒结论 + 90 秒展开 + 2～3 层追问</div><details><summary>题目主要考察点和方向概述</summary><div class="detail-content"><div class="outline"><div class="outline-item"><strong>1.</strong> 无 async/defer 的 parser-inserted classic script：暂停 parser，下载（外链）并执行，然后继续。</div><div class="outline-item"><strong>2.</strong> 浏览器可能通过 preload scanner 提前发现后续资源，但主 parser 仍会被脚本执行阻塞。</div><div class="outline-item"><strong>3.</strong> 样式表可能让脚本等待；async/defer/module 改变执行时机。</div></div></div></details><details><summary>标准答案</summary><div class="detail-content"><div class="answer">如果 HTML parser 遇到一个普通、没有 async/defer 的 classic script，我会把它理解为 parser-blocking script。
+
+如果是外部 src，主 parser 会暂停继续构建后面的 DOM，等待脚本下载并执行；如果是内联脚本，则直接执行。脚本执行完成后，parser 才继续往后解析。
+
+浏览器为了提升性能，通常还有 speculative/preload scanner，会在主 parser 被阻塞时提前扫描后续 HTML，发现图片、CSS、JS 等资源并开始请求。但这不代表主 DOM parser 没被阻塞。
+
+另外，脚本执行前如果它前面存在尚未完成的关键样式表，也可能需要等待样式就绪，因为脚本可能读取 layout/computed style。
+
+如果希望脚本不阻塞 HTML 解析，可以根据依赖关系使用 defer、async 或 module。</div></div></details><details><summary>答案整体解析</summary><div class="detail-content"><div class="analysis">这是一类真实面试常见的“浏览器细节题”。回答出 preload scanner 会比只说“script 阻塞”更完整，但不要把扫描器说成所有浏览器内部绝对一致的实现细节。</div></div></details><details><summary>高频追问 + 答案</summary><div class="detail-content"><div class="qa"><strong>追问 1：为什么浏览器不直接继续解析，等脚本以后执行？</strong><div>因为脚本可以同步改变文档，例如 document.write、插入/删除 DOM；继续解析可能产生错误顺序。</div></div><div class="qa"><strong>追问 2：preload scanner 有什么作用？</strong><div>在主 parser 因脚本等原因暂停时，提前发现未来需要的资源并开始下载，减少网络空闲。</div></div><div class="qa"><strong>追问 3：动态创建的 script 也会阻塞 parser 吗？</strong><div>通常不是 parser-inserted 的同步脚本，因此执行/加载语义不同；要结合 async 属性和插入方式看。</div></div><div class="qa"><strong>追问 4：script 放 head 就一定差吗？</strong><div>不一定。如果使用 defer/module，或者脚本非常关键且小，放 head 也可以。关键是下载和执行是否阻塞关键路径。</div></div></div></details><details><summary>失分点 / 易错点</summary><div class="detail-content"><div class="loss">常见失分：只说“遇 script 就下载执行”，没说明 parser 是否暂停、外链/内联和属性差异。</div></div></details><details><summary>记忆钩子</summary><div class="detail-content"><div class="memory">普通 classic script：parser 停 → 脚本下/执行 → parser 继续。</div></div></details><details><summary>前置知识 / 关联知识</summary><div class="detail-content"><div class="deps">前置：HTML parser、JS执行。关联：async/defer、preload scanner、CSS阻塞。</div></div></details></div>
+</article>
+<article class="question-card" data-grade="S">
+<div class="head" onclick="this.parentElement.classList.toggle('open')">
+<div class="rank">#07</div>
+<div>
+<div class="title">async、defer、type=module 有什么区别？</div>
+<div class="meta">
+<span class="tag s">S级</span>
+<span class="tag">题型：加载策略</span>
+<span class="tag">刁钻度：★★★★★</span>
+<span class="tag source">来源样本：真实高频</span>
+</div>
+</div>
+</div>
+<div class="body"><div class="note"><strong>训练目标：</strong>30 秒结论 + 90 秒展开 + 2～3 层追问</div><details><summary>题目主要考察点和方向概述</summary><div class="detail-content"><div class="outline"><div class="outline-item"><strong>1.</strong> async：并行下载，下载完尽快执行；不保证多个脚本顺序。</div><div class="outline-item"><strong>2.</strong> defer：并行下载，HTML 解析完成后、DOMContentLoaded 前按文档顺序执行。</div><div class="outline-item"><strong>3.</strong> module：模块脚本天然支持 import graph、严格模式、CORS；默认执行语义接近 defer。</div><div class="outline-item"><strong>4.</strong> module 加 async 后改为 graph 准备好就执行，不再等待文档顺序。</div></div></div></details><details><summary>标准答案</summary><div class="detail-content"><div class="answer">async、defer、module 都能减少普通同步脚本对 HTML parser 的阻塞，但执行语义不同。
+
+async 脚本会和 HTML 解析并行下载，一旦下载完成就尽快执行；执行时仍可能暂停 parser。多个 async 脚本谁先下载完谁先执行，因此不保证文档顺序，适合互不依赖的统计、广告等独立脚本。
+
+defer 也会并行下载，但不会在下载完成后马上打断 parser，而是等 HTML 文档解析完成后再执行；多个 defer 脚本按文档顺序执行，并且通常会在 DOMContentLoaded 之前完成，因此适合存在顺序依赖的业务脚本。
+
+type=module 是 ES Module。模块脚本支持 import/export、默认严格模式，依赖图会被加载；普通 module 脚本默认具有类似 defer 的执行语义，即不会像 classic script 那样阻塞 parser，并在文档解析后执行。模块跨源加载还遵循 CORS。
+
+如果 module 再加 async，则模块及依赖准备好后尽快执行，不再遵循普通 module 的等待/排序语义。</div></div></details><details><summary>答案整体解析</summary><div class="detail-content"><div class="analysis">面试里最容易混的是“async/defer 都异步所以一样”。核心差异是执行时机与顺序保证。</div></div></details><details><summary>高频追问 + 答案</summary><div class="detail-content"><div class="qa"><strong>追问 1：多个 defer 会按顺序吗？</strong><div>parser-inserted 的外部 defer classic scripts 会按文档顺序执行。</div></div><div class="qa"><strong>追问 2：多个 async 会按顺序吗？</strong><div>不保证，通常是谁先准备好谁先执行。</div></div><div class="qa"><strong>追问 3：module 为什么默认接近 defer？</strong><div>模块需要加载依赖图，而且设计上不会像普通同步 classic script 那样阻塞 HTML parser；默认在文档解析完成后执行。</div></div><div class="qa"><strong>追问 4：DOMContentLoaded 会等 defer/module 吗？</strong><div>通常会等待 defer 脚本和普通 module 脚本执行完成；async 脚本则不按这一规则与 DOMContentLoaded 固定绑定。</div></div></div></details><details><summary>失分点 / 易错点</summary><div class="detail-content"><div class="loss">常见失分：只回答“async 异步，defer 延迟”，没有讲顺序和 DOMContentLoaded。</div></div></details><details><summary>记忆钩子</summary><div class="detail-content"><div class="memory">async：先下完先跑；defer：解析完按序跑；module：默认像 defer + 模块依赖图。</div></div></details><details><summary>前置知识 / 关联知识</summary><div class="detail-content"><div class="deps">前置：HTML parser、script。关联：DOMContentLoaded、ES Module、CORS。</div></div></details></div>
+</article>
+<article class="question-card" data-grade="S">
+<div class="head" onclick="this.parentElement.classList.toggle('open')">
+<div class="rank">#08</div>
+<div>
+<div class="title">浏览器 Event Loop 和渲染时机如何配合？</div>
+<div class="meta">
+<span class="tag s">S级</span>
+<span class="tag">题型：运行机制</span>
+<span class="tag">刁钻度：★★★★☆</span>
+<span class="tag source">来源样本：多家公司</span>
+</div>
+</div>
+</div>
+<div class="body"><div class="note"><strong>训练目标：</strong>30 秒结论 + 90 秒展开 + 2～3 层追问</div><details><summary>题目主要考察点和方向概述</summary><div class="detail-content"><div class="outline"><div class="outline-item"><strong>1.</strong> 一个 task 执行后会进行 microtask checkpoint，清空当前微任务。</div><div class="outline-item"><strong>2.</strong> 浏览器在合适的 rendering opportunity 进行样式、Layout、Paint；不是每个 task 后必画一帧。</div><div class="outline-item"><strong>3.</strong> requestAnimationFrame 回调发生在下一次渲染前，用于更新动画状态。</div><div class="outline-item"><strong>4.</strong> 微任务堆积和长任务都可能推迟渲染。</div></div></div></details><details><summary>标准答案</summary><div class="detail-content"><div class="answer">浏览器 Event Loop 和渲染不是“宏任务 → 微任务 → 必定渲染”这么机械，但面试可以用这个主线理解。
+
+浏览器从 task queue 取一个任务执行，例如 script、定时器、事件回调。这个 task 执行结束后，会进行 microtask checkpoint，把当前可执行的 Promise.then、queueMicrotask 等微任务持续清空。
+
+之后如果到了合适的 rendering opportunity，浏览器可能进入更新渲染阶段，包括样式计算、Layout、Paint 等。requestAnimationFrame 回调通常会在这次绘制前执行，所以适合根据下一帧更新动画和读取/写入与帧同步相关的状态。
+
+需要注意两点。第一，不是每个宏任务后浏览器都必须立刻渲染，浏览器会根据刷新率、页面状态等调度。第二，如果一个 task 很长，或者微任务不断产生新微任务，渲染机会就会被推迟，因此会出现卡顿、掉帧甚至交互延迟。</div></div></details><details><summary>答案整体解析</summary><div class="detail-content"><div class="analysis">这题和 JS Event Loop 的区别在于加入了“浏览器渲染机会”。不要死背“每个宏任务后渲染一次”。</div></div></details><details><summary>高频追问 + 答案</summary><div class="detail-content"><div class="qa"><strong>追问 1：Promise 微任务太多会不会阻塞渲染？</strong><div>会。如果微任务队列长时间清不完，主线程无法进入下一次渲染机会。</div></div><div class="qa"><strong>追问 2：requestAnimationFrame 和 setTimeout 做动画谁更合适？</strong><div>rAF 与浏览器渲染节奏同步，后台标签页还可自动降频/暂停，通常更适合视觉动画。</div></div><div class="qa"><strong>追问 3：nextTick 后为什么有时还要 rAF？</strong><div>Vue nextTick 主要保证 DOM patch 已完成；rAF 更接近浏览器下一次渲染前的帧时机。若要等真实绘制相关阶段，需要区分这两个层次。</div></div><div class="qa"><strong>追问 4：Long Task 为什么影响 INP？</strong><div>长时间占用主线程会让输入事件无法及时执行和完成后续渲染，从而增加交互延迟。</div></div></div></details><details><summary>失分点 / 易错点</summary><div class="detail-content"><div class="loss">常见失分：把浏览器事件循环回答成纯 JS 输出题，没有提渲染 opportunity。</div></div></details><details><summary>记忆钩子</summary><div class="detail-content"><div class="memory">Task → 清 Microtasks → 可能进入渲染机会；rAF 在画之前。不是每个 Task 必画。</div></div></details><details><summary>前置知识 / 关联知识</summary><div class="detail-content"><div class="deps">前置：Event Loop、宏微任务。关联：rAF、Long Task、INP、Vue nextTick。</div></div></details></div>
+</article><h2 class="section">A 级题 · 高频扩展</h2>
+<article class="question-card" data-grade="A">
+<div class="head" onclick="this.parentElement.classList.toggle('open')">
+<div class="rank">#09</div>
+<div>
+<div class="title">DOMContentLoaded 和 load 有什么区别？</div>
+<div class="meta">
+<span class="tag a">A级</span>
+<span class="tag">题型：事件/API</span>
+<span class="tag">刁钻度：★★★☆☆</span>
+<span class="tag source">来源样本：常见</span>
+</div>
+</div>
+</div>
+<div class="body">
+<div class="note"><strong>训练目标：</strong>30～60 秒完整回答 + 常见追问</div>
+<div class="placeholder">▶ 考察方向　▶ 标准答案　▶ 答案解析　▶ 高频追问　▶ 失分点　▶ 记忆钩子<br/>当前为题库骨架版，后续按优先级逐题补齐。</div>
+</div>
+</article>
+<article class="question-card" data-grade="A">
+<div class="head" onclick="this.parentElement.classList.toggle('open')">
+<div class="rank">#10</div>
+<div>
+<div class="title">事件捕获、目标、冒泡完整流程是什么？</div>
+<div class="meta">
+<span class="tag a">A级</span>
+<span class="tag">题型：事件模型</span>
+<span class="tag">刁钻度：★★★☆☆</span>
+<span class="tag source">来源样本：雪球</span>
+</div>
+</div>
+</div>
+<div class="body">
+<div class="note"><strong>训练目标：</strong>30～60 秒完整回答 + 常见追问</div>
+<div class="placeholder">▶ 考察方向　▶ 标准答案　▶ 答案解析　▶ 高频追问　▶ 失分点　▶ 记忆钩子<br/>当前为题库骨架版，后续按优先级逐题补齐。</div>
+</div>
+</article>
+<article class="question-card" data-grade="A">
+<div class="head" onclick="this.parentElement.classList.toggle('open')">
+<div class="rank">#11</div>
+<div>
+<div class="title">requestAnimationFrame 适合做什么？</div>
+<div class="meta">
+<span class="tag a">A级</span>
+<span class="tag">题型：性能API</span>
+<span class="tag">刁钻度：★★★☆☆</span>
+<span class="tag source">来源样本：字节性能题关联</span>
+</div>
+</div>
+</div>
+<div class="body">
+<div class="note"><strong>训练目标：</strong>30～60 秒完整回答 + 常见追问</div>
+<div class="placeholder">▶ 考察方向　▶ 标准答案　▶ 答案解析　▶ 高频追问　▶ 失分点　▶ 记忆钩子<br/>当前为题库骨架版，后续按优先级逐题补齐。</div>
+</div>
+</article>
+<article class="question-card" data-grade="A">
+<div class="head" onclick="this.parentElement.classList.toggle('open')">
+<div class="rank">#12</div>
+<div>
+<div class="title">requestIdleCallback 适合做什么？有哪些限制？</div>
+<div class="meta">
+<span class="tag a">A级</span>
+<span class="tag">题型：性能API</span>
+<span class="tag">刁钻度：★★★☆☆</span>
+<span class="tag source">来源样本：高级常见</span>
+</div>
+</div>
+</div>
+<div class="body">
+<div class="note"><strong>训练目标：</strong>30～60 秒完整回答 + 常见追问</div>
+<div class="placeholder">▶ 考察方向　▶ 标准答案　▶ 答案解析　▶ 高频追问　▶ 失分点　▶ 记忆钩子<br/>当前为题库骨架版，后续按优先级逐题补齐。</div>
+</div>
+</article>
+<article class="question-card" data-grade="A">
+<div class="head" onclick="this.parentElement.classList.toggle('open')">
+<div class="rank">#13</div>
+<div>
+<div class="title">IntersectionObserver 有什么使用场景？</div>
+<div class="meta">
+<span class="tag a">A级</span>
+<span class="tag">题型：性能API</span>
+<span class="tag">刁钻度：★★★☆☆</span>
+<span class="tag source">来源样本：懒加载关联</span>
+</div>
+</div>
+</div>
+<div class="body">
+<div class="note"><strong>训练目标：</strong>30～60 秒完整回答 + 常见追问</div>
+<div class="placeholder">▶ 考察方向　▶ 标准答案　▶ 答案解析　▶ 高频追问　▶ 失分点　▶ 记忆钩子<br/>当前为题库骨架版，后续按优先级逐题补齐。</div>
+</div>
+</article>
+<article class="question-card" data-grade="A">
+<div class="head" onclick="this.parentElement.classList.toggle('open')">
+<div class="rank">#14</div>
+<div>
+<div class="title">两个标签页的 localStorage / sessionStorage 是否共享？</div>
+<div class="meta">
+<span class="tag a">A级</span>
+<span class="tag">题型：存储 / 刁钻</span>
+<span class="tag">刁钻度：★★★★★</span>
+<span class="tag source">来源样本：高频宽度题</span>
+</div>
+</div>
+</div>
+<div class="body">
+<div class="note"><strong>训练目标：</strong>30～60 秒完整回答 + 常见追问</div>
+<div class="placeholder">▶ 考察方向　▶ 标准答案　▶ 答案解析　▶ 高频追问　▶ 失分点　▶ 记忆钩子<br/>当前为题库骨架版，后续按优先级逐题补齐。</div>
+</div>
+</article>
+<article class="question-card" data-grade="A">
+<div class="head" onclick="this.parentElement.classList.toggle('open')">
+<div class="rank">#15</div>
+<div>
+<div class="title">Web Worker 能解决什么问题？有哪些限制？</div>
+<div class="meta">
+<span class="tag a">A级</span>
+<span class="tag">题型：并发</span>
+<span class="tag">刁钻度：★★★☆☆</span>
+<span class="tag source">来源样本：字节 2025</span>
+</div>
+</div>
+</div>
+<div class="body">
+<div class="note"><strong>训练目标：</strong>30～60 秒完整回答 + 常见追问</div>
+<div class="placeholder">▶ 考察方向　▶ 标准答案　▶ 答案解析　▶ 高频追问　▶ 失分点　▶ 记忆钩子<br/>当前为题库骨架版，后续按优先级逐题补齐。</div>
+</div>
+</article>
+<article class="question-card" data-grade="A">
+<div class="head" onclick="this.parentElement.classList.toggle('open')">
+<div class="rank">#16</div>
+<div>
+<div class="title">Service Worker 能做什么？</div>
+<div class="meta">
+<span class="tag a">A级</span>
+<span class="tag">题型：PWA/缓存</span>
+<span class="tag">刁钻度：★★★☆☆</span>
+<span class="tag source">来源样本：补充高频</span>
+</div>
+</div>
+</div>
+<div class="body">
+<div class="note"><strong>训练目标：</strong>30～60 秒完整回答 + 常见追问</div>
+<div class="placeholder">▶ 考察方向　▶ 标准答案　▶ 答案解析　▶ 高频追问　▶ 失分点　▶ 记忆钩子<br/>当前为题库骨架版，后续按优先级逐题补齐。</div>
+</div>
+</article>
+<article class="question-card" data-grade="A">
+<div class="head" onclick="this.parentElement.classList.toggle('open')">
+<div class="rank">#17</div>
+<div>
+<div class="title">浏览器 Performance 面板如何分析卡顿？</div>
+<div class="meta">
+<span class="tag a">A级</span>
+<span class="tag">题型：性能工具</span>
+<span class="tag">刁钻度：★★★☆☆</span>
+<span class="tag source">来源样本：编程猫社招 / 字节</span>
+</div>
+</div>
+</div>
+<div class="body">
+<div class="note"><strong>训练目标：</strong>30～60 秒完整回答 + 常见追问</div>
+<div class="placeholder">▶ 考察方向　▶ 标准答案　▶ 答案解析　▶ 高频追问　▶ 失分点　▶ 记忆钩子<br/>当前为题库骨架版，后续按优先级逐题补齐。</div>
+</div>
+</article>
+<article class="question-card" data-grade="A">
+<div class="head" onclick="this.parentElement.classList.toggle('open')">
+<div class="rank">#18</div>
+<div>
+<div class="title">Performance API 常用哪些能力？</div>
+<div class="meta">
+<span class="tag a">A级</span>
+<span class="tag">题型：性能监控</span>
+<span class="tag">刁钻度：★★★☆☆</span>
+<span class="tag source">来源样本：高级前端</span>
+</div>
+</div>
+</div>
+<div class="body">
+<div class="note"><strong>训练目标：</strong>30～60 秒完整回答 + 常见追问</div>
+<div class="placeholder">▶ 考察方向　▶ 标准答案　▶ 答案解析　▶ 高频追问　▶ 失分点　▶ 记忆钩子<br/>当前为题库骨架版，后续按优先级逐题补齐。</div>
+</div>
+</article>
+<article class="question-card" data-grade="A">
+<div class="head" onclick="this.parentElement.classList.toggle('open')">
+<div class="rank">#19</div>
+<div>
+<div class="title">页面为什么会出现白屏？如何定位？</div>
+<div class="meta">
+<span class="tag a">A级</span>
+<span class="tag">题型：稳定性关联</span>
+<span class="tag">刁钻度：★★★☆☆</span>
+<span class="tag source">来源样本：高级场景</span>
+</div>
+</div>
+</div>
+<div class="body">
+<div class="note"><strong>训练目标：</strong>30～60 秒完整回答 + 常见追问</div>
+<div class="placeholder">▶ 考察方向　▶ 标准答案　▶ 答案解析　▶ 高频追问　▶ 失分点　▶ 记忆钩子<br/>当前为题库骨架版，后续按优先级逐题补齐。</div>
+</div>
+</article><h2 class="section">B 级题 · 补充完整性</h2>
+<article class="question-card" data-grade="B">
+<div class="head" onclick="this.parentElement.classList.toggle('open')">
+<div class="rank">#20</div>
+<div>
+<div class="title">MutationObserver 是什么？</div>
+<div class="meta">
+<span class="tag b">B级</span>
+<span class="tag">题型：DOM API</span>
+<span class="tag">刁钻度：★★★☆☆</span>
+<span class="tag source">来源样本：补充</span>
+</div>
+</div>
+</div>
+<div class="body">
+<div class="note"><strong>训练目标：</strong>知道核心定义与主要边界即可</div>
+<div class="placeholder">▶ 考察方向　▶ 标准答案　▶ 答案解析　▶ 高频追问　▶ 失分点　▶ 记忆钩子<br/>当前为题库骨架版，后续按优先级逐题补齐。</div>
+</div>
+</article>
+<article class="question-card" data-grade="B">
+<div class="head" onclick="this.parentElement.classList.toggle('open')">
+<div class="rank">#21</div>
+<div>
+<div class="title">ResizeObserver 是什么？</div>
+<div class="meta">
+<span class="tag b">B级</span>
+<span class="tag">题型：DOM API</span>
+<span class="tag">刁钻度：★★★☆☆</span>
+<span class="tag source">来源样本：补充</span>
+</div>
+</div>
+</div>
+<div class="body">
+<div class="note"><strong>训练目标：</strong>知道核心定义与主要边界即可</div>
+<div class="placeholder">▶ 考察方向　▶ 标准答案　▶ 答案解析　▶ 高频追问　▶ 失分点　▶ 记忆钩子<br/>当前为题库骨架版，后续按优先级逐题补齐。</div>
+</div>
+</article>
+<article class="question-card" data-grade="B">
+<div class="head" onclick="this.parentElement.classList.toggle('open')">
+<div class="rank">#22</div>
+<div>
+<div class="title">innerHTML 插入 script 会不会执行？</div>
+<div class="meta">
+<span class="tag b">B级</span>
+<span class="tag">题型：高刁钻</span>
+<span class="tag">刁钻度：★★★★★</span>
+<span class="tag source">来源样本：真实面经趋势</span>
+</div>
+</div>
+</div>
+<div class="body">
+<div class="note"><strong>训练目标：</strong>知道核心定义与主要边界即可</div>
+<div class="placeholder">▶ 考察方向　▶ 标准答案　▶ 答案解析　▶ 高频追问　▶ 失分点　▶ 记忆钩子<br/>当前为题库骨架版，后续按优先级逐题补齐。</div>
+</div>
+</article>
+<article class="question-card" data-grade="B">
+<div class="head" onclick="this.parentElement.classList.toggle('open')">
+<div class="rank">#23</div>
+<div>
+<div class="title">动态创建 script 标签会不会执行？</div>
+<div class="meta">
+<span class="tag b">B级</span>
+<span class="tag">题型：高刁钻</span>
+<span class="tag">刁钻度：★★★★★</span>
+<span class="tag source">来源样本：真实面经趋势</span>
+</div>
+</div>
+</div>
+<div class="body">
+<div class="note"><strong>训练目标：</strong>知道核心定义与主要边界即可</div>
+<div class="placeholder">▶ 考察方向　▶ 标准答案　▶ 答案解析　▶ 高频追问　▶ 失分点　▶ 记忆钩子<br/>当前为题库骨架版，后续按优先级逐题补齐。</div>
+</div>
+</article>
+<article class="question-card" data-grade="B">
+<div class="head" onclick="this.parentElement.classList.toggle('open')">
+<div class="rank">#24</div>
+<div>
+<div class="title">浏览器进程和线程分别有哪些？</div>
+<div class="meta">
+<span class="tag b">B级</span>
+<span class="tag">题型：底层原理</span>
+<span class="tag">刁钻度：★★★☆☆</span>
+<span class="tag source">来源样本：补充</span>
+</div>
+</div>
+</div>
+<div class="body">
+<div class="note"><strong>训练目标：</strong>知道核心定义与主要边界即可</div>
+<div class="placeholder">▶ 考察方向　▶ 标准答案　▶ 答案解析　▶ 高频追问　▶ 失分点　▶ 记忆钩子<br/>当前为题库骨架版，后续按优先级逐题补齐。</div>
+</div>
+</article>
+<article class="question-card" data-grade="B">
+<div class="head" onclick="this.parentElement.classList.toggle('open')">
+<div class="rank">#25</div>
+<div>
+<div class="title">GPU 为什么适合光栅化？</div>
+<div class="meta">
+<span class="tag b">B级</span>
+<span class="tag">题型：底层图形</span>
+<span class="tag">刁钻度：★★★☆☆</span>
+<span class="tag source">来源样本：字节 2026</span>
+</div>
+</div>
+</div>
+<div class="body">
+<div class="note"><strong>训练目标：</strong>知道核心定义与主要边界即可</div>
+<div class="placeholder">▶ 考察方向　▶ 标准答案　▶ 答案解析　▶ 高频追问　▶ 失分点　▶ 记忆钩子<br/>当前为题库骨架版，后续按优先级逐题补齐。</div>
+</div>
+</article>
+<div class="footer">Front-end Interview Basic Bank · 浏览器</div>
+</div>
+<script>function filterGrade(g){document.querySelectorAll('.question-card').forEach(c=>c.style.display=(g==='ALL'||c.dataset.grade===g)?'block':'none')}</script>
+</body></html>

@@ -1,0 +1,1087 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head><meta charset="utf-8"/><meta content="width=device-width,initial-scale=1" name="viewport"/><title>JavaScript｜前端基础题库</title><style>
+:root{--bg:#f5f7fb;--paper:#fff;--text:#172033;--muted:#667085;--line:#e4e7ec;--primary:#2563eb;--primary-soft:#eff6ff;--accent:#7c3aed;--accent-soft:#f5f3ff;--warn:#b45309;--warn-soft:#fffbeb;--danger:#b91c1c;--danger-soft:#fef2f2;--good:#047857;--good-soft:#ecfdf5;--shadow:0 10px 28px rgba(16,24,40,.07)}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;line-height:1.7}.page{max-width:1180px;margin:auto;padding:28px}.hero{background:linear-gradient(135deg,var(--primary-soft),var(--accent-soft));border:1px solid var(--line);border-radius:24px;padding:30px;box-shadow:var(--shadow)}h1{margin:4px 0 8px;font-size:32px}.hero p{margin:0;color:var(--muted)}.back{display:inline-block;margin-bottom:10px;color:var(--primary);text-decoration:none;font-size:13px}.toolbar{display:flex;gap:8px;flex-wrap:wrap;margin-top:18px}.btn{border:1px solid var(--line);background:var(--paper);padding:8px 12px;border-radius:10px;cursor:pointer}.legend{display:flex;gap:8px;flex-wrap:wrap;margin:18px 0}.pill{padding:5px 9px;border-radius:999px;border:1px solid var(--line);font-size:12px}.s{background:var(--danger-soft);color:var(--danger)}.a{background:var(--warn-soft);color:var(--warn)}.b{background:var(--good-soft);color:var(--good)}.question-card{background:var(--paper);border:1px solid var(--line);border-radius:16px;margin:12px 0;box-shadow:var(--shadow);overflow:hidden}.head{display:grid;grid-template-columns:70px 1fr;gap:12px;padding:16px 18px;cursor:pointer}.rank{font-weight:900;font-size:18px}.title{font-weight:800;font-size:17px}.meta{display:flex;gap:7px;flex-wrap:wrap;margin-top:7px}.tag{font-size:11px;padding:4px 8px;border-radius:999px;border:1px solid var(--line);background:var(--bg);color:var(--muted)}.source{background:var(--primary-soft);color:var(--primary)}.body{display:none;padding:0 18px 18px;border-top:1px solid var(--line)}.question-card.open .body{display:block}.note{margin-top:12px;background:var(--accent-soft);border-left:4px solid var(--accent);padding:12px 14px;border-radius:10px}.placeholder{margin-top:10px;background:var(--primary-soft);border-left:4px solid var(--primary);padding:12px 14px;border-radius:10px;color:var(--muted)}.section{margin:26px 0 10px;font-size:20px}.index-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:22px}.module{display:block;text-decoration:none;color:var(--text);background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:18px;box-shadow:var(--shadow)}.module:hover{border-color:var(--primary)}.module strong{font-size:19px}.module small{display:block;color:var(--muted);margin-top:4px}.footer{text-align:center;color:var(--muted);font-size:12px;padding:28px}.summary{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:18px 0}.summary div{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:14px}.summary strong{display:block;font-size:22px}
+@media(max-width:800px){.page{padding:14px}.index-grid{grid-template-columns:1fr}.summary{grid-template-columns:repeat(2,1fr)}.head{grid-template-columns:55px 1fr}}
+
+details{border:1px solid var(--line);border-radius:12px;margin-top:10px;overflow:hidden}summary{padding:11px 13px;font-weight:750;cursor:pointer;background:var(--bg);list-style:none}summary::-webkit-details-marker{display:none}summary:before{content:"▸";margin-right:7px;color:var(--primary)}details[open] summary:before{content:"▾"}.detail-content{padding:13px}.points{display:grid;gap:8px}.point{background:var(--primary-soft);padding:9px 11px;border-radius:9px}.answer{background:var(--primary-soft);border-left:4px solid var(--primary);padding:13px 15px;border-radius:10px}.analysis{background:var(--accent-soft);border-left:4px solid var(--accent);padding:13px 15px;border-radius:10px}.qa{background:var(--warn-soft);border-left:4px solid var(--warn);padding:12px 14px;border-radius:10px;margin:9px 0}.qa b{display:block;margin-bottom:4px}.memory{background:var(--good-soft);border-left:4px solid var(--good);padding:12px 14px;border-radius:10px;font-weight:700}.deps{background:#f8fafc;border:1px dashed var(--line);padding:12px 14px;border-radius:10px}code{font-family:SFMono-Regular,Consolas,monospace;background:rgba(37,99,235,.08);padding:1px 5px;border-radius:5px}</style></head>
+<body><div class="page">
+<header class="hero"><a class="back" href="index.html">← 返回总目录</a><h1>JavaScript</h1><p>经典核心 + API / 易错细节。S 级题已补齐完整折叠答案，按 S → A → B 排序；先闭卷回答，再展开校准。</p>
+<div class="toolbar"><button class="btn" onclick="filterGrade('ALL')">全部</button><button class="btn" onclick="filterGrade('S')">只看 S</button><button class="btn" onclick="filterGrade('A')">只看 A</button><button class="btn" onclick="filterGrade('B')">只看 B</button><button class="btn" onclick="document.querySelectorAll('.question-card').forEach(x=&gt;x.classList.remove('open'))">全部收起</button></div></header>
+<section class="summary"><div><strong>55</strong><span>总题量</span></div><div><strong>20</strong><span>S 级</span></div><div><strong>20</strong><span>A 级</span></div><div><strong>15</strong><span>B 级</span></div></section>
+<div class="legend"><span class="pill s">S：必须稳 / 深练</span><span class="pill a">A：高频扩展</span><span class="pill b">B：补充完整性</span></div>
+<h2 class="section">S 级题 · 必须优先掌握</h2>
+<article class="question-card" data-grade="S">
+<div class="head" onclick="this.parentElement.classList.toggle('open')">
+<div class="rank">#01</div>
+<div>
+<div class="title">JavaScript 有哪些数据类型？基本类型和引用类型有什么区别？</div>
+<div class="meta">
+<span class="tag s">S级</span>
+<span class="tag">题型：核心原理</span>
+<span class="tag">刁钻度：★★★★☆</span>
+<span class="tag source">来源样本：编程猫社招 / 雪球 / 字节</span>
+</div>
+</div>
+</div>
+<div class="body">
+<details><summary>题目主要考察点和方向概述</summary><div class="detail-content"><div class="points"><div class="point"><b>1.</b> JavaScript 的数据类型完整分类。</div><div class="point"><b>2.</b> 基本类型与对象类型在赋值、比较和修改行为上的差异。</div><div class="point"><b>3.</b> typeof null、Symbol、BigInt 等常见追问。</div></div></div></details>
+<details><summary>标准答案</summary><div class="detail-content"><div class="answer">JavaScript 目前常见的数据类型可以分成两大类。基本类型有 <code>string</code>、<code>number</code>、<code>boolean</code>、<code>undefined</code>、<code>null</code>、<code>symbol</code>、<code>bigint</code>；引用类型本质上都是 <code>Object</code>，包括普通对象、数组、函数、Date、Map、Set 等。<br/><br/>基本类型在赋值时复制的是值，因此修改新变量通常不会影响原变量；对象变量保存的是对对象的引用值，赋值时复制的是这个引用，所以两个变量可能指向同一个对象，对对象内部属性的修改就会互相看到。</div></div></details>
+<details><summary>答案整体解析</summary><div class="detail-content"><div class="analysis">这道题不建议只背“7 种基本类型 + Object”。面试官通常会继续追问 <code>typeof null</code>、对象赋值为什么会联动、Symbol/BigInt 解决什么问题。你要把它当作“JS 类型系统入口题”。</div></div></details>
+<details><summary>高频追问 + 追问答案</summary><div class="detail-content"><div class="qa"><b>追问 1：typeof null 为什么是 object？</b><div>这是 JavaScript 早期实现遗留问题，null 的底层类型标记与对象标记发生了历史上的冲突，因此 <code>typeof null</code> 返回 <code>"object"</code>。判断 null 应直接使用 <code>value === null</code>。</div></div><div class="qa"><b>追问 2：函数属于什么类型？</b><div>从类型体系看函数属于对象的一种，但 <code>typeof function(){{}}</code> 会返回 <code>"function"</code>，这是 typeof 的特殊结果。</div></div><div class="qa"><b>追问 3：对象赋值到底是不是“引用传递”？</b><div>更准确地说，JavaScript 参数和变量赋值始终是值传递；对象场景复制的那个“值”恰好是引用值，因此多个变量会指向同一对象。</div></div></div></details>
+<details><summary>记忆钩子</summary><div class="detail-content"><div class="memory">7 个基本类型 + Object；对象变量复制的是“引用值”，但 JS 仍然是值传递。</div></div></details>
+<details><summary>前置知识 / 关联知识</summary><div class="detail-content"><div class="deps">前置：变量、内存基本概念　｜　关联：typeof、instanceof、深浅拷贝、函数参数传递</div></div></details>
+</div>
+</article>
+<article class="question-card" data-grade="S">
+<div class="head" onclick="this.parentElement.classList.toggle('open')">
+<div class="rank">#02</div>
+<div>
+<div class="title">JavaScript 有哪些类型判断方式？各有什么局限？</div>
+<div class="meta">
+<span class="tag s">S级</span>
+<span class="tag">题型：核心原理 / 易错</span>
+<span class="tag">刁钻度：★★★★☆</span>
+<span class="tag source">来源样本：雪球 / 货拉拉 / 字节</span>
+</div>
+</div>
+</div>
+<div class="body">
+<details><summary>题目主要考察点和方向概述</summary><div class="detail-content"><div class="points"><div class="point"><b>1.</b> typeof、instanceof、Object.prototype.toString.call、Array.isArray 等常用方式。</div><div class="point"><b>2.</b> 每种判断方式的适用范围和缺陷。</div><div class="point"><b>3.</b> null、NaN、数组、跨 iframe 等特殊边界。</div></div></div></details>
+<details><summary>标准答案</summary><div class="detail-content"><div class="answer">常见类型判断方式有几类：<code>typeof</code> 适合快速判断基本类型和 function，但 <code>typeof null</code> 是 object，普通对象和数组也都会得到 object；<code>instanceof</code> 通过原型链判断对象是否来自某构造函数，适合对象类型，但跨 iframe/realm 时可能失效；<code>Object.prototype.toString.call(value)</code> 能得到类似 <code>[object Array]</code>、<code>[object Date]</code> 的精确标签；数组一般优先使用 <code>Array.isArray</code>；null 用严格等于判断，NaN 推荐 <code>Number.isNaN</code>。</div></div></details>
+<details><summary>答案整体解析</summary><div class="detail-content"><div class="analysis">真正的高分点不是报 API，而是知道“为什么不存在一个万能判断”。不同方式观察的是不同层面：typeof 看语言级标签，instanceof 看原型链，toString.call 看内建类型标签。</div></div></details>
+<details><summary>高频追问 + 追问答案</summary><div class="detail-content"><div class="qa"><b>追问 1：为什么 instanceof 跨 iframe 可能失败？</b><div>因为不同 iframe 拥有不同的全局对象和构造函数，例如两个窗口中的 Array.prototype 并不是同一个对象，所以原型链身份判断可能失败。</div></div><div class="qa"><b>追问 2：如何判断数组？</b><div>优先使用 <code>Array.isArray(value)</code>，它比 <code>value instanceof Array</code> 更稳妥，尤其跨 realm 场景。</div></div><div class="qa"><b>追问 3：如何判断 NaN？</b><div>优先 <code>Number.isNaN(value)</code>；全局 <code>isNaN</code> 会先发生类型转换，容易产生误判。</div></div></div></details>
+<details><summary>记忆钩子</summary><div class="detail-content"><div class="memory">typeof 看基础标签；instanceof 看原型链；toString.call 做精确类型；数组 Array.isArray。</div></div></details>
+<details><summary>前置知识 / 关联知识</summary><div class="detail-content"><div class="deps">前置：数据类型　｜　关联：原型链、instanceof、NaN、跨 iframe</div></div></details>
+</div>
+</article>
+<article class="question-card" data-grade="S">
+<div class="head" onclick="this.parentElement.classList.toggle('open')">
+<div class="rank">#03</div>
+<div>
+<div class="title">Event Loop 是怎么工作的？宏任务和微任务的执行顺序是什么？</div>
+<div class="meta">
+<span class="tag s">S级</span>
+<span class="tag">题型：核心原理</span>
+<span class="tag">刁钻度：★★★★☆</span>
+<span class="tag source">来源样本：编程猫社招 / 美团 / 字节 / 滴滴</span>
+</div>
+</div>
+</div>
+<div class="body">
+<details><summary>题目主要考察点和方向概述</summary><div class="detail-content"><div class="points"><div class="point"><b>1.</b> 同步调用栈、宿主异步能力和任务队列的协作。</div><div class="point"><b>2.</b> 宏任务与微任务的执行顺序。</div><div class="point"><b>3.</b> 浏览器渲染时机与常见输出题。</div></div></div></details>
+<details><summary>标准答案</summary><div class="detail-content"><div class="answer">浏览器执行 JavaScript 时，当前同步代码先在调用栈中执行。遇到定时器、网络、事件等异步任务，会交给浏览器对应能力处理，完成后把回调放入任务队列。<br/><br/>一次 Event Loop 可以简单理解为：执行一个宏任务 → 执行过程中产生微任务 → 当前宏任务结束后清空微任务队列 → 浏览器在合适时机进行渲染 → 再取下一个宏任务。常见微任务有 <code>Promise.then/catch/finally</code>、<code>queueMicrotask</code>、<code>MutationObserver</code>；常见宏任务有 script、setTimeout、setInterval、I/O、事件回调等。</div></div></details>
+<details><summary>答案整体解析</summary><div class="detail-content"><div class="analysis">面试时不要只说“宏任务之后执行微任务”。核心是：同步栈属于当前任务；每完成一个宏任务，会把当前产生的微任务一直清空，包括微任务中新产生的微任务，再进入下一轮。</div></div></details>
+<details><summary>高频追问 + 追问答案</summary><div class="detail-content"><div class="qa"><b>追问 1：Promise 构造函数里的代码是同步还是异步？</b><div><code>new Promise(executor)</code> 中 executor 会立即同步执行；异步的是 then/catch 等回调被放入微任务队列。</div></div><div class="qa"><b>追问 2：async/await 后半段属于什么？</b><div>await 表达式后的继续执行，本质上会以 Promise continuation 的形式进入微任务语义。</div></div><div class="qa"><b>追问 3：requestAnimationFrame 在哪里？</b><div>它不是普通宏任务 API。浏览器通常在下一次绘制前执行 rAF 回调，因此讨论顺序时要结合渲染机会，而不能简单塞进 setTimeout 那套任务分类。</div></div></div></details>
+<details><summary>记忆钩子</summary><div class="detail-content"><div class="memory">一个宏任务 → 清空所有微任务 → 可能渲染 → 下一个宏任务。</div></div></details>
+<details><summary>前置知识 / 关联知识</summary><div class="detail-content"><div class="deps">前置：调用栈、Promise　｜　关联：async/await、浏览器渲染、长任务、性能优化</div></div></details>
+</div>
+</article>
+<article class="question-card" data-grade="S">
+<div class="head" onclick="this.parentElement.classList.toggle('open')">
+<div class="rank">#04</div>
+<div>
+<div class="title">什么是闭包？有哪些应用、风险和内存问题？</div>
+<div class="meta">
+<span class="tag s">S级</span>
+<span class="tag">题型：核心原理</span>
+<span class="tag">刁钻度：★★★★☆</span>
+<span class="tag source">来源样本：公开高频 / 社招常见</span>
+</div>
+</div>
+</div>
+<div class="body">
+<details><summary>题目主要考察点和方向概述</summary><div class="detail-content"><div class="points"><div class="point"><b>1.</b> 闭包的准确含义：函数与其词法环境的组合。</div><div class="point"><b>2.</b> 闭包为何能继续访问外层变量。</div><div class="point"><b>3.</b> 应用场景与长期引用导致的内存风险。</div></div></div></details>
+<details><summary>标准答案</summary><div class="detail-content"><div class="answer">闭包可以理解为函数和它定义时所处词法环境的组合。当一个内部函数引用了外部作用域变量，并且这个内部函数仍然可达时，即使外部函数已经执行结束，相关词法环境仍可能被保留下来，因此内部函数之后仍能访问这些变量。<br/><br/>常见场景有私有状态、函数工厂、缓存、回调、事件处理等。闭包本身不是内存泄漏，但如果闭包长期持有大对象、DOM、定时器相关数据，又没有释放，就可能让这些对象无法被 GC。</div></div></details>
+<details><summary>答案整体解析</summary><div class="detail-content"><div class="analysis">不要把闭包背成“函数嵌套函数”。函数嵌套只是常见表现，关键是内部函数持有外层词法环境中的绑定。高级追问通常会转向作用域、GC、循环闭包和实际项目。</div></div></details>
+<details><summary>高频追问 + 追问答案</summary><div class="detail-content"><div class="qa"><b>追问 1：闭包一定会导致内存泄漏吗？</b><div>不会。只要闭包及其引用的数据最终都不可达，GC 仍会回收。问题在于不必要的长期可达引用。</div></div><div class="qa"><b>追问 2：for(var i...) + setTimeout 为什么容易出问题？</b><div>var 是函数作用域，多个回调闭包共享同一个 i；循环结束时 i 已经是最终值。使用 let 会让每次迭代创建独立的块级绑定。</div></div><div class="qa"><b>追问 3：项目里什么时候会用闭包？</b><div>例如封装内部状态、创建带配置的函数、事件/异步回调捕获上下文。但应避免无意捕获巨大对象。</div></div></div></details>
+<details><summary>记忆钩子</summary><div class="detail-content"><div class="memory">闭包 = 函数 + 定义时的词法环境；风险不是闭包本身，而是不必要的长期引用。</div></div></details>
+<details><summary>前置知识 / 关联知识</summary><div class="detail-content"><div class="deps">前置：作用域 / 作用域链　｜　关联：GC、内存泄漏、函数工厂、事件回调</div></div></details>
+</div>
+</article>
+<article class="question-card" data-grade="S">
+<div class="head" onclick="this.parentElement.classList.toggle('open')">
+<div class="rank">#05</div>
+<div>
+<div class="title">this 的指向规则有哪些？箭头函数为什么特殊？</div>
+<div class="meta">
+<span class="tag s">S级</span>
+<span class="tag">题型：核心原理</span>
+<span class="tag">刁钻度：★★★★☆</span>
+<span class="tag source">来源样本：公开高频</span>
+</div>
+</div>
+</div>
+<div class="body">
+<details><summary>题目主要考察点和方向概述</summary><div class="detail-content"><div class="points"><div class="point"><b>1.</b> 默认、隐式、显式、new 等 this 绑定规则。</div><div class="point"><b>2.</b> 箭头函数没有自己的 this。</div><div class="point"><b>3.</b> 绑定优先级和常见 this 丢失问题。</div></div></div></details>
+<details><summary>标准答案</summary><div class="detail-content"><div class="answer">普通函数的 <code>this</code> 主要由调用方式决定：普通独立调用属于默认绑定；作为对象方法调用属于隐式绑定；<code>call/apply/bind</code> 属于显式绑定；通过 <code>new</code> 调用时，this 指向新创建的实例。<br/><br/>箭头函数比较特殊，它没有自己的 <code>this</code>，而是词法捕获定义位置外层的 this，因此不能通过 call/apply/bind 改变它自己的 this，也不适合作为构造函数。</div></div></details>
+<details><summary>答案整体解析</summary><div class="detail-content"><div class="analysis">面试重点是“看调用点，不看函数写在哪个对象里”，但箭头函数例外，它看定义位置的外层词法环境。还要知道方法被单独取出来调用时会丢失隐式绑定。</div></div></details>
+<details><summary>高频追问 + 追问答案</summary><div class="detail-content"><div class="qa"><b>追问 1：const fn = obj.method; fn() 的 this 还是 obj 吗？</b><div>不是。方法被取出后调用点不再是 obj.method()，隐式绑定丢失。严格模式下普通函数 this 通常是 undefined。</div></div><div class="qa"><b>追问 2：bind 后还能被 new 吗？</b><div>可以。对可构造函数使用 bind 后再 new，new 绑定会创建实例，绑定的 thisArg 不会成为最终 this，但预绑定参数仍有效。</div></div><div class="qa"><b>追问 3：箭头函数能做对象方法吗？</b><div>可以写，但如果方法逻辑依赖“调用对象作为 this”，箭头函数通常不合适，因为它不会建立自己的 this。</div></div></div></details>
+<details><summary>记忆钩子</summary><div class="detail-content"><div class="memory">普通函数看调用点；箭头函数看定义位置。</div></div></details>
+<details><summary>前置知识 / 关联知识</summary><div class="detail-content"><div class="deps">前置：函数调用　｜　关联：call/apply/bind、new、箭头函数、事件回调</div></div></details>
+</div>
+</article>
+<article class="question-card" data-grade="S">
+<div class="head" onclick="this.parentElement.classList.toggle('open')">
+<div class="rank">#06</div>
+<div>
+<div class="title">Promise 有哪些状态？链式调用、异常穿透、组合 API 怎么理解？</div>
+<div class="meta">
+<span class="tag s">S级</span>
+<span class="tag">题型：核心原理</span>
+<span class="tag">刁钻度：★★★★☆</span>
+<span class="tag source">来源样本：字节 2026 / 雪球 / 好未来</span>
+</div>
+</div>
+</div>
+<div class="body">
+<details><summary>题目主要考察点和方向概述</summary><div class="detail-content"><div class="points"><div class="point"><b>1.</b> Promise 三状态及不可逆。</div><div class="point"><b>2.</b> then/catch 为什么可以链式调用。</div><div class="point"><b>3.</b> 返回普通值、Promise、抛异常时链条如何变化。</div></div></div></details>
+<details><summary>标准答案</summary><div class="detail-content"><div class="answer">Promise 有 <code>pending</code>、<code>fulfilled</code>、<code>rejected</code> 三种状态，只能从 pending 转到 fulfilled 或 rejected，一旦确定就不会再次变化。<br/><br/><code>then</code>、<code>catch</code>、<code>finally</code> 都会返回新的 Promise，所以可以链式调用。回调返回普通值时，下一个 Promise 会以这个值 fulfilled；返回另一个 Promise/thenable 时会采用它的最终状态；如果回调抛异常，下一个 Promise 会 rejected。没有提供对应处理函数时，值或错误会继续向后传递。</div></div></details>
+<details><summary>答案整体解析</summary><div class="detail-content"><div class="analysis">这道题建议先把“状态机 + then 返回新 Promise”讲清，再展开 all/race 等组合 API。不要只背 API 结果。</div></div></details>
+<details><summary>高频追问 + 追问答案</summary><div class="detail-content"><div class="qa"><b>追问 1：Promise executor 同步还是异步？</b><div>executor 立即同步执行；resolve 之后注册的 then 回调按微任务执行。</div></div><div class="qa"><b>追问 2：finally 会改变链条里的值吗？</b><div>通常不会。finally 主要做清理；若 finally 正常完成，原来的值/错误继续传递；如果 finally 自己抛错或返回 rejected Promise，则会覆盖原结果。</div></div><div class="qa"><b>追问 3：Promise.all 与 allSettled 区别？</b><div>all 任一失败就整体失败；allSettled 会等全部结束，并返回每项 fulfilled/rejected 状态。</div></div></div></details>
+<details><summary>记忆钩子</summary><div class="detail-content"><div class="memory">状态一次确定；then 永远返回新 Promise；return 决定值，throw 决定 rejected。</div></div></details>
+<details><summary>前置知识 / 关联知识</summary><div class="detail-content"><div class="deps">前置：Event Loop　｜　关联：async/await、微任务、组合 API、并发控制</div></div></details>
+</div>
+</article>
+<article class="question-card" data-grade="S">
+<div class="head" onclick="this.parentElement.classList.toggle('open')">
+<div class="rank">#07</div>
+<div>
+<div class="title">什么是原型、原型对象和原型链？</div>
+<div class="meta">
+<span class="tag s">S级</span>
+<span class="tag">题型：核心原理</span>
+<span class="tag">刁钻度：★★★★☆</span>
+<span class="tag source">来源样本：编程猫社招 / 滴滴 / 雪球</span>
+</div>
+</div>
+</div>
+<div class="body">
+<details><summary>题目主要考察点和方向概述</summary><div class="detail-content"><div class="points"><div class="point"><b>1.</b> prototype、对象内部 [[Prototype]]、constructor 的关系。</div><div class="point"><b>2.</b> 属性查找如何沿原型链向上进行。</div><div class="point"><b>3.</b> 继承、instanceof 与原型链的联系。</div></div></div></details>
+<details><summary>标准答案</summary><div class="detail-content"><div class="answer">普通函数通常有一个 <code>prototype</code> 属性，这个对象会作为通过该构造函数 <code>new</code> 出来的实例的原型。对象内部有一个 <code>[[Prototype]]</code> 指针，开发中常通过 <code>Object.getPrototypeOf</code> 查看。<br/><br/>访问对象属性时，如果对象自身没有，就沿着 [[Prototype]] 指向的对象继续查找，一层层向上直到找到属性或最终到 null，这条路径就是原型链。JavaScript 的很多继承机制和 <code>instanceof</code> 本质都建立在原型链上。</div></div></details>
+<details><summary>答案整体解析</summary><div class="detail-content"><div class="analysis">最容易混淆的是 <code>Fn.prototype</code> 和 <code>obj.__proto__</code>。前者是函数用于构造实例时提供的原型对象；后者是历史访问器，用来访问对象的内部原型。</div></div></details>
+<details><summary>高频追问 + 追问答案</summary><div class="detail-content"><div class="qa"><b>追问 1：实例的 __proto__ 和构造函数 prototype 什么关系？</b><div>通常 <code>Object.getPrototypeOf(instance) === Constructor.prototype</code>。</div></div><div class="qa"><b>追问 2：原型链终点是什么？</b><div>普通对象最终通常到 <code>Object.prototype</code>，其内部原型是 null。</div></div><div class="qa"><b>追问 3：class 是另一套继承机制吗？</b><div>不是。JavaScript class 主要是基于原型继承的语法封装。</div></div></div></details>
+<details><summary>记忆钩子</summary><div class="detail-content"><div class="memory">函数 prototype 提供原型；实例 [[Prototype]] 指向它；找属性一路向上就是原型链。</div></div></details>
+<details><summary>前置知识 / 关联知识</summary><div class="detail-content"><div class="deps">前置：对象 / 函数　｜　关联：new、instanceof、继承、class</div></div></details>
+</div>
+</article>
+<article class="question-card" data-grade="S">
+<div class="head" onclick="this.parentElement.classList.toggle('open')">
+<div class="rank">#08</div>
+<div>
+<div class="title">深拷贝和浅拷贝有什么区别？如何处理循环引用？</div>
+<div class="meta">
+<span class="tag s">S级</span>
+<span class="tag">题型：核心原理</span>
+<span class="tag">刁钻度：★★★★☆</span>
+<span class="tag source">来源样本：编程猫社招 / 字节</span>
+</div>
+</div>
+</div>
+<div class="body">
+<details><summary>题目主要考察点和方向概述</summary><div class="detail-content"><div class="points"><div class="point"><b>1.</b> 浅拷贝仅复制第一层，深层对象仍共享引用。</div><div class="point"><b>2.</b> 常见浅拷贝、深拷贝方式及能力边界。</div><div class="point"><b>3.</b> 循环引用和特殊对象处理。</div></div></div></details>
+<details><summary>标准答案</summary><div class="detail-content"><div class="answer">浅拷贝只创建新的第一层容器，第一层属性值会被复制；如果属性值仍是对象，复制的还是原对象引用，所以修改嵌套对象会互相影响。常见浅拷贝有对象展开、<code>Object.assign</code>、数组 <code>slice</code>/<code>concat</code> 等。<br/><br/>深拷贝需要递归或结构化复制整个对象图。现代浏览器可以优先考虑 <code>structuredClone</code>；自定义递归时一般用 <code>WeakMap</code> 记录“原对象 → 新对象”的映射，既能解决循环引用，也能避免重复复制同一引用。还要考虑 Date、RegExp、Map、Set、Symbol、原型、属性描述符等。</div></div></details>
+<details><summary>答案整体解析</summary><div class="detail-content"><div class="analysis">不要把 JSON.parse(JSON.stringify()) 当作标准深拷贝答案，它只是有限场景下的简易方案。高级面试一定会追循环引用和特殊类型。</div></div></details>
+<details><summary>高频追问 + 追问答案</summary><div class="detail-content"><div class="qa"><b>追问 1：JSON 深拷贝有哪些问题？</b><div>会丢失/改变 undefined、函数、Symbol、Date、Map/Set、BigInt、循环引用、原型和属性描述符等。</div></div><div class="qa"><b>追问 2：WeakMap 为什么适合处理循环引用？</b><div>键是对象且不会阻止对象被 GC；拷贝过程中可以记录已经复制过的对象，遇到同一个源对象时直接复用对应新对象。</div></div><div class="qa"><b>追问 3：structuredClone 能拷贝函数吗？</b><div>不能。函数等不可结构化克隆的值会导致 DataCloneError。</div></div></div></details>
+<details><summary>记忆钩子</summary><div class="detail-content"><div class="memory">浅拷贝复制第一层；深拷贝复制对象图；循环引用用 WeakMap 做映射。</div></div></details>
+<details><summary>前置知识 / 关联知识</summary><div class="detail-content"><div class="deps">前置：基本/引用类型　｜　关联：Object.assign、structuredClone、WeakMap</div></div></details>
+</div>
+</article>
+<article class="question-card" data-grade="S">
+<div class="head" onclick="this.parentElement.classList.toggle('open')">
+<div class="rank">#09</div>
+<div>
+<div class="title">Array 有哪些常用方法？怎么分类？哪些会修改原数组？</div>
+<div class="meta">
+<span class="tag s">S级</span>
+<span class="tag">题型：API完整性 / 刁钻</span>
+<span class="tag">刁钻度：★★★★★</span>
+<span class="tag source">来源样本：水滴真题 / 字节 2025 / 雪球</span>
+</div>
+</div>
+</div>
+<div class="body">
+<details><summary>题目主要考察点和方向概述</summary><div class="detail-content"><div class="points"><div class="point"><b>1.</b> 是否能按用途分类，而不是零散报 API。</div><div class="point"><b>2.</b> 是否知道哪些方法会修改原数组。</div><div class="point"><b>3.</b> 相似 API 的区别。</div></div></div></details>
+<details><summary>标准答案</summary><div class="detail-content"><div class="answer">数组方法我一般按用途分类：增删修改有 <code>push/pop/shift/unshift/splice</code>；遍历转换有 <code>forEach/map/filter</code>；查找判断有 <code>find/findIndex/includes/indexOf/some/every</code>；结构处理有 <code>slice/concat/flat/join</code>；排序和反转有 <code>sort/reverse</code>；聚合有 <code>reduce/reduceRight</code>。<br/><br/>常见会修改原数组的方法包括 <code>push、pop、shift、unshift、splice、sort、reverse、fill、copyWithin</code>；map/filter/slice/concat/find/some/every/reduce 等通常不修改原数组本身。</div></div></details>
+<details><summary>答案整体解析</summary><div class="detail-content"><div class="analysis">这题就是典型“API 完整性题”。面试目标不是背所有 Array API，而是分类清楚，并能处理“是否改原数组”和常见方法对比。</div></div></details>
+<details><summary>高频追问 + 追问答案</summary><div class="detail-content"><div class="qa"><b>追问 1：map 和 forEach？</b><div>map 把每次回调返回值组成新数组；forEach 主要用于遍历执行副作用。</div></div><div class="qa"><b>追问 2：slice 和 splice？</b><div>slice 截取并返回新数组，通常不改原数组；splice 删除/插入/替换，会原地修改。</div></div><div class="qa"><b>追问 3：find 和 filter？</b><div>find 返回第一个匹配元素；filter 返回所有匹配元素的新数组。</div></div></div></details>
+<details><summary>记忆钩子</summary><div class="detail-content"><div class="memory">增删 / 遍历转换 / 查找判断 / 结构 / 排序 / 聚合。</div></div></details>
+<details><summary>前置知识 / 关联知识</summary><div class="detail-content"><div class="deps">前置：数组　｜　关联：reduce、sort、forEach+async、不可变数据</div></div></details>
+</div>
+</article>
+<article class="question-card" data-grade="S">
+<div class="head" onclick="this.parentElement.classList.toggle('open')">
+<div class="rank">#10</div>
+<div>
+<div class="title">Array.prototype.reduce 有几个参数？callback 有几个参数？</div>
+<div class="meta">
+<span class="tag s">S级</span>
+<span class="tag">题型：API细节 / 刁钻</span>
+<span class="tag">刁钻度：★★★★★</span>
+<span class="tag source">来源样本：水滴真题</span>
+</div>
+</div>
+</div>
+<div class="body">
+<details><summary>题目主要考察点和方向概述</summary><div class="detail-content"><div class="points"><div class="point"><b>1.</b> reduce 方法签名。</div><div class="point"><b>2.</b> callback 的 4 个参数。</div><div class="point"><b>3.</b> initialValue 对首轮执行和空数组的影响。</div></div></div></details>
+<details><summary>标准答案</summary><div class="detail-content"><div class="answer"><code>reduce</code> 方法本身最多接收两个参数：第一个是 reducer 回调函数 <code>callbackFn</code>，第二个是可选的初始值 <code>initialValue</code>。callback 最多接收四个参数：<code>accumulator</code>、<code>currentValue</code>、<code>currentIndex</code>、<code>array</code>。<br/><br/>如果提供 initialValue，第一次执行时 accumulator 就是 initialValue，currentValue 是数组第一个元素；如果不提供，则数组第一个元素作为初始 accumulator，从第二个元素开始执行。空数组且不提供 initialValue 会抛 TypeError。</div></div></details>
+<details><summary>答案整体解析</summary><div class="detail-content"><div class="analysis">水滴这题本质考 API 签名精确度。记忆时一定区分“reduce 两个”和“callback 四个”。</div></div></details>
+<details><summary>高频追问 + 追问答案</summary><div class="detail-content"><div class="qa"><b>追问 1：空数组传 0 呢？</b><div>例如 <code>[].reduce((a,b)=&gt;a+b, 0)</code>，回调不会执行，直接返回初始值 0。</div></div><div class="qa"><b>追问 2：reduce 常见场景？</b><div>求和、计数、分组、数组转对象、扁平化、Promise 串行等。</div></div><div class="qa"><b>追问 3：为什么推荐明确传 initialValue？</b><div>结果类型和空数组行为更可预测，也减少首轮特殊情况。</div></div></div></details>
+<details><summary>记忆钩子</summary><div class="detail-content"><div class="memory">reduce 两个，callback 四个；initialValue 决定第一轮。</div></div></details>
+<details><summary>前置知识 / 关联知识</summary><div class="detail-content"><div class="deps">前置：Array API　｜　关联：函数参数、分组、聚合、Promise 串行</div></div></details>
+</div>
+</article>
+<article class="question-card" data-grade="S">
+<div class="head" onclick="this.parentElement.classList.toggle('open')">
+<div class="rank">#11</div>
+<div>
+<div class="title">slice 和 splice 有什么区别？</div>
+<div class="meta">
+<span class="tag s">S级</span>
+<span class="tag">题型：API易错</span>
+<span class="tag">刁钻度：★★★★☆</span>
+<span class="tag source">来源样本：字节 2025</span>
+</div>
+</div>
+</div>
+<div class="body">
+<details><summary>题目主要考察点和方向概述</summary><div class="detail-content"><div class="points"><div class="point"><b>1.</b> 是否修改原数组。</div><div class="point"><b>2.</b> 参数和返回值。</div><div class="point"><b>3.</b> 截取 vs 删除/插入/替换的语义。</div></div></div></details>
+<details><summary>标准答案</summary><div class="detail-content"><div class="answer"><code>slice(start, end)</code> 用于截取数组的一段，end 不包含在结果中，返回一个新数组，通常不会修改原数组。<code>splice(start, deleteCount, ...items)</code> 会直接修改原数组，可以删除、插入或替换元素，并返回被删除元素组成的数组。</div></div></details>
+<details><summary>答案整体解析</summary><div class="detail-content"><div class="analysis">最短记忆就是：slice = 截取副本；splice = 原地手术。面试官继续追问时再说负索引、返回值和插入场景。</div></div></details>
+<details><summary>高频追问 + 追问答案</summary><div class="detail-content"><div class="qa"><b>追问 1：splice 如何只插入不删除？</b><div>把 deleteCount 设为 0，例如 <code>arr.splice(2,0,'x')</code>。</div></div><div class="qa"><b>追问 2：slice 的 end 包含吗？</b><div>不包含，区间语义类似 [start, end)。</div></div><div class="qa"><b>追问 3：有没有不修改原数组的 splice 替代？</b><div>现代 JS 有 <code>toSpliced()</code>，返回新数组而不修改原数组。</div></div></div></details>
+<details><summary>记忆钩子</summary><div class="detail-content"><div class="memory">slice = 切一份；splice = 改原数组。</div></div></details>
+<details><summary>前置知识 / 关联知识</summary><div class="detail-content"><div class="deps">前置：Array　｜　关联：不可变更新、toSpliced</div></div></details>
+</div>
+</article>
+<article class="question-card" data-grade="S">
+<div class="head" onclick="this.parentElement.classList.toggle('open')">
+<div class="rank">#12</div>
+<div>
+<div class="title">map、forEach、filter 有什么区别？</div>
+<div class="meta">
+<span class="tag s">S级</span>
+<span class="tag">题型：API易错</span>
+<span class="tag">刁钻度：★★★★☆</span>
+<span class="tag source">来源样本：公开高频</span>
+</div>
+</div>
+</div>
+<div class="body">
+<details><summary>题目主要考察点和方向概述</summary><div class="detail-content"><div class="points"><div class="point"><b>1.</b> 三者语义：遍历、副作用、映射、筛选。</div><div class="point"><b>2.</b> 返回值差异。</div><div class="point"><b>3.</b> 异步回调和提前退出等常见坑。</div></div></div></details>
+<details><summary>标准答案</summary><div class="detail-content"><div class="answer"><code>forEach</code> 主要用于遍历并执行副作用，它本身返回 undefined；<code>map</code> 对每个元素做映射，把每次 callback 返回值组成同长度的新数组；<code>filter</code> 根据 callback 的真假筛选元素，返回满足条件的元素组成的新数组。三者都不会因为 callback 中普通 <code>return</code> 而像循环中的 break 一样提前终止整体遍历。</div></div></details>
+<details><summary>答案整体解析</summary><div class="detail-content"><div class="analysis">面试时不要只说“map 有返回值，forEach 没有”。要说清楚它们的语义：forEach 做副作用，map 做转换，filter 做筛选。</div></div></details>
+<details><summary>高频追问 + 追问答案</summary><div class="detail-content"><div class="qa"><b>追问 1：forEach 可以 break 吗？</b><div>不能直接 break。需要提前终止时可以改用 for/for...of、some/every/find 等适合的结构。</div></div><div class="qa"><b>追问 2：map 一定不会修改原数组吗？</b><div>map 方法本身不修改原数组结构，但 callback 如果主动修改元素对象或原数组，仍然可能产生副作用。</div></div><div class="qa"><b>追问 3：filter 返回的元素是深拷贝吗？</b><div>不是。新数组容器是新的，但其中对象元素仍可能是原对象引用。</div></div></div></details>
+<details><summary>记忆钩子</summary><div class="detail-content"><div class="memory">forEach 做事；map 变形；filter 筛选。</div></div></details>
+<details><summary>前置知识 / 关联知识</summary><div class="detail-content"><div class="deps">前置：Array callback　｜　关联：forEach+async、不可变数据、函数式编程</div></div></details>
+</div>
+</article>
+<article class="question-card" data-grade="S">
+<div class="head" onclick="this.parentElement.classList.toggle('open')">
+<div class="rank">#13</div>
+<div>
+<div class="title">sort() 默认怎么排序？为什么数字数组可能排错？</div>
+<div class="meta">
+<span class="tag s">S级</span>
+<span class="tag">题型：API陷阱</span>
+<span class="tag">刁钻度：★★★★☆</span>
+<span class="tag source">来源样本：网易社招</span>
+</div>
+</div>
+</div>
+<div class="body">
+<details><summary>题目主要考察点和方向概述</summary><div class="detail-content"><div class="points"><div class="point"><b>1.</b> sort 默认比较规则。</div><div class="point"><b>2.</b> 数字排序为什么必须传 compareFn。</div><div class="point"><b>3.</b> sort 原地修改数组。</div></div></div></details>
+<details><summary>标准答案</summary><div class="detail-content"><div class="answer"><code>Array.prototype.sort()</code> 默认不是按数值大小排序，而是把元素转换为字符串，然后按照 UTF-16 代码单元顺序比较，所以像 <code>[2, 10, 5]</code> 默认可能得到 <code>[10, 2, 5]</code>。数字升序应该传 <code>(a, b) =&gt; a - b</code>，降序用 <code>(a, b) =&gt; b - a</code>。另外 <code>sort</code> 会原地修改数组。</div></div></details>
+<details><summary>答案整体解析</summary><div class="detail-content"><div class="analysis">这是很典型的“看似简单但容易翻车”的 API 题。答完默认字符串排序后，一定补一句它会改原数组。</div></div></details>
+<details><summary>高频追问 + 追问答案</summary><div class="detail-content"><div class="qa"><b>追问 1：compareFn 返回负数/0/正数分别代表什么？</b><div>负数表示 a 排在 b 前；正数表示 a 排在 b 后；0 表示相对顺序无需交换。</div></div><div class="qa"><b>追问 2：如何排序但不改原数组？</b><div>可以 <code>[...arr].sort(...)</code>，现代环境也可以用 <code>arr.toSorted(compareFn)</code>。</div></div><div class="qa"><b>追问 3：sort 现在稳定吗？</b><div>现代 ECMAScript 规范要求 Array.prototype.sort 使用稳定排序语义。</div></div></div></details>
+<details><summary>记忆钩子</summary><div class="detail-content"><div class="memory">sort 默认按字符串；数字排序传 a-b；它会改原数组。</div></div></details>
+<details><summary>前置知识 / 关联知识</summary><div class="detail-content"><div class="deps">前置：Array　｜　关联：toSorted、稳定排序、比较函数</div></div></details>
+</div>
+</article>
+<article class="question-card" data-grade="S">
+<div class="head" onclick="this.parentElement.classList.toggle('open')">
+<div class="rank">#14</div>
+<div>
+<div class="title">forEach 里面使用 async/await 有什么坑？</div>
+<div class="meta">
+<span class="tag s">S级</span>
+<span class="tag">题型：API / 异步</span>
+<span class="tag">刁钻度：★★★★★</span>
+<span class="tag source">来源样本：真实工程高频</span>
+</div>
+</div>
+</div>
+<div class="body">
+<details><summary>题目主要考察点和方向概述</summary><div class="detail-content"><div class="points"><div class="point"><b>1.</b> forEach 不会等待 async callback。</div><div class="point"><b>2.</b> 串行和并发的正确写法。</div><div class="point"><b>3.</b> 错误传播和流程结束时机。</div></div></div></details>
+<details><summary>标准答案</summary><div class="detail-content"><div class="answer"><code>forEach</code> 不会识别并等待 callback 返回的 Promise，所以在 <code>forEach(async item =&gt; {{ await ... }})</code> 中，外层 forEach 很快就执行结束，外层代码不会等这些异步任务完成；callback 中的异常也不容易按你期望的串行流程处理。<br/><br/>需要串行时用 <code>for...of + await</code>；任务互不依赖、希望并发时，一般用 <code>const tasks = arr.map(async ...)</code> 再 <code>await Promise.all(tasks)</code>。</div></div></details>
+<details><summary>答案整体解析</summary><div class="detail-content"><div class="analysis">关键不是“forEach 不能写 async”，而是“forEach 不消费 callback 返回的 Promise”。把底层语义说出来更准确。</div></div></details>
+<details><summary>高频追问 + 追问答案</summary><div class="detail-content"><div class="qa"><b>追问 1：如果要限制最多 3 个并发怎么办？</b><div>不能直接 Promise.all 全放开，需要实现并发池/worker queue，完成一个再补一个。</div></div><div class="qa"><b>追问 2：map(async ...) 会得到什么？</b><div>得到一个 Promise 数组，因此通常继续 <code>await Promise.all(...)</code>。</div></div><div class="qa"><b>追问 3：for...of + await 一定好吗？</b><div>它保证串行，但独立任务会损失并发性能，应根据依赖关系选择。</div></div></div></details>
+<details><summary>记忆钩子</summary><div class="detail-content"><div class="memory">forEach 不等 Promise；串行 for...of；并发 map + Promise.all。</div></div></details>
+<details><summary>前置知识 / 关联知识</summary><div class="detail-content"><div class="deps">前置：Promise、async/await　｜　关联：并发池、错误处理</div></div></details>
+</div>
+</article>
+<article class="question-card" data-grade="S">
+<div class="head" onclick="this.parentElement.classList.toggle('open')">
+<div class="rank">#15</div>
+<div>
+<div class="title">var、let、const、变量提升和 TDZ 有什么区别？</div>
+<div class="meta">
+<span class="tag s">S级</span>
+<span class="tag">题型：核心原理</span>
+<span class="tag">刁钻度：★★★★☆</span>
+<span class="tag source">来源样本：美团 / 好未来 / 货拉拉</span>
+</div>
+</div>
+</div>
+<div class="body">
+<details><summary>题目主要考察点和方向概述</summary><div class="detail-content"><div class="points"><div class="point"><b>1.</b> 作用域差异。</div><div class="point"><b>2.</b> 声明提升和 TDZ。</div><div class="point"><b>3.</b> 重复声明、初始化、全局对象属性等差异。</div></div></div></details>
+<details><summary>标准答案</summary><div class="detail-content"><div class="answer"><code>var</code> 是函数作用域，没有块级作用域；声明会在执行上下文创建阶段建立绑定并初始化为 undefined，所以声明前访问得到 undefined，并且允许同一作用域重复声明。<br/><br/><code>let</code> 和 <code>const</code> 是块级作用域，也会在进入作用域时创建绑定，但初始化之前处于暂时性死区 TDZ，提前访问会报 ReferenceError；同一作用域不能重复声明。const 声明时必须初始化，之后不能重新赋值绑定，但如果值是对象，对象内部属性仍可修改。</div></div></details>
+<details><summary>答案整体解析</summary><div class="detail-content"><div class="analysis">不要简单说“let/const 不提升”。更准确是：绑定会创建，但初始化之前处于 TDZ。这个表达面试更稳。</div></div></details>
+<details><summary>高频追问 + 追问答案</summary><div class="detail-content"><div class="qa"><b>追问 1：const 对象为什么还能改属性？</b><div>const 限制的是变量绑定不能重新指向别的值，不会自动冻结对象内部内容。</div></div><div class="qa"><b>追问 2：全局 var 和 let 有什么区别？</b><div>传统浏览器脚本中顶层 var 可能成为全局对象属性；顶层 let/const 不会以同样方式成为 window 属性。</div></div><div class="qa"><b>追问 3：TDZ 从什么时候开始？</b><div>从进入对应词法作用域开始，到声明语句完成初始化之前。</div></div></div></details>
+<details><summary>记忆钩子</summary><div class="detail-content"><div class="memory">var：函数作用域 + 初始化 undefined；let/const：块级作用域 + TDZ。</div></div></details>
+<details><summary>前置知识 / 关联知识</summary><div class="detail-content"><div class="deps">前置：作用域、执行上下文　｜　关联：闭包、for 循环、变量提升</div></div></details>
+</div>
+</article>
+<article class="question-card" data-grade="S">
+<div class="head" onclick="this.parentElement.classList.toggle('open')">
+<div class="rank">#16</div>
+<div>
+<div class="title">call、apply、bind 有什么区别？</div>
+<div class="meta">
+<span class="tag s">S级</span>
+<span class="tag">题型：核心原理</span>
+<span class="tag">刁钻度：★★★★☆</span>
+<span class="tag source">来源样本：公开高频</span>
+</div>
+</div>
+</div>
+<div class="body">
+<details><summary>题目主要考察点和方向概述</summary><div class="detail-content"><div class="points"><div class="point"><b>1.</b> 是否立即执行。</div><div class="point"><b>2.</b> 参数传递方式。</div><div class="point"><b>3.</b> bind 返回新函数和预置参数能力。</div></div></div></details>
+<details><summary>标准答案</summary><div class="detail-content"><div class="answer"><code>call</code> 和 <code>apply</code> 都会立即调用函数并显式指定 this；区别主要是 call 后续参数逐个传入，例如 <code>fn.call(obj, a, b)</code>，apply 通常以数组/类数组形式传，例如 <code>fn.apply(obj, [a,b])</code>。<code>bind</code> 不会立即执行，而是返回一个新的绑定函数，可以固定 this，也可以预置部分参数。</div></div></details>
+<details><summary>答案整体解析</summary><div class="detail-content"><div class="analysis">第一层 20 秒即可答完；高级追问集中在手写、bind + new、箭头函数为什么绑不动 this。</div></div></details>
+<details><summary>高频追问 + 追问答案</summary><div class="detail-content"><div class="qa"><b>追问 1：箭头函数 call/apply 能改变 this 吗？</b><div>不能改变箭头函数自身的词法 this；传入的 thisArg 对它没有普通函数那种绑定效果。</div></div><div class="qa"><b>追问 2：bind 有什么额外价值？</b><div>除固定 this 外，还可以预置部分参数，形成类似偏函数效果。</div></div><div class="qa"><b>追问 3：bind 后的函数还能 new 吗？</b><div>如果原函数可构造，可以。new 时绑定的 thisArg 会被忽略，但预置参数仍保留。</div></div></div></details>
+<details><summary>记忆钩子</summary><div class="detail-content"><div class="memory">call 逐个参数立即调；apply 数组参数立即调；bind 返回新函数。</div></div></details>
+<details><summary>前置知识 / 关联知识</summary><div class="detail-content"><div class="deps">前置：this　｜　关联：函数柯里化、new、事件回调</div></div></details>
+</div>
+</article>
+<article class="question-card" data-grade="S">
+<div class="head" onclick="this.parentElement.classList.toggle('open')">
+<div class="rank">#17</div>
+<div>
+<div class="title">new 一个对象时内部发生了什么？</div>
+<div class="meta">
+<span class="tag s">S级</span>
+<span class="tag">题型：核心原理</span>
+<span class="tag">刁钻度：★★★★☆</span>
+<span class="tag source">来源样本：公开高频</span>
+</div>
+</div>
+</div>
+<div class="body">
+<details><summary>题目主要考察点和方向概述</summary><div class="detail-content"><div class="points"><div class="point"><b>1.</b> 新对象创建。</div><div class="point"><b>2.</b> 原型连接和 this 绑定。</div><div class="point"><b>3.</b> 构造函数显式返回值规则。</div></div></div></details>
+<details><summary>标准答案</summary><div class="detail-content"><div class="answer">使用 <code>new Constructor(...args)</code> 可以概括为四步：1）创建一个新对象；2）让新对象的内部原型指向 <code>Constructor.prototype</code>；3）以新对象作为 this 调用构造函数；4）如果构造函数显式返回一个对象/函数，则返回那个对象，否则返回刚创建的新对象。</div></div></details>
+<details><summary>答案整体解析</summary><div class="detail-content"><div class="analysis">这题和原型链、this、构造函数返回值天然连在一起。只背“创建对象、绑定原型、执行函数、返回对象”即可形成稳定主干。</div></div></details>
+<details><summary>高频追问 + 追问答案</summary><div class="detail-content"><div class="qa"><b>追问 1：构造函数 return 1 会怎样？</b><div>基本类型返回值会被忽略，最终仍返回新实例。</div></div><div class="qa"><b>追问 2：return {{}} 呢？</b><div>显式返回对象时，new 表达式最终返回这个对象，而不是默认新实例。</div></div><div class="qa"><b>追问 3：Object.create 和 new 有什么区别？</b><div>Object.create 直接指定新对象的原型，不会执行构造函数初始化逻辑。</div></div></div></details>
+<details><summary>记忆钩子</summary><div class="detail-content"><div class="memory">创建 → 连 prototype → this 执行 → 看显式返回对象。</div></div></details>
+<details><summary>前置知识 / 关联知识</summary><div class="detail-content"><div class="deps">前置：this、对象　｜　关联：prototype、constructor、手写 new</div></div></details>
+</div>
+</article>
+<article class="question-card" data-grade="S">
+<div class="head" onclick="this.parentElement.classList.toggle('open')">
+<div class="rank">#18</div>
+<div>
+<div class="title">instanceof 的原理是什么？</div>
+<div class="meta">
+<span class="tag s">S级</span>
+<span class="tag">题型：核心原理</span>
+<span class="tag">刁钻度：★★★★☆</span>
+<span class="tag source">来源样本：雪球</span>
+</div>
+</div>
+</div>
+<div class="body">
+<details><summary>题目主要考察点和方向概述</summary><div class="detail-content"><div class="points"><div class="point"><b>1.</b> 右侧构造函数 prototype 与左侧对象原型链比较。</div><div class="point"><b>2.</b> 跨 realm 和 Symbol.hasInstance 等边界。</div><div class="point"><b>3.</b> 如何手写简化版 instanceof。</div></div></div></details>
+<details><summary>标准答案</summary><div class="detail-content"><div class="answer">默认情况下，<code>obj instanceof Constructor</code> 会拿右侧构造函数的 <code>prototype</code>，然后沿左侧对象的原型链向上查找；如果某一层原型与该 prototype 是同一个对象，就返回 true，否则一直找到 null 后返回 false。</div></div></details>
+<details><summary>答案整体解析</summary><div class="detail-content"><div class="analysis">这题本质是原型链应用题。回答时不要说成“判断 obj 是不是 Constructor 创建的”，因为更准确的判断依据是原型链包含关系，而且 <code>Symbol.hasInstance</code> 还可以自定义 instanceof 行为。</div></div></details>
+<details><summary>高频追问 + 追问答案</summary><div class="detail-content"><div class="qa"><b>追问 1：为什么 [] instanceof Array 是 true？</b><div>数组对象的原型链中包含当前 realm 的 Array.prototype。</div></div><div class="qa"><b>追问 2：跨 iframe 为什么可能失败？</b><div>不同 realm 有不同的 Array 构造函数和 Array.prototype，身份并不相同。</div></div><div class="qa"><b>追问 3：instanceof 能判断基本类型吗？</b><div>普通基本值通常不行，例如 <code>1 instanceof Number</code> 是 false；<code>new Number(1) instanceof Number</code> 才是 true。</div></div></div></details>
+<details><summary>记忆钩子</summary><div class="detail-content"><div class="memory">右边拿 prototype，左边沿原型链往上找。</div></div></details>
+<details><summary>前置知识 / 关联知识</summary><div class="detail-content"><div class="deps">前置：原型链　｜　关联：Symbol.hasInstance、跨 iframe、类型判断</div></div></details>
+</div>
+</article>
+<article class="question-card" data-grade="S">
+<div class="head" onclick="this.parentElement.classList.toggle('open')">
+<div class="rank">#19</div>
+<div>
+<div class="title">async/await 和 Promise 的关系是什么？连续 await 是串行还是并行？</div>
+<div class="meta">
+<span class="tag s">S级</span>
+<span class="tag">题型：核心原理 / 易错</span>
+<span class="tag">刁钻度：★★★★☆</span>
+<span class="tag source">来源样本：字节 2026 / 雪球</span>
+</div>
+</div>
+</div>
+<div class="body">
+<details><summary>题目主要考察点和方向概述</summary><div class="detail-content"><div class="points"><div class="point"><b>1.</b> async 函数一定返回 Promise。</div><div class="point"><b>2.</b> await 的暂停/恢复语义。</div><div class="point"><b>3.</b> 连续 await 导致的串行，以及如何并发。</div></div></div></details>
+<details><summary>标准答案</summary><div class="detail-content"><div class="answer"><code>async</code> 函数总会返回一个 Promise：返回普通值会被包装成 fulfilled Promise，抛异常则返回 rejected Promise。<code>await</code> 可以等待 Promise/thenable，也可以等待普通值；当前 async 函数会暂停后续执行，待结果确定后以异步 continuation 继续。<br/><br/>如果写成 <code>const a = await taskA(); const b = await taskB();</code>，taskB 要等 taskA 完成后才开始，因此是串行。若两者无依赖，应先启动：<code>const pa=taskA(); const pb=taskB(); const [a,b]=await Promise.all([pa,pb])</code>。</div></div></details>
+<details><summary>答案整体解析</summary><div class="detail-content"><div class="analysis">高级前端回答时要体现并发意识，而不是只说“async/await 是 Promise 语法糖”。是否串行由“什么时候创建 Promise”决定。</div></div></details>
+<details><summary>高频追问 + 追问答案</summary><div class="detail-content"><div class="qa"><b>追问 1：await 普通值会怎样？</b><div>语义上等价于等待一个已 fulfilled 的 Promise，后续仍通过异步 continuation 继续。</div></div><div class="qa"><b>追问 2：如何捕获 await 错误？</b><div>可以 try/catch，或者让 async 函数返回 rejected Promise 后由调用方 catch。</div></div><div class="qa"><b>追问 3：哪些情况必须连续 await？</b><div>后一个任务确实依赖前一个任务结果时，例如先拿 userId 再请求用户详情。</div></div></div></details>
+<details><summary>记忆钩子</summary><div class="detail-content"><div class="memory">async 一定返回 Promise；先 await 再启动 = 串行；先启动再 Promise.all = 并发。</div></div></details>
+<details><summary>前置知识 / 关联知识</summary><div class="detail-content"><div class="deps">前置：Promise、Event Loop　｜　关联：并发请求池、错误处理、性能</div></div></details>
+</div>
+</article>
+<article class="question-card" data-grade="S">
+<div class="head" onclick="this.parentElement.classList.toggle('open')">
+<div class="rank">#20</div>
+<div>
+<div class="title">防抖和节流有什么区别？边界条件有哪些？</div>
+<div class="meta">
+<span class="tag s">S级</span>
+<span class="tag">题型：高频 / 手写</span>
+<span class="tag">刁钻度：★★★★☆</span>
+<span class="tag source">来源样本：滴滴 / 美团 / 网易</span>
+</div>
+</div>
+</div>
+<div class="body">
+<details><summary>题目主要考察点和方向概述</summary><div class="detail-content"><div class="points"><div class="point"><b>1.</b> 连续触发时两者不同的执行语义。</div><div class="point"><b>2.</b> 典型应用场景。</div><div class="point"><b>3.</b> leading/trailing/maxWait/cancel/flush 等工程边界。</div></div></div></details>
+<details><summary>标准答案</summary><div class="detail-content"><div class="answer">防抖 debounce 的核心是：事件连续触发时不断重新计时，只有停止触发一段时间后才执行，典型场景是搜索输入、resize 后处理。节流 throttle 的核心是：持续高频触发期间，限制函数最多按某个时间间隔执行一次，典型场景是 scroll、mousemove、持续上报等。<br/><br/>完整实现还要考虑是否首次立即执行 <code>leading</code>、结束后补一次 <code>trailing</code>、最大等待 <code>maxWait</code>、<code>cancel/flush</code>、this/args 透传以及组件卸载清理。</div></div></details>
+<details><summary>答案整体解析</summary><div class="detail-content"><div class="analysis">不要只背“防抖最后一次、节流一段时间一次”。真实场景会追问按钮防重、生成/取消、搜索请求取消等；有些动作不能被简单防抖，否则会吞掉用户操作。</div></div></details>
+<details><summary>高频追问 + 追问答案</summary><div class="detail-content"><div class="qa"><b>追问 1：搜索框为什么常用防抖？</b><div>用户连续输入期间不立即发请求，停止输入一定时间后再执行，可减少无意义请求。</div></div><div class="qa"><b>追问 2：滚动监听为什么常用节流？</b><div>滚动是持续高频事件，需要周期性获得中间状态，而不是等完全停止后才执行。</div></div><div class="qa"><b>追问 3：连续点击“生成/取消”适合直接防抖吗？</b><div>不一定。生成和取消是不同业务语义，简单防抖可能吞掉取消动作。更合理的是状态机、AbortController、按钮状态和请求幂等控制。</div></div></div></details>
+<details><summary>记忆钩子</summary><div class="detail-content"><div class="memory">防抖等你停；节流持续期间按频率放行；工程版要想 leading/trailing/cancel。</div></div></details>
+<details><summary>前置知识 / 关联知识</summary><div class="detail-content"><div class="deps">前置：定时器、闭包　｜　关联：搜索、滚动、请求取消、状态机</div></div></details>
+</div>
+</article><h2 class="section">A 级题 · 高频扩展</h2>
+<article class="question-card" data-grade="A">
+<div class="head" onclick="this.parentElement.classList.toggle('open')">
+<div class="rank">#21</div>
+<div>
+<div class="title">JavaScript 垃圾回收机制是什么？</div>
+<div class="meta">
+<span class="tag a">A级</span>
+<span class="tag">题型：核心原理</span>
+<span class="tag">刁钻度：★★★☆☆</span>
+<span class="tag source">来源样本：公开高频</span>
+</div>
+</div>
+</div>
+<div class="body">
+<div class="note"><strong>训练目标：</strong>30～60 秒完整回答 + 常见追问</div>
+<div class="placeholder">▶ 考察方向　▶ 标准答案　▶ 答案解析　▶ 高频追问　▶ 失分点　▶ 记忆钩子<br/>当前为题库骨架版，后续按优先级逐题补齐。</div>
+</div>
+</article>
+<article class="question-card" data-grade="A">
+<div class="head" onclick="this.parentElement.classList.toggle('open')">
+<div class="rank">#22</div>
+<div>
+<div class="title">前端常见 JavaScript 内存泄漏有哪些？怎么定位？</div>
+<div class="meta">
+<span class="tag a">A级</span>
+<span class="tag">题型：工程关联</span>
+<span class="tag">刁钻度：★★★☆☆</span>
+<span class="tag source">来源样本：字节</span>
+</div>
+</div>
+</div>
+<div class="body">
+<div class="note"><strong>训练目标：</strong>30～60 秒完整回答 + 常见追问</div>
+<div class="placeholder">▶ 考察方向　▶ 标准答案　▶ 答案解析　▶ 高频追问　▶ 失分点　▶ 记忆钩子<br/>当前为题库骨架版，后续按优先级逐题补齐。</div>
+</div>
+</article>
+<article class="question-card" data-grade="A">
+<div class="head" onclick="this.parentElement.classList.toggle('open')">
+<div class="rank">#23</div>
+<div>
+<div class="title">作用域和作用域链是什么？</div>
+<div class="meta">
+<span class="tag a">A级</span>
+<span class="tag">题型：核心原理</span>
+<span class="tag">刁钻度：★★★☆☆</span>
+<span class="tag source">来源样本：公开高频</span>
+</div>
+</div>
+</div>
+<div class="body">
+<div class="note"><strong>训练目标：</strong>30～60 秒完整回答 + 常见追问</div>
+<div class="placeholder">▶ 考察方向　▶ 标准答案　▶ 答案解析　▶ 高频追问　▶ 失分点　▶ 记忆钩子<br/>当前为题库骨架版，后续按优先级逐题补齐。</div>
+</div>
+</article>
+<article class="question-card" data-grade="A">
+<div class="head" onclick="this.parentElement.classList.toggle('open')">
+<div class="rank">#24</div>
+<div>
+<div class="title">==、===、Object.is 有什么区别？</div>
+<div class="meta">
+<span class="tag a">A级</span>
+<span class="tag">题型：易错</span>
+<span class="tag">刁钻度：★★★☆☆</span>
+<span class="tag source">来源样本：货拉拉</span>
+</div>
+</div>
+</div>
+<div class="body">
+<div class="note"><strong>训练目标：</strong>30～60 秒完整回答 + 常见追问</div>
+<div class="placeholder">▶ 考察方向　▶ 标准答案　▶ 答案解析　▶ 高频追问　▶ 失分点　▶ 记忆钩子<br/>当前为题库骨架版，后续按优先级逐题补齐。</div>
+</div>
+</article>
+<article class="question-card" data-grade="A">
+<div class="head" onclick="this.parentElement.classList.toggle('open')">
+<div class="rank">#25</div>
+<div>
+<div class="title">事件捕获、冒泡和事件委托分别是什么？</div>
+<div class="meta">
+<span class="tag a">A级</span>
+<span class="tag">题型：浏览器/JS交叉</span>
+<span class="tag">刁钻度：★★★☆☆</span>
+<span class="tag source">来源样本：雪球</span>
+</div>
+</div>
+</div>
+<div class="body">
+<div class="note"><strong>训练目标：</strong>30～60 秒完整回答 + 常见追问</div>
+<div class="placeholder">▶ 考察方向　▶ 标准答案　▶ 答案解析　▶ 高频追问　▶ 失分点　▶ 记忆钩子<br/>当前为题库骨架版，后续按优先级逐题补齐。</div>
+</div>
+</article>
+<article class="question-card" data-grade="A">
+<div class="head" onclick="this.parentElement.classList.toggle('open')">
+<div class="rank">#26</div>
+<div>
+<div class="title">Promise.all、allSettled、race、any 有什么区别？</div>
+<div class="meta">
+<span class="tag a">A级</span>
+<span class="tag">题型：核心API</span>
+<span class="tag">刁钻度：★★★☆☆</span>
+<span class="tag source">来源样本：字节 2026</span>
+</div>
+</div>
+</div>
+<div class="body">
+<div class="note"><strong>训练目标：</strong>30～60 秒完整回答 + 常见追问</div>
+<div class="placeholder">▶ 考察方向　▶ 标准答案　▶ 答案解析　▶ 高频追问　▶ 失分点　▶ 记忆钩子<br/>当前为题库骨架版，后续按优先级逐题补齐。</div>
+</div>
+</article>
+<article class="question-card" data-grade="A">
+<div class="head" onclick="this.parentElement.classList.toggle('open')">
+<div class="rank">#27</div>
+<div>
+<div class="title">Object.assign 是深拷贝还是浅拷贝？</div>
+<div class="meta">
+<span class="tag a">A级</span>
+<span class="tag">题型：API易错</span>
+<span class="tag">刁钻度：★★★☆☆</span>
+<span class="tag source">来源样本：公开高频</span>
+</div>
+</div>
+</div>
+<div class="body">
+<div class="note"><strong>训练目标：</strong>30～60 秒完整回答 + 常见追问</div>
+<div class="placeholder">▶ 考察方向　▶ 标准答案　▶ 答案解析　▶ 高频追问　▶ 失分点　▶ 记忆钩子<br/>当前为题库骨架版，后续按优先级逐题补齐。</div>
+</div>
+</article>
+<article class="question-card" data-grade="A">
+<div class="head" onclick="this.parentElement.classList.toggle('open')">
+<div class="rank">#28</div>
+<div>
+<div class="title">JSON.stringify/parse 做深拷贝有什么坑？</div>
+<div class="meta">
+<span class="tag a">A级</span>
+<span class="tag">题型：API易错</span>
+<span class="tag">刁钻度：★★★☆☆</span>
+<span class="tag source">来源样本：公开高频</span>
+</div>
+</div>
+</div>
+<div class="body">
+<div class="note"><strong>训练目标：</strong>30～60 秒完整回答 + 常见追问</div>
+<div class="placeholder">▶ 考察方向　▶ 标准答案　▶ 答案解析　▶ 高频追问　▶ 失分点　▶ 记忆钩子<br/>当前为题库骨架版，后续按优先级逐题补齐。</div>
+</div>
+</article>
+<article class="question-card" data-grade="A">
+<div class="head" onclick="this.parentElement.classList.toggle('open')">
+<div class="rank">#29</div>
+<div>
+<div class="title">Map、Set、WeakMap、WeakSet 有什么区别？</div>
+<div class="meta">
+<span class="tag a">A级</span>
+<span class="tag">题型：数据结构</span>
+<span class="tag">刁钻度：★★★☆☆</span>
+<span class="tag source">来源样本：雪球 / 好未来</span>
+</div>
+</div>
+</div>
+<div class="body">
+<div class="note"><strong>训练目标：</strong>30～60 秒完整回答 + 常见追问</div>
+<div class="placeholder">▶ 考察方向　▶ 标准答案　▶ 答案解析　▶ 高频追问　▶ 失分点　▶ 记忆钩子<br/>当前为题库骨架版，后续按优先级逐题补齐。</div>
+</div>
+</article>
+<article class="question-card" data-grade="A">
+<div class="head" onclick="this.parentElement.classList.toggle('open')">
+<div class="rank">#30</div>
+<div>
+<div class="title">Object.keys、values、entries 分别做什么？</div>
+<div class="meta">
+<span class="tag a">A级</span>
+<span class="tag">题型：API完整性</span>
+<span class="tag">刁钻度：★★★☆☆</span>
+<span class="tag source">来源样本：公开高频</span>
+</div>
+</div>
+</div>
+<div class="body">
+<div class="note"><strong>训练目标：</strong>30～60 秒完整回答 + 常见追问</div>
+<div class="placeholder">▶ 考察方向　▶ 标准答案　▶ 答案解析　▶ 高频追问　▶ 失分点　▶ 记忆钩子<br/>当前为题库骨架版，后续按优先级逐题补齐。</div>
+</div>
+</article>
+<article class="question-card" data-grade="A">
+<div class="head" onclick="this.parentElement.classList.toggle('open')">
+<div class="rank">#31</div>
+<div>
+<div class="title">Object.hasOwn、hasOwnProperty、in 有什么区别？</div>
+<div class="meta">
+<span class="tag a">A级</span>
+<span class="tag">题型：API刁钻</span>
+<span class="tag">刁钻度：★★★★★</span>
+<span class="tag source">来源样本：公开常见</span>
+</div>
+</div>
+</div>
+<div class="body">
+<div class="note"><strong>训练目标：</strong>30～60 秒完整回答 + 常见追问</div>
+<div class="placeholder">▶ 考察方向　▶ 标准答案　▶ 答案解析　▶ 高频追问　▶ 失分点　▶ 记忆钩子<br/>当前为题库骨架版，后续按优先级逐题补齐。</div>
+</div>
+</article>
+<article class="question-card" data-grade="A">
+<div class="head" onclick="this.parentElement.classList.toggle('open')">
+<div class="rank">#32</div>
+<div>
+<div class="title">push/pop/shift/unshift 分别返回什么？</div>
+<div class="meta">
+<span class="tag a">A级</span>
+<span class="tag">题型：API刁钻</span>
+<span class="tag">刁钻度：★★★★★</span>
+<span class="tag source">来源样本：宽度题</span>
+</div>
+</div>
+</div>
+<div class="body">
+<div class="note"><strong>训练目标：</strong>30～60 秒完整回答 + 常见追问</div>
+<div class="placeholder">▶ 考察方向　▶ 标准答案　▶ 答案解析　▶ 高频追问　▶ 失分点　▶ 记忆钩子<br/>当前为题库骨架版，后续按优先级逐题补齐。</div>
+</div>
+</article>
+<article class="question-card" data-grade="A">
+<div class="head" onclick="this.parentElement.classList.toggle('open')">
+<div class="rank">#33</div>
+<div>
+<div class="title">find、findIndex、includes、indexOf 有什么区别？</div>
+<div class="meta">
+<span class="tag a">A级</span>
+<span class="tag">题型：API完整性</span>
+<span class="tag">刁钻度：★★★☆☆</span>
+<span class="tag source">来源样本：公开高频</span>
+</div>
+</div>
+</div>
+<div class="body">
+<div class="note"><strong>训练目标：</strong>30～60 秒完整回答 + 常见追问</div>
+<div class="placeholder">▶ 考察方向　▶ 标准答案　▶ 答案解析　▶ 高频追问　▶ 失分点　▶ 记忆钩子<br/>当前为题库骨架版，后续按优先级逐题补齐。</div>
+</div>
+</article>
+<article class="question-card" data-grade="A">
+<div class="head" onclick="this.parentElement.classList.toggle('open')">
+<div class="rank">#34</div>
+<div>
+<div class="title">some 和 every 有什么区别？</div>
+<div class="meta">
+<span class="tag a">A级</span>
+<span class="tag">题型：API细节</span>
+<span class="tag">刁钻度：★★★☆☆</span>
+<span class="tag source">来源样本：公开高频</span>
+</div>
+</div>
+</div>
+<div class="body">
+<div class="note"><strong>训练目标：</strong>30～60 秒完整回答 + 常见追问</div>
+<div class="placeholder">▶ 考察方向　▶ 标准答案　▶ 答案解析　▶ 高频追问　▶ 失分点　▶ 记忆钩子<br/>当前为题库骨架版，后续按优先级逐题补齐。</div>
+</div>
+</article>
+<article class="question-card" data-grade="A">
+<div class="head" onclick="this.parentElement.classList.toggle('open')">
+<div class="rank">#35</div>
+<div>
+<div class="title">null 和 undefined 有什么区别？</div>
+<div class="meta">
+<span class="tag a">A级</span>
+<span class="tag">题型：基础易错</span>
+<span class="tag">刁钻度：★★★☆☆</span>
+<span class="tag source">来源样本：公开高频</span>
+</div>
+</div>
+</div>
+<div class="body">
+<div class="note"><strong>训练目标：</strong>30～60 秒完整回答 + 常见追问</div>
+<div class="placeholder">▶ 考察方向　▶ 标准答案　▶ 答案解析　▶ 高频追问　▶ 失分点　▶ 记忆钩子<br/>当前为题库骨架版，后续按优先级逐题补齐。</div>
+</div>
+</article>
+<article class="question-card" data-grade="A">
+<div class="head" onclick="this.parentElement.classList.toggle('open')">
+<div class="rank">#36</div>
+<div>
+<div class="title">NaN 有什么特点？Number.isNaN 和 isNaN 有什么区别？</div>
+<div class="meta">
+<span class="tag a">A级</span>
+<span class="tag">题型：基础易错</span>
+<span class="tag">刁钻度：★★★☆☆</span>
+<span class="tag source">来源样本：公开高频</span>
+</div>
+</div>
+</div>
+<div class="body">
+<div class="note"><strong>训练目标：</strong>30～60 秒完整回答 + 常见追问</div>
+<div class="placeholder">▶ 考察方向　▶ 标准答案　▶ 答案解析　▶ 高频追问　▶ 失分点　▶ 记忆钩子<br/>当前为题库骨架版，后续按优先级逐题补齐。</div>
+</div>
+</article>
+<article class="question-card" data-grade="A">
+<div class="head" onclick="this.parentElement.classList.toggle('open')">
+<div class="rank">#37</div>
+<div>
+<div class="title">JavaScript 函数参数是值传递还是引用传递？</div>
+<div class="meta">
+<span class="tag a">A级</span>
+<span class="tag">题型：易错原理</span>
+<span class="tag">刁钻度：★★★☆☆</span>
+<span class="tag source">来源样本：公开常见</span>
+</div>
+</div>
+</div>
+<div class="body">
+<div class="note"><strong>训练目标：</strong>30～60 秒完整回答 + 常见追问</div>
+<div class="placeholder">▶ 考察方向　▶ 标准答案　▶ 答案解析　▶ 高频追问　▶ 失分点　▶ 记忆钩子<br/>当前为题库骨架版，后续按优先级逐题补齐。</div>
+</div>
+</article>
+<article class="question-card" data-grade="A">
+<div class="head" onclick="this.parentElement.classList.toggle('open')">
+<div class="rank">#38</div>
+<div>
+<div class="title">什么是事件委托？为什么对大列表有帮助？</div>
+<div class="meta">
+<span class="tag a">A级</span>
+<span class="tag">题型：场景</span>
+<span class="tag">刁钻度：★★★☆☆</span>
+<span class="tag source">来源样本：雪球</span>
+</div>
+</div>
+</div>
+<div class="body">
+<div class="note"><strong>训练目标：</strong>30～60 秒完整回答 + 常见追问</div>
+<div class="placeholder">▶ 考察方向　▶ 标准答案　▶ 答案解析　▶ 高频追问　▶ 失分点　▶ 记忆钩子<br/>当前为题库骨架版，后续按优先级逐题补齐。</div>
+</div>
+</article>
+<article class="question-card" data-grade="A">
+<div class="head" onclick="this.parentElement.classList.toggle('open')">
+<div class="rank">#39</div>
+<div>
+<div class="title">Object.create 做了什么？如何创建无原型对象？</div>
+<div class="meta">
+<span class="tag a">A级</span>
+<span class="tag">题型：原型/API</span>
+<span class="tag">刁钻度：★★★☆☆</span>
+<span class="tag source">来源样本：编程猫社招</span>
+</div>
+</div>
+</div>
+<div class="body">
+<div class="note"><strong>训练目标：</strong>30～60 秒完整回答 + 常见追问</div>
+<div class="placeholder">▶ 考察方向　▶ 标准答案　▶ 答案解析　▶ 高频追问　▶ 失分点　▶ 记忆钩子<br/>当前为题库骨架版，后续按优先级逐题补齐。</div>
+</div>
+</article>
+<article class="question-card" data-grade="A">
+<div class="head" onclick="this.parentElement.classList.toggle('open')">
+<div class="rank">#40</div>
+<div>
+<div class="title">Array.from、Array.of、Array.isArray 分别做什么？</div>
+<div class="meta">
+<span class="tag a">A级</span>
+<span class="tag">题型：API完整性</span>
+<span class="tag">刁钻度：★★★☆☆</span>
+<span class="tag source">来源样本：货拉拉关联</span>
+</div>
+</div>
+</div>
+<div class="body">
+<div class="note"><strong>训练目标：</strong>30～60 秒完整回答 + 常见追问</div>
+<div class="placeholder">▶ 考察方向　▶ 标准答案　▶ 答案解析　▶ 高频追问　▶ 失分点　▶ 记忆钩子<br/>当前为题库骨架版，后续按优先级逐题补齐。</div>
+</div>
+</article><h2 class="section">B 级题 · 补充完整性</h2>
+<article class="question-card" data-grade="B">
+<div class="head" onclick="this.parentElement.classList.toggle('open')">
+<div class="rank">#41</div>
+<div>
+<div class="title">Object.freeze、seal、preventExtensions 有什么区别？</div>
+<div class="meta">
+<span class="tag b">B级</span>
+<span class="tag">题型：API细节</span>
+<span class="tag">刁钻度：★★★☆☆</span>
+<span class="tag source">来源样本：补充</span>
+</div>
+</div>
+</div>
+<div class="body">
+<div class="note"><strong>训练目标：</strong>知道核心定义与主要边界即可</div>
+<div class="placeholder">▶ 考察方向　▶ 标准答案　▶ 答案解析　▶ 高频追问　▶ 失分点　▶ 记忆钩子<br/>当前为题库骨架版，后续按优先级逐题补齐。</div>
+</div>
+</article>
+<article class="question-card" data-grade="B">
+<div class="head" onclick="this.parentElement.classList.toggle('open')">
+<div class="rank">#42</div>
+<div>
+<div class="title">flat 和 flatMap 有什么区别？</div>
+<div class="meta">
+<span class="tag b">B级</span>
+<span class="tag">题型：API细节</span>
+<span class="tag">刁钻度：★★★☆☆</span>
+<span class="tag source">来源样本：补充</span>
+</div>
+</div>
+</div>
+<div class="body">
+<div class="note"><strong>训练目标：</strong>知道核心定义与主要边界即可</div>
+<div class="placeholder">▶ 考察方向　▶ 标准答案　▶ 答案解析　▶ 高频追问　▶ 失分点　▶ 记忆钩子<br/>当前为题库骨架版，后续按优先级逐题补齐。</div>
+</div>
+</article>
+<article class="question-card" data-grade="B">
+<div class="head" onclick="this.parentElement.classList.toggle('open')">
+<div class="rank">#43</div>
+<div>
+<div class="title">String 的 slice 和 substring 有什么区别？</div>
+<div class="meta">
+<span class="tag b">B级</span>
+<span class="tag">题型：API细节</span>
+<span class="tag">刁钻度：★★★☆☆</span>
+<span class="tag source">来源样本：补充</span>
+</div>
+</div>
+</div>
+<div class="body">
+<div class="note"><strong>训练目标：</strong>知道核心定义与主要边界即可</div>
+<div class="placeholder">▶ 考察方向　▶ 标准答案　▶ 答案解析　▶ 高频追问　▶ 失分点　▶ 记忆钩子<br/>当前为题库骨架版，后续按优先级逐题补齐。</div>
+</div>
+</article>
+<article class="question-card" data-grade="B">
+<div class="head" onclick="this.parentElement.classList.toggle('open')">
+<div class="rank">#44</div>
+<div>
+<div class="title">split 和 join 分别作用于什么？</div>
+<div class="meta">
+<span class="tag b">B级</span>
+<span class="tag">题型：API基础</span>
+<span class="tag">刁钻度：★★★☆☆</span>
+<span class="tag source">来源样本：补充</span>
+</div>
+</div>
+</div>
+<div class="body">
+<div class="note"><strong>训练目标：</strong>知道核心定义与主要边界即可</div>
+<div class="placeholder">▶ 考察方向　▶ 标准答案　▶ 答案解析　▶ 高频追问　▶ 失分点　▶ 记忆钩子<br/>当前为题库骨架版，后续按优先级逐题补齐。</div>
+</div>
+</article>
+<article class="question-card" data-grade="B">
+<div class="head" onclick="this.parentElement.classList.toggle('open')">
+<div class="rank">#45</div>
+<div>
+<div class="title">delete obj.x 和 obj.x = undefined 有什么区别？</div>
+<div class="meta">
+<span class="tag b">B级</span>
+<span class="tag">题型：易错细节</span>
+<span class="tag">刁钻度：★★★☆☆</span>
+<span class="tag source">来源样本：补充</span>
+</div>
+</div>
+</div>
+<div class="body">
+<div class="note"><strong>训练目标：</strong>知道核心定义与主要边界即可</div>
+<div class="placeholder">▶ 考察方向　▶ 标准答案　▶ 答案解析　▶ 高频追问　▶ 失分点　▶ 记忆钩子<br/>当前为题库骨架版，后续按优先级逐题补齐。</div>
+</div>
+</article>
+<article class="question-card" data-grade="B">
+<div class="head" onclick="this.parentElement.classList.toggle('open')">
+<div class="rank">#46</div>
+<div>
+<div class="title">getter/setter 是怎么工作的？</div>
+<div class="meta">
+<span class="tag b">B级</span>
+<span class="tag">题型：底层机制</span>
+<span class="tag">刁钻度：★★★☆☆</span>
+<span class="tag source">来源样本：补充</span>
+</div>
+</div>
+</div>
+<div class="body">
+<div class="note"><strong>训练目标：</strong>知道核心定义与主要边界即可</div>
+<div class="placeholder">▶ 考察方向　▶ 标准答案　▶ 答案解析　▶ 高频追问　▶ 失分点　▶ 记忆钩子<br/>当前为题库骨架版，后续按优先级逐题补齐。</div>
+</div>
+</article>
+<article class="question-card" data-grade="B">
+<div class="head" onclick="this.parentElement.classList.toggle('open')">
+<div class="rank">#47</div>
+<div>
+<div class="title">属性描述符 writable/configurable/enumerable 是什么？</div>
+<div class="meta">
+<span class="tag b">B级</span>
+<span class="tag">题型：底层机制</span>
+<span class="tag">刁钻度：★★★☆☆</span>
+<span class="tag source">来源样本：补充</span>
+</div>
+</div>
+</div>
+<div class="body">
+<div class="note"><strong>训练目标：</strong>知道核心定义与主要边界即可</div>
+<div class="placeholder">▶ 考察方向　▶ 标准答案　▶ 答案解析　▶ 高频追问　▶ 失分点　▶ 记忆钩子<br/>当前为题库骨架版，后续按优先级逐题补齐。</div>
+</div>
+</article>
+<article class="question-card" data-grade="B">
+<div class="head" onclick="this.parentElement.classList.toggle('open')">
+<div class="rank">#48</div>
+<div>
+<div class="title">严格模式解决了什么问题？</div>
+<div class="meta">
+<span class="tag b">B级</span>
+<span class="tag">题型：补充</span>
+<span class="tag">刁钻度：★★★☆☆</span>
+<span class="tag source">来源样本：补充</span>
+</div>
+</div>
+</div>
+<div class="body">
+<div class="note"><strong>训练目标：</strong>知道核心定义与主要边界即可</div>
+<div class="placeholder">▶ 考察方向　▶ 标准答案　▶ 答案解析　▶ 高频追问　▶ 失分点　▶ 记忆钩子<br/>当前为题库骨架版，后续按优先级逐题补齐。</div>
+</div>
+</article>
+<article class="question-card" data-grade="B">
+<div class="head" onclick="this.parentElement.classList.toggle('open')">
+<div class="rank">#49</div>
+<div>
+<div class="title">0.1 + 0.2 为什么不等于 0.3？</div>
+<div class="meta">
+<span class="tag b">B级</span>
+<span class="tag">题型：数值细节</span>
+<span class="tag">刁钻度：★★★☆☆</span>
+<span class="tag source">来源样本：字节关联</span>
+</div>
+</div>
+</div>
+<div class="body">
+<div class="note"><strong>训练目标：</strong>知道核心定义与主要边界即可</div>
+<div class="placeholder">▶ 考察方向　▶ 标准答案　▶ 答案解析　▶ 高频追问　▶ 失分点　▶ 记忆钩子<br/>当前为题库骨架版，后续按优先级逐题补齐。</div>
+</div>
+</article>
+<article class="question-card" data-grade="B">
+<div class="head" onclick="this.parentElement.classList.toggle('open')">
+<div class="rank">#50</div>
+<div>
+<div class="title">类数组是什么？如何转换成数组？</div>
+<div class="meta">
+<span class="tag b">B级</span>
+<span class="tag">题型：API细节</span>
+<span class="tag">刁钻度：★★★☆☆</span>
+<span class="tag source">来源样本：货拉拉</span>
+</div>
+</div>
+</div>
+<div class="body">
+<div class="note"><strong>训练目标：</strong>知道核心定义与主要边界即可</div>
+<div class="placeholder">▶ 考察方向　▶ 标准答案　▶ 答案解析　▶ 高频追问　▶ 失分点　▶ 记忆钩子<br/>当前为题库骨架版，后续按优先级逐题补齐。</div>
+</div>
+</article>
+<article class="question-card" data-grade="B">
+<div class="head" onclick="this.parentElement.classList.toggle('open')">
+<div class="rank">#51</div>
+<div>
+<div class="title">稀疏数组和普通数组有什么区别？</div>
+<div class="meta">
+<span class="tag b">B级</span>
+<span class="tag">题型：API细节</span>
+<span class="tag">刁钻度：★★★☆☆</span>
+<span class="tag source">来源样本：补充</span>
+</div>
+</div>
+</div>
+<div class="body">
+<div class="note"><strong>训练目标：</strong>知道核心定义与主要边界即可</div>
+<div class="placeholder">▶ 考察方向　▶ 标准答案　▶ 答案解析　▶ 高频追问　▶ 失分点　▶ 记忆钩子<br/>当前为题库骨架版，后续按优先级逐题补齐。</div>
+</div>
+</article>
+<article class="question-card" data-grade="B">
+<div class="head" onclick="this.parentElement.classList.toggle('open')">
+<div class="rank">#52</div>
+<div>
+<div class="title">Array.prototype.at 有什么价值？</div>
+<div class="meta">
+<span class="tag b">B级</span>
+<span class="tag">题型：API补充</span>
+<span class="tag">刁钻度：★★★☆☆</span>
+<span class="tag source">来源样本：补充</span>
+</div>
+</div>
+</div>
+<div class="body">
+<div class="note"><strong>训练目标：</strong>知道核心定义与主要边界即可</div>
+<div class="placeholder">▶ 考察方向　▶ 标准答案　▶ 答案解析　▶ 高频追问　▶ 失分点　▶ 记忆钩子<br/>当前为题库骨架版，后续按优先级逐题补齐。</div>
+</div>
+</article>
+<article class="question-card" data-grade="B">
+<div class="head" onclick="this.parentElement.classList.toggle('open')">
+<div class="rank">#53</div>
+<div>
+<div class="title">ES2023 的 toSorted/toReversed/toSpliced 为什么有价值？</div>
+<div class="meta">
+<span class="tag b">B级</span>
+<span class="tag">题型：API补充</span>
+<span class="tag">刁钻度：★★★☆☆</span>
+<span class="tag source">来源样本：补充</span>
+</div>
+</div>
+</div>
+<div class="body">
+<div class="note"><strong>训练目标：</strong>知道核心定义与主要边界即可</div>
+<div class="placeholder">▶ 考察方向　▶ 标准答案　▶ 答案解析　▶ 高频追问　▶ 失分点　▶ 记忆钩子<br/>当前为题库骨架版，后续按优先级逐题补齐。</div>
+</div>
+</article>
+<article class="question-card" data-grade="B">
+<div class="head" onclick="this.parentElement.classList.toggle('open')">
+<div class="rank">#54</div>
+<div>
+<div class="title">Promise executor 是同步还是异步执行？</div>
+<div class="meta">
+<span class="tag b">B级</span>
+<span class="tag">题型：异步易错</span>
+<span class="tag">刁钻度：★★★☆☆</span>
+<span class="tag source">来源样本：公开常见</span>
+</div>
+</div>
+</div>
+<div class="body">
+<div class="note"><strong>训练目标：</strong>知道核心定义与主要边界即可</div>
+<div class="placeholder">▶ 考察方向　▶ 标准答案　▶ 答案解析　▶ 高频追问　▶ 失分点　▶ 记忆钩子<br/>当前为题库骨架版，后续按优先级逐题补齐。</div>
+</div>
+</article>
+<article class="question-card" data-grade="B">
+<div class="head" onclick="this.parentElement.classList.toggle('open')">
+<div class="rank">#55</div>
+<div>
+<div class="title">queueMicrotask 和 Promise.then 有什么关系？</div>
+<div class="meta">
+<span class="tag b">B级</span>
+<span class="tag">题型：异步补充</span>
+<span class="tag">刁钻度：★★★☆☆</span>
+<span class="tag source">来源样本：补充</span>
+</div>
+</div>
+</div>
+<div class="body">
+<div class="note"><strong>训练目标：</strong>知道核心定义与主要边界即可</div>
+<div class="placeholder">▶ 考察方向　▶ 标准答案　▶ 答案解析　▶ 高频追问　▶ 失分点　▶ 记忆钩子<br/>当前为题库骨架版，后续按优先级逐题补齐。</div>
+</div>
+</article>
+<div class="footer">Front-end Interview Basic Bank · JavaScript</div>
+</div>
+<script>function filterGrade(g){document.querySelectorAll('.question-card').forEach(c=>c.style.display=(g==='ALL'||c.dataset.grade===g)?'block':'none')}</script>
+</body></html>

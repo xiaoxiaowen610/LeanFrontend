@@ -1,0 +1,531 @@
+<html lang="zh-CN"><head><meta charset="utf-8"/><meta content="width=device-width,initial-scale=1" name="viewport"/><title>网络｜前端基础题库</title><style>
+:root{--bg:#f5f7fb;--paper:#fff;--text:#172033;--muted:#667085;--line:#e4e7ec;--primary:#2563eb;--primary-soft:#eff6ff;--accent:#7c3aed;--accent-soft:#f5f3ff;--warn:#b45309;--warn-soft:#fffbeb;--danger:#b91c1c;--danger-soft:#fef2f2;--good:#047857;--good-soft:#ecfdf5;--shadow:0 10px 28px rgba(16,24,40,.07)}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;line-height:1.7}.page{max-width:1180px;margin:auto;padding:28px}.hero{background:linear-gradient(135deg,var(--primary-soft),var(--accent-soft));border:1px solid var(--line);border-radius:24px;padding:30px;box-shadow:var(--shadow)}h1{margin:4px 0 8px;font-size:32px}.hero p{margin:0;color:var(--muted)}.back{display:inline-block;margin-bottom:10px;color:var(--primary);text-decoration:none;font-size:13px}.toolbar{display:flex;gap:8px;flex-wrap:wrap;margin-top:18px}.btn{border:1px solid var(--line);background:var(--paper);padding:8px 12px;border-radius:10px;cursor:pointer}.legend{display:flex;gap:8px;flex-wrap:wrap;margin:18px 0}.pill{padding:5px 9px;border-radius:999px;border:1px solid var(--line);font-size:12px}.s{background:var(--danger-soft);color:var(--danger)}.a{background:var(--warn-soft);color:var(--warn)}.b{background:var(--good-soft);color:var(--good)}.question-card{background:var(--paper);border:1px solid var(--line);border-radius:16px;margin:12px 0;box-shadow:var(--shadow);overflow:hidden}.head{display:grid;grid-template-columns:70px 1fr;gap:12px;padding:16px 18px;cursor:pointer}.rank{font-weight:900;font-size:18px}.title{font-weight:800;font-size:17px}.meta{display:flex;gap:7px;flex-wrap:wrap;margin-top:7px}.tag{font-size:11px;padding:4px 8px;border-radius:999px;border:1px solid var(--line);background:var(--bg);color:var(--muted)}.source{background:var(--primary-soft);color:var(--primary)}.body{display:none;padding:0 18px 18px;border-top:1px solid var(--line)}.question-card.open .body{display:block}.note{margin-top:12px;background:var(--accent-soft);border-left:4px solid var(--accent);padding:12px 14px;border-radius:10px}.placeholder{margin-top:10px;background:var(--primary-soft);border-left:4px solid var(--primary);padding:12px 14px;border-radius:10px;color:var(--muted)}.section{margin:26px 0 10px;font-size:20px}.index-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:22px}.module{display:block;text-decoration:none;color:var(--text);background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:18px;box-shadow:var(--shadow)}.module:hover{border-color:var(--primary)}.module strong{font-size:19px}.module small{display:block;color:var(--muted);margin-top:4px}.footer{text-align:center;color:var(--muted);font-size:12px;padding:28px}.summary{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:18px 0}.summary div{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:14px}.summary strong{display:block;font-size:22px}
+@media(max-width:800px){.page{padding:14px}.index-grid{grid-template-columns:1fr}.summary{grid-template-columns:repeat(2,1fr)}.head{grid-template-columns:55px 1fr}}
+
+details{border:1px solid var(--line);border-radius:12px;margin-top:10px;overflow:hidden}
+summary{cursor:pointer;list-style:none;padding:11px 13px;font-weight:750;background:var(--bg)}
+summary::-webkit-details-marker{display:none}
+summary:before{content:"▸";display:inline-block;margin-right:7px;color:var(--primary)}
+details[open] summary:before{content:"▾"}
+.detail-content{padding:13px 14px}
+.outline{display:grid;gap:8px}
+.outline-item{background:var(--primary-soft);padding:9px 11px;border-radius:9px}
+.answer{background:var(--primary-soft);border-left:4px solid var(--primary);padding:13px 15px;border-radius:10px;white-space:pre-line}
+.analysis{background:var(--accent-soft);border-left:4px solid var(--accent);padding:13px 15px;border-radius:10px}
+.qa{border:1px solid var(--line);border-radius:10px;padding:11px 12px;margin:8px 0}
+.qa strong{color:var(--primary)}
+.memory{background:var(--good-soft);border-left:4px solid var(--good);padding:12px 14px;border-radius:10px;font-weight:700}
+.loss{background:var(--danger-soft);border-left:4px solid var(--danger);padding:12px 14px;border-radius:10px}
+.deps{background:var(--warn-soft);border-left:4px solid var(--warn);padding:12px 14px;border-radius:10px}
+</style></head>
+<body><div class="page">
+<header class="hero"><a class="back" href="index.html">← 返回总目录</a><h1>网络</h1><p>HTTP / 缓存 / 跨域 / 实时通信。10 道 S 级已全部补成完整折叠卡片；A/B 级保留骨架，后续按优先级补齐。</p>
+<div class="toolbar"><button class="btn" onclick="filterGrade('ALL')">全部</button><button class="btn" onclick="filterGrade('S')">只看 S</button><button class="btn" onclick="filterGrade('A')">只看 A</button><button class="btn" onclick="filterGrade('B')">只看 B</button><button class="btn" onclick="document.querySelectorAll('.question-card').forEach(x=&gt;x.classList.remove('open'))">全部收起</button></div></header>
+<section class="summary"><div><strong>25</strong><span>总题量</span></div><div><strong>10</strong><span>S 级</span></div><div><strong>12</strong><span>A 级</span></div><div><strong>3</strong><span>B 级</span></div></section>
+<div class="legend"><span class="pill s">S：必须稳 / 深练</span><span class="pill a">A：高频扩展</span><span class="pill b">B：补充完整性</span></div>
+<h2 class="section">S 级题 · 必须优先掌握</h2>
+<article class="question-card" data-grade="S">
+<div class="head" onclick="this.parentElement.classList.toggle('open')">
+<div class="rank">#01</div>
+<div>
+<div class="title">HTTP/1.1、HTTP/2、HTTP/3 有什么区别？</div>
+<div class="meta">
+<span class="tag s">S级</span>
+<span class="tag">题型：协议</span>
+<span class="tag">刁钻度：★★★★☆</span>
+<span class="tag source">来源样本：公开高频</span>
+</div>
+</div>
+</div>
+<div class="body"><div class="note"><strong>训练目标：</strong>30 秒结论 + 90 秒展开 + 2～3 层追问</div><details><summary>题目主要考察点和方向概述</summary><div class="detail-content"><div class="outline"><div class="outline-item"><strong>1.</strong> HTTP 语义基本延续，主要变化在传输与连接层效率。</div><div class="outline-item"><strong>2.</strong> HTTP/1.1：持久连接，但单连接请求响应复用能力有限，浏览器常开多连接。</div><div class="outline-item"><strong>3.</strong> HTTP/2：二进制分帧、多路复用、HPACK 头压缩，但仍跑在 TCP 上。</div><div class="outline-item"><strong>4.</strong> HTTP/3：HTTP over QUIC（通常基于 UDP），减少 TCP 层队头阻塞，TLS 1.3 与 QUIC 握手深度集成。</div></div></div></details><details><summary>标准答案</summary><div class="detail-content"><div class="answer">我会从连接模型、并发能力和队头阻塞三个角度比较。
+
+HTTP/1.1 支持持久连接和流水线等机制，但浏览器实际仍经常通过多个 TCP 连接提高并发。一个 TCP 连接上的请求响应组织能力有限，而且 TCP 一旦丢包，后续字节都要等待重传。
+
+HTTP/2 把 HTTP 消息拆成二进制 frame，在一个 TCP 连接里并发多个 stream，因此可以多路复用，并引入 HPACK 头部压缩等能力。它解决了 HTTP 层“必须一个请求响应完再处理下一个”的很多问题，但底层仍是 TCP：只要 TCP 某个包丢失，同一连接上的多个 HTTP/2 stream 都可能等待，这就是 TCP 层的队头阻塞。
+
+HTTP/3 把 HTTP 语义放到 QUIC 上。QUIC 通常基于 UDP，在用户态实现可靠传输，并且不同 stream 可以独立处理丢包，因此一个 stream 丢包不必阻塞其他 stream。QUIC 还把 TLS 1.3 集成到握手流程里，连接建立和迁移能力也更适合现代移动网络。
+
+所以不要简单说“HTTP/3 就是 UDP 更快”，更准确是 QUIC 在 UDP 之上重新实现了可靠传输、多 stream、加密和拥塞控制。</div></div></details><details><summary>答案整体解析</summary><div class="detail-content"><div class="analysis">高级前端回答这题的关键不是背版本号，而是解释“为什么演进”：并发、头部开销、队头阻塞、握手与网络切换。</div></div></details><details><summary>高频追问 + 答案</summary><div class="detail-content"><div class="qa"><strong>追问 1：HTTP/2 已经多路复用了，为什么还需要 HTTP/3？</strong><div>HTTP/2 的多个 stream 仍共享同一个 TCP 字节流，TCP 丢包会让后续数据等待；QUIC 能把 stream 的丢包恢复彼此隔离。</div></div><div class="qa"><strong>追问 2：HTTP/2 的 Server Push 现在还值得重点讲吗？</strong><div>了解即可。浏览器实践中它并没有成为主流优化手段，现代浏览器更多依赖 preload、103 Early Hints 等机制。</div></div><div class="qa"><strong>追问 3：HTTP/3 基于 UDP，是不是不可靠？</strong><div>不是。UDP 本身不保证可靠，但 QUIC 在 UDP 之上实现可靠传输、重传、拥塞控制和流管理。</div></div><div class="qa"><strong>追问 4：HTTP/2 会改变 GET/POST/状态码这些 HTTP 语义吗？</strong><div>不会。HTTP/2 主要改变 framing 和传输方式，HTTP 的方法、状态码、URI 等语义仍然保留。</div></div></div></details><details><summary>失分点 / 易错点</summary><div class="detail-content"><div class="loss">常见失分：把 HTTP/2 的“多路复用”误说成彻底消除了所有队头阻塞。</div></div></details><details><summary>记忆钩子</summary><div class="detail-content"><div class="memory">H1 多连接；H2 单 TCP 多 stream；H3 QUIC 多 stream，减少 TCP 队头阻塞。</div></div></details><details><summary>前置知识 / 关联知识</summary><div class="detail-content"><div class="deps">前置：TCP/UDP、TLS、HTTP消息。关联：资源并发、CDN、性能优化。</div></div></details></div>
+</article>
+<article class="question-card" data-grade="S">
+<div class="head" onclick="this.parentElement.classList.toggle('open')">
+<div class="rank">#02</div>
+<div>
+<div class="title">HTTPS / TLS 握手过程是什么？</div>
+<div class="meta">
+<span class="tag s">S级</span>
+<span class="tag">题型：协议安全</span>
+<span class="tag">刁钻度：★★★★☆</span>
+<span class="tag source">来源样本：美团 / 公开高频</span>
+</div>
+</div>
+</div>
+<div class="body"><div class="note"><strong>训练目标：</strong>30 秒结论 + 90 秒展开 + 2～3 层追问</div><details><summary>题目主要考察点和方向概述</summary><div class="detail-content"><div class="outline"><div class="outline-item"><strong>1.</strong> HTTPS = HTTP over TLS，TLS 提供身份认证、机密性、完整性。</div><div class="outline-item"><strong>2.</strong> TLS 1.3 主线：ClientHello → ServerHello/证书/握手材料 → 客户端验证证书 → 双方派生会话密钥 → Finished → 加密应用数据。</div><div class="outline-item"><strong>3.</strong> 证书验证核心：域名、有效期、签名链、受信任 CA 等。</div><div class="outline-item"><strong>4.</strong> 对称加密传数据；非对称/密钥交换主要用于认证和安全协商密钥。</div></div></div></details><details><summary>标准答案</summary><div class="detail-content"><div class="answer">HTTPS 可以理解为 HTTP 跑在 TLS 加密通道上。TLS 主要解决三件事：确认你连接的是目标服务器、保证数据不被旁观者直接读取、并检测传输内容是否被篡改。
+
+以现代 TLS 1.3 的思路看，客户端先发 ClientHello，里面包含支持的 TLS 参数和密钥协商材料；服务器返回 ServerHello，并发送证书和相应握手数据。
+
+客户端会验证证书链是否可信、域名是否匹配、证书是否有效等。双方通过密钥交换材料推导出对称会话密钥，并通过 Finished 消息确认握手未被篡改。之后 HTTP 数据就使用协商出的对称密钥进行加密传输。
+
+为什么不直接一直用非对称加密传业务数据？因为对称加密效率高得多，所以 TLS 的思路是利用证书/公钥体系完成身份认证与密钥协商，再用对称密钥加密大量应用数据。
+
+如果使用连接恢复、TLS 1.3、QUIC 等，实际往返次数还可以进一步减少。</div></div></details><details><summary>答案整体解析</summary><div class="detail-content"><div class="analysis">面试里不要再背老式“客户端生成随机对称密钥，用服务器 RSA 公钥直接加密”的单一流程。现代 TLS 普遍使用临时 Diffie-Hellman 类密钥交换并追求前向保密。</div></div></details><details><summary>高频追问 + 答案</summary><div class="detail-content"><div class="qa"><strong>追问 1：HTTPS 能完全防止中间人攻击吗？</strong><div>正常证书校验和可信 CA 体系能显著防御中间人，但如果用户设备信任了恶意根证书、终端被攻陷等，仍有风险。</div></div><div class="qa"><strong>追问 2：证书里最关键验证什么？</strong><div>证书链签名、目标域名匹配、有效期、用途以及是否由受信任根建立信任链等。</div></div><div class="qa"><strong>追问 3：为什么业务数据主要用对称加密？</strong><div>速度快、计算成本低，适合大量数据；非对称密码学更适合认证和密钥协商。</div></div><div class="qa"><strong>追问 4：TLS 1.3 为什么比旧版本握手更快？</strong><div>协议精简了握手流程，并把现代密钥交换整合得更紧凑；恢复连接时还可进一步减少往返。</div></div></div></details><details><summary>失分点 / 易错点</summary><div class="detail-content"><div class="loss">常见失分：把 HTTPS 简化成“RSA 公钥加密所有数据”，已经不准确。</div></div></details><details><summary>记忆钩子</summary><div class="detail-content"><div class="memory">TLS：先认证 + 协商密钥，再用对称密钥跑 HTTP。</div></div></details><details><summary>前置知识 / 关联知识</summary><div class="detail-content"><div class="deps">前置：对称/非对称加密、证书、TCP。关联：HTTP/3、HSTS、证书校验。</div></div></details></div>
+</article>
+<article class="question-card" data-grade="S">
+<div class="head" onclick="this.parentElement.classList.toggle('open')">
+<div class="rank">#03</div>
+<div>
+<div class="title">TCP 三次握手和四次挥手是什么？</div>
+<div class="meta">
+<span class="tag s">S级</span>
+<span class="tag">题型：网络基础</span>
+<span class="tag">刁钻度：★★★★☆</span>
+<span class="tag source">来源样本：美团</span>
+</div>
+</div>
+</div>
+<div class="body"><div class="note"><strong>训练目标：</strong>30 秒结论 + 90 秒展开 + 2～3 层追问</div><details><summary>题目主要考察点和方向概述</summary><div class="detail-content"><div class="outline"><div class="outline-item"><strong>1.</strong> 三次握手目标：确认双向收发能力并同步初始序列号。</div><div class="outline-item"><strong>2.</strong> 典型：SYN → SYN+ACK → ACK。</div><div class="outline-item"><strong>3.</strong> 关闭时 TCP 全双工两个方向分别关闭，因此常见 FIN/ACK + FIN/ACK 四段。</div><div class="outline-item"><strong>4.</strong> 继续追问 TIME_WAIT、为什么不是两次、为什么常见四次。</div></div></div></details><details><summary>标准答案</summary><div class="detail-content"><div class="answer">TCP 三次握手的核心不是背 SYN，而是建立一个双方都确认可用的双向可靠连接，并同步初始序列号。
+
+第一步客户端发 SYN，请求建立连接并带自己的初始序列号；第二步服务器收到后返回 SYN + ACK，既确认客户端，也发送自己的初始序列号；第三步客户端再 ACK，服务器确认自己的 SYN 也被对方收到，连接进入可通信状态。
+
+关闭时 TCP 是全双工的，两个方向可以分别关闭。主动关闭方发送 FIN；另一方 ACK 表示“我知道你不再发了”，但它自己可能还有数据没发完；等它也准备关闭时再发送自己的 FIN；主动方最后 ACK。所以典型描述是四次挥手。
+
+实际抓包中 ACK 和 FIN 可能因时机合并，面试里理解“双向分别关闭”比机械背四个包更重要。</div></div></details><details><summary>答案整体解析</summary><div class="detail-content"><div class="analysis">这题属于网络底盘。高级前端不一定要求讲内核状态机，但至少要理解双向可靠性和 TIME_WAIT。</div></div></details><details><summary>高频追问 + 答案</summary><div class="detail-content"><div class="qa"><strong>追问 1：为什么握手不是两次？</strong><div>两次只能让客户端知道服务器收到自己的 SYN，但服务器还无法确认客户端是否收到了服务器自己的 SYN/初始序列号。第三次 ACK 完成双向确认。</div></div><div class="qa"><strong>追问 2：为什么关闭常见四次？</strong><div>收到对方 FIN 只代表对方不再发送；本端可能还要继续发送剩余数据，所以 ACK 和自己的 FIN 往往分开。</div></div><div class="qa"><strong>追问 3：TIME_WAIT 为什么存在？</strong><div>一方面确保最后 ACK 丢失时还能重发，另一方面让旧连接的延迟报文在网络中消失，避免影响同四元组的新连接。</div></div><div class="qa"><strong>追问 4：HTTP Keep-Alive 和 TCP Keepalive 是一回事吗？</strong><div>不是。HTTP Keep-Alive 是应用层连接复用概念；TCP keepalive 是传输层探测空闲连接是否仍存活的机制。</div></div></div></details><details><summary>失分点 / 易错点</summary><div class="detail-content"><div class="loss">常见失分：只会背 SYN/SYN-ACK/ACK，说不出为什么要三次。</div></div></details><details><summary>记忆钩子</summary><div class="detail-content"><div class="memory">握手：双方确认“你能收我、我也能收你”；挥手：双向分别关。</div></div></details><details><summary>前置知识 / 关联知识</summary><div class="detail-content"><div class="deps">前置：TCP可靠传输、序列号。关联：HTTP Keep-Alive、TLS握手。</div></div></details></div>
+</article>
+<article class="question-card" data-grade="S">
+<div class="head" onclick="this.parentElement.classList.toggle('open')">
+<div class="rank">#04</div>
+<div>
+<div class="title">什么是同源策略？CORS 如何工作？</div>
+<div class="meta">
+<span class="tag s">S级</span>
+<span class="tag">题型：跨域</span>
+<span class="tag">刁钻度：★★★★☆</span>
+<span class="tag source">来源样本：编程猫社招 / 中小厂 / 字节</span>
+</div>
+</div>
+</div>
+<div class="body"><div class="note"><strong>训练目标：</strong>30 秒结论 + 90 秒展开 + 2～3 层追问</div><details><summary>题目主要考察点和方向概述</summary><div class="detail-content"><div class="outline"><div class="outline-item"><strong>1.</strong> Origin = scheme + host + port；同源策略限制脚本读取跨源敏感数据。</div><div class="outline-item"><strong>2.</strong> CORS 是服务器通过响应头授权指定 origin 的浏览器跨源读取机制。</div><div class="outline-item"><strong>3.</strong> 简单请求可直接发；非简单请求通常先 OPTIONS preflight。</div><div class="outline-item"><strong>4.</strong> 带 credentials 时 ACAO 不能用 *，客户端和服务端都必须明确开启凭证。</div></div></div></details><details><summary>标准答案</summary><div class="detail-content"><div class="answer">同源策略是浏览器的重要安全边界。两个 URL 要协议、主机、端口都相同，才属于同源。它主要限制脚本跨源读取数据、操作别的源的 DOM/存储等，避免任意网站读取用户在其他站点的敏感内容。
+
+CORS 是在同源策略之上，由目标服务器明确授权跨源访问的一套 HTTP 机制。浏览器发送请求时会带 Origin，服务器通过 Access-Control-Allow-Origin 等响应头告诉浏览器这个源是否可以读取响应。
+
+对于满足“简单请求”条件的请求，浏览器通常直接发送实际请求，然后根据 CORS 响应头决定是否把结果暴露给前端 JS。对于方法、Content-Type、请求头等超出简单范围的请求，浏览器会先发送 OPTIONS 预检，带 Access-Control-Request-Method / Headers；服务器允许后，浏览器才继续实际请求。
+
+如果跨源请求要携带 Cookie 等 credentials，客户端需要显式设置 credentials: 'include' 等，服务端也要返回 Access-Control-Allow-Credentials: true，并且 Access-Control-Allow-Origin 不能写 *，必须是明确 origin。</div></div></details><details><summary>答案整体解析</summary><div class="detail-content"><div class="analysis">CORS 不是“后端允许跨域就没有同源策略”，而是浏览器仍执行同源策略，只是服务器通过标准响应头授权了例外。</div></div></details><details><summary>高频追问 + 答案</summary><div class="detail-content"><div class="qa"><strong>追问 1：哪些请求容易触发预检？</strong><div>例如 PUT/DELETE，或 POST 使用 application/json、自定义请求头等不满足 CORS-safelisted 条件的请求。</div></div><div class="qa"><strong>追问 2：预检 OPTIONS 会带业务 Cookie 吗？</strong><div>规范上 CORS preflight 本身不包含 credentials；服务端在预检响应中表明是否允许后续实际请求带凭证。</div></div><div class="qa"><strong>追问 3：前端能不能用 mode:no-cors 解决跨域读取？</strong><div>不能。得到的是 opaque response，JS 不能正常读取响应内容；它不是绕过同源策略。</div></div><div class="qa"><strong>追问 4：带 Cookie 时为什么 ACAO 不能用 *？</strong><div>凭证请求涉及用户身份，必须明确授权具体 origin，避免任意站点读取带用户身份的敏感响应。</div></div></div></details><details><summary>失分点 / 易错点</summary><div class="detail-content"><div class="loss">常见失分：把 CORS 说成“服务器阻止请求”。很多情况下请求已经发出，浏览器只是阻止前端读取响应。</div></div></details><details><summary>记忆钩子</summary><div class="detail-content"><div class="memory">同源 = 协议+主机+端口；CORS = 服务器给浏览器一张“可读许可”。</div></div></details><details><summary>前置知识 / 关联知识</summary><div class="detail-content"><div class="deps">前置：Origin、HTTP头。关联：Cookie、CSRF、fetch credentials。</div></div></details></div>
+</article>
+<article class="question-card" data-grade="S">
+<div class="head" onclick="this.parentElement.classList.toggle('open')">
+<div class="rank">#05</div>
+<div>
+<div class="title">强缓存和协商缓存有什么区别？</div>
+<div class="meta">
+<span class="tag s">S级</span>
+<span class="tag">题型：缓存</span>
+<span class="tag">刁钻度：★★★★☆</span>
+<span class="tag source">来源样本：编程猫社招 / 雪球 / 好未来 / 字节</span>
+</div>
+</div>
+</div>
+<div class="body"><div class="note"><strong>训练目标：</strong>30 秒结论 + 90 秒展开 + 2～3 层追问</div><details><summary>题目主要考察点和方向概述</summary><div class="detail-content"><div class="outline"><div class="outline-item"><strong>1.</strong> 强缓存：资源仍 fresh 时直接复用，无需向源站验证；核心 Cache-Control max-age/s-maxage/immutable 等。</div><div class="outline-item"><strong>2.</strong> 协商/重新验证：缓存存在但需要验证，使用 ETag/If-None-Match 或 Last-Modified/If-Modified-Since。</div><div class="outline-item"><strong>3.</strong> 未变化 → 304，无响应 body；变化 → 200 + 新资源。</div><div class="outline-item"><strong>4.</strong> no-cache = 可以存但每次需验证；no-store = 不应存储。</div></div></div></details><details><summary>标准答案</summary><div class="detail-content"><div class="answer">浏览器 HTTP 缓存我会先分为“直接使用 fresh 缓存”和“重新验证缓存”。
+
+强缓存通常指缓存仍在 freshness lifetime 内，浏览器直接使用本地响应，不需要为了验证资源是否变化而向源服务器发请求。现代控制主要看 Cache-Control，比如 max-age；Expires 是较老的绝对时间机制。
+
+当缓存已经 stale，或者响应要求每次验证，就会进入重新验证。服务器可返回 ETag，客户端下次带 If-None-Match；也可以用 Last-Modified / If-Modified-Since。如果资源没变化，服务器返回 304 Not Modified，浏览器继续使用已有缓存实体；变化则返回新的 200 响应。
+
+一个很容易答错的点是 no-cache：它不是“不缓存”，而是允许存，但使用前要重新验证。真正要求不存储的是 no-store。
+
+工程上带 hash 的静态资源通常可以设置长缓存，而 HTML 往往需要更谨慎，避免用户长期拿到旧入口文件。</div></div></details><details><summary>答案整体解析</summary><div class="detail-content"><div class="analysis">缓存题不要只背“强缓存 200 from memory，协商缓存 304”。真正关键是 freshness 和 revalidation 两种状态。</div></div></details><details><summary>高频追问 + 答案</summary><div class="detail-content"><div class="qa"><strong>追问 1：ETag 和 Last-Modified 同时存在时优先谁？</strong><div>重新验证时 If-None-Match/ETag 通常更精确，并在两者都存在时优先作为验证器。</div></div><div class="qa"><strong>追问 2：no-cache 和 no-store 区别？</strong><div>no-cache 可以缓存，但每次使用前必须重新验证；no-store 表示不应存储该响应。</div></div><div class="qa"><strong>追问 3：为什么 contenthash 资源适合一年长缓存？</strong><div>文件内容改变时 URL/hash 也改变；旧 URL 内容不可变，可以安全长期缓存，新版本通过新 URL 获取。</div></div><div class="qa"><strong>追问 4：304 有没有响应体？</strong><div>304 用于告诉客户端资源未修改，通常不传输完整实体 body，从而节省带宽。</div></div></div></details><details><summary>失分点 / 易错点</summary><div class="detail-content"><div class="loss">常见失分：把 no-cache 说成“完全不缓存”，或只记 304 不理解 ETag 验证链路。</div></div></details><details><summary>记忆钩子</summary><div class="detail-content"><div class="memory">fresh 直接用；stale 去验证；304 继续用旧 body。no-cache ≠ no-store。</div></div></details><details><summary>前置知识 / 关联知识</summary><div class="detail-content"><div class="deps">前置：HTTP头、资源版本。关联：contenthash、CDN、Webpack缓存策略。</div></div></details></div>
+</article>
+<article class="question-card" data-grade="S">
+<div class="head" onclick="this.parentElement.classList.toggle('open')">
+<div class="rank">#06</div>
+<div>
+<div class="title">常见 HTTP 状态码有哪些？304 在什么情况下出现？</div>
+<div class="meta">
+<span class="tag s">S级</span>
+<span class="tag">题型：HTTP基础</span>
+<span class="tag">刁钻度：★★★★☆</span>
+<span class="tag source">来源样本：雪球</span>
+</div>
+</div>
+</div>
+<div class="body"><div class="note"><strong>训练目标：</strong>30 秒结论 + 90 秒展开 + 2～3 层追问</div><details><summary>题目主要考察点和方向概述</summary><div class="detail-content"><div class="outline"><div class="outline-item"><strong>1.</strong> 1xx 信息；2xx 成功；3xx 重定向/缓存；4xx 客户端语义；5xx 服务端语义。</div><div class="outline-item"><strong>2.</strong> 高频：200/201/204、301/302/304、400/401/403/404/409/429、500/502/503/504。</div><div class="outline-item"><strong>3.</strong> 304 与条件请求/缓存重新验证相关，不表示普通请求成功返回了一份完整资源。</div></div></div></details><details><summary>标准答案</summary><div class="detail-content"><div class="answer">状态码我一般按类别记，而不是零散背。
+
+2xx 表示请求成功处理：200 最常见；201 常用于资源创建成功；204 表示成功但没有响应 body。
+
+3xx 主要是重定向或缓存相关：301 永久重定向，302 常见临时重定向；304 Not Modified 用于条件请求/缓存重新验证，告诉客户端本地已有版本仍可继续使用。
+
+4xx 表示请求侧或授权等问题：400 请求有误；401 表示缺少有效身份认证；403 表示服务器理解请求但拒绝授权；404 未找到；409 冲突；429 请求过多。
+
+5xx 表示服务端或网关处理失败：500 服务内部错误；502 Bad Gateway；503 Service Unavailable；504 Gateway Timeout。
+
+304 一般发生在客户端已有缓存并发起条件请求时，例如带 If-None-Match，对应 ETag 没变，服务器返回 304 而不是重新传整个资源。</div></div></details><details><summary>答案整体解析</summary><div class="detail-content"><div class="analysis">高级前端要避免 401/403 概念混淆：401 更接近“未通过身份认证”，403 更接近“已理解身份/请求但无权限”。</div></div></details><details><summary>高频追问 + 答案</summary><div class="detail-content"><div class="qa"><strong>追问 1：301 和 302 对 SEO/浏览器缓存有什么差异？</strong><div>301 表达永久迁移，客户端和搜索引擎可更积极记住；302 表达临时。真实行为还受缓存头等影响。</div></div><div class="qa"><strong>追问 2：401 和 403 怎么区分？</strong><div>401 侧重缺少/无效认证凭据；403 侧重服务器拒绝授权，即使身份明确也不允许。</div></div><div class="qa"><strong>追问 3：502 和 504 怎么区分？</strong><div>502 是网关/代理从上游拿到了无效响应；504 是网关等待上游超时。</div></div><div class="qa"><strong>追问 4：429 前端应该怎么处理？</strong><div>应尊重 Retry-After 等服务端信息，做退避重试、提示和请求节流，而不是立即无限重发。</div></div></div></details><details><summary>失分点 / 易错点</summary><div class="detail-content"><div class="loss">常见失分：只会 200/404/500；或把 401/403、502/504 说反。</div></div></details><details><summary>记忆钩子</summary><div class="detail-content"><div class="memory">2 成功；3 转向/缓存；4 请求/权限；5 服务端。304 = 缓存验证没变化。</div></div></details><details><summary>前置知识 / 关联知识</summary><div class="detail-content"><div class="deps">前置：HTTP请求响应。关联：缓存、鉴权、网关。</div></div></details></div>
+</article>
+<article class="question-card" data-grade="S">
+<div class="head" onclick="this.parentElement.classList.toggle('open')">
+<div class="rank">#07</div>
+<div>
+<div class="title">SSE 的原理是什么？为什么适合 AI Streaming？</div>
+<div class="meta">
+<span class="tag s">S级</span>
+<span class="tag">题型：实时通信</span>
+<span class="tag">刁钻度：★★★★☆</span>
+<span class="tag source">来源样本：字节 2025</span>
+</div>
+</div>
+</div>
+<div class="body"><div class="note"><strong>训练目标：</strong>30 秒结论 + 90 秒展开 + 2～3 层追问</div><details><summary>题目主要考察点和方向概述</summary><div class="detail-content"><div class="outline"><div class="outline-item"><strong>1.</strong> SSE = 服务器通过一个长时间保持的 HTTP 响应，持续推送 text/event-stream 文本事件。</div><div class="outline-item"><strong>2.</strong> 事件字段：data / event / id / retry；浏览器 EventSource 支持自动重连。</div><div class="outline-item"><strong>3.</strong> 单向 server→client，协议简单、天然文本流，适合 token/event 持续输出。</div><div class="outline-item"><strong>4.</strong> 原生 EventSource 主要是 GET，不能像 fetch 一样随意带自定义 headers/body；AI POST streaming 常用 fetch + ReadableStream 解析 SSE 风格数据。</div></div></div></details><details><summary>标准答案</summary><div class="detail-content"><div class="answer">SSE（Server-Sent Events）的核心是：客户端发起一个 HTTP 请求，服务器返回 Content-Type: text/event-stream，并保持这个响应不结束，后续持续往同一个响应流里写入事件。
+
+事件通常按文本格式发送，常见字段有 data、event、id、retry。浏览器原生 EventSource 会解析这些事件，并在连接意外断开时自动尝试重连；id 还能帮助记录最后一个事件标识。
+
+它很适合 AI Streaming，主要因为 AI 文本生成天然是“服务器持续向客户端单向输出 token / chunk / tool event”，并不要求像实时游戏那样客户端和服务端都高频双向发消息。SSE 建立在 HTTP 语义上，经过普通网关、鉴权、日志体系也比较自然，前端解析文本流也简单。
+
+但要区分“SSE 协议格式”和“原生 EventSource API”。EventSource 更适合 GET 类型订阅，而且自定义请求头和请求 body 能力有限。很多 AI Chat 接口需要 POST 用户 prompt、Authorization header，因此实际常用 fetch 发 POST，再通过 response.body 的 ReadableStream 逐块解析 text/event-stream 或类似事件格式，而不是直接 new EventSource。</div></div></details><details><summary>答案整体解析</summary><div class="detail-content"><div class="analysis">这题是你 AI 岗位的重要交叉题。不要把 SSE 等同于 EventSource：SSE 是服务端事件流格式/机制，EventSource 是浏览器原生消费 API。</div></div></details><details><summary>高频追问 + 答案</summary><div class="detail-content"><div class="qa"><strong>追问 1：SSE 为什么需要心跳？</strong><div>代理/NAT/负载均衡可能把长时间无数据的连接视为空闲并关闭；周期性注释行或轻量事件可维持活性并帮助检测断线。</div></div><div class="qa"><strong>追问 2：id 和 Last-Event-ID 有什么用？</strong><div>服务端发送 id 后，EventSource 记录最后事件 ID；自动重连时可把 Last-Event-ID 带回，服务端据此决定是否续传。实际业务还需自己保证事件可重放/幂等。</div></div><div class="qa"><strong>追问 3：AI 流为什么常不用原生 EventSource？</strong><div>聊天一般需要 POST body、Bearer token、自定义 headers，并希望自行控制 AbortController，因此 fetch + ReadableStream 更灵活。</div></div><div class="qa"><strong>追问 4：SSE 消息边界怎么解析？</strong><div>SSE 以行为单位，事件通常以空行分隔；网络 chunk 边界不等于消息边界，前端必须保留半包并按协议分隔符组装。</div></div></div></details><details><summary>失分点 / 易错点</summary><div class="detail-content"><div class="loss">常见失分：只回答“后端一直推数据”，没说 text/event-stream、事件格式、重连和半包。</div></div></details><details><summary>记忆钩子</summary><div class="detail-content"><div class="memory">SSE = 一条 HTTP 长响应持续 server→client；AI POST 常用 fetch 读事件流。</div></div></details><details><summary>前置知识 / 关联知识</summary><div class="detail-content"><div class="deps">前置：HTTP streaming、ReadableStream。关联：EventSource、AbortController、AI Chat、Nginx buffering。</div></div></details></div>
+</article>
+<article class="question-card" data-grade="S">
+<div class="head" onclick="this.parentElement.classList.toggle('open')">
+<div class="rank">#08</div>
+<div>
+<div class="title">SSE 和 WebSocket、轮询、长轮询怎么选？</div>
+<div class="meta">
+<span class="tag s">S级</span>
+<span class="tag">题型：技术选型</span>
+<span class="tag">刁钻度：★★★★☆</span>
+<span class="tag source">来源样本：字节 2025</span>
+</div>
+</div>
+</div>
+<div class="body"><div class="note"><strong>训练目标：</strong>30 秒结论 + 90 秒展开 + 2～3 层追问</div><details><summary>题目主要考察点和方向概述</summary><div class="detail-content"><div class="outline"><div class="outline-item"><strong>1.</strong> 轮询：客户端固定间隔请求；简单但空请求和延迟明显。</div><div class="outline-item"><strong>2.</strong> 长轮询：请求挂起到有数据/超时，返回后再发；兼容 HTTP 但维护成本高。</div><div class="outline-item"><strong>3.</strong> SSE：HTTP 单向流 server→client，自带事件/重连语义，适合通知和 AI 流。</div><div class="outline-item"><strong>4.</strong> WebSocket：升级为持久全双工消息通道，适合实时协作、游戏、IM 等高频双向通信。</div></div></div></details><details><summary>标准答案</summary><div class="detail-content"><div class="answer">这几种方案我不会按“谁高级”来选，而是先看通信方向、实时性、频率和基础设施。
+
+普通轮询最简单：客户端每隔几秒请求一次。优点是实现和兼容最简单；缺点是大量请求可能拿不到新数据，浪费资源，而且实时性受轮询间隔限制。
+
+长轮询是在服务端暂时不返回，等到有数据或超时再响应，客户端收到后立刻再发下一次。比固定轮询实时，但服务端需要维护更多挂起请求。
+
+SSE 是单向流式 server→client，仍然使用 HTTP，支持文本事件、event/id/retry 和自动重连语义，非常适合消息通知、任务进度、日志、AI token 流等“客户端发一次请求，服务端持续返回”的场景。
+
+WebSocket 则提供持久的全双工消息通道，客户端和服务器都能主动频繁发送消息，因此 IM、实时协作、游戏、行情等强双向场景更合适。但它的连接管理、心跳、断线恢复、网关配置和协议治理通常也更复杂。
+
+所以 AI Chat 的 token 输出我通常优先 SSE/HTTP streaming；多人协同编辑、实时游戏这类则更偏 WebSocket。</div></div></details><details><summary>答案整体解析</summary><div class="detail-content"><div class="analysis">技术选型的核心不是“WebSocket 双向、SSE 单向”一句话，而是结合请求模型、基础设施和可靠性治理。</div></div></details><details><summary>高频追问 + 答案</summary><div class="detail-content"><div class="qa"><strong>追问 1：SSE 能客户端发消息吗？</strong><div>SSE 通道本身是 server→client。客户端需要发消息时仍可用普通 fetch/POST，形成“HTTP 请求 + SSE 响应流”的组合。</div></div><div class="qa"><strong>追问 2：WebSocket 一定延迟更低吗？</strong><div>在高频双向小消息场景通常更适合，但实际延迟取决于网络、服务架构、消息处理等，不能只看协议名字。</div></div><div class="qa"><strong>追问 3：什么时候轮询反而更合理？</strong><div>数据更新很低频、实时性要求不高、系统简单且连接资源有限时，轮询可能是最经济的方案。</div></div><div class="qa"><strong>追问 4：SSE 能传二进制吗？</strong><div>标准 SSE 是 UTF-8 文本事件；二进制通常需编码为文本，若大量二进制实时传输更适合其他方案。</div></div></div></details><details><summary>失分点 / 易错点</summary><div class="detail-content"><div class="loss">常见失分：选型只说“WebSocket 双向，所以更强”，没有结合成本和场景。</div></div></details><details><summary>记忆钩子</summary><div class="detail-content"><div class="memory">低频简单轮询；单向持续 SSE；高频双向 WebSocket。</div></div></details><details><summary>前置知识 / 关联知识</summary><div class="detail-content"><div class="deps">前置：HTTP长连接。关联：AI Streaming、IM、实时协作。</div></div></details></div>
+</article>
+<article class="question-card" data-grade="S">
+<div class="head" onclick="this.parentElement.classList.toggle('open')">
+<div class="rank">#09</div>
+<div>
+<div class="title">Cookie 的 Domain / Path / HttpOnly / Secure / SameSite 分别做什么？</div>
+<div class="meta">
+<span class="tag s">S级</span>
+<span class="tag">题型：Cookie / 安全</span>
+<span class="tag">刁钻度：★★★★★</span>
+<span class="tag source">来源样本：水滴题延伸 / 好未来</span>
+</div>
+</div>
+</div>
+<div class="body"><div class="note"><strong>训练目标：</strong>30 秒结论 + 90 秒展开 + 2～3 层追问</div><details><summary>题目主要考察点和方向概述</summary><div class="detail-content"><div class="outline"><div class="outline-item"><strong>1.</strong> Domain：决定可发送到哪些 host；不设置时为 host-only cookie。</div><div class="outline-item"><strong>2.</strong> Path：按 URL path 控制哪些请求携带，不是安全边界。</div><div class="outline-item"><strong>3.</strong> HttpOnly：禁止 document.cookie 读取，降低凭证被 XSS 直接窃取风险。</div><div class="outline-item"><strong>4.</strong> Secure：仅通过 HTTPS 发送（localhost 有特殊处理）。</div><div class="outline-item"><strong>5.</strong> SameSite：控制跨站请求是否携带 Cookie；Strict/Lax/None，None 必须配 Secure。</div></div></div></details><details><summary>标准答案</summary><div class="detail-content"><div class="answer">Cookie 的几个属性我一般按“作用域 + 安全”来记。
+
+Domain 决定 Cookie 可以发送给哪些 host。如果不设置 Domain，通常是 host-only cookie，只发给设置它的具体 host；如果服务端合法设置 Domain=example.com，那么符合规则的 example.com 及其子域请求都可以携带它。现在前导点 .example.com 已经没有特殊语义，不需要靠这个点理解规则。
+
+Path 决定只有哪些 URL path 会携带 Cookie，例如 Path=/api。它主要是发送范围控制，不应该把它当成真正的安全隔离。
+
+HttpOnly 表示前端 JavaScript 不能通过 document.cookie 读取该 Cookie，因此对 session id 这类认证凭证很重要，可以降低 XSS 后直接窃取凭证的风险，但它并不能阻止 XSS 代表用户发请求。
+
+Secure 表示 Cookie 仅在安全的 HTTPS 通道下发送。
+
+SameSite 控制 Cookie 在跨站请求中的发送：Strict 最严格；Lax 允许一部分顶级导航等场景；None 表示允许跨站发送，但现代浏览器要求同时设置 Secure。它能缓解一部分 CSRF 风险。</div></div></details><details><summary>答案整体解析</summary><div class="detail-content"><div class="analysis">这里要特别区分 same-origin 和 same-site。Cookie 的 SameSite 是“site”概念，不等同于 origin；不同子域往往 cross-origin，但可能仍属于 same-site。</div></div></details><details><summary>高频追问 + 答案</summary><div class="detail-content"><div class="qa"><strong>追问 1：Domain=.example.com 和 Domain=example.com 有区别吗？</strong><div>现代规范中前导点会被忽略，核心是 Domain=example.com 的作用域语义。</div></div><div class="qa"><strong>追问 2：HttpOnly 能防 XSS 吗？</strong><div>不能消灭 XSS，只是阻止 JS 直接读取 Cookie。恶意脚本仍可能以用户身份调用站内接口，所以仍要修复 XSS。</div></div><div class="qa"><strong>追问 3：SameSite=None 为什么必须 Secure？</strong><div>因为允许跨站发送的 Cookie 风险更高，现代浏览器要求其只能在安全 HTTPS 上传输。</div></div><div class="qa"><strong>追问 4：Path 能不能防止同站其他页面读取 Cookie？</strong><div>不要把 Path 当安全机制。它主要控制请求发送范围，不提供可靠的授权隔离。</div></div></div></details><details><summary>失分点 / 易错点</summary><div class="detail-content"><div class="loss">常见失分：把 HttpOnly 说成“浏览器不发送”；实际上是 JS 读不到，HTTP 请求仍会按规则携带。</div></div></details><details><summary>记忆钩子</summary><div class="detail-content"><div class="memory">Domain/Path 管“发到哪”；HttpOnly/Secure/SameSite 管“怎么更安全地发”。</div></div></details><details><summary>前置知识 / 关联知识</summary><div class="detail-content"><div class="deps">前置：Cookie请求机制。关联：XSS、CSRF、同站/同源、SSO。</div></div></details></div>
+</article>
+<article class="question-card" data-grade="S">
+<div class="head" onclick="this.parentElement.classList.toggle('open')">
+<div class="rank">#10</div>
+<div>
+<div class="title">主域名和子域名如何共享登录态？跨根域怎么办？</div>
+<div class="meta">
+<span class="tag s">S级</span>
+<span class="tag">题型：登录态 / 刁钻</span>
+<span class="tag">刁钻度：★★★★★</span>
+<span class="tag source">来源样本：水滴真题</span>
+</div>
+</div>
+</div>
+<div class="body"><div class="note"><strong>训练目标：</strong>30 秒结论 + 90 秒展开 + 2～3 层追问</div><details><summary>题目主要考察点和方向概述</summary><div class="detail-content"><div class="outline"><div class="outline-item"><strong>1.</strong> 先判断：同一可注册根域下的子域，还是不同根域。</div><div class="outline-item"><strong>2.</strong> 同根域：服务端可设置父域 Domain Cookie，让多个子域请求携带同一认证 Cookie。</div><div class="outline-item"><strong>3.</strong> localStorage 不支持这种 Domain 机制；不同子域是不同 origin。</div><div class="outline-item"><strong>4.</strong> 跨根域：不能直接共享 Cookie，通常用统一身份提供方/认证中心，通过重定向 + code/ticket/OIDC/OAuth 等让各系统建立自己的会话。</div></div></div></details><details><summary>标准答案</summary><div class="detail-content"><div class="answer">我会先判断这两个系统是不是同一个根域下的子域。
+
+例如 www.example.com 和 admin.example.com，如果希望共享一套基于 Cookie 的登录态，可以由服务端把认证 Cookie 的 Domain 设置为 example.com，并配置合适的 Path、Secure、HttpOnly、SameSite。这样符合 Domain 规则的子域请求就可以自动携带同一 Cookie。
+
+这里不要用 localStorage 代替理解。www.example.com 和 admin.example.com 是不同 origin，localStorage 默认不能像 Cookie 一样通过 Domain 配置直接共享。
+
+如果是 a.com 和 b.com 这种完全不同的根域，浏览器不允许 a.com 给 b.com 设置或读取 Cookie，所以就不能直接共享登录 Cookie。通常采用 SSO：用户访问业务系统时跳到统一认证中心；认证中心确认登录后通过一次性 code/ticket 等方式把认证结果带回业务系统；业务系统在自己的域下建立自己的 session / Cookie。
+
+因此一句话是：同根域子域优先看 Cookie Domain；跨根域进入真正的 SSO / 身份协议方案。</div></div></details><details><summary>答案整体解析</summary><div class="detail-content"><div class="analysis">这是水滴真实题。你当时直接回答 SSO 不算完全错，但题眼很可能先在 Cookie Domain。高级回答要先分“同根域 vs 跨根域”。</div></div></details><details><summary>高频追问 + 答案</summary><div class="detail-content"><div class="qa"><strong>追问 1：子域能给父域设置 Cookie 吗？</strong><div>只要 Domain 是当前 host 的合法父域，并符合浏览器规则，服务器响应可以设置相应父域 Cookie；不能设置到完全无关的域。</div></div><div class="qa"><strong>追问 2：同根域子域是不是同源？</strong><div>不是。www.example.com 和 admin.example.com host 不同，因此是不同 origin；但它们可以属于 same-site，这也是 Cookie 与 localStorage 行为不同的重要原因。</div></div><div class="qa"><strong>追问 3：跨根域 SSO 为什么常用 code/ticket，而不是把 token 放 URL 长期传？</strong><div>一次性短期凭证降低泄漏和重放风险，业务系统拿 code 后在后端安全换取会话/令牌，再建立自己域内 Cookie。</div></div><div class="qa"><strong>追问 4：iframe + postMessage 能不能做登录共享？</strong><div>可以作为某些身份流程的通信手段，但会受到第三方 Cookie、浏览器隐私策略和安全校验影响，现代 SSO 更应使用标准身份协议和明确的重定向/回调设计。</div></div></div></details><details><summary>失分点 / 易错点</summary><div class="detail-content"><div class="loss">你的真实失分：只答“SSO”，没有先回答同根域 Cookie Domain 机制。</div></div></details><details><summary>记忆钩子</summary><div class="detail-content"><div class="memory">同根域：Domain Cookie；跨根域：认证中心 + code/ticket → 各自建会话。</div></div></details><details><summary>前置知识 / 关联知识</summary><div class="detail-content"><div class="deps">前置：Cookie Domain、Origin。关联：OAuth/OIDC、SSO、SameSite。</div></div></details></div>
+</article><h2 class="section">A 级题 · 高频扩展</h2>
+<article class="question-card" data-grade="A">
+<div class="head" onclick="this.parentElement.classList.toggle('open')">
+<div class="rank">#11</div>
+<div>
+<div class="title">DNS 解析过程和缓存顺序是什么？</div>
+<div class="meta">
+<span class="tag a">A级</span>
+<span class="tag">题型：网络基础</span>
+<span class="tag">刁钻度：★★★☆☆</span>
+<span class="tag source">来源样本：雪球</span>
+</div>
+</div>
+</div>
+<div class="body">
+<div class="note"><strong>训练目标：</strong>30～60 秒完整回答 + 常见追问</div>
+<div class="placeholder">▶ 考察方向　▶ 标准答案　▶ 答案解析　▶ 高频追问　▶ 失分点　▶ 记忆钩子<br/>当前为题库骨架版，后续按优先级逐题补齐。</div>
+</div>
+</article>
+<article class="question-card" data-grade="A">
+<div class="head" onclick="this.parentElement.classList.toggle('open')">
+<div class="rank">#12</div>
+<div>
+<div class="title">TCP 和 UDP 有什么区别？</div>
+<div class="meta">
+<span class="tag a">A级</span>
+<span class="tag">题型：网络基础</span>
+<span class="tag">刁钻度：★★★☆☆</span>
+<span class="tag source">来源样本：字节 2025</span>
+</div>
+</div>
+</div>
+<div class="body">
+<div class="note"><strong>训练目标：</strong>30～60 秒完整回答 + 常见追问</div>
+<div class="placeholder">▶ 考察方向　▶ 标准答案　▶ 答案解析　▶ 高频追问　▶ 失分点　▶ 记忆钩子<br/>当前为题库骨架版，后续按优先级逐题补齐。</div>
+</div>
+</article>
+<article class="question-card" data-grade="A">
+<div class="head" onclick="this.parentElement.classList.toggle('open')">
+<div class="rank">#13</div>
+<div>
+<div class="title">GET 和 POST 有什么区别？</div>
+<div class="meta">
+<span class="tag a">A级</span>
+<span class="tag">题型：HTTP基础</span>
+<span class="tag">刁钻度：★★★☆☆</span>
+<span class="tag source">来源样本：字节 2025</span>
+</div>
+</div>
+</div>
+<div class="body">
+<div class="note"><strong>训练目标：</strong>30～60 秒完整回答 + 常见追问</div>
+<div class="placeholder">▶ 考察方向　▶ 标准答案　▶ 答案解析　▶ 高频追问　▶ 失分点　▶ 记忆钩子<br/>当前为题库骨架版，后续按优先级逐题补齐。</div>
+</div>
+</article>
+<article class="question-card" data-grade="A">
+<div class="head" onclick="this.parentElement.classList.toggle('open')">
+<div class="rank">#14</div>
+<div>
+<div class="title">WebSocket 握手、心跳、断线重连怎么做？</div>
+<div class="meta">
+<span class="tag a">A级</span>
+<span class="tag">题型：实时通信</span>
+<span class="tag">刁钻度：★★★☆☆</span>
+<span class="tag source">来源样本：美团</span>
+</div>
+</div>
+</div>
+<div class="body">
+<div class="note"><strong>训练目标：</strong>30～60 秒完整回答 + 常见追问</div>
+<div class="placeholder">▶ 考察方向　▶ 标准答案　▶ 答案解析　▶ 高频追问　▶ 失分点　▶ 记忆钩子<br/>当前为题库骨架版，后续按优先级逐题补齐。</div>
+</div>
+</article>
+<article class="question-card" data-grade="A">
+<div class="head" onclick="this.parentElement.classList.toggle('open')">
+<div class="rank">#15</div>
+<div>
+<div class="title">SSE 如何处理断线重连、Last-Event-ID、心跳？</div>
+<div class="meta">
+<span class="tag a">A级</span>
+<span class="tag">题型：实时通信 / 工程</span>
+<span class="tag">刁钻度：★★★☆☆</span>
+<span class="tag source">来源样本：AI岗位趋势</span>
+</div>
+</div>
+</div>
+<div class="body">
+<div class="note"><strong>训练目标：</strong>30～60 秒完整回答 + 常见追问</div>
+<div class="placeholder">▶ 考察方向　▶ 标准答案　▶ 答案解析　▶ 高频追问　▶ 失分点　▶ 记忆钩子<br/>当前为题库骨架版，后续按优先级逐题补齐。</div>
+</div>
+</article>
+<article class="question-card" data-grade="A">
+<div class="head" onclick="this.parentElement.classList.toggle('open')">
+<div class="rank">#16</div>
+<div>
+<div class="title">Nginx buffering 为什么会影响 SSE？</div>
+<div class="meta">
+<span class="tag a">A级</span>
+<span class="tag">题型：实时通信 / 刁钻</span>
+<span class="tag">刁钻度：★★★★★</span>
+<span class="tag source">来源样本：AI工程高频</span>
+</div>
+</div>
+</div>
+<div class="body">
+<div class="note"><strong>训练目标：</strong>30～60 秒完整回答 + 常见追问</div>
+<div class="placeholder">▶ 考察方向　▶ 标准答案　▶ 答案解析　▶ 高频追问　▶ 失分点　▶ 记忆钩子<br/>当前为题库骨架版，后续按优先级逐题补齐。</div>
+</div>
+</article>
+<article class="question-card" data-grade="A">
+<div class="head" onclick="this.parentElement.classList.toggle('open')">
+<div class="rank">#17</div>
+<div>
+<div class="title">fetch 和 XMLHttpRequest 有什么区别？</div>
+<div class="meta">
+<span class="tag a">A级</span>
+<span class="tag">题型：浏览器网络API</span>
+<span class="tag">刁钻度：★★★☆☆</span>
+<span class="tag source">来源样本：常见</span>
+</div>
+</div>
+</div>
+<div class="body">
+<div class="note"><strong>训练目标：</strong>30～60 秒完整回答 + 常见追问</div>
+<div class="placeholder">▶ 考察方向　▶ 标准答案　▶ 答案解析　▶ 高频追问　▶ 失分点　▶ 记忆钩子<br/>当前为题库骨架版，后续按优先级逐题补齐。</div>
+</div>
+</article>
+<article class="question-card" data-grade="A">
+<div class="head" onclick="this.parentElement.classList.toggle('open')">
+<div class="rank">#18</div>
+<div>
+<div class="title">AbortController 如何取消请求？</div>
+<div class="meta">
+<span class="tag a">A级</span>
+<span class="tag">题型：网络API</span>
+<span class="tag">刁钻度：★★★☆☆</span>
+<span class="tag source">来源样本：场景高频</span>
+</div>
+</div>
+</div>
+<div class="body">
+<div class="note"><strong>训练目标：</strong>30～60 秒完整回答 + 常见追问</div>
+<div class="placeholder">▶ 考察方向　▶ 标准答案　▶ 答案解析　▶ 高频追问　▶ 失分点　▶ 记忆钩子<br/>当前为题库骨架版，后续按优先级逐题补齐。</div>
+</div>
+</article>
+<article class="question-card" data-grade="A">
+<div class="head" onclick="this.parentElement.classList.toggle('open')">
+<div class="rank">#19</div>
+<div>
+<div class="title">CDN 的基本原理是什么？</div>
+<div class="meta">
+<span class="tag a">A级</span>
+<span class="tag">题型：性能网络</span>
+<span class="tag">刁钻度：★★★☆☆</span>
+<span class="tag source">来源样本：公开高频</span>
+</div>
+</div>
+</div>
+<div class="body">
+<div class="note"><strong>训练目标：</strong>30～60 秒完整回答 + 常见追问</div>
+<div class="placeholder">▶ 考察方向　▶ 标准答案　▶ 答案解析　▶ 高频追问　▶ 失分点　▶ 记忆钩子<br/>当前为题库骨架版，后续按优先级逐题补齐。</div>
+</div>
+</article>
+<article class="question-card" data-grade="A">
+<div class="head" onclick="this.parentElement.classList.toggle('open')">
+<div class="rank">#20</div>
+<div>
+<div class="title">gzip / Brotli 是怎么工作的？</div>
+<div class="meta">
+<span class="tag a">A级</span>
+<span class="tag">题型：传输优化</span>
+<span class="tag">刁钻度：★★★☆☆</span>
+<span class="tag source">来源样本：性能关联</span>
+</div>
+</div>
+</div>
+<div class="body">
+<div class="note"><strong>训练目标：</strong>30～60 秒完整回答 + 常见追问</div>
+<div class="placeholder">▶ 考察方向　▶ 标准答案　▶ 答案解析　▶ 高频追问　▶ 失分点　▶ 记忆钩子<br/>当前为题库骨架版，后续按优先级逐题补齐。</div>
+</div>
+</article>
+<article class="question-card" data-grade="A">
+<div class="head" onclick="this.parentElement.classList.toggle('open')">
+<div class="rank">#21</div>
+<div>
+<div class="title">Content-Type 常见类型有哪些？</div>
+<div class="meta">
+<span class="tag a">A级</span>
+<span class="tag">题型：HTTP头</span>
+<span class="tag">刁钻度：★★★☆☆</span>
+<span class="tag source">来源样本：宽度题</span>
+</div>
+</div>
+</div>
+<div class="body">
+<div class="note"><strong>训练目标：</strong>30～60 秒完整回答 + 常见追问</div>
+<div class="placeholder">▶ 考察方向　▶ 标准答案　▶ 答案解析　▶ 高频追问　▶ 失分点　▶ 记忆钩子<br/>当前为题库骨架版，后续按优先级逐题补齐。</div>
+</div>
+</article>
+<article class="question-card" data-grade="A">
+<div class="head" onclick="this.parentElement.classList.toggle('open')">
+<div class="rank">#22</div>
+<div>
+<div class="title">HTTP Keep-Alive 是什么？</div>
+<div class="meta">
+<span class="tag a">A级</span>
+<span class="tag">题型：连接复用</span>
+<span class="tag">刁钻度：★★★☆☆</span>
+<span class="tag source">来源样本：常见</span>
+</div>
+</div>
+</div>
+<div class="body">
+<div class="note"><strong>训练目标：</strong>30～60 秒完整回答 + 常见追问</div>
+<div class="placeholder">▶ 考察方向　▶ 标准答案　▶ 答案解析　▶ 高频追问　▶ 失分点　▶ 记忆钩子<br/>当前为题库骨架版，后续按优先级逐题补齐。</div>
+</div>
+</article><h2 class="section">B 级题 · 补充完整性</h2>
+<article class="question-card" data-grade="B">
+<div class="head" onclick="this.parentElement.classList.toggle('open')">
+<div class="rank">#23</div>
+<div>
+<div class="title">Transfer-Encoding: chunked 是什么？</div>
+<div class="meta">
+<span class="tag b">B级</span>
+<span class="tag">题型：流式传输</span>
+<span class="tag">刁钻度：★★★☆☆</span>
+<span class="tag source">来源样本：SSE关联</span>
+</div>
+</div>
+</div>
+<div class="body">
+<div class="note"><strong>训练目标：</strong>知道核心定义与主要边界即可</div>
+<div class="placeholder">▶ 考察方向　▶ 标准答案　▶ 答案解析　▶ 高频追问　▶ 失分点　▶ 记忆钩子<br/>当前为题库骨架版，后续按优先级逐题补齐。</div>
+</div>
+</article>
+<article class="question-card" data-grade="B">
+<div class="head" onclick="this.parentElement.classList.toggle('open')">
+<div class="rank">#24</div>
+<div>
+<div class="title">HTTP Range 请求有什么用？</div>
+<div class="meta">
+<span class="tag b">B级</span>
+<span class="tag">题型：大文件</span>
+<span class="tag">刁钻度：★★★☆☆</span>
+<span class="tag source">来源样本：场景关联</span>
+</div>
+</div>
+</div>
+<div class="body">
+<div class="note"><strong>训练目标：</strong>知道核心定义与主要边界即可</div>
+<div class="placeholder">▶ 考察方向　▶ 标准答案　▶ 答案解析　▶ 高频追问　▶ 失分点　▶ 记忆钩子<br/>当前为题库骨架版，后续按优先级逐题补齐。</div>
+</div>
+</article>
+<article class="question-card" data-grade="B">
+<div class="head" onclick="this.parentElement.classList.toggle('open')">
+<div class="rank">#25</div>
+<div>
+<div class="title">RESTful 常见方法和幂等性怎么理解？</div>
+<div class="meta">
+<span class="tag b">B级</span>
+<span class="tag">题型：接口设计</span>
+<span class="tag">刁钻度：★★★☆☆</span>
+<span class="tag source">来源样本：全栈关联</span>
+</div>
+</div>
+</div>
+<div class="body">
+<div class="note"><strong>训练目标：</strong>知道核心定义与主要边界即可</div>
+<div class="placeholder">▶ 考察方向　▶ 标准答案　▶ 答案解析　▶ 高频追问　▶ 失分点　▶ 记忆钩子<br/>当前为题库骨架版，后续按优先级逐题补齐。</div>
+</div>
+</article>
+<div class="footer">Front-end Interview Basic Bank · 网络</div>
+</div>
+<script>function filterGrade(g){document.querySelectorAll('.question-card').forEach(c=>c.style.display=(g==='ALL'||c.dataset.grade===g)?'block':'none')}</script>
+</body></html>

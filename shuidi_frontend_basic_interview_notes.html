@@ -1,0 +1,729 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>前端面试基础题题库｜水滴技术面修复包</title>
+<style>
+  :root{
+    --bg:#f5f7fb;
+    --paper:#ffffff;
+    --text:#18212f;
+    --muted:#6b7280;
+    --line:#e5e7eb;
+    --primary:#2563eb;
+    --primary-soft:#eff6ff;
+    --accent:#7c3aed;
+    --accent-soft:#f5f3ff;
+    --good:#047857;
+    --good-soft:#ecfdf5;
+    --warn:#b45309;
+    --warn-soft:#fffbeb;
+    --danger:#b91c1c;
+    --danger-soft:#fef2f2;
+    --code:#111827;
+    --shadow:0 12px 34px rgba(31,41,55,.08);
+    --radius:18px;
+  }
+
+  @media (prefers-color-scheme: dark){
+    :root{
+      --bg:#0b1220;
+      --paper:#111827;
+      --text:#e5e7eb;
+      --muted:#9ca3af;
+      --line:#263244;
+      --primary:#60a5fa;
+      --primary-soft:#172554;
+      --accent:#c4b5fd;
+      --accent-soft:#2e1065;
+      --good:#6ee7b7;
+      --good-soft:#052e2b;
+      --warn:#fbbf24;
+      --warn-soft:#422006;
+      --danger:#fca5a5;
+      --danger-soft:#450a0a;
+      --code:#020617;
+      --shadow:0 12px 34px rgba(0,0,0,.25);
+    }
+  }
+
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--text);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",Arial,sans-serif;
+    line-height:1.75;
+  }
+  button,input{font:inherit}
+  .page{max-width:1180px;margin:0 auto;padding:28px}
+  .hero{
+    background:linear-gradient(135deg,var(--primary-soft),var(--accent-soft));
+    border:1px solid var(--line);
+    border-radius:24px;
+    padding:32px;
+    box-shadow:var(--shadow);
+    margin-bottom:22px;
+  }
+  .eyebrow{
+    color:var(--primary);
+    font-size:13px;
+    font-weight:800;
+    letter-spacing:.08em;
+    text-transform:uppercase;
+  }
+  h1{font-size:34px;line-height:1.2;margin:8px 0 10px}
+  .hero p{margin:0;color:var(--muted);max-width:880px}
+  .toolbar{
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px;
+    margin-top:20px;
+  }
+  .btn{
+    border:1px solid var(--line);
+    background:var(--paper);
+    color:var(--text);
+    padding:9px 13px;
+    border-radius:10px;
+    cursor:pointer;
+  }
+  .btn:hover{border-color:var(--primary);color:var(--primary)}
+  .stats{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:12px;
+    margin:20px 0 24px;
+  }
+  .stat{
+    background:var(--paper);
+    border:1px solid var(--line);
+    border-radius:14px;
+    padding:16px;
+    box-shadow:var(--shadow);
+  }
+  .stat strong{display:block;font-size:22px}
+  .stat span{font-size:12px;color:var(--muted)}
+  .section-title{
+    font-size:20px;
+    margin:28px 0 12px;
+  }
+  .question-card{
+    background:var(--paper);
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    box-shadow:var(--shadow);
+    margin-bottom:18px;
+    overflow:hidden;
+  }
+  .question-head{
+    padding:20px 22px;
+    cursor:pointer;
+    display:grid;
+    grid-template-columns:1fr auto;
+    gap:18px;
+    align-items:center;
+  }
+  .question-head:hover{background:rgba(37,99,235,.03)}
+  .question-title{
+    font-size:20px;
+    font-weight:800;
+    line-height:1.45;
+    margin-bottom:10px;
+  }
+  .meta{
+    display:flex;
+    flex-wrap:wrap;
+    gap:8px;
+  }
+  .tag{
+    display:inline-flex;
+    align-items:center;
+    gap:5px;
+    padding:5px 9px;
+    border-radius:999px;
+    border:1px solid var(--line);
+    color:var(--muted);
+    font-size:12px;
+    background:var(--bg);
+  }
+  .tag.source{background:var(--primary-soft);color:var(--primary)}
+  .tag.level{background:var(--warn-soft);color:var(--warn)}
+  .tag.mastery{background:var(--accent-soft);color:var(--accent)}
+  .tag.review{background:var(--good-soft);color:var(--good)}
+  .chevron{
+    width:34px;height:34px;
+    border-radius:50%;
+    display:grid;
+    place-items:center;
+    border:1px solid var(--line);
+    transition:.2s ease;
+    color:var(--muted);
+    flex:0 0 auto;
+  }
+  .question-card.open .chevron{transform:rotate(180deg)}
+  .question-body{
+    display:none;
+    padding:0 22px 22px;
+    border-top:1px solid var(--line);
+  }
+  .question-card.open .question-body{display:block}
+
+  details{
+    border:1px solid var(--line);
+    border-radius:13px;
+    margin-top:12px;
+    overflow:hidden;
+    background:var(--paper);
+  }
+  summary{
+    cursor:pointer;
+    padding:13px 15px;
+    font-weight:750;
+    list-style:none;
+    background:var(--bg);
+  }
+  summary::-webkit-details-marker{display:none}
+  summary::before{
+    content:"▸";
+    display:inline-block;
+    margin-right:8px;
+    color:var(--primary);
+    transition:.15s ease;
+  }
+  details[open] summary::before{transform:rotate(90deg)}
+  .detail-content{padding:14px 16px 16px}
+
+  .outline{
+    display:grid;
+    gap:8px;
+  }
+  .outline-item{
+    padding:10px 12px;
+    border-radius:10px;
+    background:var(--primary-soft);
+  }
+  .answer{
+    border-left:4px solid var(--primary);
+    background:var(--primary-soft);
+    padding:14px 16px;
+    border-radius:12px;
+  }
+  .analysis{
+    border-left:4px solid var(--accent);
+    background:var(--accent-soft);
+    padding:14px 16px;
+    border-radius:12px;
+  }
+  .loss{
+    border-left:4px solid var(--danger);
+    background:var(--danger-soft);
+    padding:14px 16px;
+    border-radius:12px;
+  }
+  .memory{
+    border-left:4px solid var(--good);
+    background:var(--good-soft);
+    padding:14px 16px;
+    border-radius:12px;
+    font-weight:700;
+  }
+  .qa{
+    border:1px solid var(--line);
+    border-radius:12px;
+    padding:12px 14px;
+    margin:10px 0;
+  }
+  .qa strong{color:var(--primary);display:block;margin-bottom:5px}
+  pre{
+    overflow:auto;
+    background:var(--code);
+    color:#e5e7eb;
+    padding:15px;
+    border-radius:12px;
+    font-size:13px;
+    line-height:1.6;
+  }
+  code{
+    font-family:"SFMono-Regular",Consolas,"Liberation Mono",monospace;
+  }
+  :not(pre)>code{
+    background:var(--primary-soft);
+    color:var(--primary);
+    padding:2px 6px;
+    border-radius:6px;
+    font-size:.92em;
+  }
+  table{
+    width:100%;
+    border-collapse:collapse;
+    margin:10px 0;
+  }
+  th,td{
+    border:1px solid var(--line);
+    padding:9px 10px;
+    text-align:left;
+    vertical-align:top;
+  }
+  th{background:var(--bg)}
+  .tree{
+    white-space:pre-wrap;
+    background:var(--code);
+    color:#e5e7eb;
+    border-radius:12px;
+    padding:16px;
+    overflow:auto;
+    font-family:"SFMono-Regular",Consolas,monospace;
+    line-height:1.7;
+  }
+  .review-row{
+    display:flex;
+    flex-wrap:wrap;
+    gap:8px;
+    margin-top:12px;
+  }
+  .review-btn{
+    border:1px solid var(--line);
+    border-radius:9px;
+    padding:7px 10px;
+    background:var(--paper);
+    cursor:pointer;
+    font-size:12px;
+  }
+  .review-btn:hover{border-color:var(--primary)}
+  .footer{
+    text-align:center;
+    color:var(--muted);
+    font-size:12px;
+    padding:24px 0 10px;
+  }
+  @media(max-width:760px){
+    .page{padding:15px}
+    h1{font-size:27px}
+    .hero{padding:22px}
+    .stats{grid-template-columns:repeat(2,1fr)}
+    .question-head{grid-template-columns:1fr auto;padding:17px}
+    .question-body{padding:0 17px 17px}
+    .question-title{font-size:18px}
+  }
+  @media print{
+    body{background:#fff}
+    .page{max-width:none;padding:0}
+    .hero,.question-card,.stat{box-shadow:none}
+    .toolbar,.review-row{display:none}
+    .question-body{display:block!important}
+    details{break-inside:avoid}
+    details > *{display:block}
+    details summary{display:block}
+  }
+</style>
+</head>
+<body>
+<div class="page">
+  <header class="hero">
+    <div class="eyebrow">Interview Memory System</div>
+    <h1>前端基础题 · 折叠式复习题库</h1>
+    <p>默认只展示题目与复习元信息。先闭卷口述或默写，再逐层展开「考察方向 → 标准答案 → 解析 → 追问 → 失分点 → 记忆钩子」。</p>
+    <div class="toolbar">
+      <button class="btn" onclick="openAll()">展开全部</button>
+      <button class="btn" onclick="closeAll()">收起全部</button>
+      <button class="btn" onclick="window.print()">打印 / 导出 PDF</button>
+    </div>
+  </header>
+
+  <section class="stats">
+    <div class="stat"><strong>6</strong><span>当前题目</span></div>
+    <div class="stat"><strong>6</strong><span>真实面试来源</span></div>
+    <div class="stat"><strong>★★★★★</strong><span>核心优先级</span></div>
+    <div class="stat"><strong>目标：4/5+</strong><span>掌握标准</span></div>
+  </section>
+
+  <h2 class="section-title">水滴技术面 · 基础题修复包</h2>
+
+  <article class="question-card">
+    <div class="question-head" onclick="toggleCard(this)">
+      <div>
+        <div class="question-title">1. JavaScript 数组有哪些常用操作方法？</div>
+        <div class="meta">
+          <span class="tag source">来源：水滴技术面</span>
+          <span class="tag level">重要程度：★★★★★</span>
+          <span class="tag mastery">掌握度：★★★☆☆</span>
+          <span class="tag review">下次复习：建议 Day 1 / 3 / 7</span>
+        </div>
+      </div>
+      <div class="chevron">⌄</div>
+    </div>
+    <div class="question-body">
+      <details>
+        <summary>题目主要考察点和方向概述</summary>
+        <div class="detail-content">
+          <div class="outline">
+            <div class="outline-item"><strong>1.</strong> 能否按用途分类，而不是想到哪说到哪。</div>
+            <div class="outline-item"><strong>2.</strong> 是否知道哪些方法会修改原数组。</div>
+            <div class="outline-item"><strong>3.</strong> 是否能区分高频相似 API，如 map/forEach、slice/splice、find/filter。</div>
+          </div>
+        </div>
+      </details>
+
+      <details>
+        <summary>标准答案</summary>
+        <div class="detail-content">
+          <div class="answer">
+            数组方法比较多，我一般按用途分类。增删修改类有 <code>push</code>、<code>pop</code>、<code>shift</code>、<code>unshift</code>、<code>splice</code>；遍历转换有 <code>forEach</code>、<code>map</code>、<code>filter</code>；查找判断有 <code>find</code>、<code>findIndex</code>、<code>includes</code>、<code>indexOf</code>、<code>some</code>、<code>every</code>；结构处理有 <code>slice</code>、<code>concat</code>、<code>flat</code>、<code>join</code>，排序有 <code>sort</code>、<code>reverse</code>；聚合类主要是 <code>reduce</code> 和 <code>reduceRight</code>。另外我也会区分哪些方法会修改原数组。
+          </div>
+        </div>
+      </details>
+
+      <details>
+        <summary>答案整体解析</summary>
+        <div class="detail-content">
+          <div class="analysis">
+            这题真正要练的是“分类主干”。高级前端不需要机械背完所有 API，但应该能快速组织出：增删修改、遍历转换、查找判断、排序结构、聚合这几类，并补充原数组是否变化。
+          </div>
+          <table>
+            <tr><th>类别</th><th>代表方法</th></tr>
+            <tr><td>增删修改</td><td>push / pop / shift / unshift / splice</td></tr>
+            <tr><td>遍历转换</td><td>forEach / map / filter</td></tr>
+            <tr><td>查找判断</td><td>find / findIndex / includes / indexOf / some / every</td></tr>
+            <tr><td>结构与排序</td><td>slice / concat / flat / join / sort / reverse</td></tr>
+            <tr><td>聚合</td><td>reduce / reduceRight</td></tr>
+          </table>
+        </div>
+      </details>
+
+      <details>
+        <summary>高频追问 + 答案</summary>
+        <div class="detail-content">
+          <div class="qa"><strong>追问 1：map 和 forEach 有什么区别？</strong>map 会根据回调返回值生成新数组，更适合数据转换；forEach 主要用于遍历执行副作用。</div>
+          <div class="qa"><strong>追问 2：slice 和 splice 有什么区别？</strong>slice 用于截取，通常不修改原数组；splice 可删除、插入、替换，会修改原数组。</div>
+          <div class="qa"><strong>追问 3：find 和 filter 有什么区别？</strong>find 返回第一个满足条件的元素；filter 返回所有满足条件元素组成的新数组。</div>
+        </div>
+      </details>
+
+      <details>
+        <summary>我的失分点</summary>
+        <div class="detail-content">
+          <div class="loss">当时主要是零散枚举数组 API，没有形成分类主干，因此容易漏项；最后提到 reduce 后又被继续追问参数，暴露出 API 细节不牢。</div>
+        </div>
+      </details>
+
+      <details>
+        <summary>记忆钩子</summary>
+        <div class="detail-content">
+          <div class="memory">增删 → 遍历 → 查找 → 判断 → 结构 → 聚合。</div>
+        </div>
+      </details>
+    </div>
+  </article>
+
+  <article class="question-card">
+    <div class="question-head" onclick="toggleCard(this)">
+      <div>
+        <div class="question-title">2. Array.prototype.reduce 有几个参数？</div>
+        <div class="meta">
+          <span class="tag source">来源：水滴技术面</span>
+          <span class="tag level">重要程度：★★★★★</span>
+          <span class="tag mastery">掌握度：★★☆☆☆</span>
+          <span class="tag review">下次复习：建议明天</span>
+        </div>
+      </div>
+      <div class="chevron">⌄</div>
+    </div>
+    <div class="question-body">
+      <details><summary>题目主要考察点和方向概述</summary>
+        <div class="detail-content"><div class="outline">
+          <div class="outline-item"><strong>1.</strong> reduce 方法本身的参数数量。</div>
+          <div class="outline-item"><strong>2.</strong> callback 的 4 个参数。</div>
+          <div class="outline-item"><strong>3.</strong> initialValue 对首次执行和空数组的影响。</div>
+        </div></div>
+      </details>
+      <details><summary>标准答案</summary>
+        <div class="detail-content"><div class="answer">
+          <code>reduce</code> 方法本身最多接收两个参数：第一个是 reducer 回调函数，第二个是可选的初始值 <code>initialValue</code>。回调函数最多接收四个参数：<code>accumulator</code>、<code>currentValue</code>、<code>currentIndex</code> 和原数组 <code>array</code>。
+        </div>
+        <pre><code>array.reduce(callbackFn, initialValue)
+
+callbackFn(accumulator, currentValue, currentIndex, array)</code></pre>
+        </div>
+      </details>
+      <details><summary>答案整体解析</summary>
+        <div class="detail-content"><div class="analysis">
+          这题的陷阱是把“reduce 的参数”和“callback 的参数”混在一起。reduce 是 2 个；callback 是 4 个。initialValue 不传时，第一个数组元素会作为初始 accumulator，并从第二项开始执行回调。
+        </div></div>
+      </details>
+      <details><summary>高频追问 + 答案</summary>
+        <div class="detail-content">
+          <div class="qa"><strong>追问 1：不传 initialValue 会怎样？</strong>数组第一个元素作为初始 accumulator，从第二个元素开始执行回调。</div>
+          <div class="qa"><strong>追问 2：空数组不传 initialValue 呢？</strong>会抛出 TypeError。</div>
+          <div class="qa"><strong>追问 3：reduce 常见用途？</strong>求和、计数、分组、数组转对象、扁平化、串行 Promise 等。</div>
+        </div>
+      </details>
+      <details><summary>我的失分点</summary>
+        <div class="detail-content"><div class="loss">当时回答“2～3 个，具体忘了”，说明 API 签名没有形成条件反射。这类高频基础 API 应该做到秒答。</div></div>
+      </details>
+      <details><summary>记忆钩子</summary>
+        <div class="detail-content"><div class="memory">reduce 两个，callback 四个。</div></div>
+      </details>
+    </div>
+  </article>
+
+  <article class="question-card">
+    <div class="question-head" onclick="toggleCard(this)">
+      <div>
+        <div class="question-title">3. Vue Router 有哪些路由守卫？</div>
+        <div class="meta">
+          <span class="tag source">来源：水滴技术面</span>
+          <span class="tag level">重要程度：★★★★★</span>
+          <span class="tag mastery">掌握度：★★☆☆☆</span>
+          <span class="tag review">下次复习：建议明天</span>
+        </div>
+      </div>
+      <div class="chevron">⌄</div>
+    </div>
+    <div class="question-body">
+      <details><summary>题目主要考察点和方向概述</summary>
+        <div class="detail-content"><div class="outline">
+          <div class="outline-item"><strong>1.</strong> 能否按全局 / 路由独享 / 组件内分类。</div>
+          <div class="outline-item"><strong>2.</strong> 是否理解 beforeEach、beforeResolve、afterEach 的阶段差异。</div>
+          <div class="outline-item"><strong>3.</strong> 是否知道组件内守卫及常见场景。</div>
+        </div></div>
+      </details>
+      <details><summary>标准答案</summary>
+        <div class="detail-content"><div class="answer">
+          Vue Router 的导航守卫我一般分三类：全局守卫有 <code>beforeEach</code>、<code>beforeResolve</code>、<code>afterEach</code>；路由独享守卫是 <code>beforeEnter</code>；组件内主要有 <code>beforeRouteEnter</code>、<code>beforeRouteUpdate</code>、<code>beforeRouteLeave</code>。Composition API 下还有 <code>onBeforeRouteUpdate</code> 和 <code>onBeforeRouteLeave</code>。
+        </div></div>
+      </details>
+      <details><summary>答案整体解析</summary>
+        <div class="detail-content">
+          <div class="tree">Route Guard
+├─ 全局：beforeEach / beforeResolve / afterEach
+├─ 路由独享：beforeEnter
+└─ 组件内：beforeRouteEnter / beforeRouteUpdate / beforeRouteLeave</div>
+          <div class="analysis" style="margin-top:12px">回答时先给分类，再列 API。这样比零散报出 beforeEach、afterEach 更完整，也更容易继续承接执行时机和使用场景的追问。</div>
+        </div>
+      </details>
+      <details><summary>高频追问 + 答案</summary>
+        <div class="detail-content">
+          <div class="qa"><strong>追问 1：beforeEach 一般做什么？</strong>登录鉴权、权限判断、全局重定向。</div>
+          <div class="qa"><strong>追问 2：beforeResolve 与 beforeEach 区别？</strong>beforeEach 更早；beforeResolve 位于导航确认前较靠后的阶段，适合最终确认类逻辑。</div>
+          <div class="qa"><strong>追问 3：afterEach 能阻止导航吗？</strong>不能，导航已经完成，适合埋点和页面统计。</div>
+          <div class="qa"><strong>追问 4：beforeRouteEnter 为什么访问不到 this？</strong>执行时目标组件实例尚未创建。</div>
+        </div>
+      </details>
+      <details><summary>我的失分点</summary>
+        <div class="detail-content"><div class="loss">当时只答了 beforeEach 和 afterEach，没有按三类展开，容易让面试官判断为 Vue Router 基础 API 掌握不完整。</div></div>
+      </details>
+      <details><summary>记忆钩子</summary>
+        <div class="detail-content"><div class="memory">全局 → 独享 → 组件。</div></div>
+      </details>
+    </div>
+  </article>
+
+  <article class="question-card">
+    <div class="question-head" onclick="toggleCard(this)">
+      <div>
+        <div class="question-title">4. Vue3 自定义指令有哪些生命周期？</div>
+        <div class="meta">
+          <span class="tag source">来源：水滴技术面</span>
+          <span class="tag level">重要程度：★★★★☆</span>
+          <span class="tag mastery">掌握度：★★☆☆☆</span>
+          <span class="tag review">下次复习：建议明天</span>
+        </div>
+      </div>
+      <div class="chevron">⌄</div>
+    </div>
+    <div class="question-body">
+      <details><summary>题目主要考察点和方向概述</summary>
+        <div class="detail-content"><div class="outline">
+          <div class="outline-item"><strong>1.</strong> 能否按创建 / 挂载 / 更新 / 卸载记忆 7 个钩子。</div>
+          <div class="outline-item"><strong>2.</strong> 是否知道 mounted、updated、unmounted 的典型使用场景。</div>
+          <div class="outline-item"><strong>3.</strong> 是否了解 Vue2 到 Vue3 的命名变化。</div>
+        </div></div>
+      </details>
+      <details><summary>标准答案</summary>
+        <div class="detail-content"><div class="answer">
+          Vue3 自定义指令主要有 7 个生命周期钩子：<code>created</code>；挂载阶段的 <code>beforeMount</code>、<code>mounted</code>；更新阶段的 <code>beforeUpdate</code>、<code>updated</code>；卸载阶段的 <code>beforeUnmount</code>、<code>unmounted</code>。
+        </div></div>
+      </details>
+      <details><summary>答案整体解析</summary>
+        <div class="detail-content">
+          <div class="tree">创建：created
+
+挂载：beforeMount → mounted
+
+更新：beforeUpdate → updated
+
+卸载：beforeUnmount → unmounted</div>
+          <div class="analysis" style="margin-top:12px">不要死背 7 个名字，按生命周期阶段分组记忆即可。自定义指令本质更偏底层 DOM 行为复用。</div>
+        </div>
+      </details>
+      <details><summary>高频追问 + 答案</summary>
+        <div class="detail-content">
+          <div class="qa"><strong>追问 1：mounted 常做什么？</strong>DOM 已挂载，适合自动聚焦、事件绑定、第三方 DOM 实例初始化。</div>
+          <div class="qa"><strong>追问 2：updated 常做什么？</strong>根据新的 binding 值同步更新 DOM 行为。</div>
+          <div class="qa"><strong>追问 3：unmounted 常做什么？</strong>移除事件监听、清理 timer、Observer 和第三方实例。</div>
+        </div>
+      </details>
+      <details><summary>我的失分点</summary>
+        <div class="detail-content"><div class="loss">生命周期 API 节点不完整，说明 Vue 基础知识存在“用过但没有形成结构化记忆”的问题。</div></div>
+      </details>
+      <details><summary>记忆钩子</summary>
+        <div class="detail-content"><div class="memory">创建 1 + 挂载 2 + 更新 2 + 卸载 2 = 7。</div></div>
+      </details>
+    </div>
+  </article>
+
+  <article class="question-card">
+    <div class="question-head" onclick="toggleCard(this)">
+      <div>
+        <div class="question-title">5. Cookie 和 localStorage 有什么区别？</div>
+        <div class="meta">
+          <span class="tag source">来源：水滴技术面</span>
+          <span class="tag level">重要程度：★★★★★</span>
+          <span class="tag mastery">掌握度：★★☆☆☆</span>
+          <span class="tag review">下次复习：建议明天</span>
+        </div>
+      </div>
+      <div class="chevron">⌄</div>
+    </div>
+    <div class="question-body">
+      <details><summary>题目主要考察点和方向概述</summary>
+        <div class="detail-content"><div class="outline">
+          <div class="outline-item"><strong>1.</strong> 是否能从容量、生命周期、网络行为、服务端能力、安全五个维度比较。</div>
+          <div class="outline-item"><strong>2.</strong> 是否理解 Cookie 会自动参与 HTTP 请求，而 localStorage 不会。</div>
+          <div class="outline-item"><strong>3.</strong> 是否具备 XSS、CSRF、HttpOnly、SameSite 等安全意识。</div>
+        </div></div>
+      </details>
+      <details><summary>标准答案</summary>
+        <div class="detail-content"><div class="answer">
+          Cookie 和 localStorage 都可以在浏览器保存数据，但区别主要有五点：Cookie 容量较小，通常单条几 KB；localStorage 一般是数 MB。Cookie 可以设置过期时间，localStorage 默认长期保存。Cookie 在满足 Domain、Path、Secure、SameSite 等条件时会随 HTTP 请求自动发送，localStorage 不会。Cookie 可以由服务端通过 <code>Set-Cookie</code> 设置，并支持 <code>HttpOnly</code>、<code>Secure</code>、<code>SameSite</code>；localStorage 主要由前端 JS 操作。因此认证状态常更适合 Cookie，localStorage 更适合非敏感前端状态。
+        </div></div>
+      </details>
+      <details><summary>答案整体解析</summary>
+        <div class="detail-content">
+          <table>
+            <tr><th>维度</th><th>Cookie</th><th>localStorage</th></tr>
+            <tr><td>容量</td><td>通常几 KB / 条</td><td>通常数 MB</td></tr>
+            <tr><td>生命周期</td><td>可设置过期</td><td>默认长期保存</td></tr>
+            <tr><td>请求携带</td><td>满足规则时自动发送</td><td>不会自动发送</td></tr>
+            <tr><td>服务端</td><td>支持 Set-Cookie</td><td>主要由前端 JS 操作</td></tr>
+            <tr><td>安全能力</td><td>HttpOnly / Secure / SameSite</td><td>可被 JS 直接访问</td></tr>
+          </table>
+        </div>
+      </details>
+      <details><summary>高频追问 + 答案</summary>
+        <div class="detail-content">
+          <div class="qa"><strong>追问 1：token 放 Cookie 还是 localStorage？</strong>需结合架构与威胁模型。localStorage 遇到 XSS 时 token 可能被读取；HttpOnly Cookie 可阻止 JS 直接读取，但要进一步考虑 CSRF。</div>
+          <div class="qa"><strong>追问 2：Cookie 关浏览器就一定没了吗？</strong>不一定，设置 Expires 或 Max-Age 后可以持久化。</div>
+          <div class="qa"><strong>追问 3：localStorage 真的是永久的吗？</strong>准确说是没有内置自动过期机制，默认长期保存，直到用户、浏览器策略或程序主动清理。</div>
+        </div>
+      </details>
+      <details><summary>我的失分点</summary>
+        <div class="detail-content"><div class="loss">当时主要从“存什么数据”回答，没有从存储机制的核心维度比较，且遗漏请求携带和安全属性，这是这题最关键的部分。</div></div>
+      </details>
+      <details><summary>记忆钩子</summary>
+        <div class="detail-content"><div class="memory">容量 → 生存 → 网络 → 服务端 → 安全。</div></div>
+      </details>
+    </div>
+  </article>
+
+  <article class="question-card">
+    <div class="question-head" onclick="toggleCard(this)">
+      <div>
+        <div class="question-title">6. 主域名和子域名如何共享登录态 / 实现免登？</div>
+        <div class="meta">
+          <span class="tag source">来源：水滴技术面</span>
+          <span class="tag level">重要程度：★★★★★</span>
+          <span class="tag mastery">掌握度：★★☆☆☆</span>
+          <span class="tag review">下次复习：建议明天</span>
+        </div>
+      </div>
+      <div class="chevron">⌄</div>
+    </div>
+    <div class="question-body">
+      <details><summary>题目主要考察点和方向概述</summary>
+        <div class="detail-content"><div class="outline">
+          <div class="outline-item"><strong>1.</strong> 第一判断应是同根域还是跨根域。</div>
+          <div class="outline-item"><strong>2.</strong> 同根域优先考 Cookie Domain，而不是直接跳到 SSO。</div>
+          <div class="outline-item"><strong>3.</strong> 跨根域才进入统一认证中心 / SSO / code 或 ticket 交换。</div>
+          <div class="outline-item"><strong>4.</strong> 可能继续追问 localStorage 为什么不能直接共享。</div>
+        </div></div>
+      </details>
+      <details><summary>标准答案</summary>
+        <div class="detail-content"><div class="answer">
+          我会先区分是不是同一个根域。如果是 <code>www.example.com</code> 和 <code>admin.example.com</code> 这种同根域子域，可以通过 Cookie 的 <code>Domain</code> 属性让认证 Cookie 对相应子域生效；如果是 <code>a.com</code> 和 <code>b.com</code> 这种完全不同的根域，Cookie 不能直接共享，一般需要 SSO，通过统一认证中心完成认证，再让各系统建立自己的登录态。
+        </div></div>
+      </details>
+      <details><summary>答案整体解析</summary>
+        <div class="detail-content">
+          <div class="tree">同根域
+www.example.com
+admin.example.com
+        ↓
+Cookie Domain=example.com
+        ↓
+共享认证 Cookie
+
+不同根域
+a.com / b.com
+        ↓
+不能直接共享 Cookie
+        ↓
+SSO / 统一认证中心
+        ↓
+code / ticket
+        ↓
+各系统建立自己的登录态</div>
+        </div>
+      </details>
+      <details><summary>高频追问 + 答案</summary>
+        <div class="detail-content">
+          <div class="qa"><strong>追问 1：父域和子域 localStorage 可以共享吗？</strong>不能直接共享。localStorage 按 origin 隔离，协议、Host、端口共同决定 origin，不同子域通常不是同一 origin。</div>
+          <div class="qa"><strong>追问 2：为什么 Cookie 可以？</strong>Cookie 有独立的 Domain、Path、Secure、SameSite 等作用域规则，可以配置父域对子域生效。</div>
+          <div class="qa"><strong>追问 3：什么时候才真正需要 SSO？</strong>当系统跨不同根域，或需要统一身份中心、多系统统一登录时，通常采用 SSO。</div>
+        </div>
+      </details>
+      <details><summary>我的失分点</summary>
+        <div class="detail-content"><div class="loss">当时直接回答 SSO，方向不算错，但跳过了“同根域 Cookie Domain”这个更贴近浏览器机制的答案，因此容易被判断为没有答到题眼。</div></div>
+      </details>
+      <details><summary>记忆钩子</summary>
+        <div class="detail-content"><div class="memory">同根域 → Cookie Domain；不同根域 → SSO；localStorage → 默认不共享。</div></div>
+      </details>
+    </div>
+  </article>
+
+  <h2 class="section-title">使用规则</h2>
+  <section class="question-card open">
+    <div class="question-body" style="display:block;border-top:none;padding-top:22px">
+      <div class="analysis">
+        <strong>建议每题复习顺序：</strong><br>
+        ① 只看题目，闭卷说 30 秒；<br>
+        ② 展开“考察方向”，检查主干是否漏项；<br>
+        ③ 再展开“标准答案”，校准准确性；<br>
+        ④ 打开“追问”，至少连续回答 2～3 层；<br>
+        ⑤ 最后看“我的失分点”和“记忆钩子”。<br><br>
+        目标不是“看懂”，而是下一次只看题目就能快速、准确、完整地说出来。
+      </div>
+    </div>
+  </section>
+
+  <div class="footer">Front-end Interview Memory System · Foldable Local Edition</div>
+</div>
+
+<script>
+function toggleCard(head){
+  head.parentElement.classList.toggle('open');
+}
+function openAll(){
+  document.querySelectorAll('.question-card').forEach(card => card.classList.add('open'));
+  document.querySelectorAll('details').forEach(d => d.open = true);
+}
+function closeAll(){
+  document.querySelectorAll('.question-card').forEach(card => card.classList.remove('open'));
+  document.querySelectorAll('details').forEach(d => d.open = false);
+}
+</script>
+</body>
+</html>
