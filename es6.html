@@ -1,33 +1,14 @@
 <!DOCTYPE html>
-<html lang="zh-CN"><head><meta charset="utf-8"/><meta content="width=device-width,initial-scale=1" name="viewport"/><title>ES6+｜前端基础题库</title><style>
-:root{--bg:#f5f7fb;--paper:#fff;--text:#172033;--muted:#667085;--line:#e4e7ec;--primary:#2563eb;--primary-soft:#eff6ff;--accent:#7c3aed;--accent-soft:#f5f3ff;--warn:#b45309;--warn-soft:#fffbeb;--danger:#b91c1c;--danger-soft:#fef2f2;--good:#047857;--good-soft:#ecfdf5;--shadow:0 10px 28px rgba(16,24,40,.07)}
-*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;line-height:1.7}.page{max-width:1180px;margin:auto;padding:28px}.hero{background:linear-gradient(135deg,var(--primary-soft),var(--accent-soft));border:1px solid var(--line);border-radius:24px;padding:30px;box-shadow:var(--shadow)}h1{margin:4px 0 8px;font-size:32px}.hero p{margin:0;color:var(--muted)}.back{display:inline-block;margin-bottom:10px;color:var(--primary);text-decoration:none;font-size:13px}.toolbar{display:flex;gap:8px;flex-wrap:wrap;margin-top:18px}.btn{border:1px solid var(--line);background:var(--paper);padding:8px 12px;border-radius:10px;cursor:pointer}.legend{display:flex;gap:8px;flex-wrap:wrap;margin:18px 0}.pill{padding:5px 9px;border-radius:999px;border:1px solid var(--line);font-size:12px}.s{background:var(--danger-soft);color:var(--danger)}.a{background:var(--warn-soft);color:var(--warn)}.b{background:var(--good-soft);color:var(--good)}.question-card{background:var(--paper);border:1px solid var(--line);border-radius:16px;margin:12px 0;box-shadow:var(--shadow);overflow:hidden}.head{display:grid;grid-template-columns:70px 1fr;gap:12px;padding:16px 18px;cursor:pointer}.rank{font-weight:900;font-size:18px}.title{font-weight:800;font-size:17px}.meta{display:flex;gap:7px;flex-wrap:wrap;margin-top:7px}.tag{font-size:11px;padding:4px 8px;border-radius:999px;border:1px solid var(--line);background:var(--bg);color:var(--muted)}.source{background:var(--primary-soft);color:var(--primary)}.body{display:none;padding:0 18px 18px;border-top:1px solid var(--line)}.question-card.open .body{display:block}.note{margin-top:12px;background:var(--accent-soft);border-left:4px solid var(--accent);padding:12px 14px;border-radius:10px}.placeholder{margin-top:10px;background:var(--primary-soft);border-left:4px solid var(--primary);padding:12px 14px;border-radius:10px;color:var(--muted)}.section{margin:26px 0 10px;font-size:20px}.index-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:22px}.module{display:block;text-decoration:none;color:var(--text);background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:18px;box-shadow:var(--shadow)}.module:hover{border-color:var(--primary)}.module strong{font-size:19px}.module small{display:block;color:var(--muted);margin-top:4px}.footer{text-align:center;color:var(--muted);font-size:12px;padding:28px}.summary{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:18px 0}.summary div{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:14px}.summary strong{display:block;font-size:22px}
-@media(max-width:800px){.page{padding:14px}.index-grid{grid-template-columns:1fr}.summary{grid-template-columns:repeat(2,1fr)}.head{grid-template-columns:55px 1fr}}
-
-details{border:1px solid var(--line);border-radius:12px;margin-top:10px;overflow:hidden}
-summary{cursor:pointer;list-style:none;padding:11px 13px;font-weight:750;background:var(--bg)}
-summary::-webkit-details-marker{display:none}
-summary:before{content:"▸";display:inline-block;margin-right:7px;color:var(--primary)}
-details[open] summary:before{content:"▾"}
-.detail-content{padding:13px 14px}
-.outline{display:grid;gap:8px}
-.outline-item{background:var(--primary-soft);padding:9px 11px;border-radius:9px}
-.answer{background:var(--primary-soft);border-left:4px solid var(--primary);padding:13px 15px;border-radius:10px;white-space:pre-line}
-.analysis{background:var(--accent-soft);border-left:4px solid var(--accent);padding:13px 15px;border-radius:10px}
-.qa{border:1px solid var(--line);border-radius:10px;padding:11px 12px;margin:8px 0}
-.qa strong{color:var(--primary)}
-.memory{background:var(--good-soft);border-left:4px solid var(--good);padding:12px 14px;border-radius:10px;font-weight:700}
-.loss{background:var(--danger-soft);border-left:4px solid var(--danger);padding:12px 14px;border-radius:10px}
-.deps{background:var(--warn-soft);border-left:4px solid var(--warn);padding:12px 14px;border-radius:10px}
-</style></head>
-<body><div class="page">
+<html lang="zh-CN"><head><meta charset="utf-8"/><meta content="width=device-width,initial-scale=1" name="viewport"/><title>ES6+｜前端基础题库</title><link rel="stylesheet" href="assets/basic.css"></head>
+<body class="bank-page">
+<a class="skip-link" href="#main-content">跳到主要内容</a><div id="main-content" class="page">
 <header class="hero"><a class="back" href="index.html">← 返回总目录</a><h1>ES6+</h1><p>语法/API 宽度 + 机制。5 道 S 级已全部补成完整折叠卡片；A/B 级保留骨架。</p>
-<div class="toolbar"><button class="btn" onclick="filterGrade('ALL')">全部</button><button class="btn" onclick="filterGrade('S')">只看 S</button><button class="btn" onclick="filterGrade('A')">只看 A</button><button class="btn" onclick="filterGrade('B')">只看 B</button><button class="btn" onclick="document.querySelectorAll('.question-card').forEach(x=&gt;x.classList.remove('open'))">全部收起</button></div></header>
+<div class="toolbar"><button class="btn" data-action="filter-grade" data-filter-grade="ALL" aria-pressed="true">全部</button><button class="btn" data-action="filter-grade" data-filter-grade="S" aria-pressed="false">只看 S</button><button class="btn" data-action="filter-grade" data-filter-grade="A" aria-pressed="false">只看 A</button><button class="btn" data-action="filter-grade" data-filter-grade="B" aria-pressed="false">只看 B</button><button class="btn" data-action="expand-visible">展开可见项</button><button class="btn" data-action="collapse-visible">收起可见项</button></div></header>
 <section class="summary"><div><strong>20</strong><span>总题量</span></div><div><strong>5</strong><span>S 级</span></div><div><strong>10</strong><span>A 级</span></div><div><strong>5</strong><span>B 级</span></div></section>
 <div class="legend"><span class="pill s">S：必须稳 / 深练</span><span class="pill a">A：高频扩展</span><span class="pill b">B：补充完整性</span></div>
 <h2 class="section">S 级题 · 必须优先掌握</h2>
 <article class="question-card" data-grade="S">
-<div class="head" onclick="this.parentElement.classList.toggle('open')">
+<div class="head" data-action="toggle-card" role="button" tabindex="0" aria-expanded="false">
 <div class="rank">#01</div>
 <div>
 <div class="title">var、let、const 有什么区别？</div>
@@ -52,7 +33,7 @@ const 要求声明时初始化，而且后续不能给这个变量重新赋值�
 因此现代业务代码一般优先 const，需要重新赋值时用 let，尽量避免 var。</div></div></details><details><summary>答案整体解析</summary><div class="detail-content"><div class="analysis">最容易答错的是“let/const 不提升”。更准确说法是：绑定会建立，但初始化前处于 TDZ。</div></div></details><details><summary>高频追问 + 答案</summary><div class="detail-content"><div class="qa"><strong>追问 1：为什么 typeof 一个 TDZ 变量也会报错？</strong><div>因为变量绑定已经存在，但处于未初始化状态，访问仍然触发 TDZ 规则。</div></div><div class="qa"><strong>追问 2：const 对象能不能 push？</strong><div>可以。const 约束变量绑定，不等于对象 immutable。要限制对象修改需 Object.freeze 等手段。</div></div><div class="qa"><strong>追问 3：for 循环里 let 为什么能解决闭包索引问题？</strong><div>let 在每轮迭代可创建独立的词法绑定，因此每个闭包捕获的是对应那一轮的值。</div></div><div class="qa"><strong>追问 4：顶层 var 和 let 在浏览器里的全局行为一样吗？</strong><div>不一样。传统 script 顶层 var 可能成为 global object 属性，而顶层 let/const 不会。</div></div></div></details><details><summary>失分点 / 易错点</summary><div class="detail-content"><div class="loss">常见失分：说“let/const 不会提升”，或者说“const 对象不能修改”。</div></div></details><details><summary>记忆钩子</summary><div class="detail-content"><div class="memory">var：函数作用域 + undefined 提升；let/const：块级 + TDZ；const 只锁绑定。</div></div></details><details><summary>前置知识 / 关联知识</summary><div class="detail-content"><div class="deps">前置：执行上下文、作用域、闭包。关联：TDZ、for循环闭包。</div></div></details></div>
 </article>
 <article class="question-card" data-grade="S">
-<div class="head" onclick="this.parentElement.classList.toggle('open')">
+<div class="head" data-action="toggle-card" role="button" tabindex="0" aria-expanded="false">
 <div class="rank">#02</div>
 <div>
 <div class="title">箭头函数和普通函数有什么区别？</div>
@@ -75,7 +56,7 @@ const 要求声明时初始化，而且后续不能给这个变量重新赋值�
 使用上，箭头函数很适合回调、数组方法、需要保留外层 this 的场景；如果方法本身依赖“谁调用我，this 就是谁”，或者要当构造函数，就应该用普通函数。</div></div></details><details><summary>答案整体解析</summary><div class="detail-content"><div class="analysis">面试官通常会从箭头函数继续追问 this，所以要把它与 JS this 绑定规则串起来。</div></div></details><details><summary>高频追问 + 答案</summary><div class="detail-content"><div class="qa"><strong>追问 1：call 能改变箭头函数 this 吗？</strong><div>不能。箭头函数没有自己的 this，call/apply/bind 只能传参数，无法重新绑定它的词法 this。</div></div><div class="qa"><strong>追问 2：为什么对象方法不总适合用箭头函数？</strong><div>如果希望 obj.method() 中 this 指向 obj，方法简写/普通函数更合适；箭头函数会拿定义位置外层 this。</div></div><div class="qa"><strong>追问 3：箭头函数有 arguments 吗？</strong><div>没有自己的 arguments，会沿词法作用域向外查找；推荐直接使用 ...args。</div></div><div class="qa"><strong>追问 4：箭头函数为什么不能 new？</strong><div>它没有 [[Construct]] 构造能力，也没有自己的 prototype 用于实例原型链。</div></div></div></details><details><summary>失分点 / 易错点</summary><div class="detail-content"><div class="loss">常见失分：只回答“语法更短”，或只说“this 指向父级”但说不清词法绑定。</div></div></details><details><summary>记忆钩子</summary><div class="detail-content"><div class="memory">箭头函数：没有自己的 this / arguments / prototype / construct。</div></div></details><details><summary>前置知识 / 关联知识</summary><div class="detail-content"><div class="deps">前置：this、call/apply/bind。关联：回调函数、类方法。</div></div></details></div>
 </article>
 <article class="question-card" data-grade="S">
-<div class="head" onclick="this.parentElement.classList.toggle('open')">
+<div class="head" data-action="toggle-card" role="button" tabindex="0" aria-expanded="false">
 <div class="rank">#03</div>
 <div>
 <div class="title">CommonJS 和 ES Module 有什么区别？</div>
@@ -100,7 +81,7 @@ ES Module 使用 import/export。静态 import 必须出现在模块顶层，因
 现代前端工程通常优先 ESM，因为更适合静态分析、Tree Shaking 和浏览器原生模块机制。</div></div></details><details><summary>答案整体解析</summary><div class="detail-content"><div class="analysis">不要把两者简化成“一个同步、一个异步”。CommonJS/ESM 在 Node 与 bundler 下细节很多，面试里更稳的是抓静态结构、live binding、Tree Shaking。</div></div></details><details><summary>高频追问 + 答案</summary><div class="detail-content"><div class="qa"><strong>追问 1：ESM 为什么更利于 Tree Shaking？</strong><div>静态 import/export 让 bundler 在执行前就能分析依赖和 export 使用关系。</div></div><div class="qa"><strong>追问 2：import 的值能不能重新赋值？</strong><div>不能直接给 imported binding 重新赋值；它是只读绑定，但导出方更新后导入方可观察到变化。</div></div><div class="qa"><strong>追问 3：require 为什么更难静态分析？</strong><div>因为 require 可以动态拼接路径、放在 if/函数里，依赖关系可能依赖运行时。</div></div><div class="qa"><strong>追问 4：CommonJS 和 ESM 循环依赖表现一样吗？</strong><div>不完全一样。ESM 依赖 live binding 和模块实例化阶段，CommonJS 更受执行顺序和 exports 当前状态影响。</div></div></div></details><details><summary>失分点 / 易错点</summary><div class="detail-content"><div class="loss">常见失分：说“CommonJS 是同步，ESM 是异步”后就结束，结论过度简化。</div></div></details><details><summary>记忆钩子</summary><div class="detail-content"><div class="memory">CJS 动态 require；ESM 静态 import + live binding。</div></div></details><details><summary>前置知识 / 关联知识</summary><div class="detail-content"><div class="deps">前置：模块系统。关联：Tree Shaking、dynamic import、Vite/Webpack。</div></div></details></div>
 </article>
 <article class="question-card" data-grade="S">
-<div class="head" onclick="this.parentElement.classList.toggle('open')">
+<div class="head" data-action="toggle-card" role="button" tabindex="0" aria-expanded="false">
 <div class="rank">#04</div>
 <div>
 <div class="title">Map 和 Object 有什么区别？</div>
@@ -123,7 +104,7 @@ Map 则更像专门的哈希映射容器。它的 key 可以是任意类型，�
 此外普通 Object 作为字典时要考虑继承属性和潜在原型污染；可以用 Object.create(null) 创建无原型字典，但 Map 通常已经提供了更标准的集合语义。</div></div></details><details><summary>答案整体解析</summary><div class="detail-content"><div class="analysis">这题不要只背“Map key 可以是对象”。高级回答还要能说使用边界。</div></div></details><details><summary>高频追问 + 答案</summary><div class="detail-content"><div class="qa"><strong>追问 1：Map 的 key 对象怎么比较？</strong><div>对象 key 按引用身份比较；两个内容相同但引用不同的对象是两个不同 key。</div></div><div class="qa"><strong>追问 2：Map 能直接 JSON.stringify 吗？</strong><div>JSON.stringify 默认不会按 Map entries 序列化，需要先转成数组或普通对象。</div></div><div class="qa"><strong>追问 3：Object 的属性顺序是不是完全无序？</strong><div>现代规范对普通对象属性枚举顺序有明确规则，但 Map 的定位和 API 更直接地保证插入顺序迭代。</div></div><div class="qa"><strong>追问 4：什么时候 Object.create(null) 比 Map 更适合？</strong><div>需要纯字符串字典、希望无原型链且最终与普通对象格式兼容时可能合适。</div></div></div></details><details><summary>失分点 / 易错点</summary><div class="detail-content"><div class="loss">常见失分：只回答 key 类型不同，没有说数据建模边界。</div></div></details><details><summary>记忆钩子</summary><div class="detail-content"><div class="memory">Object = 结构对象；Map = 动态字典。</div></div></details><details><summary>前置知识 / 关联知识</summary><div class="detail-content"><div class="deps">前置：对象属性、原型链。关联：WeakMap、缓存。</div></div></details></div>
 </article>
 <article class="question-card" data-grade="S">
-<div class="head" onclick="this.parentElement.classList.toggle('open')">
+<div class="head" data-action="toggle-card" role="button" tabindex="0" aria-expanded="false">
 <div class="rank">#05</div>
 <div>
 <div class="title">Map / Set / WeakMap / WeakSet 有什么区别？</div>
@@ -148,7 +129,7 @@ WeakSet 类似，只保存弱引用对象集合。
 典型应用包括：给 DOM 节点/对象附加元数据、对象级缓存、私有状态映射，同时避免因为缓存容器本身导致对象永远无法释放。</div></div></details><details><summary>答案整体解析</summary><div class="detail-content"><div class="analysis">WeakMap 题经常与内存泄漏、GC 连起来问。重点不是“弱引用”三个字，而是为什么不可枚举，以及它解决什么生命周期问题。</div></div></details><details><summary>高频追问 + 答案</summary><div class="detail-content"><div class="qa"><strong>追问 1：WeakMap 为什么适合对象缓存？</strong><div>缓存 key 对象一旦在业务中不再被引用，WeakMap 不会单独把它保活，可以随 key 一起回收。</div></div><div class="qa"><strong>追问 2：WeakMap 的 value 是弱引用吗？</strong><div>不是。弱的是 key 的持有关系；value 是否被回收取决于它是否还有可达引用，但当 key 条目消失后，该条目对 value 的引用也消失。</div></div><div class="qa"><strong>追问 3：Set 怎么判断对象重复？</strong><div>对象按引用身份判断，同一引用重复 add 不会新增；内容相同但引用不同的对象仍是不同值。</div></div><div class="qa"><strong>追问 4：WeakSet 能放 number 吗？</strong><div>不能放普通 primitive，主要用于保存可被垃圾回收的对象型值。</div></div></div></details><details><summary>失分点 / 易错点</summary><div class="detail-content"><div class="loss">常见失分：只说 WeakMap key 是对象，却不知道为什么不能遍历。</div></div></details><details><summary>记忆钩子</summary><div class="detail-content"><div class="memory">Map/Set 可枚举强引用；WeakMap/WeakSet 不保活对象、不可枚举。</div></div></details><details><summary>前置知识 / 关联知识</summary><div class="detail-content"><div class="deps">前置：GC、强引用。关联：内存泄漏、对象缓存、DOM元数据。</div></div></details></div>
 </article><h2 class="section">A 级题 · 高频扩展</h2>
 <article class="question-card" data-grade="A">
-<div class="head" onclick="this.parentElement.classList.toggle('open')">
+<div class="head" data-action="toggle-card" role="button" tabindex="0" aria-expanded="false">
 <div class="rank">#06</div>
 <div>
 <div class="title">解构赋值有哪些常见用法和坑？</div>
@@ -166,7 +147,7 @@ WeakSet 类似，只保存弱引用对象集合。
 </div>
 </article>
 <article class="question-card" data-grade="A">
-<div class="head" onclick="this.parentElement.classList.toggle('open')">
+<div class="head" data-action="toggle-card" role="button" tabindex="0" aria-expanded="false">
 <div class="rank">#07</div>
 <div>
 <div class="title">rest 和 spread 有什么区别？</div>
@@ -184,7 +165,7 @@ WeakSet 类似，只保存弱引用对象集合。
 </div>
 </article>
 <article class="question-card" data-grade="A">
-<div class="head" onclick="this.parentElement.classList.toggle('open')">
+<div class="head" data-action="toggle-card" role="button" tabindex="0" aria-expanded="false">
 <div class="rank">#08</div>
 <div>
 <div class="title">Proxy 和 Reflect 分别做什么？</div>
@@ -202,7 +183,7 @@ WeakSet 类似，只保存弱引用对象集合。
 </div>
 </article>
 <article class="question-card" data-grade="A">
-<div class="head" onclick="this.parentElement.classList.toggle('open')">
+<div class="head" data-action="toggle-card" role="button" tabindex="0" aria-expanded="false">
 <div class="rank">#09</div>
 <div>
 <div class="title">Iterator 和 Iterable 是什么？</div>
@@ -220,7 +201,7 @@ WeakSet 类似，只保存弱引用对象集合。
 </div>
 </article>
 <article class="question-card" data-grade="A">
-<div class="head" onclick="this.parentElement.classList.toggle('open')">
+<div class="head" data-action="toggle-card" role="button" tabindex="0" aria-expanded="false">
 <div class="rank">#10</div>
 <div>
 <div class="title">Generator 是什么？yield 如何工作？</div>
@@ -238,7 +219,7 @@ WeakSet 类似，只保存弱引用对象集合。
 </div>
 </article>
 <article class="question-card" data-grade="A">
-<div class="head" onclick="this.parentElement.classList.toggle('open')">
+<div class="head" data-action="toggle-card" role="button" tabindex="0" aria-expanded="false">
 <div class="rank">#11</div>
 <div>
 <div class="title">class 和原型继承是什么关系？</div>
@@ -256,7 +237,7 @@ WeakSet 类似，只保存弱引用对象集合。
 </div>
 </article>
 <article class="question-card" data-grade="A">
-<div class="head" onclick="this.parentElement.classList.toggle('open')">
+<div class="head" data-action="toggle-card" role="button" tabindex="0" aria-expanded="false">
 <div class="rank">#12</div>
 <div>
 <div class="title">Symbol 的作用是什么？</div>
@@ -274,7 +255,7 @@ WeakSet 类似，只保存弱引用对象集合。
 </div>
 </article>
 <article class="question-card" data-grade="A">
-<div class="head" onclick="this.parentElement.classList.toggle('open')">
+<div class="head" data-action="toggle-card" role="button" tabindex="0" aria-expanded="false">
 <div class="rank">#13</div>
 <div>
 <div class="title">Promise 属于 ES6 的哪类能力？</div>
@@ -292,7 +273,7 @@ WeakSet 类似，只保存弱引用对象集合。
 </div>
 </article>
 <article class="question-card" data-grade="A">
-<div class="head" onclick="this.parentElement.classList.toggle('open')">
+<div class="head" data-action="toggle-card" role="button" tabindex="0" aria-expanded="false">
 <div class="rank">#14</div>
 <div>
 <div class="title">模板字符串相对字符串拼接有什么能力？</div>
@@ -310,7 +291,7 @@ WeakSet 类似，只保存弱引用对象集合。
 </div>
 </article>
 <article class="question-card" data-grade="A">
-<div class="head" onclick="this.parentElement.classList.toggle('open')">
+<div class="head" data-action="toggle-card" role="button" tabindex="0" aria-expanded="false">
 <div class="rank">#15</div>
 <div>
 <div class="title">默认参数有哪些注意点？</div>
@@ -328,7 +309,7 @@ WeakSet 类似，只保存弱引用对象集合。
 </div>
 </article><h2 class="section">B 级题 · 补充完整性</h2>
 <article class="question-card" data-grade="B">
-<div class="head" onclick="this.parentElement.classList.toggle('open')">
+<div class="head" data-action="toggle-card" role="button" tabindex="0" aria-expanded="false">
 <div class="rank">#16</div>
 <div>
 <div class="title">Optional Chaining ?. 是什么？</div>
@@ -346,7 +327,7 @@ WeakSet 类似，只保存弱引用对象集合。
 </div>
 </article>
 <article class="question-card" data-grade="B">
-<div class="head" onclick="this.parentElement.classList.toggle('open')">
+<div class="head" data-action="toggle-card" role="button" tabindex="0" aria-expanded="false">
 <div class="rank">#17</div>
 <div>
 <div class="title">Nullish Coalescing ?? 和 || 有什么区别？</div>
@@ -364,7 +345,7 @@ WeakSet 类似，只保存弱引用对象集合。
 </div>
 </article>
 <article class="question-card" data-grade="B">
-<div class="head" onclick="this.parentElement.classList.toggle('open')">
+<div class="head" data-action="toggle-card" role="button" tabindex="0" aria-expanded="false">
 <div class="rank">#18</div>
 <div>
 <div class="title">BigInt 解决什么问题？</div>
@@ -382,7 +363,7 @@ WeakSet 类似，只保存弱引用对象集合。
 </div>
 </article>
 <article class="question-card" data-grade="B">
-<div class="head" onclick="this.parentElement.classList.toggle('open')">
+<div class="head" data-action="toggle-card" role="button" tabindex="0" aria-expanded="false">
 <div class="rank">#19</div>
 <div>
 <div class="title">Object.fromEntries 有什么用？</div>
@@ -400,7 +381,7 @@ WeakSet 类似，只保存弱引用对象集合。
 </div>
 </article>
 <article class="question-card" data-grade="B">
-<div class="head" onclick="this.parentElement.classList.toggle('open')">
+<div class="head" data-action="toggle-card" role="button" tabindex="0" aria-expanded="false">
 <div class="rank">#20</div>
 <div>
 <div class="title">structuredClone 和传统深拷贝方案有什么区别？</div>
@@ -419,5 +400,5 @@ WeakSet 类似，只保存弱引用对象集合。
 </article>
 <div class="footer">Front-end Interview Basic Bank · ES6+</div>
 </div>
-<script>function filterGrade(g){document.querySelectorAll('.question-card').forEach(c=>c.style.display=(g==='ALL'||c.dataset.grade===g)?'block':'none')}</script>
+<script src="assets/basic.js"></script>
 </body></html>

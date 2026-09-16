@@ -4,332 +4,19 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>前端面试基础题题库｜水滴技术面修复包</title>
-<style>
-  :root{
-    --bg:#f5f7fb;
-    --paper:#ffffff;
-    --text:#18212f;
-    --muted:#6b7280;
-    --line:#e5e7eb;
-    --primary:#2563eb;
-    --primary-soft:#eff6ff;
-    --accent:#7c3aed;
-    --accent-soft:#f5f3ff;
-    --good:#047857;
-    --good-soft:#ecfdf5;
-    --warn:#b45309;
-    --warn-soft:#fffbeb;
-    --danger:#b91c1c;
-    --danger-soft:#fef2f2;
-    --code:#111827;
-    --shadow:0 12px 34px rgba(31,41,55,.08);
-    --radius:18px;
-  }
-
-  @media (prefers-color-scheme: dark){
-    :root{
-      --bg:#0b1220;
-      --paper:#111827;
-      --text:#e5e7eb;
-      --muted:#9ca3af;
-      --line:#263244;
-      --primary:#60a5fa;
-      --primary-soft:#172554;
-      --accent:#c4b5fd;
-      --accent-soft:#2e1065;
-      --good:#6ee7b7;
-      --good-soft:#052e2b;
-      --warn:#fbbf24;
-      --warn-soft:#422006;
-      --danger:#fca5a5;
-      --danger-soft:#450a0a;
-      --code:#020617;
-      --shadow:0 12px 34px rgba(0,0,0,.25);
-    }
-  }
-
-  *{box-sizing:border-box}
-  html{scroll-behavior:smooth}
-  body{
-    margin:0;
-    background:var(--bg);
-    color:var(--text);
-    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",Arial,sans-serif;
-    line-height:1.75;
-  }
-  button,input{font:inherit}
-  .page{max-width:1180px;margin:0 auto;padding:28px}
-  .hero{
-    background:linear-gradient(135deg,var(--primary-soft),var(--accent-soft));
-    border:1px solid var(--line);
-    border-radius:24px;
-    padding:32px;
-    box-shadow:var(--shadow);
-    margin-bottom:22px;
-  }
-  .eyebrow{
-    color:var(--primary);
-    font-size:13px;
-    font-weight:800;
-    letter-spacing:.08em;
-    text-transform:uppercase;
-  }
-  h1{font-size:34px;line-height:1.2;margin:8px 0 10px}
-  .hero p{margin:0;color:var(--muted);max-width:880px}
-  .toolbar{
-    display:flex;
-    flex-wrap:wrap;
-    gap:10px;
-    margin-top:20px;
-  }
-  .btn{
-    border:1px solid var(--line);
-    background:var(--paper);
-    color:var(--text);
-    padding:9px 13px;
-    border-radius:10px;
-    cursor:pointer;
-  }
-  .btn:hover{border-color:var(--primary);color:var(--primary)}
-  .stats{
-    display:grid;
-    grid-template-columns:repeat(4,1fr);
-    gap:12px;
-    margin:20px 0 24px;
-  }
-  .stat{
-    background:var(--paper);
-    border:1px solid var(--line);
-    border-radius:14px;
-    padding:16px;
-    box-shadow:var(--shadow);
-  }
-  .stat strong{display:block;font-size:22px}
-  .stat span{font-size:12px;color:var(--muted)}
-  .section-title{
-    font-size:20px;
-    margin:28px 0 12px;
-  }
-  .question-card{
-    background:var(--paper);
-    border:1px solid var(--line);
-    border-radius:var(--radius);
-    box-shadow:var(--shadow);
-    margin-bottom:18px;
-    overflow:hidden;
-  }
-  .question-head{
-    padding:20px 22px;
-    cursor:pointer;
-    display:grid;
-    grid-template-columns:1fr auto;
-    gap:18px;
-    align-items:center;
-  }
-  .question-head:hover{background:rgba(37,99,235,.03)}
-  .question-title{
-    font-size:20px;
-    font-weight:800;
-    line-height:1.45;
-    margin-bottom:10px;
-  }
-  .meta{
-    display:flex;
-    flex-wrap:wrap;
-    gap:8px;
-  }
-  .tag{
-    display:inline-flex;
-    align-items:center;
-    gap:5px;
-    padding:5px 9px;
-    border-radius:999px;
-    border:1px solid var(--line);
-    color:var(--muted);
-    font-size:12px;
-    background:var(--bg);
-  }
-  .tag.source{background:var(--primary-soft);color:var(--primary)}
-  .tag.level{background:var(--warn-soft);color:var(--warn)}
-  .tag.mastery{background:var(--accent-soft);color:var(--accent)}
-  .tag.review{background:var(--good-soft);color:var(--good)}
-  .chevron{
-    width:34px;height:34px;
-    border-radius:50%;
-    display:grid;
-    place-items:center;
-    border:1px solid var(--line);
-    transition:.2s ease;
-    color:var(--muted);
-    flex:0 0 auto;
-  }
-  .question-card.open .chevron{transform:rotate(180deg)}
-  .question-body{
-    display:none;
-    padding:0 22px 22px;
-    border-top:1px solid var(--line);
-  }
-  .question-card.open .question-body{display:block}
-
-  details{
-    border:1px solid var(--line);
-    border-radius:13px;
-    margin-top:12px;
-    overflow:hidden;
-    background:var(--paper);
-  }
-  summary{
-    cursor:pointer;
-    padding:13px 15px;
-    font-weight:750;
-    list-style:none;
-    background:var(--bg);
-  }
-  summary::-webkit-details-marker{display:none}
-  summary::before{
-    content:"▸";
-    display:inline-block;
-    margin-right:8px;
-    color:var(--primary);
-    transition:.15s ease;
-  }
-  details[open] summary::before{transform:rotate(90deg)}
-  .detail-content{padding:14px 16px 16px}
-
-  .outline{
-    display:grid;
-    gap:8px;
-  }
-  .outline-item{
-    padding:10px 12px;
-    border-radius:10px;
-    background:var(--primary-soft);
-  }
-  .answer{
-    border-left:4px solid var(--primary);
-    background:var(--primary-soft);
-    padding:14px 16px;
-    border-radius:12px;
-  }
-  .analysis{
-    border-left:4px solid var(--accent);
-    background:var(--accent-soft);
-    padding:14px 16px;
-    border-radius:12px;
-  }
-  .loss{
-    border-left:4px solid var(--danger);
-    background:var(--danger-soft);
-    padding:14px 16px;
-    border-radius:12px;
-  }
-  .memory{
-    border-left:4px solid var(--good);
-    background:var(--good-soft);
-    padding:14px 16px;
-    border-radius:12px;
-    font-weight:700;
-  }
-  .qa{
-    border:1px solid var(--line);
-    border-radius:12px;
-    padding:12px 14px;
-    margin:10px 0;
-  }
-  .qa strong{color:var(--primary);display:block;margin-bottom:5px}
-  pre{
-    overflow:auto;
-    background:var(--code);
-    color:#e5e7eb;
-    padding:15px;
-    border-radius:12px;
-    font-size:13px;
-    line-height:1.6;
-  }
-  code{
-    font-family:"SFMono-Regular",Consolas,"Liberation Mono",monospace;
-  }
-  :not(pre)>code{
-    background:var(--primary-soft);
-    color:var(--primary);
-    padding:2px 6px;
-    border-radius:6px;
-    font-size:.92em;
-  }
-  table{
-    width:100%;
-    border-collapse:collapse;
-    margin:10px 0;
-  }
-  th,td{
-    border:1px solid var(--line);
-    padding:9px 10px;
-    text-align:left;
-    vertical-align:top;
-  }
-  th{background:var(--bg)}
-  .tree{
-    white-space:pre-wrap;
-    background:var(--code);
-    color:#e5e7eb;
-    border-radius:12px;
-    padding:16px;
-    overflow:auto;
-    font-family:"SFMono-Regular",Consolas,monospace;
-    line-height:1.7;
-  }
-  .review-row{
-    display:flex;
-    flex-wrap:wrap;
-    gap:8px;
-    margin-top:12px;
-  }
-  .review-btn{
-    border:1px solid var(--line);
-    border-radius:9px;
-    padding:7px 10px;
-    background:var(--paper);
-    cursor:pointer;
-    font-size:12px;
-  }
-  .review-btn:hover{border-color:var(--primary)}
-  .footer{
-    text-align:center;
-    color:var(--muted);
-    font-size:12px;
-    padding:24px 0 10px;
-  }
-  @media(max-width:760px){
-    .page{padding:15px}
-    h1{font-size:27px}
-    .hero{padding:22px}
-    .stats{grid-template-columns:repeat(2,1fr)}
-    .question-head{grid-template-columns:1fr auto;padding:17px}
-    .question-body{padding:0 17px 17px}
-    .question-title{font-size:18px}
-  }
-  @media print{
-    body{background:#fff}
-    .page{max-width:none;padding:0}
-    .hero,.question-card,.stat{box-shadow:none}
-    .toolbar,.review-row{display:none}
-    .question-body{display:block!important}
-    details{break-inside:avoid}
-    details > *{display:block}
-    details summary{display:block}
-  }
-</style>
+<link rel="stylesheet" href="assets/basic.css">
 </head>
-<body>
-<div class="page">
+<body class="repair-page">
+<a class="skip-link" href="#main-content">跳到主要内容</a>
+<div id="main-content" class="page">
   <header class="hero">
     <div class="eyebrow">Interview Memory System</div>
     <h1>前端基础题 · 折叠式复习题库</h1>
     <p>默认只展示题目与复习元信息。先闭卷口述或默写，再逐层展开「考察方向 → 标准答案 → 解析 → 追问 → 失分点 → 记忆钩子」。</p>
     <div class="toolbar">
-      <button class="btn" onclick="openAll()">展开全部</button>
-      <button class="btn" onclick="closeAll()">收起全部</button>
-      <button class="btn" onclick="window.print()">打印 / 导出 PDF</button>
+      <button class="btn" data-action="expand-visible">展开可见项</button>
+      <button class="btn" data-action="collapse-visible">收起可见项</button>
+      <button class="btn" data-action="print">打印 / 导出 PDF</button>
     </div>
   </header>
 
@@ -343,7 +30,7 @@
   <h2 class="section-title">水滴技术面 · 基础题修复包</h2>
 
   <article class="question-card">
-    <div class="question-head" onclick="toggleCard(this)">
+    <div class="question-head" data-action="toggle-card" role="button" tabindex="0" aria-expanded="false">
       <div>
         <div class="question-title">1. JavaScript 数组有哪些常用操作方法？</div>
         <div class="meta">
@@ -419,7 +106,7 @@
   </article>
 
   <article class="question-card">
-    <div class="question-head" onclick="toggleCard(this)">
+    <div class="question-head" data-action="toggle-card" role="button" tabindex="0" aria-expanded="false">
       <div>
         <div class="question-title">2. Array.prototype.reduce 有几个参数？</div>
         <div class="meta">
@@ -470,7 +157,7 @@ callbackFn(accumulator, currentValue, currentIndex, array)</code></pre>
   </article>
 
   <article class="question-card">
-    <div class="question-head" onclick="toggleCard(this)">
+    <div class="question-head" data-action="toggle-card" role="button" tabindex="0" aria-expanded="false">
       <div>
         <div class="question-title">3. Vue Router 有哪些路由守卫？</div>
         <div class="meta">
@@ -501,7 +188,7 @@ callbackFn(accumulator, currentValue, currentIndex, array)</code></pre>
 ├─ 全局：beforeEach / beforeResolve / afterEach
 ├─ 路由独享：beforeEnter
 └─ 组件内：beforeRouteEnter / beforeRouteUpdate / beforeRouteLeave</div>
-          <div class="analysis" style="margin-top:12px">回答时先给分类，再列 API。这样比零散报出 beforeEach、afterEach 更完整，也更容易继续承接执行时机和使用场景的追问。</div>
+          <div class="analysis follow-up">回答时先给分类，再列 API。这样比零散报出 beforeEach、afterEach 更完整，也更容易继续承接执行时机和使用场景的追问。</div>
         </div>
       </details>
       <details><summary>高频追问 + 答案</summary>
@@ -522,7 +209,7 @@ callbackFn(accumulator, currentValue, currentIndex, array)</code></pre>
   </article>
 
   <article class="question-card">
-    <div class="question-head" onclick="toggleCard(this)">
+    <div class="question-head" data-action="toggle-card" role="button" tabindex="0" aria-expanded="false">
       <div>
         <div class="question-title">4. Vue3 自定义指令有哪些生命周期？</div>
         <div class="meta">
@@ -556,7 +243,7 @@ callbackFn(accumulator, currentValue, currentIndex, array)</code></pre>
 更新：beforeUpdate → updated
 
 卸载：beforeUnmount → unmounted</div>
-          <div class="analysis" style="margin-top:12px">不要死背 7 个名字，按生命周期阶段分组记忆即可。自定义指令本质更偏底层 DOM 行为复用。</div>
+          <div class="analysis follow-up">不要死背 7 个名字，按生命周期阶段分组记忆即可。自定义指令本质更偏底层 DOM 行为复用。</div>
         </div>
       </details>
       <details><summary>高频追问 + 答案</summary>
@@ -576,7 +263,7 @@ callbackFn(accumulator, currentValue, currentIndex, array)</code></pre>
   </article>
 
   <article class="question-card">
-    <div class="question-head" onclick="toggleCard(this)">
+    <div class="question-head" data-action="toggle-card" role="button" tabindex="0" aria-expanded="false">
       <div>
         <div class="question-title">5. Cookie 和 localStorage 有什么区别？</div>
         <div class="meta">
@@ -630,7 +317,7 @@ callbackFn(accumulator, currentValue, currentIndex, array)</code></pre>
   </article>
 
   <article class="question-card">
-    <div class="question-head" onclick="toggleCard(this)">
+    <div class="question-head" data-action="toggle-card" role="button" tabindex="0" aria-expanded="false">
       <div>
         <div class="question-title">6. 主域名和子域名如何共享登录态 / 实现免登？</div>
         <div class="meta">
@@ -695,8 +382,8 @@ code / ticket
   </article>
 
   <h2 class="section-title">使用规则</h2>
-  <section class="question-card open">
-    <div class="question-body" style="display:block;border-top:none;padding-top:22px">
+  <section class="question-card usage-card open">
+    <div class="question-body">
       <div class="analysis">
         <strong>建议每题复习顺序：</strong><br>
         ① 只看题目，闭卷说 30 秒；<br>
@@ -712,18 +399,6 @@ code / ticket
   <div class="footer">Front-end Interview Memory System · Foldable Local Edition</div>
 </div>
 
-<script>
-function toggleCard(head){
-  head.parentElement.classList.toggle('open');
-}
-function openAll(){
-  document.querySelectorAll('.question-card').forEach(card => card.classList.add('open'));
-  document.querySelectorAll('details').forEach(d => d.open = true);
-}
-function closeAll(){
-  document.querySelectorAll('.question-card').forEach(card => card.classList.remove('open'));
-  document.querySelectorAll('details').forEach(d => d.open = false);
-}
-</script>
+<script src="assets/basic.js"></script>
 </body>
 </html>

@@ -1,18 +1,14 @@
 <!DOCTYPE html>
-<html lang="zh-CN"><head><meta charset="utf-8"/><meta content="width=device-width,initial-scale=1" name="viewport"/><title>JavaScript｜前端基础题库</title><style>
-:root{--bg:#f5f7fb;--paper:#fff;--text:#172033;--muted:#667085;--line:#e4e7ec;--primary:#2563eb;--primary-soft:#eff6ff;--accent:#7c3aed;--accent-soft:#f5f3ff;--warn:#b45309;--warn-soft:#fffbeb;--danger:#b91c1c;--danger-soft:#fef2f2;--good:#047857;--good-soft:#ecfdf5;--shadow:0 10px 28px rgba(16,24,40,.07)}
-*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;line-height:1.7}.page{max-width:1180px;margin:auto;padding:28px}.hero{background:linear-gradient(135deg,var(--primary-soft),var(--accent-soft));border:1px solid var(--line);border-radius:24px;padding:30px;box-shadow:var(--shadow)}h1{margin:4px 0 8px;font-size:32px}.hero p{margin:0;color:var(--muted)}.back{display:inline-block;margin-bottom:10px;color:var(--primary);text-decoration:none;font-size:13px}.toolbar{display:flex;gap:8px;flex-wrap:wrap;margin-top:18px}.btn{border:1px solid var(--line);background:var(--paper);padding:8px 12px;border-radius:10px;cursor:pointer}.legend{display:flex;gap:8px;flex-wrap:wrap;margin:18px 0}.pill{padding:5px 9px;border-radius:999px;border:1px solid var(--line);font-size:12px}.s{background:var(--danger-soft);color:var(--danger)}.a{background:var(--warn-soft);color:var(--warn)}.b{background:var(--good-soft);color:var(--good)}.question-card{background:var(--paper);border:1px solid var(--line);border-radius:16px;margin:12px 0;box-shadow:var(--shadow);overflow:hidden}.head{display:grid;grid-template-columns:70px 1fr;gap:12px;padding:16px 18px;cursor:pointer}.rank{font-weight:900;font-size:18px}.title{font-weight:800;font-size:17px}.meta{display:flex;gap:7px;flex-wrap:wrap;margin-top:7px}.tag{font-size:11px;padding:4px 8px;border-radius:999px;border:1px solid var(--line);background:var(--bg);color:var(--muted)}.source{background:var(--primary-soft);color:var(--primary)}.body{display:none;padding:0 18px 18px;border-top:1px solid var(--line)}.question-card.open .body{display:block}.note{margin-top:12px;background:var(--accent-soft);border-left:4px solid var(--accent);padding:12px 14px;border-radius:10px}.placeholder{margin-top:10px;background:var(--primary-soft);border-left:4px solid var(--primary);padding:12px 14px;border-radius:10px;color:var(--muted)}.section{margin:26px 0 10px;font-size:20px}.index-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:22px}.module{display:block;text-decoration:none;color:var(--text);background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:18px;box-shadow:var(--shadow)}.module:hover{border-color:var(--primary)}.module strong{font-size:19px}.module small{display:block;color:var(--muted);margin-top:4px}.footer{text-align:center;color:var(--muted);font-size:12px;padding:28px}.summary{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:18px 0}.summary div{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:14px}.summary strong{display:block;font-size:22px}
-@media(max-width:800px){.page{padding:14px}.index-grid{grid-template-columns:1fr}.summary{grid-template-columns:repeat(2,1fr)}.head{grid-template-columns:55px 1fr}}
-
-details{border:1px solid var(--line);border-radius:12px;margin-top:10px;overflow:hidden}summary{padding:11px 13px;font-weight:750;cursor:pointer;background:var(--bg);list-style:none}summary::-webkit-details-marker{display:none}summary:before{content:"▸";margin-right:7px;color:var(--primary)}details[open] summary:before{content:"▾"}.detail-content{padding:13px}.points{display:grid;gap:8px}.point{background:var(--primary-soft);padding:9px 11px;border-radius:9px}.answer{background:var(--primary-soft);border-left:4px solid var(--primary);padding:13px 15px;border-radius:10px}.analysis{background:var(--accent-soft);border-left:4px solid var(--accent);padding:13px 15px;border-radius:10px}.qa{background:var(--warn-soft);border-left:4px solid var(--warn);padding:12px 14px;border-radius:10px;margin:9px 0}.qa b{display:block;margin-bottom:4px}.memory{background:var(--good-soft);border-left:4px solid var(--good);padding:12px 14px;border-radius:10px;font-weight:700}.deps{background:#f8fafc;border:1px dashed var(--line);padding:12px 14px;border-radius:10px}code{font-family:SFMono-Regular,Consolas,monospace;background:rgba(37,99,235,.08);padding:1px 5px;border-radius:5px}</style></head>
-<body><div class="page">
+<html lang="zh-CN"><head><meta charset="utf-8"/><meta content="width=device-width,initial-scale=1" name="viewport"/><title>JavaScript｜前端基础题库</title><link rel="stylesheet" href="assets/basic.css"></head>
+<body class="bank-page">
+<a class="skip-link" href="#main-content">跳到主要内容</a><div id="main-content" class="page">
 <header class="hero"><a class="back" href="index.html">← 返回总目录</a><h1>JavaScript</h1><p>经典核心 + API / 易错细节。S 级题已补齐完整折叠答案，按 S → A → B 排序；先闭卷回答，再展开校准。</p>
-<div class="toolbar"><button class="btn" onclick="filterGrade('ALL')">全部</button><button class="btn" onclick="filterGrade('S')">只看 S</button><button class="btn" onclick="filterGrade('A')">只看 A</button><button class="btn" onclick="filterGrade('B')">只看 B</button><button class="btn" onclick="document.querySelectorAll('.question-card').forEach(x=&gt;x.classList.remove('open'))">全部收起</button></div></header>
+<div class="toolbar"><button class="btn" data-action="filter-grade" data-filter-grade="ALL" aria-pressed="true">全部</button><button class="btn" data-action="filter-grade" data-filter-grade="S" aria-pressed="false">只看 S</button><button class="btn" data-action="filter-grade" data-filter-grade="A" aria-pressed="false">只看 A</button><button class="btn" data-action="filter-grade" data-filter-grade="B" aria-pressed="false">只看 B</button><button class="btn" data-action="expand-visible">展开可见项</button><button class="btn" data-action="collapse-visible">收起可见项</button></div></header>
 <section class="summary"><div><strong>55</strong><span>总题量</span></div><div><strong>20</strong><span>S 级</span></div><div><strong>20</strong><span>A 级</span></div><div><strong>15</strong><span>B 级</span></div></section>
 <div class="legend"><span class="pill s">S：必须稳 / 深练</span><span class="pill a">A：高频扩展</span><span class="pill b">B：补充完整性</span></div>
 <h2 class="section">S 级题 · 必须优先掌握</h2>
 <article class="question-card" data-grade="S">
-<div class="head" onclick="this.parentElement.classList.toggle('open')">
+<div class="head" data-action="toggle-card" role="button" tabindex="0" aria-expanded="false">
 <div class="rank">#01</div>
 <div>
 <div class="title">JavaScript 有哪些数据类型？基本类型和引用类型有什么区别？</div>
@@ -34,7 +30,7 @@ details{border:1px solid var(--line);border-radius:12px;margin-top:10px;overflow
 </div>
 </article>
 <article class="question-card" data-grade="S">
-<div class="head" onclick="this.parentElement.classList.toggle('open')">
+<div class="head" data-action="toggle-card" role="button" tabindex="0" aria-expanded="false">
 <div class="rank">#02</div>
 <div>
 <div class="title">JavaScript 有哪些类型判断方式？各有什么局限？</div>
@@ -56,7 +52,7 @@ details{border:1px solid var(--line);border-radius:12px;margin-top:10px;overflow
 </div>
 </article>
 <article class="question-card" data-grade="S">
-<div class="head" onclick="this.parentElement.classList.toggle('open')">
+<div class="head" data-action="toggle-card" role="button" tabindex="0" aria-expanded="false">
 <div class="rank">#03</div>
 <div>
 <div class="title">Event Loop 是怎么工作的？宏任务和微任务的执行顺序是什么？</div>
@@ -78,7 +74,7 @@ details{border:1px solid var(--line);border-radius:12px;margin-top:10px;overflow
 </div>
 </article>
 <article class="question-card" data-grade="S">
-<div class="head" onclick="this.parentElement.classList.toggle('open')">
+<div class="head" data-action="toggle-card" role="button" tabindex="0" aria-expanded="false">
 <div class="rank">#04</div>
 <div>
 <div class="title">什么是闭包？有哪些应用、风险和内存问题？</div>
@@ -100,7 +96,7 @@ details{border:1px solid var(--line);border-radius:12px;margin-top:10px;overflow
 </div>
 </article>
 <article class="question-card" data-grade="S">
-<div class="head" onclick="this.parentElement.classList.toggle('open')">
+<div class="head" data-action="toggle-card" role="button" tabindex="0" aria-expanded="false">
 <div class="rank">#05</div>
 <div>
 <div class="title">this 的指向规则有哪些？箭头函数为什么特殊？</div>
@@ -122,7 +118,7 @@ details{border:1px solid var(--line);border-radius:12px;margin-top:10px;overflow
 </div>
 </article>
 <article class="question-card" data-grade="S">
-<div class="head" onclick="this.parentElement.classList.toggle('open')">
+<div class="head" data-action="toggle-card" role="button" tabindex="0" aria-expanded="false">
 <div class="rank">#06</div>
 <div>
 <div class="title">Promise 有哪些状态？链式调用、异常穿透、组合 API 怎么理解？</div>
@@ -144,7 +140,7 @@ details{border:1px solid var(--line);border-radius:12px;margin-top:10px;overflow
 </div>
 </article>
 <article class="question-card" data-grade="S">
-<div class="head" onclick="this.parentElement.classList.toggle('open')">
+<div class="head" data-action="toggle-card" role="button" tabindex="0" aria-expanded="false">
 <div class="rank">#07</div>
 <div>
 <div class="title">什么是原型、原型对象和原型链？</div>
@@ -166,7 +162,7 @@ details{border:1px solid var(--line);border-radius:12px;margin-top:10px;overflow
 </div>
 </article>
 <article class="question-card" data-grade="S">
-<div class="head" onclick="this.parentElement.classList.toggle('open')">
+<div class="head" data-action="toggle-card" role="button" tabindex="0" aria-expanded="false">
 <div class="rank">#08</div>
 <div>
 <div class="title">深拷贝和浅拷贝有什么区别？如何处理循环引用？</div>
@@ -188,7 +184,7 @@ details{border:1px solid var(--line);border-radius:12px;margin-top:10px;overflow
 </div>
 </article>
 <article class="question-card" data-grade="S">
-<div class="head" onclick="this.parentElement.classList.toggle('open')">
+<div class="head" data-action="toggle-card" role="button" tabindex="0" aria-expanded="false">
 <div class="rank">#09</div>
 <div>
 <div class="title">Array 有哪些常用方法？怎么分类？哪些会修改原数组？</div>
@@ -210,7 +206,7 @@ details{border:1px solid var(--line);border-radius:12px;margin-top:10px;overflow
 </div>
 </article>
 <article class="question-card" data-grade="S">
-<div class="head" onclick="this.parentElement.classList.toggle('open')">
+<div class="head" data-action="toggle-card" role="button" tabindex="0" aria-expanded="false">
 <div class="rank">#10</div>
 <div>
 <div class="title">Array.prototype.reduce 有几个参数？callback 有几个参数？</div>
@@ -232,7 +228,7 @@ details{border:1px solid var(--line);border-radius:12px;margin-top:10px;overflow
 </div>
 </article>
 <article class="question-card" data-grade="S">
-<div class="head" onclick="this.parentElement.classList.toggle('open')">
+<div class="head" data-action="toggle-card" role="button" tabindex="0" aria-expanded="false">
 <div class="rank">#11</div>
 <div>
 <div class="title">slice 和 splice 有什么区别？</div>
@@ -254,7 +250,7 @@ details{border:1px solid var(--line);border-radius:12px;margin-top:10px;overflow
 </div>
 </article>
 <article class="question-card" data-grade="S">
-<div class="head" onclick="this.parentElement.classList.toggle('open')">
+<div class="head" data-action="toggle-card" role="button" tabindex="0" aria-expanded="false">
 <div class="rank">#12</div>
 <div>
 <div class="title">map、forEach、filter 有什么区别？</div>
@@ -276,7 +272,7 @@ details{border:1px solid var(--line);border-radius:12px;margin-top:10px;overflow
 </div>
 </article>
 <article class="question-card" data-grade="S">
-<div class="head" onclick="this.parentElement.classList.toggle('open')">
+<div class="head" data-action="toggle-card" role="button" tabindex="0" aria-expanded="false">
 <div class="rank">#13</div>
 <div>
 <div class="title">sort() 默认怎么排序？为什么数字数组可能排错？</div>
@@ -298,7 +294,7 @@ details{border:1px solid var(--line);border-radius:12px;margin-top:10px;overflow
 </div>
 </article>
 <article class="question-card" data-grade="S">
-<div class="head" onclick="this.parentElement.classList.toggle('open')">
+<div class="head" data-action="toggle-card" role="button" tabindex="0" aria-expanded="false">
 <div class="rank">#14</div>
 <div>
 <div class="title">forEach 里面使用 async/await 有什么坑？</div>
@@ -320,7 +316,7 @@ details{border:1px solid var(--line);border-radius:12px;margin-top:10px;overflow
 </div>
 </article>
 <article class="question-card" data-grade="S">
-<div class="head" onclick="this.parentElement.classList.toggle('open')">
+<div class="head" data-action="toggle-card" role="button" tabindex="0" aria-expanded="false">
 <div class="rank">#15</div>
 <div>
 <div class="title">var、let、const、变量提升和 TDZ 有什么区别？</div>
@@ -342,7 +338,7 @@ details{border:1px solid var(--line);border-radius:12px;margin-top:10px;overflow
 </div>
 </article>
 <article class="question-card" data-grade="S">
-<div class="head" onclick="this.parentElement.classList.toggle('open')">
+<div class="head" data-action="toggle-card" role="button" tabindex="0" aria-expanded="false">
 <div class="rank">#16</div>
 <div>
 <div class="title">call、apply、bind 有什么区别？</div>
@@ -364,7 +360,7 @@ details{border:1px solid var(--line);border-radius:12px;margin-top:10px;overflow
 </div>
 </article>
 <article class="question-card" data-grade="S">
-<div class="head" onclick="this.parentElement.classList.toggle('open')">
+<div class="head" data-action="toggle-card" role="button" tabindex="0" aria-expanded="false">
 <div class="rank">#17</div>
 <div>
 <div class="title">new 一个对象时内部发生了什么？</div>
@@ -386,7 +382,7 @@ details{border:1px solid var(--line);border-radius:12px;margin-top:10px;overflow
 </div>
 </article>
 <article class="question-card" data-grade="S">
-<div class="head" onclick="this.parentElement.classList.toggle('open')">
+<div class="head" data-action="toggle-card" role="button" tabindex="0" aria-expanded="false">
 <div class="rank">#18</div>
 <div>
 <div class="title">instanceof 的原理是什么？</div>
@@ -408,7 +404,7 @@ details{border:1px solid var(--line);border-radius:12px;margin-top:10px;overflow
 </div>
 </article>
 <article class="question-card" data-grade="S">
-<div class="head" onclick="this.parentElement.classList.toggle('open')">
+<div class="head" data-action="toggle-card" role="button" tabindex="0" aria-expanded="false">
 <div class="rank">#19</div>
 <div>
 <div class="title">async/await 和 Promise 的关系是什么？连续 await 是串行还是并行？</div>
@@ -430,7 +426,7 @@ details{border:1px solid var(--line);border-radius:12px;margin-top:10px;overflow
 </div>
 </article>
 <article class="question-card" data-grade="S">
-<div class="head" onclick="this.parentElement.classList.toggle('open')">
+<div class="head" data-action="toggle-card" role="button" tabindex="0" aria-expanded="false">
 <div class="rank">#20</div>
 <div>
 <div class="title">防抖和节流有什么区别？边界条件有哪些？</div>
@@ -452,7 +448,7 @@ details{border:1px solid var(--line);border-radius:12px;margin-top:10px;overflow
 </div>
 </article><h2 class="section">A 级题 · 高频扩展</h2>
 <article class="question-card" data-grade="A">
-<div class="head" onclick="this.parentElement.classList.toggle('open')">
+<div class="head" data-action="toggle-card" role="button" tabindex="0" aria-expanded="false">
 <div class="rank">#21</div>
 <div>
 <div class="title">JavaScript 垃圾回收机制是什么？</div>
@@ -470,7 +466,7 @@ details{border:1px solid var(--line);border-radius:12px;margin-top:10px;overflow
 </div>
 </article>
 <article class="question-card" data-grade="A">
-<div class="head" onclick="this.parentElement.classList.toggle('open')">
+<div class="head" data-action="toggle-card" role="button" tabindex="0" aria-expanded="false">
 <div class="rank">#22</div>
 <div>
 <div class="title">前端常见 JavaScript 内存泄漏有哪些？怎么定位？</div>
@@ -488,7 +484,7 @@ details{border:1px solid var(--line);border-radius:12px;margin-top:10px;overflow
 </div>
 </article>
 <article class="question-card" data-grade="A">
-<div class="head" onclick="this.parentElement.classList.toggle('open')">
+<div class="head" data-action="toggle-card" role="button" tabindex="0" aria-expanded="false">
 <div class="rank">#23</div>
 <div>
 <div class="title">作用域和作用域链是什么？</div>
@@ -506,7 +502,7 @@ details{border:1px solid var(--line);border-radius:12px;margin-top:10px;overflow
 </div>
 </article>
 <article class="question-card" data-grade="A">
-<div class="head" onclick="this.parentElement.classList.toggle('open')">
+<div class="head" data-action="toggle-card" role="button" tabindex="0" aria-expanded="false">
 <div class="rank">#24</div>
 <div>
 <div class="title">==、===、Object.is 有什么区别？</div>
@@ -524,7 +520,7 @@ details{border:1px solid var(--line);border-radius:12px;margin-top:10px;overflow
 </div>
 </article>
 <article class="question-card" data-grade="A">
-<div class="head" onclick="this.parentElement.classList.toggle('open')">
+<div class="head" data-action="toggle-card" role="button" tabindex="0" aria-expanded="false">
 <div class="rank">#25</div>
 <div>
 <div class="title">事件捕获、冒泡和事件委托分别是什么？</div>
@@ -542,7 +538,7 @@ details{border:1px solid var(--line);border-radius:12px;margin-top:10px;overflow
 </div>
 </article>
 <article class="question-card" data-grade="A">
-<div class="head" onclick="this.parentElement.classList.toggle('open')">
+<div class="head" data-action="toggle-card" role="button" tabindex="0" aria-expanded="false">
 <div class="rank">#26</div>
 <div>
 <div class="title">Promise.all、allSettled、race、any 有什么区别？</div>
@@ -560,7 +556,7 @@ details{border:1px solid var(--line);border-radius:12px;margin-top:10px;overflow
 </div>
 </article>
 <article class="question-card" data-grade="A">
-<div class="head" onclick="this.parentElement.classList.toggle('open')">
+<div class="head" data-action="toggle-card" role="button" tabindex="0" aria-expanded="false">
 <div class="rank">#27</div>
 <div>
 <div class="title">Object.assign 是深拷贝还是浅拷贝？</div>
@@ -578,7 +574,7 @@ details{border:1px solid var(--line);border-radius:12px;margin-top:10px;overflow
 </div>
 </article>
 <article class="question-card" data-grade="A">
-<div class="head" onclick="this.parentElement.classList.toggle('open')">
+<div class="head" data-action="toggle-card" role="button" tabindex="0" aria-expanded="false">
 <div class="rank">#28</div>
 <div>
 <div class="title">JSON.stringify/parse 做深拷贝有什么坑？</div>
@@ -596,7 +592,7 @@ details{border:1px solid var(--line);border-radius:12px;margin-top:10px;overflow
 </div>
 </article>
 <article class="question-card" data-grade="A">
-<div class="head" onclick="this.parentElement.classList.toggle('open')">
+<div class="head" data-action="toggle-card" role="button" tabindex="0" aria-expanded="false">
 <div class="rank">#29</div>
 <div>
 <div class="title">Map、Set、WeakMap、WeakSet 有什么区别？</div>
@@ -614,7 +610,7 @@ details{border:1px solid var(--line);border-radius:12px;margin-top:10px;overflow
 </div>
 </article>
 <article class="question-card" data-grade="A">
-<div class="head" onclick="this.parentElement.classList.toggle('open')">
+<div class="head" data-action="toggle-card" role="button" tabindex="0" aria-expanded="false">
 <div class="rank">#30</div>
 <div>
 <div class="title">Object.keys、values、entries 分别做什么？</div>
@@ -632,7 +628,7 @@ details{border:1px solid var(--line);border-radius:12px;margin-top:10px;overflow
 </div>
 </article>
 <article class="question-card" data-grade="A">
-<div class="head" onclick="this.parentElement.classList.toggle('open')">
+<div class="head" data-action="toggle-card" role="button" tabindex="0" aria-expanded="false">
 <div class="rank">#31</div>
 <div>
 <div class="title">Object.hasOwn、hasOwnProperty、in 有什么区别？</div>
@@ -650,7 +646,7 @@ details{border:1px solid var(--line);border-radius:12px;margin-top:10px;overflow
 </div>
 </article>
 <article class="question-card" data-grade="A">
-<div class="head" onclick="this.parentElement.classList.toggle('open')">
+<div class="head" data-action="toggle-card" role="button" tabindex="0" aria-expanded="false">
 <div class="rank">#32</div>
 <div>
 <div class="title">push/pop/shift/unshift 分别返回什么？</div>
@@ -668,7 +664,7 @@ details{border:1px solid var(--line);border-radius:12px;margin-top:10px;overflow
 </div>
 </article>
 <article class="question-card" data-grade="A">
-<div class="head" onclick="this.parentElement.classList.toggle('open')">
+<div class="head" data-action="toggle-card" role="button" tabindex="0" aria-expanded="false">
 <div class="rank">#33</div>
 <div>
 <div class="title">find、findIndex、includes、indexOf 有什么区别？</div>
@@ -686,7 +682,7 @@ details{border:1px solid var(--line);border-radius:12px;margin-top:10px;overflow
 </div>
 </article>
 <article class="question-card" data-grade="A">
-<div class="head" onclick="this.parentElement.classList.toggle('open')">
+<div class="head" data-action="toggle-card" role="button" tabindex="0" aria-expanded="false">
 <div class="rank">#34</div>
 <div>
 <div class="title">some 和 every 有什么区别？</div>
@@ -704,7 +700,7 @@ details{border:1px solid var(--line);border-radius:12px;margin-top:10px;overflow
 </div>
 </article>
 <article class="question-card" data-grade="A">
-<div class="head" onclick="this.parentElement.classList.toggle('open')">
+<div class="head" data-action="toggle-card" role="button" tabindex="0" aria-expanded="false">
 <div class="rank">#35</div>
 <div>
 <div class="title">null 和 undefined 有什么区别？</div>
@@ -722,7 +718,7 @@ details{border:1px solid var(--line);border-radius:12px;margin-top:10px;overflow
 </div>
 </article>
 <article class="question-card" data-grade="A">
-<div class="head" onclick="this.parentElement.classList.toggle('open')">
+<div class="head" data-action="toggle-card" role="button" tabindex="0" aria-expanded="false">
 <div class="rank">#36</div>
 <div>
 <div class="title">NaN 有什么特点？Number.isNaN 和 isNaN 有什么区别？</div>
@@ -740,7 +736,7 @@ details{border:1px solid var(--line);border-radius:12px;margin-top:10px;overflow
 </div>
 </article>
 <article class="question-card" data-grade="A">
-<div class="head" onclick="this.parentElement.classList.toggle('open')">
+<div class="head" data-action="toggle-card" role="button" tabindex="0" aria-expanded="false">
 <div class="rank">#37</div>
 <div>
 <div class="title">JavaScript 函数参数是值传递还是引用传递？</div>
@@ -758,7 +754,7 @@ details{border:1px solid var(--line);border-radius:12px;margin-top:10px;overflow
 </div>
 </article>
 <article class="question-card" data-grade="A">
-<div class="head" onclick="this.parentElement.classList.toggle('open')">
+<div class="head" data-action="toggle-card" role="button" tabindex="0" aria-expanded="false">
 <div class="rank">#38</div>
 <div>
 <div class="title">什么是事件委托？为什么对大列表有帮助？</div>
@@ -776,7 +772,7 @@ details{border:1px solid var(--line);border-radius:12px;margin-top:10px;overflow
 </div>
 </article>
 <article class="question-card" data-grade="A">
-<div class="head" onclick="this.parentElement.classList.toggle('open')">
+<div class="head" data-action="toggle-card" role="button" tabindex="0" aria-expanded="false">
 <div class="rank">#39</div>
 <div>
 <div class="title">Object.create 做了什么？如何创建无原型对象？</div>
@@ -794,7 +790,7 @@ details{border:1px solid var(--line);border-radius:12px;margin-top:10px;overflow
 </div>
 </article>
 <article class="question-card" data-grade="A">
-<div class="head" onclick="this.parentElement.classList.toggle('open')">
+<div class="head" data-action="toggle-card" role="button" tabindex="0" aria-expanded="false">
 <div class="rank">#40</div>
 <div>
 <div class="title">Array.from、Array.of、Array.isArray 分别做什么？</div>
@@ -812,7 +808,7 @@ details{border:1px solid var(--line);border-radius:12px;margin-top:10px;overflow
 </div>
 </article><h2 class="section">B 级题 · 补充完整性</h2>
 <article class="question-card" data-grade="B">
-<div class="head" onclick="this.parentElement.classList.toggle('open')">
+<div class="head" data-action="toggle-card" role="button" tabindex="0" aria-expanded="false">
 <div class="rank">#41</div>
 <div>
 <div class="title">Object.freeze、seal、preventExtensions 有什么区别？</div>
@@ -830,7 +826,7 @@ details{border:1px solid var(--line);border-radius:12px;margin-top:10px;overflow
 </div>
 </article>
 <article class="question-card" data-grade="B">
-<div class="head" onclick="this.parentElement.classList.toggle('open')">
+<div class="head" data-action="toggle-card" role="button" tabindex="0" aria-expanded="false">
 <div class="rank">#42</div>
 <div>
 <div class="title">flat 和 flatMap 有什么区别？</div>
@@ -848,7 +844,7 @@ details{border:1px solid var(--line);border-radius:12px;margin-top:10px;overflow
 </div>
 </article>
 <article class="question-card" data-grade="B">
-<div class="head" onclick="this.parentElement.classList.toggle('open')">
+<div class="head" data-action="toggle-card" role="button" tabindex="0" aria-expanded="false">
 <div class="rank">#43</div>
 <div>
 <div class="title">String 的 slice 和 substring 有什么区别？</div>
@@ -866,7 +862,7 @@ details{border:1px solid var(--line);border-radius:12px;margin-top:10px;overflow
 </div>
 </article>
 <article class="question-card" data-grade="B">
-<div class="head" onclick="this.parentElement.classList.toggle('open')">
+<div class="head" data-action="toggle-card" role="button" tabindex="0" aria-expanded="false">
 <div class="rank">#44</div>
 <div>
 <div class="title">split 和 join 分别作用于什么？</div>
@@ -884,7 +880,7 @@ details{border:1px solid var(--line);border-radius:12px;margin-top:10px;overflow
 </div>
 </article>
 <article class="question-card" data-grade="B">
-<div class="head" onclick="this.parentElement.classList.toggle('open')">
+<div class="head" data-action="toggle-card" role="button" tabindex="0" aria-expanded="false">
 <div class="rank">#45</div>
 <div>
 <div class="title">delete obj.x 和 obj.x = undefined 有什么区别？</div>
@@ -902,7 +898,7 @@ details{border:1px solid var(--line);border-radius:12px;margin-top:10px;overflow
 </div>
 </article>
 <article class="question-card" data-grade="B">
-<div class="head" onclick="this.parentElement.classList.toggle('open')">
+<div class="head" data-action="toggle-card" role="button" tabindex="0" aria-expanded="false">
 <div class="rank">#46</div>
 <div>
 <div class="title">getter/setter 是怎么工作的？</div>
@@ -920,7 +916,7 @@ details{border:1px solid var(--line);border-radius:12px;margin-top:10px;overflow
 </div>
 </article>
 <article class="question-card" data-grade="B">
-<div class="head" onclick="this.parentElement.classList.toggle('open')">
+<div class="head" data-action="toggle-card" role="button" tabindex="0" aria-expanded="false">
 <div class="rank">#47</div>
 <div>
 <div class="title">属性描述符 writable/configurable/enumerable 是什么？</div>
@@ -938,7 +934,7 @@ details{border:1px solid var(--line);border-radius:12px;margin-top:10px;overflow
 </div>
 </article>
 <article class="question-card" data-grade="B">
-<div class="head" onclick="this.parentElement.classList.toggle('open')">
+<div class="head" data-action="toggle-card" role="button" tabindex="0" aria-expanded="false">
 <div class="rank">#48</div>
 <div>
 <div class="title">严格模式解决了什么问题？</div>
@@ -956,7 +952,7 @@ details{border:1px solid var(--line);border-radius:12px;margin-top:10px;overflow
 </div>
 </article>
 <article class="question-card" data-grade="B">
-<div class="head" onclick="this.parentElement.classList.toggle('open')">
+<div class="head" data-action="toggle-card" role="button" tabindex="0" aria-expanded="false">
 <div class="rank">#49</div>
 <div>
 <div class="title">0.1 + 0.2 为什么不等于 0.3？</div>
@@ -974,7 +970,7 @@ details{border:1px solid var(--line);border-radius:12px;margin-top:10px;overflow
 </div>
 </article>
 <article class="question-card" data-grade="B">
-<div class="head" onclick="this.parentElement.classList.toggle('open')">
+<div class="head" data-action="toggle-card" role="button" tabindex="0" aria-expanded="false">
 <div class="rank">#50</div>
 <div>
 <div class="title">类数组是什么？如何转换成数组？</div>
@@ -992,7 +988,7 @@ details{border:1px solid var(--line);border-radius:12px;margin-top:10px;overflow
 </div>
 </article>
 <article class="question-card" data-grade="B">
-<div class="head" onclick="this.parentElement.classList.toggle('open')">
+<div class="head" data-action="toggle-card" role="button" tabindex="0" aria-expanded="false">
 <div class="rank">#51</div>
 <div>
 <div class="title">稀疏数组和普通数组有什么区别？</div>
@@ -1010,7 +1006,7 @@ details{border:1px solid var(--line);border-radius:12px;margin-top:10px;overflow
 </div>
 </article>
 <article class="question-card" data-grade="B">
-<div class="head" onclick="this.parentElement.classList.toggle('open')">
+<div class="head" data-action="toggle-card" role="button" tabindex="0" aria-expanded="false">
 <div class="rank">#52</div>
 <div>
 <div class="title">Array.prototype.at 有什么价值？</div>
@@ -1028,7 +1024,7 @@ details{border:1px solid var(--line);border-radius:12px;margin-top:10px;overflow
 </div>
 </article>
 <article class="question-card" data-grade="B">
-<div class="head" onclick="this.parentElement.classList.toggle('open')">
+<div class="head" data-action="toggle-card" role="button" tabindex="0" aria-expanded="false">
 <div class="rank">#53</div>
 <div>
 <div class="title">ES2023 的 toSorted/toReversed/toSpliced 为什么有价值？</div>
@@ -1046,7 +1042,7 @@ details{border:1px solid var(--line);border-radius:12px;margin-top:10px;overflow
 </div>
 </article>
 <article class="question-card" data-grade="B">
-<div class="head" onclick="this.parentElement.classList.toggle('open')">
+<div class="head" data-action="toggle-card" role="button" tabindex="0" aria-expanded="false">
 <div class="rank">#54</div>
 <div>
 <div class="title">Promise executor 是同步还是异步执行？</div>
@@ -1064,7 +1060,7 @@ details{border:1px solid var(--line);border-radius:12px;margin-top:10px;overflow
 </div>
 </article>
 <article class="question-card" data-grade="B">
-<div class="head" onclick="this.parentElement.classList.toggle('open')">
+<div class="head" data-action="toggle-card" role="button" tabindex="0" aria-expanded="false">
 <div class="rank">#55</div>
 <div>
 <div class="title">queueMicrotask 和 Promise.then 有什么关系？</div>
@@ -1083,5 +1079,5 @@ details{border:1px solid var(--line);border-radius:12px;margin-top:10px;overflow
 </article>
 <div class="footer">Front-end Interview Basic Bank · JavaScript</div>
 </div>
-<script>function filterGrade(g){document.querySelectorAll('.question-card').forEach(c=>c.style.display=(g==='ALL'||c.dataset.grade===g)?'block':'none')}</script>
+<script src="assets/basic.js"></script>
 </body></html>

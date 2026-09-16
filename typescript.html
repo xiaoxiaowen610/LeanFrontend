@@ -1,33 +1,14 @@
 <!DOCTYPE html>
-<html lang="zh-CN"><head><meta charset="utf-8"/><meta content="width=device-width,initial-scale=1" name="viewport"/><title>TypeScript｜前端基础题库</title><style>
-:root{--bg:#f5f7fb;--paper:#fff;--text:#172033;--muted:#667085;--line:#e4e7ec;--primary:#2563eb;--primary-soft:#eff6ff;--accent:#7c3aed;--accent-soft:#f5f3ff;--warn:#b45309;--warn-soft:#fffbeb;--danger:#b91c1c;--danger-soft:#fef2f2;--good:#047857;--good-soft:#ecfdf5;--shadow:0 10px 28px rgba(16,24,40,.07)}
-*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;line-height:1.7}.page{max-width:1180px;margin:auto;padding:28px}.hero{background:linear-gradient(135deg,var(--primary-soft),var(--accent-soft));border:1px solid var(--line);border-radius:24px;padding:30px;box-shadow:var(--shadow)}h1{margin:4px 0 8px;font-size:32px}.hero p{margin:0;color:var(--muted)}.back{display:inline-block;margin-bottom:10px;color:var(--primary);text-decoration:none;font-size:13px}.toolbar{display:flex;gap:8px;flex-wrap:wrap;margin-top:18px}.btn{border:1px solid var(--line);background:var(--paper);padding:8px 12px;border-radius:10px;cursor:pointer}.legend{display:flex;gap:8px;flex-wrap:wrap;margin:18px 0}.pill{padding:5px 9px;border-radius:999px;border:1px solid var(--line);font-size:12px}.s{background:var(--danger-soft);color:var(--danger)}.a{background:var(--warn-soft);color:var(--warn)}.b{background:var(--good-soft);color:var(--good)}.question-card{background:var(--paper);border:1px solid var(--line);border-radius:16px;margin:12px 0;box-shadow:var(--shadow);overflow:hidden}.head{display:grid;grid-template-columns:70px 1fr;gap:12px;padding:16px 18px;cursor:pointer}.rank{font-weight:900;font-size:18px}.title{font-weight:800;font-size:17px}.meta{display:flex;gap:7px;flex-wrap:wrap;margin-top:7px}.tag{font-size:11px;padding:4px 8px;border-radius:999px;border:1px solid var(--line);background:var(--bg);color:var(--muted)}.source{background:var(--primary-soft);color:var(--primary)}.body{display:none;padding:0 18px 18px;border-top:1px solid var(--line)}.question-card.open .body{display:block}.note{margin-top:12px;background:var(--accent-soft);border-left:4px solid var(--accent);padding:12px 14px;border-radius:10px}.placeholder{margin-top:10px;background:var(--primary-soft);border-left:4px solid var(--primary);padding:12px 14px;border-radius:10px;color:var(--muted)}.section{margin:26px 0 10px;font-size:20px}.index-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:22px}.module{display:block;text-decoration:none;color:var(--text);background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:18px;box-shadow:var(--shadow)}.module:hover{border-color:var(--primary)}.module strong{font-size:19px}.module small{display:block;color:var(--muted);margin-top:4px}.footer{text-align:center;color:var(--muted);font-size:12px;padding:28px}.summary{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:18px 0}.summary div{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:14px}.summary strong{display:block;font-size:22px}
-@media(max-width:800px){.page{padding:14px}.index-grid{grid-template-columns:1fr}.summary{grid-template-columns:repeat(2,1fr)}.head{grid-template-columns:55px 1fr}}
-
-details{border:1px solid var(--line);border-radius:12px;margin-top:10px;overflow:hidden}
-summary{cursor:pointer;list-style:none;padding:11px 13px;font-weight:750;background:var(--bg)}
-summary::-webkit-details-marker{display:none}
-summary:before{content:"▸";display:inline-block;margin-right:7px;color:var(--primary)}
-details[open] summary:before{content:"▾"}
-.detail-content{padding:13px 14px}
-.outline{display:grid;gap:8px}
-.outline-item{background:var(--primary-soft);padding:9px 11px;border-radius:9px}
-.answer{background:var(--primary-soft);border-left:4px solid var(--primary);padding:13px 15px;border-radius:10px;white-space:pre-line}
-.analysis{background:var(--accent-soft);border-left:4px solid var(--accent);padding:13px 15px;border-radius:10px}
-.qa{border:1px solid var(--line);border-radius:10px;padding:11px 12px;margin:8px 0}
-.qa strong{color:var(--primary)}
-.memory{background:var(--good-soft);border-left:4px solid var(--good);padding:12px 14px;border-radius:10px;font-weight:700}
-.loss{background:var(--danger-soft);border-left:4px solid var(--danger);padding:12px 14px;border-radius:10px}
-.deps{background:var(--warn-soft);border-left:4px solid var(--warn);padding:12px 14px;border-radius:10px}
-</style></head>
-<body><div class="page">
+<html lang="zh-CN"><head><meta charset="utf-8"/><meta content="width=device-width,initial-scale=1" name="viewport"/><title>TypeScript｜前端基础题库</title><link rel="stylesheet" href="assets/basic.css"></head>
+<body class="bank-page">
+<a class="skip-link" href="#main-content">跳到主要内容</a><div id="main-content" class="page">
 <header class="hero"><a class="back" href="index.html">← 返回总目录</a><h1>TypeScript</h1><p>高级前端基本盘 + 易错细节。6 道 S 级已全部补成完整折叠卡片；A/B 级保留骨架。</p>
-<div class="toolbar"><button class="btn" onclick="filterGrade('ALL')">全部</button><button class="btn" onclick="filterGrade('S')">只看 S</button><button class="btn" onclick="filterGrade('A')">只看 A</button><button class="btn" onclick="filterGrade('B')">只看 B</button><button class="btn" onclick="document.querySelectorAll('.question-card').forEach(x=&gt;x.classList.remove('open'))">全部收起</button></div></header>
+<div class="toolbar"><button class="btn" data-action="filter-grade" data-filter-grade="ALL" aria-pressed="true">全部</button><button class="btn" data-action="filter-grade" data-filter-grade="S" aria-pressed="false">只看 S</button><button class="btn" data-action="filter-grade" data-filter-grade="A" aria-pressed="false">只看 A</button><button class="btn" data-action="filter-grade" data-filter-grade="B" aria-pressed="false">只看 B</button><button class="btn" data-action="expand-visible">展开可见项</button><button class="btn" data-action="collapse-visible">收起可见项</button></div></header>
 <section class="summary"><div><strong>20</strong><span>总题量</span></div><div><strong>6</strong><span>S 级</span></div><div><strong>9</strong><span>A 级</span></div><div><strong>5</strong><span>B 级</span></div></section>
 <div class="legend"><span class="pill s">S：必须稳 / 深练</span><span class="pill a">A：高频扩展</span><span class="pill b">B：补充完整性</span></div>
 <h2 class="section">S 级题 · 必须优先掌握</h2>
 <article class="question-card" data-grade="S">
-<div class="head" onclick="this.parentElement.classList.toggle('open')">
+<div class="head" data-action="toggle-card" role="button" tabindex="0" aria-expanded="false">
 <div class="rank">#01</div>
 <div>
 <div class="title">type 和 interface 有什么区别？</div>
@@ -53,7 +34,7 @@ interface 也不是“不能做联合”，而是它自己不能直接声明成�
 我的使用习惯是：稳定对象契约、公共扩展点优先考虑 interface；复杂类型运算、联合/交叉/工具类型组合优先 type。</div></div></details><details><summary>答案整体解析</summary><div class="detail-content"><div class="analysis">这题最容易变成死背差异表。高级回答应该落到“表达能力”和“设计边界”上。</div></div></details><details><summary>高频追问 + 答案</summary><div class="detail-content"><div class="qa"><strong>追问 1：interface 可以重复声明吗？</strong><div>可以，同名 interface 会 declaration merging；type 同名重复声明会报错。</div></div><div class="qa"><strong>追问 2：type 能继承 interface 吗？</strong><div>可以通过交叉类型组合，例如 type A = B &amp; { x:number }。</div></div><div class="qa"><strong>追问 3：class implements 能不能实现 type？</strong><div>只要 type 最终描述的是对象结构，可以 implements；但联合类型这类不适合作为 class 实现契约。</div></div><div class="qa"><strong>追问 4：团队里到底统一用哪个？</strong><div>都可以，关键是建立一致约定。公共扩展型 API 常用 interface，复杂类型组合常用 type。</div></div></div></details><details><summary>失分点 / 易错点</summary><div class="detail-content"><div class="loss">常见失分：说“interface 能继承，type 不能”，这是错误的简化。</div></div></details><details><summary>记忆钩子</summary><div class="detail-content"><div class="memory">interface = 对象契约/可合并；type = 更通用类型表达式。</div></div></details><details><summary>前置知识 / 关联知识</summary><div class="detail-content"><div class="deps">前置：对象类型、联合/交叉类型。关联：extends、implements、declaration merging。</div></div></details></div>
 </article>
 <article class="question-card" data-grade="S">
-<div class="head" onclick="this.parentElement.classList.toggle('open')">
+<div class="head" data-action="toggle-card" role="button" tabindex="0" aria-expanded="false">
 <div class="rank">#02</div>
 <div>
 <div class="title">any 和 unknown 有什么区别？</div>
@@ -76,7 +57,7 @@ unknown 则表示“我现在不知道它是什么，但在确认之前不能随
 一句话：any 是放弃类型检查；unknown 是保留不确定性，但强迫你验证。</div></div></details><details><summary>答案整体解析</summary><div class="detail-content"><div class="analysis">高级前端要建立“边界输入先 unknown，再校验”的意识，这和后端返回数据运行时校验是同一套思维。</div></div></details><details><summary>高频追问 + 答案</summary><div class="detail-content"><div class="qa"><strong>追问 1：unknown 能赋值给 string 吗？</strong><div>不能直接赋，需要先缩小到 string。</div></div><div class="qa"><strong>追问 2：string 能赋值给 unknown 吗？</strong><div>可以，任意类型都能赋给 unknown。</div></div><div class="qa"><strong>追问 3：any 能传染吗？</strong><div>会。any 参与表达式、对象访问、函数返回后，往往让后续类型检查失去意义。</div></div><div class="qa"><strong>追问 4：catch 里的 error 为什么推荐 unknown？</strong><div>因为运行时可以 throw 任意值，不一定是 Error；unknown 会强迫你先判断。</div></div></div></details><details><summary>失分点 / 易错点</summary><div class="detail-content"><div class="loss">常见失分：只说 unknown 比 any 安全，却说不出“必须先 narrow”这一核心。</div></div></details><details><summary>记忆钩子</summary><div class="detail-content"><div class="memory">any = 关掉检查；unknown = 先不知道，但用前必须证明。</div></div></details><details><summary>前置知识 / 关联知识</summary><div class="detail-content"><div class="deps">前置：类型收窄。关联：API边界、zod、运行时校验。</div></div></details></div>
 </article>
 <article class="question-card" data-grade="S">
-<div class="head" onclick="this.parentElement.classList.toggle('open')">
+<div class="head" data-action="toggle-card" role="button" tabindex="0" aria-expanded="false">
 <div class="rank">#03</div>
 <div>
 <div class="title">泛型是什么？为什么需要泛型？</div>
@@ -115,7 +96,7 @@ function getId&lt;T extends { id: string }&gt;(obj: T) {
 所以泛型本质是：在保持类型信息的前提下复用逻辑。</div></div></details><details><summary>答案整体解析</summary><div class="detail-content"><div class="analysis">这题高级回答要把 any 对比带出来。泛型的核心不是“可以传任何类型”，而是“建立类型关系”。</div></div></details><details><summary>高频追问 + 答案</summary><div class="detail-content"><div class="qa"><strong>追问 1：泛型和 any 最大区别？</strong><div>any 丢掉具体类型关系；泛型把调用方实际类型保留下来并贯穿输入输出。</div></div><div class="qa"><strong>追问 2：extends 在泛型里一定是继承吗？</strong><div>更准确是约束：T 必须满足某种类型条件。</div></div><div class="qa"><strong>追问 3：泛型可以有默认值吗？</strong><div>可以，例如 type ApiResponse&lt;T = unknown&gt; = ...</div></div><div class="qa"><strong>追问 4：什么时候不该用泛型？</strong><div>如果不同类型之间没有需要保持的关系，或者只有一个具体类型，强行泛型会增加复杂度。</div></div></div></details><details><summary>失分点 / 易错点</summary><div class="detail-content"><div class="loss">常见失分：回答“泛型就是类型复用”，太空泛，没有说输入输出类型关系。</div></div></details><details><summary>记忆钩子</summary><div class="detail-content"><div class="memory">泛型 = 给类型加参数；关键是“保留关系”，不是“随便什么都行”。</div></div></details><details><summary>前置知识 / 关联知识</summary><div class="detail-content"><div class="deps">前置：函数类型、对象类型。关联：泛型约束、Utility Types、组件类型。</div></div></details></div>
 </article>
 <article class="question-card" data-grade="S">
-<div class="head" onclick="this.parentElement.classList.toggle('open')">
+<div class="head" data-action="toggle-card" role="button" tabindex="0" aria-expanded="false">
 <div class="rank">#04</div>
 <div>
 <div class="title">常用 Utility Types：Partial / Required / Pick / Omit / Record / Readonly</div>
@@ -153,7 +134,7 @@ type UserMap = Record&lt;string, User&gt;
 从底层看，这些工具类型主要依赖 keyof、mapped types、条件类型等能力。因此面试如果继续追问，我至少要能说出 Partial 大致就是遍历 keyof T，把每个属性加上 ?。</div></div></details><details><summary>答案整体解析</summary><div class="detail-content"><div class="analysis">这类题属于“API 完整性 + 类型机制”。高级岗位不能只会名字，还要能说出 1~2 个真实场景。</div></div></details><details><summary>高频追问 + 答案</summary><div class="detail-content"><div class="qa"><strong>追问 1：Partial 是深层 Partial 吗？</strong><div>不是，内置 Partial 只作用于第一层属性。深层可选需要自定义递归类型。</div></div><div class="qa"><strong>追问 2：Readonly 是运行时真的不能改吗？</strong><div>不是。它只在 TypeScript 编译期限制赋值，运行时对象仍是普通 JS 对象。</div></div><div class="qa"><strong>追问 3：Omit 底层怎么实现？</strong><div>可以理解为 Pick&lt;T, Exclude&lt;keyof T, K&gt;&gt;。</div></div><div class="qa"><strong>追问 4：Record 常见场景？</strong><div>枚举/联合 key 到配置对象、实体 id 到实体对象、状态码到文案等。</div></div></div></details><details><summary>失分点 / 易错点</summary><div class="detail-content"><div class="loss">常见失分：能说定义，但没有业务例子，也不知道 Partial 不是递归的。</div></div></details><details><summary>记忆钩子</summary><div class="detail-content"><div class="memory">Partial/Required/Readonly 改属性；Pick/Omit 选字段；Record 造字典。</div></div></details><details><summary>前置知识 / 关联知识</summary><div class="detail-content"><div class="deps">前置：keyof、mapped types。关联：Exclude、Extract、DeepPartial。</div></div></details></div>
 </article>
 <article class="question-card" data-grade="S">
-<div class="head" onclick="this.parentElement.classList.toggle('open')">
+<div class="head" data-action="toggle-card" role="button" tabindex="0" aria-expanded="false">
 <div class="rank">#05</div>
 <div>
 <div class="title">keyof、typeof、in 在类型系统里分别做什么？</div>
@@ -188,7 +169,7 @@ type MyReadonly&lt;T&gt; = {
 这几个能力经常组合使用：typeof 从值拿类型，keyof 从类型拿 key，in 再遍历 key 构造新类型。</div></div></details><details><summary>答案整体解析</summary><div class="detail-content"><div class="analysis">这题的价值在于把 TS 从“写接口”提升到“做类型变换”。</div></div></details><details><summary>高频追问 + 答案</summary><div class="detail-content"><div class="qa"><strong>追问 1：keyof any 大概是什么？</strong><div>代表可作为对象属性键的类型集合，核心是 string | number | symbol。</div></div><div class="qa"><strong>追问 2：typeof 在 TS 和 JS 里一样吗？</strong><div>语法名字相同但位置不同：JS typeof 是运行时运算符；TS 类型位置的 typeof 用来获取值的静态类型。</div></div><div class="qa"><strong>追问 3：in 只能做 mapped type 吗？</strong><div>不是。运行时 `prop in obj` 也是 JS 运算符，TS 会利用它做类型收窄。</div></div><div class="qa"><strong>追问 4：为什么 typeof config as const 很常见？</strong><div>as const 能保留更窄的字面量类型，再用 typeof/keyof 派生精确联合类型。</div></div></div></details><details><summary>失分点 / 易错点</summary><div class="detail-content"><div class="loss">常见失分：把三个关键字混在一起，只会背语法但说不出组合关系。</div></div></details><details><summary>记忆钩子</summary><div class="detail-content"><div class="memory">typeof：值→类型；keyof：类型→键；in：遍历键。</div></div></details><details><summary>前置知识 / 关联知识</summary><div class="detail-content"><div class="deps">前置：联合类型。关联：mapped types、as const、类型收窄。</div></div></details></div>
 </article>
 <article class="question-card" data-grade="S">
-<div class="head" onclick="this.parentElement.classList.toggle('open')">
+<div class="head" data-action="toggle-card" role="button" tabindex="0" aria-expanded="false">
 <div class="rank">#06</div>
 <div>
 <div class="title">TS 为什么不能保证后端运行时数据一定符合声明类型？</div>
@@ -231,7 +212,7 @@ const user = UserSchema.parse(rawData)
 所以我的理解是：TypeScript 保证“代码内部类型关系”；Schema 校验保证“外部数据进入系统边界时是真的符合预期”。</div></div></details><details><summary>答案整体解析</summary><div class="detail-content"><div class="analysis">这是高级前端很能拉开差距的一题。很多人把 TS 当成运行时安全机制，真实项目里接口脏数据照样会把页面打崩。</div></div></details><details><summary>高频追问 + 答案</summary><div class="detail-content"><div class="qa"><strong>追问 1：as User 会做数据转换吗？</strong><div>不会。类型断言只影响编译器，不会修改运行时值。</div></div><div class="qa"><strong>追问 2：泛型 request&lt;User&gt;() 为什么也不安全？</strong><div>泛型只改变调用方看到的静态返回类型，如果 request 内部没有 runtime validator，实际响应仍未经验证。</div></div><div class="qa"><strong>追问 3：是不是所有接口都必须 Zod parse？</strong><div>不一定，要考虑性能、可信程度和业务风险。高风险边界、第三方数据、AI结构化输出、关键配置更值得严格校验。</div></div><div class="qa"><strong>追问 4：TS 和 Zod 为什么常一起用？</strong><div>TS 管静态类型，Zod 做运行时 schema 校验；还可以通过 z.infer 从 schema 推导 TS 类型，减少重复定义。</div></div></div></details><details><summary>失分点 / 易错点</summary><div class="detail-content"><div class="loss">常见失分：认为写了 interface 或 request&lt;User&gt;()，后端错误字段类型就会被 TS 自动拦截。</div></div></details><details><summary>记忆钩子</summary><div class="detail-content"><div class="memory">TS 只管“编译时你怎么想”；Schema 才管“运行时数据到底是什么”。</div></div></details><details><summary>前置知识 / 关联知识</summary><div class="detail-content"><div class="deps">前置：编译期/运行时。关联：Zod、API契约、AI Structured Output。</div></div></details></div>
 </article><h2 class="section">A 级题 · 高频扩展</h2>
 <article class="question-card" data-grade="A">
-<div class="head" onclick="this.parentElement.classList.toggle('open')">
+<div class="head" data-action="toggle-card" role="button" tabindex="0" aria-expanded="false">
 <div class="rank">#07</div>
 <div>
 <div class="title">never 和 void 有什么区别？</div>
@@ -249,7 +230,7 @@ const user = UserSchema.parse(rawData)
 </div>
 </article>
 <article class="question-card" data-grade="A">
-<div class="head" onclick="this.parentElement.classList.toggle('open')">
+<div class="head" data-action="toggle-card" role="button" tabindex="0" aria-expanded="false">
 <div class="rank">#08</div>
 <div>
 <div class="title">联合类型和交叉类型有什么区别？</div>
@@ -267,7 +248,7 @@ const user = UserSchema.parse(rawData)
 </div>
 </article>
 <article class="question-card" data-grade="A">
-<div class="head" onclick="this.parentElement.classList.toggle('open')">
+<div class="head" data-action="toggle-card" role="button" tabindex="0" aria-expanded="false">
 <div class="rank">#09</div>
 <div>
 <div class="title">类型收窄有哪些方式？</div>
@@ -285,7 +266,7 @@ const user = UserSchema.parse(rawData)
 </div>
 </article>
 <article class="question-card" data-grade="A">
-<div class="head" onclick="this.parentElement.classList.toggle('open')">
+<div class="head" data-action="toggle-card" role="button" tabindex="0" aria-expanded="false">
 <div class="rank">#10</div>
 <div>
 <div class="title">条件类型 T extends U ? X : Y 怎么理解？</div>
@@ -303,7 +284,7 @@ const user = UserSchema.parse(rawData)
 </div>
 </article>
 <article class="question-card" data-grade="A">
-<div class="head" onclick="this.parentElement.classList.toggle('open')">
+<div class="head" data-action="toggle-card" role="button" tabindex="0" aria-expanded="false">
 <div class="rank">#11</div>
 <div>
 <div class="title">infer 是什么？</div>
@@ -321,7 +302,7 @@ const user = UserSchema.parse(rawData)
 </div>
 </article>
 <article class="question-card" data-grade="A">
-<div class="head" onclick="this.parentElement.classList.toggle('open')">
+<div class="head" data-action="toggle-card" role="button" tabindex="0" aria-expanded="false">
 <div class="rank">#12</div>
 <div>
 <div class="title">索引签名是什么？</div>
@@ -339,7 +320,7 @@ const user = UserSchema.parse(rawData)
 </div>
 </article>
 <article class="question-card" data-grade="A">
-<div class="head" onclick="this.parentElement.classList.toggle('open')">
+<div class="head" data-action="toggle-card" role="button" tabindex="0" aria-expanded="false">
 <div class="rank">#13</div>
 <div>
 <div class="title">函数重载如何写？</div>
@@ -357,7 +338,7 @@ const user = UserSchema.parse(rawData)
 </div>
 </article>
 <article class="question-card" data-grade="A">
-<div class="head" onclick="this.parentElement.classList.toggle('open')">
+<div class="head" data-action="toggle-card" role="button" tabindex="0" aria-expanded="false">
 <div class="rank">#14</div>
 <div>
 <div class="title">泛型约束 extends 怎么用？</div>
@@ -375,7 +356,7 @@ const user = UserSchema.parse(rawData)
 </div>
 </article>
 <article class="question-card" data-grade="A">
-<div class="head" onclick="this.parentElement.classList.toggle('open')">
+<div class="head" data-action="toggle-card" role="button" tabindex="0" aria-expanded="false">
 <div class="rank">#15</div>
 <div>
 <div class="title">.d.ts 文件做什么？</div>
@@ -393,7 +374,7 @@ const user = UserSchema.parse(rawData)
 </div>
 </article><h2 class="section">B 级题 · 补充完整性</h2>
 <article class="question-card" data-grade="B">
-<div class="head" onclick="this.parentElement.classList.toggle('open')">
+<div class="head" data-action="toggle-card" role="button" tabindex="0" aria-expanded="false">
 <div class="rank">#16</div>
 <div>
 <div class="title">interface 声明合并是什么？</div>
@@ -411,7 +392,7 @@ const user = UserSchema.parse(rawData)
 </div>
 </article>
 <article class="question-card" data-grade="B">
-<div class="head" onclick="this.parentElement.classList.toggle('open')">
+<div class="head" data-action="toggle-card" role="button" tabindex="0" aria-expanded="false">
 <div class="rank">#17</div>
 <div>
 <div class="title">enum 有什么问题？有哪些替代方案？</div>
@@ -429,7 +410,7 @@ const user = UserSchema.parse(rawData)
 </div>
 </article>
 <article class="question-card" data-grade="B">
-<div class="head" onclick="this.parentElement.classList.toggle('open')">
+<div class="head" data-action="toggle-card" role="button" tabindex="0" aria-expanded="false">
 <div class="rank">#18</div>
 <div>
 <div class="title">as const 有什么作用？</div>
@@ -447,7 +428,7 @@ const user = UserSchema.parse(rawData)
 </div>
 </article>
 <article class="question-card" data-grade="B">
-<div class="head" onclick="this.parentElement.classList.toggle('open')">
+<div class="head" data-action="toggle-card" role="button" tabindex="0" aria-expanded="false">
 <div class="rank">#19</div>
 <div>
 <div class="title">satisfies 操作符解决什么问题？</div>
@@ -465,7 +446,7 @@ const user = UserSchema.parse(rawData)
 </div>
 </article>
 <article class="question-card" data-grade="B">
-<div class="head" onclick="this.parentElement.classList.toggle('open')">
+<div class="head" data-action="toggle-card" role="button" tabindex="0" aria-expanded="false">
 <div class="rank">#20</div>
 <div>
 <div class="title">协变、逆变为什么会影响函数类型赋值？</div>
@@ -484,5 +465,5 @@ const user = UserSchema.parse(rawData)
 </article>
 <div class="footer">Front-end Interview Basic Bank · TypeScript</div>
 </div>
-<script>function filterGrade(g){document.querySelectorAll('.question-card').forEach(c=>c.style.display=(g==='ALL'||c.dataset.grade===g)?'block':'none')}</script>
+<script src="assets/basic.js"></script>
 </body></html>

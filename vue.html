@@ -1,33 +1,14 @@
 <!DOCTYPE html>
-<html lang="zh-CN"><head><meta charset="utf-8"/><meta content="width=device-width,initial-scale=1" name="viewport"/><title>Vue｜前端基础题库</title><style>
-:root{--bg:#f5f7fb;--paper:#fff;--text:#172033;--muted:#667085;--line:#e4e7ec;--primary:#2563eb;--primary-soft:#eff6ff;--accent:#7c3aed;--accent-soft:#f5f3ff;--warn:#b45309;--warn-soft:#fffbeb;--danger:#b91c1c;--danger-soft:#fef2f2;--good:#047857;--good-soft:#ecfdf5;--shadow:0 10px 28px rgba(16,24,40,.07)}
-*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;line-height:1.7}.page{max-width:1180px;margin:auto;padding:28px}.hero{background:linear-gradient(135deg,var(--primary-soft),var(--accent-soft));border:1px solid var(--line);border-radius:24px;padding:30px;box-shadow:var(--shadow)}h1{margin:4px 0 8px;font-size:32px}.hero p{margin:0;color:var(--muted)}.back{display:inline-block;margin-bottom:10px;color:var(--primary);text-decoration:none;font-size:13px}.toolbar{display:flex;gap:8px;flex-wrap:wrap;margin-top:18px}.btn{border:1px solid var(--line);background:var(--paper);padding:8px 12px;border-radius:10px;cursor:pointer}.legend{display:flex;gap:8px;flex-wrap:wrap;margin:18px 0}.pill{padding:5px 9px;border-radius:999px;border:1px solid var(--line);font-size:12px}.s{background:var(--danger-soft);color:var(--danger)}.a{background:var(--warn-soft);color:var(--warn)}.b{background:var(--good-soft);color:var(--good)}.question-card{background:var(--paper);border:1px solid var(--line);border-radius:16px;margin:12px 0;box-shadow:var(--shadow);overflow:hidden}.head{display:grid;grid-template-columns:70px 1fr;gap:12px;padding:16px 18px;cursor:pointer}.rank{font-weight:900;font-size:18px}.title{font-weight:800;font-size:17px}.meta{display:flex;gap:7px;flex-wrap:wrap;margin-top:7px}.tag{font-size:11px;padding:4px 8px;border-radius:999px;border:1px solid var(--line);background:var(--bg);color:var(--muted)}.source{background:var(--primary-soft);color:var(--primary)}.body{display:none;padding:0 18px 18px;border-top:1px solid var(--line)}.question-card.open .body{display:block}.note{margin-top:12px;background:var(--accent-soft);border-left:4px solid var(--accent);padding:12px 14px;border-radius:10px}.placeholder{margin-top:10px;background:var(--primary-soft);border-left:4px solid var(--primary);padding:12px 14px;border-radius:10px;color:var(--muted)}.section{margin:26px 0 10px;font-size:20px}.index-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:22px}.module{display:block;text-decoration:none;color:var(--text);background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:18px;box-shadow:var(--shadow)}.module:hover{border-color:var(--primary)}.module strong{font-size:19px}.module small{display:block;color:var(--muted);margin-top:4px}.footer{text-align:center;color:var(--muted);font-size:12px;padding:28px}.summary{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:18px 0}.summary div{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:14px}.summary strong{display:block;font-size:22px}
-@media(max-width:800px){.page{padding:14px}.index-grid{grid-template-columns:1fr}.summary{grid-template-columns:repeat(2,1fr)}.head{grid-template-columns:55px 1fr}}
-
-details{border:1px solid var(--line);border-radius:12px;margin-top:10px;overflow:hidden}
-summary{cursor:pointer;list-style:none;padding:11px 13px;font-weight:750;background:var(--bg)}
-summary::-webkit-details-marker{display:none}
-summary:before{content:"▸";display:inline-block;margin-right:7px;color:var(--primary)}
-details[open] summary:before{content:"▾"}
-.detail-content{padding:13px 14px}
-.outline{display:grid;gap:8px}
-.outline-item{background:var(--primary-soft);padding:9px 11px;border-radius:9px}
-.answer{background:var(--primary-soft);border-left:4px solid var(--primary);padding:13px 15px;border-radius:10px;white-space:pre-line}
-.analysis{background:var(--accent-soft);border-left:4px solid var(--accent);padding:13px 15px;border-radius:10px}
-.qa{border:1px solid var(--line);border-radius:10px;padding:11px 12px;margin:8px 0}
-.qa strong{color:var(--primary)}
-.memory{background:var(--good-soft);border-left:4px solid var(--good);padding:12px 14px;border-radius:10px;font-weight:700}
-.loss{background:var(--danger-soft);border-left:4px solid var(--danger);padding:12px 14px;border-radius:10px}
-.deps{background:var(--warn-soft);border-left:4px solid var(--warn);padding:12px 14px;border-radius:10px}
-</style></head>
-<body><div class="page">
+<html lang="zh-CN"><head><meta charset="utf-8"/><meta content="width=device-width,initial-scale=1" name="viewport"/><title>Vue｜前端基础题库</title><link rel="stylesheet" href="assets/basic.css"></head>
+<body class="bank-page">
+<a class="skip-link" href="#main-content">跳到主要内容</a><div id="main-content" class="page">
 <header class="hero"><a class="back" href="index.html">← 返回总目录</a><h1>Vue</h1><p>主栈核心 + API完整性 / 易错细节。15 道 S 级已全部补成完整折叠卡片；A/B 级保留骨架，后续按优先级补齐。</p>
-<div class="toolbar"><button class="btn" onclick="filterGrade('ALL')">全部</button><button class="btn" onclick="filterGrade('S')">只看 S</button><button class="btn" onclick="filterGrade('A')">只看 A</button><button class="btn" onclick="filterGrade('B')">只看 B</button><button class="btn" onclick="document.querySelectorAll('.question-card').forEach(x=&gt;x.classList.remove('open'))">全部收起</button></div></header>
+<div class="toolbar"><button class="btn" data-action="filter-grade" data-filter-grade="ALL" aria-pressed="true">全部</button><button class="btn" data-action="filter-grade" data-filter-grade="S" aria-pressed="false">只看 S</button><button class="btn" data-action="filter-grade" data-filter-grade="A" aria-pressed="false">只看 A</button><button class="btn" data-action="filter-grade" data-filter-grade="B" aria-pressed="false">只看 B</button><button class="btn" data-action="expand-visible">展开可见项</button><button class="btn" data-action="collapse-visible">收起可见项</button></div></header>
 <section class="summary"><div><strong>36</strong><span>总题量</span></div><div><strong>15</strong><span>S 级</span></div><div><strong>16</strong><span>A 级</span></div><div><strong>5</strong><span>B 级</span></div></section>
 <div class="legend"><span class="pill s">S：必须稳 / 深练</span><span class="pill a">A：高频扩展</span><span class="pill b">B：补充完整性</span></div>
 <h2 class="section">S 级题 · 必须优先掌握</h2>
 <article class="question-card" data-grade="S">
-<div class="head" onclick="this.parentElement.classList.toggle('open')">
+<div class="head" data-action="toggle-card" role="button" tabindex="0" aria-expanded="false">
 <div class="rank">#01</div>
 <div>
 <div class="title">Vue2 和 Vue3 的响应式原理分别是什么？</div>
@@ -46,7 +27,7 @@ Vue3 改成 Proxy。reactive() 返回原对象的代理对象，Proxy 可以统�
 所以面试里不要只说“Vue3 用 Proxy 更快”，更准确的是：Vue3 的响应式能力更完整，拦截粒度更统一，而且是按访问进行深层代理；真正的更新性能还要结合编译期的 PatchFlag、静态缓存和 Block Tree 一起看。</div></div></details><details><summary>答案整体解析</summary><div class="detail-content"><div class="analysis">这题同时考“响应式机制”和“不要把响应式优化与编译优化混为一谈”。Vue3 的 Proxy 主要改善的是可观测能力与实现方式；Vue3 运行时更新效率高，还来自 compiler-informed VDOM。</div></div></details><details><summary>高频追问 + 答案</summary><div class="detail-content"><div class="qa"><strong>追问 1：Vue2 为什么检测不到对象新增属性？</strong><div>因为 defineProperty 是对已有 key 单独定义 getter/setter，新 key 没有被预先劫持。Vue2 通常需要 Vue.set / this.$set。</div></div><div class="qa"><strong>追问 2：Vue2 数组为什么要重写 push/splice 等方法？</strong><div>直接监听数组每个索引成本和语义都不理想，所以 Vue2 对一组会改变数组的方法做了包装，调用后主动通知依赖。</div></div><div class="qa"><strong>追问 3：Vue3 reactive 为什么原对象修改不会触发更新？</strong><div>响应式连接建立在 Proxy 上。reactive(raw) 返回 proxy，raw !== proxy；直接绕过 proxy 修改 raw，就不会经过代理拦截。</div></div><div class="qa"><strong>追问 4：Proxy 是不是一定比 defineProperty 性能更好？</strong><div>不能绝对化。Proxy API 更完整、实现更统一，但具体性能取决于场景。Vue3 整体更新性能优势不能只归因于 Proxy。</div></div></div></details><details><summary>失分点 / 易错点</summary><div class="detail-content"><div class="loss">常见失分：只回答“Vue2 defineProperty，Vue3 Proxy”，却说不清为什么换、解决什么、不能解决什么。</div></div></details><details><summary>记忆钩子</summary><div class="detail-content"><div class="memory">Vue2：逐属性 defineProperty；Vue3：整对象 Proxy。响应式完整性 ≠ 编译优化。</div></div></details><details><summary>前置知识 / 关联知识</summary><div class="detail-content"><div class="deps">前置：getter/setter、Proxy、Reflect、依赖收集。关联：ref/reactive、effect、Vue3 编译优化。</div></div></details></div>
 </article>
 <article class="question-card" data-grade="S">
-<div class="head" onclick="this.parentElement.classList.toggle('open')">
+<div class="head" data-action="toggle-card" role="button" tabindex="0" aria-expanded="false">
 <div class="rank">#02</div>
 <div>
 <div class="title">Proxy 相比 Object.defineProperty 解决了哪些问题？</div>
@@ -65,7 +46,7 @@ Proxy 可以通过 set 拦截新增和修改，通过 deleteProperty 拦截删�
 同时要知道，reactive() 返回的是 Proxy，不等于原对象；Proxy 本身也不能像普通库那样完全 polyfill 到不支持它的旧浏览器。</div></div></details><details><summary>答案整体解析</summary><div class="detail-content"><div class="analysis">回答这题最好从“拦截能力”展开，而不是泛泛说 Proxy 性能好。面试官真正想听的是 defineProperty 的能力边界。</div></div></details><details><summary>高频追问 + 答案</summary><div class="detail-content"><div class="qa"><strong>追问 1：Proxy 能拦截哪些典型操作？</strong><div>常见有 get、set、deleteProperty、has、ownKeys 等。</div></div><div class="qa"><strong>追问 2：为什么 Vue3 可以直接监听数组下标？</strong><div>因为数组也是对象，通过 Proxy 的 get/set 等 trap 可以拦截索引和 length 相关操作。</div></div><div class="qa"><strong>追问 3：Reflect 为什么经常和 Proxy 一起用？</strong><div>Reflect 提供与对象内部操作更一致的默认语义，Proxy trap 中可用 Reflect.get/set 等完成默认行为，并正确传递 receiver。</div></div></div></details><details><summary>失分点 / 易错点</summary><div class="detail-content"><div class="loss">常见失分：回答“Proxy 可以监听新增属性”后就结束，没有说明 delete、数组、集合类型与对象级代理。</div></div></details><details><summary>记忆钩子</summary><div class="detail-content"><div class="memory">defineProperty：盯属性；Proxy：代理对象操作。</div></div></details><details><summary>前置知识 / 关联知识</summary><div class="detail-content"><div class="deps">前置：Object.defineProperty、Proxy traps、Reflect。关联：reactive、数组响应式、Map/Set。</div></div></details></div>
 </article>
 <article class="question-card" data-grade="S">
-<div class="head" onclick="this.parentElement.classList.toggle('open')">
+<div class="head" data-action="toggle-card" role="button" tabindex="0" aria-expanded="false">
 <div class="rank">#03</div>
 <div>
 <div class="title">ref 和 reactive 有什么区别？为什么 ref 需要 .value？</div>
@@ -84,7 +65,7 @@ ref 为什么需要 .value？因为 JavaScript 无法拦截一个普通局部变
 reactive 的一个重要局限是需要保持同一个 Proxy 引用：整体替换变量，或者把其中的 primitive 属性直接解构出来，都可能让响应式连接断开。因此现在 Vue 官方文档也更推荐把 ref 作为声明响应式状态的主要 API。</div></div></details><details><summary>答案整体解析</summary><div class="detail-content"><div class="analysis">这题不能只答“ref 基本类型、reactive 对象”，因为 ref 也能放对象，而且对象会被深层转换。真正的差异还包括包装方式、替换引用、解构和传递能力。</div></div></details><details><summary>高频追问 + 答案</summary><div class="detail-content"><div class="qa"><strong>追问 1：ref 里放对象后还是响应式的吗？</strong><div>是。非原始值通常会通过 reactive 转为深层响应式对象，除非使用 shallowRef。</div></div><div class="qa"><strong>追问 2：reactive 解构为什么会丢响应式？</strong><div>例如 const { count } = state，得到的是普通 number，不再通过 state.count 的 Proxy get/set 访问。可用 toRefs/toRef 等方式保留连接。</div></div><div class="qa"><strong>追问 3：模板为什么不用 .value？</strong><div>模板渲染上下文会对顶层 ref 做自动解包，但数组/Map 中的 ref 等存在额外注意事项。</div></div><div class="qa"><strong>追问 4：什么时候用 shallowRef？</strong><div>大型不可变数据、第三方状态对象，或只希望追踪 .value 整体替换而不深度代理内部结构时。</div></div></div></details><details><summary>失分点 / 易错点</summary><div class="detail-content"><div class="loss">常见失分：说“ref 只能基本类型、reactive 只能对象”，这是不准确的。</div></div></details><details><summary>记忆钩子</summary><div class="detail-content"><div class="memory">ref = 值盒子；reactive = 对象 Proxy。JS 用 .value，模板多数自动解包。</div></div></details><details><summary>前置知识 / 关联知识</summary><div class="detail-content"><div class="deps">前置：Proxy、getter/setter。关联：toRef/toRefs、shallowRef、triggerRef。</div></div></details></div>
 </article>
 <article class="question-card" data-grade="S">
-<div class="head" onclick="this.parentElement.classList.toggle('open')">
+<div class="head" data-action="toggle-card" role="button" tabindex="0" aria-expanded="false">
 <div class="rank">#04</div>
 <div>
 <div class="title">Vue 数据变化后，视图更新的完整链路是什么？</div>
@@ -109,7 +90,7 @@ reactive 的一个重要局限是需要保持同一个 Proxy 引用：整体替�
 所以状态变化不是“直接改 DOM”，而是：响应式触发 → 调度 → render → vnode patch → DOM。</div></div></details><details><summary>答案整体解析</summary><div class="detail-content"><div class="analysis">这是把响应式、调度器、VDOM、编译优化串起来的一道高级基础题。答到完整链路，比单独背 Proxy 或 Diff 更体现体系。</div></div></details><details><summary>高频追问 + 答案</summary><div class="detail-content"><div class="qa"><strong>追问 1：为什么 state 改了以后马上读 DOM 还是旧值？</strong><div>因为 DOM 更新被批量缓冲到 next tick；状态值已经变了，但 DOM patch 尚未 flush 完成。</div></div><div class="qa"><strong>追问 2：同一个 tick 修改 count 三次，会渲染三次吗？</strong><div>通常组件更新任务会被 scheduler 去重并批量执行，不是每次赋值都立即做完整 DOM 更新。</div></div><div class="qa"><strong>追问 3：computed / watch 也属于 effect 吗？</strong><div>底层都建立在响应式 effect / 依赖追踪体系之上，但调度和语义不同。</div></div></div></details><details><summary>失分点 / 易错点</summary><div class="detail-content"><div class="loss">常见失分：只回答“数据变了触发 diff”，中间缺少依赖收集和调度队列。</div></div></details><details><summary>记忆钩子</summary><div class="detail-content"><div class="memory">track → trigger → scheduler → render → patch → DOM。</div></div></details><details><summary>前置知识 / 关联知识</summary><div class="detail-content"><div class="deps">前置：Vue响应式、effect、VDOM。关联：nextTick、PatchFlag、scheduler。</div></div></details></div>
 </article>
 <article class="question-card" data-grade="S">
-<div class="head" onclick="this.parentElement.classList.toggle('open')">
+<div class="head" data-action="toggle-card" role="button" tabindex="0" aria-expanded="false">
 <div class="rank">#05</div>
 <div>
 <div class="title">Vue 生命周期有哪些？Vue2/Vue3 有什么变化？</div>
@@ -134,7 +115,7 @@ reactive 的一个重要局限是需要保持同一个 Proxy 引用：整体替�
 另外 keep-alive 组件还有 activated / deactivated；错误捕获有 errorCaptured / onErrorCaptured。实际工程里 mounted 常用于依赖 DOM 的初始化，unmounted 要清理手动创建的 timer、事件监听、Observer、WebSocket 等副作用。</div></div></details><details><summary>答案整体解析</summary><div class="detail-content"><div class="analysis">水滴已经证明“生命周期完整性题”不能只准备组件主流程。回答时先四阶段，再补特殊钩子，既完整又不啰嗦。</div></div></details><details><summary>高频追问 + 答案</summary><div class="detail-content"><div class="qa"><strong>追问 1：父子组件 mounted / updated / unmounted 顺序？</strong><div>要结合渲染和卸载过程理解，面试中建议分具体阶段说明，不要死记一条覆盖所有钩子的口令。Vue 官方明确 updated 时父组件 updated 在子组件之后。</div></div><div class="qa"><strong>追问 2：为什么 updated 里不建议直接改响应式状态？</strong><div>很容易再次触发更新，造成无限更新循环。</div></div><div class="qa"><strong>追问 3：何时用 nextTick，而不是 onUpdated？</strong><div>如果只想等待某次特定状态修改后的 DOM 更新，用 nextTick 更精确；onUpdated 可能由多种状态变化触发。</div></div><div class="qa"><strong>追问 4：setup 里创建的 watcher 卸载时需要手动 stop 吗？</strong><div>同步在 setup 中创建并绑定组件实例的响应式 effect 通常会随组件卸载停止；手动创建的外部副作用仍需清理。</div></div></div></details><details><summary>失分点 / 易错点</summary><div class="detail-content"><div class="loss">常见失分：只会背 mounted/beforeUnmount，无法按阶段完整展开，也说不出 Vue2→Vue3 命名变化。</div></div></details><details><summary>记忆钩子</summary><div class="detail-content"><div class="memory">创建 → 挂载 → 更新 → 卸载；Vue3 destroy 改 unmount。</div></div></details><details><summary>前置知识 / 关联知识</summary><div class="detail-content"><div class="deps">前置：组件挂载流程。关联：nextTick、keep-alive、自定义指令生命周期。</div></div></details></div>
 </article>
 <article class="question-card" data-grade="S">
-<div class="head" onclick="this.parentElement.classList.toggle('open')">
+<div class="head" data-action="toggle-card" role="button" tabindex="0" aria-expanded="false">
 <div class="rank">#06</div>
 <div>
 <div class="title">nextTick 是什么？为什么更新 DOM 后经常要 nextTick？</div>
@@ -155,7 +136,7 @@ reactive 的一个重要局限是需要保持同一个 Proxy 引用：整体替�
 它不是简单等价于 setTimeout(0)。从面试角度，更应该把它理解为 Vue scheduler 暴露出来的“等待当前更新队列 flush”的 API。</div></div></details><details><summary>答案整体解析</summary><div class="detail-content"><div class="analysis">用户之前已经追问过“为什么 mounted 不够、异步数据渲染后为什么 nextTick + rAF”。这里基础题先讲清 nextTick 的职责，不把它和浏览器真正完成绘制混为一谈。</div></div></details><details><summary>高频追问 + 答案</summary><div class="detail-content"><div class="qa"><strong>追问 1：nextTick 之后浏览器一定已经把像素画到屏幕了吗？</strong><div>nextTick 保证 Vue 的 DOM patch 已完成，但不等于浏览器已经完成下一帧绘制。若要测实际绘制后的时机，常再结合 requestAnimationFrame。</div></div><div class="qa"><strong>追问 2：为什么 Vue 要批量更新？</strong><div>避免同一 tick 多次状态修改导致重复 render/patch，提高更新效率。</div></div><div class="qa"><strong>追问 3：nextTick 底层是不是 Promise.then？</strong><div>实现会利用微任务等机制调度，但面试重点应是 scheduler flush 语义，而不是把 API 简化成某一种宿主实现。</div></div></div></details><details><summary>失分点 / 易错点</summary><div class="detail-content"><div class="loss">常见失分：回答“nextTick 就是下一个事件循环”或“就是 setTimeout”，都过于粗糙。</div></div></details><details><summary>记忆钩子</summary><div class="detail-content"><div class="memory">状态先变，DOM 后批量 patch；nextTick = 等这批 DOM 更新完成。</div></div></details><details><summary>前置知识 / 关联知识</summary><div class="detail-content"><div class="deps">前置：Event Loop、Vue scheduler。关联：mounted、requestAnimationFrame、业务首屏采集。</div></div></details></div>
 </article>
 <article class="question-card" data-grade="S">
-<div class="head" onclick="this.parentElement.classList.toggle('open')">
+<div class="head" data-action="toggle-card" role="button" tabindex="0" aria-expanded="false">
 <div class="rank">#07</div>
 <div>
 <div class="title">computed 和 watch 有什么区别？分别适合什么场景？</div>
@@ -176,7 +157,7 @@ watch 更适合“某个状态变化后我要做一件事”，例如请求接�
 如果依赖本身不想手动列出来，且副作用里读到哪些响应式数据就监听哪些，可以考虑 watchEffect。</div></div></details><details><summary>答案整体解析</summary><div class="detail-content"><div class="analysis">面试时只说 computed 有缓存、watch 没缓存不够。更稳的主线是：computed = derived state；watch = side effect。</div></div></details><details><summary>高频追问 + 答案</summary><div class="detail-content"><div class="qa"><strong>追问 1：computed 可以有 setter 吗？</strong><div>可以创建 writable computed，提供 get 和 set；但普通 computed 默认只读。</div></div><div class="qa"><strong>追问 2：watch 的 flush 有什么作用？</strong><div>用于控制 watcher 回调相对于组件更新的调度时机，如 pre、post、sync；涉及 DOM 时尤其要理解执行时机。</div></div><div class="qa"><strong>追问 3：deep watch 为什么可能有性能问题？</strong><div>需要遍历/追踪深层结构，数据规模大时成本明显，应尽量缩小监听范围。</div></div><div class="qa"><strong>追问 4：watchEffect 和 watch 最大区别？</strong><div>watch 明确声明依赖并能拿新旧值；watchEffect 自动收集同步执行过程中读取的依赖，更方便但依赖来源没那么显式。</div></div></div></details><details><summary>失分点 / 易错点</summary><div class="detail-content"><div class="loss">常见失分：只背“computed 有缓存”，却讲不出派生状态与副作用的设计边界。</div></div></details><details><summary>记忆钩子</summary><div class="detail-content"><div class="memory">computed 算值；watch 做事。</div></div></details><details><summary>前置知识 / 关联知识</summary><div class="detail-content"><div class="deps">前置：响应式 effect。关联：watchEffect、flush、nextTick。</div></div></details></div>
 </article>
 <article class="question-card" data-grade="S">
-<div class="head" onclick="this.parentElement.classList.toggle('open')">
+<div class="head" data-action="toggle-card" role="button" tabindex="0" aria-expanded="false">
 <div class="rank">#08</div>
 <div>
 <div class="title">Vue 组件通信方式有哪些？</div>
@@ -201,7 +182,7 @@ watch 更适合“某个状态变化后我要做一件事”，例如请求接�
 另外 slot 主要解决父组件向子组件传递 UI 内容/渲染结构；作用域插槽允许子组件向插槽内容暴露数据。</div></div></details><details><summary>答案整体解析</summary><div class="detail-content"><div class="analysis">这题的关键不是列 API 越多越好，而是按父子、跨层级、全局状态分类，并说出各自的边界。</div></div></details><details><summary>高频追问 + 答案</summary><div class="detail-content"><div class="qa"><strong>追问 1：为什么不推荐到处用 EventBus？</strong><div>依赖是隐式的，事件来源/去向难追踪，生命周期清理和调试成本高。</div></div><div class="qa"><strong>追问 2：provide/inject 能不能做全局状态管理？</strong><div>可以承载共享响应式值，但大型业务状态通常还是 Pinia 更有明确约束、DevTools 和模块组织。</div></div><div class="qa"><strong>追问 3：父组件调用子组件方法怎么做？</strong><div>template ref 获取组件公开实例；script setup 子组件通常通过 defineExpose 明确暴露能力。</div></div></div></details><details><summary>失分点 / 易错点</summary><div class="detail-content"><div class="loss">常见失分：零散列 props、$emit、Vuex，没有先按组件关系分类。</div></div></details><details><summary>记忆钩子</summary><div class="detail-content"><div class="memory">父子 props/emits；跨层 provide/inject；共享状态 Pinia；直接实例 ref 慎用。</div></div></details><details><summary>前置知识 / 关联知识</summary><div class="detail-content"><div class="deps">前置：单向数据流。关联：v-model、provide/inject、Pinia、slot。</div></div></details></div>
 </article>
 <article class="question-card" data-grade="S">
-<div class="head" onclick="this.parentElement.classList.toggle('open')">
+<div class="head" data-action="toggle-card" role="button" tabindex="0" aria-expanded="false">
 <div class="rank">#09</div>
 <div>
 <div class="title">Vue Router 有哪些路由守卫？</div>
@@ -224,7 +205,7 @@ watch 更适合“某个状态变化后我要做一件事”，例如请求接�
 Vue Router 4 里推荐通过 return false / route location / Promise 等控制导航。旧的 next 参数目前仍兼容，但如果使用必须保证每条逻辑路径只调用一次。</div></div></details><details><summary>答案整体解析</summary><div class="detail-content"><div class="analysis">这就是水滴真实失分题。第一层回答必须做到“全局 / 独享 / 组件内”完整分类，不能只想到 beforeEach、afterEach。</div></div></details><details><summary>高频追问 + 答案</summary><div class="detail-content"><div class="qa"><strong>追问 1：beforeResolve 和 beforeEach 区别？</strong><div>beforeResolve 更靠后：在所有组件内守卫和异步路由组件解析成功后、最终导航确认前执行。</div></div><div class="qa"><strong>追问 2：afterEach 能取消导航吗？</strong><div>不能。它是 after hook，没有能力影响已经结束的导航。</div></div><div class="qa"><strong>追问 3：beforeRouteEnter 为什么拿不到 this？</strong><div>因为进入的组件实例当时还没有创建；旧式 next 回调可以在导航确认后拿到实例。</div></div><div class="qa"><strong>追问 4：完整执行顺序？</strong><div>离开组件 beforeRouteLeave → 全局 beforeEach → 复用组件 beforeRouteUpdate → beforeEnter → 解析异步路由组件 → beforeRouteEnter → beforeResolve → 确认导航 → afterEach → DOM 更新。</div></div></div></details><details><summary>失分点 / 易错点</summary><div class="detail-content"><div class="loss">你的真实失分：当时只答了 beforeEach 和 afterEach，没形成完整分类树。</div></div></details><details><summary>记忆钩子</summary><div class="detail-content"><div class="memory">全局 → 独享 → 组件；beforeResolve 最后确认，afterEach 只能善后。</div></div></details><details><summary>前置知识 / 关联知识</summary><div class="detail-content"><div class="deps">前置：Vue Router、组件生命周期。关联：鉴权、埋点、路由数据加载。</div></div></details></div>
 </article>
 <article class="question-card" data-grade="S">
-<div class="head" onclick="this.parentElement.classList.toggle('open')">
+<div class="head" data-action="toggle-card" role="button" tabindex="0" aria-expanded="false">
 <div class="rank">#10</div>
 <div>
 <div class="title">Vue3 自定义指令有哪些生命周期？</div>
@@ -250,7 +231,7 @@ Vue3 还把命名尽量和组件生命周期对齐：Vue2 的 bind → beforeMou
 自定义指令更适合复用底层 DOM 行为，例如自动聚焦、拖拽、点击外部、第三方 DOM 实例绑定等。如果逻辑本身是有状态业务逻辑，一般 composable 更合适；如果涉及 UI 结构复用，优先组件。</div></div></details><details><summary>答案整体解析</summary><div class="detail-content"><div class="analysis">这也是水滴真实失分题。它不深，但属于“高级前端应该熟悉的框架 API 面”。</div></div></details><details><summary>高频追问 + 答案</summary><div class="detail-content"><div class="qa"><strong>追问 1：mounted 和 created 有什么区别？</strong><div>created 时元素属性/事件监听甚至还没完全应用，mounted 时元素所在组件及相关节点已经完成挂载，更适合依赖真实 DOM 的操作。</div></div><div class="qa"><strong>追问 2：unmounted 一般做什么？</strong><div>清事件监听、Observer、timer、第三方实例等手动副作用。</div></div><div class="qa"><strong>追问 3：指令钩子有哪些常用参数？</strong><div>el、binding、vnode；更新相关还可拿 prevVnode。binding 中有 value、oldValue、arg、modifiers、instance 等信息。</div></div><div class="qa"><strong>追问 4：为什么多根组件上使用自定义指令要小心？</strong><div>组件可能有多个根节点，指令无法自然确定应该落在哪个根元素上，Vue 会有相应限制/警告。</div></div></div></details><details><summary>失分点 / 易错点</summary><div class="detail-content"><div class="loss">你的真实失分：平时只复习组件生命周期，突然切到“指令生命周期”时知识节点没建立。</div></div></details><details><summary>记忆钩子</summary><div class="detail-content"><div class="memory">1 + 2 + 2 + 2 = 7。</div></div></details><details><summary>前置知识 / 关联知识</summary><div class="detail-content"><div class="deps">前置：组件生命周期、DOM。关联：directive binding、composable、组件复用。</div></div></details></div>
 </article>
 <article class="question-card" data-grade="S">
-<div class="head" onclick="this.parentElement.classList.toggle('open')">
+<div class="head" data-action="toggle-card" role="button" tabindex="0" aria-expanded="false">
 <div class="rank">#11</div>
 <div>
 <div class="title">Virtual DOM 是什么？Vue 的 Diff 核心思路是什么？</div>
@@ -271,7 +252,7 @@ Vue3 和很多纯运行时 VDOM 的一个重要区别是：Vue 同时控制模�
 列表 diff 时 key 非常重要，它帮助判断节点身份和复用关系。不要把“Diff”简单背成某个算法名字，而应该先说明同层比较、节点身份、复用和最小 DOM 操作这些目标。</div></div></details><details><summary>答案整体解析</summary><div class="detail-content"><div class="analysis">这题适合把“VDOM、Diff、编译优化、key”串在一起。Vue3 的特点是 compiler-informed VDOM，而不只是运行时暴力 diff。</div></div></details><details><summary>高频追问 + 答案</summary><div class="detail-content"><div class="qa"><strong>追问 1：Virtual DOM 一定比直接操作 DOM 快吗？</strong><div>不一定。VDOM 有创建和 diff 成本，它的价值是声明式抽象、可维护性和跨平台等；针对特定极端场景的手写 DOM 可能更快。</div></div><div class="qa"><strong>追问 2：为什么通常只比较同层节点？</strong><div>树结构 UI 更新可以借助节点类型和层级假设减少组合爆炸，跨层移动通常按删除+创建处理。</div></div><div class="qa"><strong>追问 3：Vue3 怎么减少全树 Diff？</strong><div>缓存静态内容、PatchFlag 标记动态类型、Block/Tree Flattening 只追踪动态后代。</div></div></div></details><details><summary>失分点 / 易错点</summary><div class="detail-content"><div class="loss">常见失分：回答“VDOM 比真实 DOM 快”，这是过度简化。</div></div></details><details><summary>记忆钩子</summary><div class="detail-content"><div class="memory">render → vnode；update → new vnode → patch。Vue3：编译器告诉运行时哪里会变。</div></div></details><details><summary>前置知识 / 关联知识</summary><div class="detail-content"><div class="deps">前置：render、DOM。关联：key、PatchFlag、Block Tree。</div></div></details></div>
 </article>
 <article class="question-card" data-grade="S">
-<div class="head" onclick="this.parentElement.classList.toggle('open')">
+<div class="head" data-action="toggle-card" role="button" tabindex="0" aria-expanded="false">
 <div class="rank">#12</div>
 <div>
 <div class="title">v-for 为什么需要 key？为什么不推荐 index？</div>
@@ -292,7 +273,7 @@ index 不推荐作为 key，是因为 index 表示的是当前位置，不是业
 但也不要绝对化：如果列表是完全静态、不排序、不插入删除，也没有需要保留的子项状态，index 的风险会小很多。</div></div></details><details><summary>答案整体解析</summary><div class="detail-content"><div class="analysis">这题不是“为了 Diff 更快”一句话结束。更核心的是 vnode identity 和状态复用正确性。</div></div></details><details><summary>高频追问 + 答案</summary><div class="detail-content"><div class="qa"><strong>追问 1：key 是不是越随机越好？</strong><div>相反。随机 key 每次 render 都变化，相当于告诉 Vue 所有节点都是新的，会导致反复销毁重建。</div></div><div class="qa"><strong>追问 2：什么时候 index 可以接受？</strong><div>列表顺序永久稳定、只展示、没有局部状态时风险较低，但业务 id 仍更清晰。</div></div><div class="qa"><strong>追问 3：key 只影响 DOM 吗？</strong><div>还会影响组件实例复用和本地状态生命周期。</div></div></div></details><details><summary>失分点 / 易错点</summary><div class="detail-content"><div class="loss">常见失分：只说“不用 key 会影响性能”，没有回答身份和状态错配。</div></div></details><details><summary>记忆钩子</summary><div class="detail-content"><div class="memory">key = 身份证；index = 座位号。</div></div></details><details><summary>前置知识 / 关联知识</summary><div class="detail-content"><div class="deps">前置：VDOM、Diff。关联：组件复用、表单列表。</div></div></details></div>
 </article>
 <article class="question-card" data-grade="S">
-<div class="head" onclick="this.parentElement.classList.toggle('open')">
+<div class="head" data-action="toggle-card" role="button" tabindex="0" aria-expanded="false">
 <div class="rank">#13</div>
 <div>
 <div class="title">v-if 和 v-show 有什么区别？</div>
@@ -313,7 +294,7 @@ v-show 则通常会把元素正常渲染出来，再通过 CSS display 切换可
 因此低频切换、条件很少成立时更偏向 v-if；频繁切换，例如 Tab/面板显示隐藏，且节点本身不太重时可以考虑 v-show。</div></div></details><details><summary>答案整体解析</summary><div class="detail-content"><div class="analysis">回答不要停在“一个删除 DOM，一个 display:none”，还要给选型边界。</div></div></details><details><summary>高频追问 + 答案</summary><div class="detail-content"><div class="qa"><strong>追问 1：v-if 里面组件的 mounted/unmounted 会不会重新执行？</strong><div>分支真正销毁再创建时，会经历对应组件生命周期。</div></div><div class="qa"><strong>追问 2：v-show 能用在 template 上吗？</strong><div>v-show 依赖真实元素的 display，因此和 v-if 的 template 条件分组能力不同。</div></div><div class="qa"><strong>追问 3：哪个性能一定更好？</strong><div>没有绝对，取决于初始渲染和切换频率。</div></div></div></details><details><summary>失分点 / 易错点</summary><div class="detail-content"><div class="loss">常见失分：没有把“切换频率”作为选型依据。</div></div></details><details><summary>记忆钩子</summary><div class="detail-content"><div class="memory">v-if 真生灭；v-show 只显隐。</div></div></details><details><summary>前置知识 / 关联知识</summary><div class="detail-content"><div class="deps">前置：组件生命周期。关联：keep-alive、条件渲染。</div></div></details></div>
 </article>
 <article class="question-card" data-grade="S">
-<div class="head" onclick="this.parentElement.classList.toggle('open')">
+<div class="head" data-action="toggle-card" role="button" tabindex="0" aria-expanded="false">
 <div class="rank">#14</div>
 <div>
 <div class="title">Vue Router hash 和 history 模式有什么区别？</div>
@@ -334,7 +315,7 @@ history 模式基于 History API，URL 可以是 /user 这种正常路径，可�
 因此实际选择更多是产品 URL 需求、部署环境和服务端配置能力，而不是简单说 history 更高级。</div></div></details><details><summary>答案整体解析</summary><div class="detail-content"><div class="analysis">这是 Router 高频宽度题，重点是“刷新为什么 404”和服务器 fallback。</div></div></details><details><summary>高频追问 + 答案</summary><div class="detail-content"><div class="qa"><strong>追问 1：history 刷新为什么 404？</strong><div>因为浏览器直接向服务端请求 /user；如果服务端没有对应资源/路由，也没有回退 index.html，就返回 404。</div></div><div class="qa"><strong>追问 2：hash 改变会不会导致整页请求？</strong><div>hash 变化通常用于客户端锚点/路由，不会像普通 path 导航那样发起整页资源请求。</div></div><div class="qa"><strong>追问 3：history 模式部署 Nginx 常怎么处理？</strong><div>通常通过 try_files 等规则把不存在的前端路径 fallback 到 index.html。</div></div></div></details><details><summary>失分点 / 易错点</summary><div class="detail-content"><div class="loss">常见失分：只回答“一个有 # 一个没有 #”。</div></div></details><details><summary>记忆钩子</summary><div class="detail-content"><div class="memory">hash：# 前端自己玩；history：漂亮 URL，但服务器要兜底。</div></div></details><details><summary>前置知识 / 关联知识</summary><div class="detail-content"><div class="deps">前置：URL、History API。关联：Nginx、SPA部署。</div></div></details></div>
 </article>
 <article class="question-card" data-grade="S">
-<div class="head" onclick="this.parentElement.classList.toggle('open')">
+<div class="head" data-action="toggle-card" role="button" tabindex="0" aria-expanded="false">
 <div class="rank">#15</div>
 <div>
 <div class="title">Vue3 相比 Vue2 为什么更新效率更高？</div>
@@ -359,7 +340,7 @@ history 模式基于 History API，URL 可以是 /user 这种正常路径，可�
 此外 Vue3 响应式改用 Proxy，能力更完整；调度、实现和运行时也有改进。但如果面试官问“编译为什么更快”，主线应该是静态缓存 + PatchFlag + Block Tree，而不是 Proxy。</div></div></details><details><summary>答案整体解析</summary><div class="detail-content"><div class="analysis">这是你之前已经重点补过的题。现在要形成稳定结构：响应式优化与渲染编译优化分层讲，避免混在一起。</div></div></details><details><summary>高频追问 + 答案</summary><div class="detail-content"><div class="qa"><strong>追问 1：PatchFlag 是什么？</strong><div>编译器在 vnode 上编码动态绑定的更新类型，运行时可以走针对性的 fast path。</div></div><div class="qa"><strong>追问 2：Block Tree 是什么？</strong><div>Block 是内部结构相对稳定的模板区域，会记录带 PatchFlag 的动态后代；更新时遍历扁平化 dynamicChildren。</div></div><div class="qa"><strong>追问 3：v-if / v-for 为什么会形成新的 Block？</strong><div>它们会改变结构，因此需要新的稳定边界来维护父 Block 的动态节点结构。</div></div><div class="qa"><strong>追问 4：Vue2 就完全没有静态优化吗？</strong><div>不能把差异绝对化。Vue2 也有静态树优化，但 Vue3 的 compiler-informed VDOM、PatchFlag 和 Block/Tree Flattening 让编译器与运行时协同更深入。</div></div></div></details><details><summary>失分点 / 易错点</summary><div class="detail-content"><div class="loss">常见失分：把“Vue3 编译优化”和“Proxy 响应式”混成一句，显得概念层次不清。</div></div></details><details><summary>记忆钩子</summary><div class="detail-content"><div class="memory">Vue3 更新快：静态跳过 + 动态标记 + 动态树打平。Proxy 是另一条线。</div></div></details><details><summary>前置知识 / 关联知识</summary><div class="detail-content"><div class="deps">前置：VDOM、Diff、模板编译。关联：PatchFlag、Static Cache、Block Tree。</div></div></details></div>
 </article><h2 class="section">A 级题 · 高频扩展</h2>
 <article class="question-card" data-grade="A">
-<div class="head" onclick="this.parentElement.classList.toggle('open')">
+<div class="head" data-action="toggle-card" role="button" tabindex="0" aria-expanded="false">
 <div class="rank">#16</div>
 <div>
 <div class="title">PatchFlag 是什么？</div>
@@ -377,7 +358,7 @@ history 模式基于 History API，URL 可以是 /user 这种正常路径，可�
 </div>
 </article>
 <article class="question-card" data-grade="A">
-<div class="head" onclick="this.parentElement.classList.toggle('open')">
+<div class="head" data-action="toggle-card" role="button" tabindex="0" aria-expanded="false">
 <div class="rank">#17</div>
 <div>
 <div class="title">Block Tree / dynamicChildren 是什么？</div>
@@ -395,7 +376,7 @@ history 模式基于 History API，URL 可以是 /user 这种正常路径，可�
 </div>
 </article>
 <article class="question-card" data-grade="A">
-<div class="head" onclick="this.parentElement.classList.toggle('open')">
+<div class="head" data-action="toggle-card" role="button" tabindex="0" aria-expanded="false">
 <div class="rank">#18</div>
 <div>
 <div class="title">静态提升和事件缓存解决什么问题？</div>
@@ -413,7 +394,7 @@ history 模式基于 History API，URL 可以是 /user 这种正常路径，可�
 </div>
 </article>
 <article class="question-card" data-grade="A">
-<div class="head" onclick="this.parentElement.classList.toggle('open')">
+<div class="head" data-action="toggle-card" role="button" tabindex="0" aria-expanded="false">
 <div class="rank">#19</div>
 <div>
 <div class="title">Pinia 和 Vuex 有什么区别？</div>
@@ -431,7 +412,7 @@ history 模式基于 History API，URL 可以是 /user 这种正常路径，可�
 </div>
 </article>
 <article class="question-card" data-grade="A">
-<div class="head" onclick="this.parentElement.classList.toggle('open')">
+<div class="head" data-action="toggle-card" role="button" tabindex="0" aria-expanded="false">
 <div class="rank">#20</div>
 <div>
 <div class="title">Composition API 和 Options API 有什么区别？</div>
@@ -449,7 +430,7 @@ history 模式基于 History API，URL 可以是 /user 这种正常路径，可�
 </div>
 </article>
 <article class="question-card" data-grade="A">
-<div class="head" onclick="this.parentElement.classList.toggle('open')">
+<div class="head" data-action="toggle-card" role="button" tabindex="0" aria-expanded="false">
 <div class="rank">#21</div>
 <div>
 <div class="title">watch 的 immediate、deep、flush 分别做什么？</div>
@@ -467,7 +448,7 @@ history 模式基于 History API，URL 可以是 /user 这种正常路径，可�
 </div>
 </article>
 <article class="question-card" data-grade="A">
-<div class="head" onclick="this.parentElement.classList.toggle('open')">
+<div class="head" data-action="toggle-card" role="button" tabindex="0" aria-expanded="false">
 <div class="rank">#22</div>
 <div>
 <div class="title">watchEffect 和 watch 有什么区别？</div>
@@ -485,7 +466,7 @@ history 模式基于 History API，URL 可以是 /user 这种正常路径，可�
 </div>
 </article>
 <article class="question-card" data-grade="A">
-<div class="head" onclick="this.parentElement.classList.toggle('open')">
+<div class="head" data-action="toggle-card" role="button" tabindex="0" aria-expanded="false">
 <div class="rank">#23</div>
 <div>
 <div class="title">provide / inject 适合什么场景？</div>
@@ -503,7 +484,7 @@ history 模式基于 History API，URL 可以是 /user 这种正常路径，可�
 </div>
 </article>
 <article class="question-card" data-grade="A">
-<div class="head" onclick="this.parentElement.classList.toggle('open')">
+<div class="head" data-action="toggle-card" role="button" tabindex="0" aria-expanded="false">
 <div class="rank">#24</div>
 <div>
 <div class="title">slot、具名插槽、作用域插槽怎么理解？</div>
@@ -521,7 +502,7 @@ history 模式基于 History API，URL 可以是 /user 这种正常路径，可�
 </div>
 </article>
 <article class="question-card" data-grade="A">
-<div class="head" onclick="this.parentElement.classList.toggle('open')">
+<div class="head" data-action="toggle-card" role="button" tabindex="0" aria-expanded="false">
 <div class="rank">#25</div>
 <div>
 <div class="title">keep-alive 的 include/exclude/max 和生命周期是什么？</div>
@@ -539,7 +520,7 @@ history 模式基于 History API，URL 可以是 /user 这种正常路径，可�
 </div>
 </article>
 <article class="question-card" data-grade="A">
-<div class="head" onclick="this.parentElement.classList.toggle('open')">
+<div class="head" data-action="toggle-card" role="button" tabindex="0" aria-expanded="false">
 <div class="rank">#26</div>
 <div>
 <div class="title">Vue3 v-model 相比 Vue2 有什么变化？</div>
@@ -557,7 +538,7 @@ history 模式基于 History API，URL 可以是 /user 这种正常路径，可�
 </div>
 </article>
 <article class="question-card" data-grade="A">
-<div class="head" onclick="this.parentElement.classList.toggle('open')">
+<div class="head" data-action="toggle-card" role="button" tabindex="0" aria-expanded="false">
 <div class="rank">#27</div>
 <div>
 <div class="title">defineProps、defineEmits、defineExpose 分别做什么？</div>
@@ -575,7 +556,7 @@ history 模式基于 History API，URL 可以是 /user 这种正常路径，可�
 </div>
 </article>
 <article class="question-card" data-grade="A">
-<div class="head" onclick="this.parentElement.classList.toggle('open')">
+<div class="head" data-action="toggle-card" role="button" tabindex="0" aria-expanded="false">
 <div class="rank">#28</div>
 <div>
 <div class="title">defineModel 解决什么问题？</div>
@@ -593,7 +574,7 @@ history 模式基于 History API，URL 可以是 /user 这种正常路径，可�
 </div>
 </article>
 <article class="question-card" data-grade="A">
-<div class="head" onclick="this.parentElement.classList.toggle('open')">
+<div class="head" data-action="toggle-card" role="button" tabindex="0" aria-expanded="false">
 <div class="rank">#29</div>
 <div>
 <div class="title">Teleport 解决什么问题？</div>
@@ -611,7 +592,7 @@ history 模式基于 History API，URL 可以是 /user 这种正常路径，可�
 </div>
 </article>
 <article class="question-card" data-grade="A">
-<div class="head" onclick="this.parentElement.classList.toggle('open')">
+<div class="head" data-action="toggle-card" role="button" tabindex="0" aria-expanded="false">
 <div class="rank">#30</div>
 <div>
 <div class="title">Suspense / defineAsyncComponent 的使用场景？</div>
@@ -629,7 +610,7 @@ history 模式基于 History API，URL 可以是 /user 这种正常路径，可�
 </div>
 </article>
 <article class="question-card" data-grade="A">
-<div class="head" onclick="this.parentElement.classList.toggle('open')">
+<div class="head" data-action="toggle-card" role="button" tabindex="0" aria-expanded="false">
 <div class="rank">#31</div>
 <div>
 <div class="title">toRef / toRefs / unref / isRef 分别做什么？</div>
@@ -647,7 +628,7 @@ history 模式基于 History API，URL 可以是 /user 这种正常路径，可�
 </div>
 </article><h2 class="section">B 级题 · 补充完整性</h2>
 <article class="question-card" data-grade="B">
-<div class="head" onclick="this.parentElement.classList.toggle('open')">
+<div class="head" data-action="toggle-card" role="button" tabindex="0" aria-expanded="false">
 <div class="rank">#32</div>
 <div>
 <div class="title">shallowRef / triggerRef 的使用场景？</div>
@@ -665,7 +646,7 @@ history 模式基于 History API，URL 可以是 /user 这种正常路径，可�
 </div>
 </article>
 <article class="question-card" data-grade="B">
-<div class="head" onclick="this.parentElement.classList.toggle('open')">
+<div class="head" data-action="toggle-card" role="button" tabindex="0" aria-expanded="false">
 <div class="rank">#33</div>
 <div>
 <div class="title">readonly / shallowReactive / markRaw 分别做什么？</div>
@@ -683,7 +664,7 @@ history 模式基于 History API，URL 可以是 /user 这种正常路径，可�
 </div>
 </article>
 <article class="question-card" data-grade="B">
-<div class="head" onclick="this.parentElement.classList.toggle('open')">
+<div class="head" data-action="toggle-card" role="button" tabindex="0" aria-expanded="false">
 <div class="rank">#34</div>
 <div>
 <div class="title">自定义指令 binding 参数有哪些？</div>
@@ -701,7 +682,7 @@ history 模式基于 History API，URL 可以是 /user 这种正常路径，可�
 </div>
 </article>
 <article class="question-card" data-grade="B">
-<div class="head" onclick="this.parentElement.classList.toggle('open')">
+<div class="head" data-action="toggle-card" role="button" tabindex="0" aria-expanded="false">
 <div class="rank">#35</div>
 <div>
 <div class="title">effectScope 是什么？</div>
@@ -719,7 +700,7 @@ history 模式基于 History API，URL 可以是 /user 这种正常路径，可�
 </div>
 </article>
 <article class="question-card" data-grade="B">
-<div class="head" onclick="this.parentElement.classList.toggle('open')">
+<div class="head" data-action="toggle-card" role="button" tabindex="0" aria-expanded="false">
 <div class="rank">#36</div>
 <div>
 <div class="title">Vue 插件 install 机制是什么？</div>
@@ -738,5 +719,5 @@ history 模式基于 History API，URL 可以是 /user 这种正常路径，可�
 </article>
 <div class="footer">Front-end Interview Basic Bank · Vue</div>
 </div>
-<script>function filterGrade(g){document.querySelectorAll('.question-card').forEach(c=>c.style.display=(g==='ALL'||c.dataset.grade===g)?'block':'none')}</script>
+<script src="assets/basic.js"></script>
 </body></html>
