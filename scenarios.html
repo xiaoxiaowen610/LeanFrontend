@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>场景追问题库 · LeanFrontend</title>
+<style>
+:root{--bg:#f5f7fb;--panel:#fff;--ink:#172033;--muted:#667085;--line:#e4e7ec;--blue:#2563eb;--soft:#eff6ff;--green:#047857;--orange:#b45309;--red:#b91c1c;--shadow:0 9px 28px #1018280b}*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.7 -apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Microsoft YaHei',sans-serif}a{color:var(--blue)}.wrap{max-width:1100px;margin:auto;padding:24px}.hero{padding:30px;border:1px solid var(--line);border-radius:22px;background:linear-gradient(125deg,#eaf2ff,#f5edff);box-shadow:var(--shadow)}h1{font-size:32px;margin:5px 0}h2{font-size:21px}.hero p{color:var(--muted);margin:7px 0}.kicker{letter-spacing:.09em;font-size:12px;color:var(--blue);font-weight:800}.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:11px;margin:16px 0}.stat{background:var(--panel);border:1px solid var(--line);padding:13px;border-radius:14px}.stat strong{display:block;font-size:22px}.stat small,.muted{color:var(--muted)}.tools{display:flex;gap:8px;flex-wrap:wrap;margin:18px 0}.tools input,.tools select,.tools button{border:1px solid #cbd5e1;background:white;border-radius:10px;padding:10px 12px;font:inherit}.tools input{flex:1;min-width:190px}.tools button{cursor:pointer}.tools button:hover{border-color:var(--blue)}.tip{padding:14px 18px;border-left:4px solid var(--blue);border-radius:9px;background:var(--soft);margin-bottom:18px}.topic{margin:30px 0 12px}.topic small{font-weight:normal;color:var(--muted)}.card{background:var(--panel);border:1px solid var(--line);border-radius:17px;margin:14px 0;box-shadow:var(--shadow);overflow:hidden}.card-head{padding:19px;cursor:pointer;display:flex;gap:12px;justify-content:space-between;align-items:flex-start}.card-head h3{font-size:18px;line-height:1.45;margin:5px 0}.badge{display:inline-block;border-radius:99px;padding:2px 9px;font-size:11px;font-weight:700;background:#eef2ff;color:#3730a3;margin-right:5px}.badge.p1{background:#fee2e2;color:#991b1b}.badge.p2{background:#fef3c7;color:#92400e}.badge.p3{background:#dcfce7;color:#166534}.card .body{display:none;border-top:1px solid var(--line);padding:0 19px 19px}.card.open .body{display:block}.arrow{font-size:22px;color:var(--muted)}.card.open .arrow{transform:rotate(180deg)}.source{font-size:12px;color:var(--muted);margin-top:6px}.chain{padding:11px 13px;margin:13px 0;border-radius:9px;background:#f3f4f6;font-size:13px}.level{border:1px solid var(--line);border-radius:12px;margin:12px 0;padding:12px}.level header{display:flex;gap:9px;align-items:baseline}.level b{color:var(--blue)}.level p{margin:5px 0 9px}.level details{background:#f8fafc;border-radius:9px;border:1px solid var(--line);padding:9px 12px}.level summary{cursor:pointer;font-weight:700;color:#1d4ed8}.level details p{white-space:pre-line}.relation,.lab{border-radius:10px;padding:12px 14px;margin-top:10px;background:#f0fdf4}.lab{background:#fffbeb}.relation a{display:inline-block;margin-right:9px}.foot{color:var(--muted);font-size:12px;margin:25px 0;text-align:center}.progress{display:flex;gap:10px;align-items:center;margin:12px 0}.progress button{border:1px solid var(--line);border-radius:8px;padding:6px 9px;background:#fff;cursor:pointer}.progress button[aria-pressed=true]{background:#dcfce7;border-color:#86efac}.empty{display:none;padding:30px;text-align:center;color:var(--muted)}@media(max-width:720px){.wrap{padding:12px}.stats{grid-template-columns:repeat(2,1fr)}.hero{padding:20px}h1{font-size:26px}.card-head{padding:15px}.card .body{padding:0 15px 15px}}@media print{.tools,.progress,.foot{display:none}.card .body{display:block}.level details{display:block}.hero,.card{box-shadow:none}}
+</style>
+</head>
+<body><main class="wrap">
+<header class="hero"><a href="index.html">← 返回基础题库总目录</a><div class="kicker">LEANFRONTEND · SCENARIO INTERVIEW</div><h1>场景驱动 · 连续追问题库</h1><p>从一个业务现象入手，按「澄清与定位 → 原理 → 方案 → 边界 → 验证」推进；先闭卷作答，再展开参考思路。不要将模拟追问当作企业原话。</p></header>
+<div class="stats"><div class="stat"><strong>12</strong><small>场景链</small></div><div class="stat"><strong>60</strong><small>递进式考题</small></div><div class="stat"><strong>4</strong><small>问题领域</small></div><div class="stat"><strong id="count">0 / 12</strong><small>本设备已练场景</small></div></div>
+<div class="tools"><input id="search" aria-label="搜索题目或知识点" placeholder="搜索：卡顿 / AST / SSE / 灰度"><select id="group" aria-label="筛选领域"><option value="all">全部领域</option><option value="性能与浏览器">性能与浏览器</option><option value="Vue与认证">Vue 与认证</option><option value="前端工程">前端工程</option><option value="AI Native">AI Native</option></select><select id="priority" aria-label="筛选练习优先级"><option value="all">全部优先级</option><option value="P1">先练 P1</option><option value="P2">P2</option><option value="P3">P3</option></select><button id="collapse">收起所有场景</button><button id="reset">清空本地练习记录</button></div>
+<div class="tip"><strong>推荐训练：</strong>每条链先回答第一问 60～90 秒；每个后续追问先独立回答 30～60 秒，再展开参考思路。记录自己是「没定位」「原理断链」还是「方案缺边界」。源自用户面试/公开面经的主题会标明来源；未逐字核实的追问明确标为训练改编。</div>
+<div id="app"></div><div class="empty" id="empty">没有匹配的场景，请调整筛选条件。</div>
+<footer class="foot">基础题负责知识储备；场景题负责知识调用。练习记录仅保存在当前浏览器 localStorage，不会上传。</footer>
+</main>
+<script>
+const refs={
+ summary:'https://www.nowcoder.com/discuss/889546972099584000',
+ byte:'https://www.nowcoder.com/discuss/792471798330773504',
+ ai:'https://www.nowcoder.com/discuss/868928829648031744',
+ vue:'https://jishuzhan.net/article/1996083621736808449'
+};
+const tracks=[
+{id:'S01',group:'性能与浏览器',priority:'P1',title:'点击按钮后卡顿两秒，如何一步步查到根因？',origin:'用户提供的面经（场景与追问方向）；后续问法为训练整理',url:'',chain:'现场现象 → Performance → 微任务 → 调度与 Worker → 验证',tags:['Event Loop','Long Task','渲染','Worker'],related:[['javascript.html','JS · Event Loop'],['browser.html','浏览器 · 渲染/Worker']],lab:'实现一次 1500ms 同步计算，录制 Performance；分别尝试 Promise.then 连续分片、setTimeout 分片、Worker，记录长任务与界面反馈。',qs:[
+['澄清与定位','按钮卡顿两秒，你首先问什么、怎么定位？','先区分点击无反馈、接口等待、主线程掉帧或整个页面失去响应；固定复现步骤，Performance 录制看 Main 线程 Long Task、Call Tree、Layout/Paint 和 Network。尚未确认瓶颈时不直接使用防抖或 Worker。'],
+['原理','如果确认是同步计算很重，拆成 Promise 微任务就能流畅了吗？','通常不能。浏览器在一次 task 后会清空微任务队列；连续微任务仍可能占满主线程，推迟渲染机会。必须真正让出主线程或将可分离计算移到 Worker。'],
+['方案','requestIdleCallback、任务分片、Web Worker 怎么选？','低优先级且无严格截止时间的工作可用 idle 调度（要考虑兼容与超时）；主线程上可拆成短 task 并让出执行权；纯 CPU 计算且 DOM 依赖弱时用 Worker。'],
+['边界','Worker 能直接操作 DOM 吗？如果每次要发送几十 MB 数据呢？','普通 Worker 不能直接访问主页面 DOM；跨线程消息有结构化克隆、传输和启动成本。考虑传递 Transferable ArrayBuffer 或压缩数据，仅把计算部分搬过去。'],
+['验证','优化后如何证明真正解决了用户卡顿，而不是把总耗时藏起来？','相同设备/数据下比较主线程最长任务、交互延迟、掉帧、完成时间；检查切片开销与 Worker 通信成本。不要凭肉眼说“快了”。']]},
+{id:'S02',group:'性能与浏览器',priority:'P1',title:'首屏需要五秒，下载 JS 就占了三秒，怎么办？',origin:'结合用户过往真实面试问题与公开前端面经的训练改编',url:refs.summary,chain:'资源瀑布 → 网络还是执行 → 拆包与预加载 → 缓存失效 → 指标验收',tags:['LCP','Network','SplitChunks','缓存'],related:[['browser.html','浏览器 · 关键路径'],['webpack-vite.html','构建 · 拆包'],['network.html','网络 · 缓存']],lab:'用 Chrome Network Slow 4G 对比一次性 import 与动态 import；观察 transferred size、waterfall、Performance 长任务及二次访问。',qs:[
+['澄清与定位','JS 下载耗时三秒，你先看哪些数据？','区分 Queueing、TTFB、Content Download，检查首屏必需资源、体积、压缩与缓存、网络瀑布；另用 Performance 判断下载后 parse/execute 是否才是瓶颈。'],
+['原理','JS 体积缩小一半，为什么 LCP 仍可能没变化？','减掉的可能是非首屏 JS；真正瓶颈可能是 LCP 图片、TTFB、CSS 或主线程执行，指标要按关键路径定位。'],
+['方案','按路由拆包、SplitChunks、preload 怎么组合？','路由/低频功能用动态 import；公共依赖按复用和缓存频率拆；只 preload 真正关键资源，避免抢占 LCP 图片、字体或 CSS 带宽。'],
+['边界','拆得越细越好吗？上线后 ChunkLoadError 怎么处理？','过细会带来请求/解析/runtime 开销与 waterfall；发布需留存被旧 HTML 引用的静态 chunk，前端设置失败提示、有限重试与刷新兜底。'],
+['验证','哪些指标用于确认方案真的有效？','同设备/网络记录 FCP、LCP、首屏 JS transferred/parse/execute、关键请求数与缓存命中；新用户和回访用户分开比较。']]},
+{id:'S03',group:'性能与浏览器',priority:'P2',title:'一万条数据滚动掉帧，分页后还是卡，怎么办？',origin:'基于公开面经中的长列表优化主题设计的模拟追问',url:refs.byte,chain:'数据量 vs DOM → 渲染瓶颈 → 虚拟列表 → 动态高度 → 复测',tags:['DOM','虚拟列表','Layout','数据结构'],related:[['browser.html','浏览器 · 重排重绘'],['javascript.html','JS · 数据处理']],lab:'构建 10000 行列表，对比全量渲染与固定高度虚拟列表；用 Performance/Elements 数量验证。',qs:[
+['澄清与定位','列表卡顿先看 DOM 数量还是接口响应？','同时测，但分离数据获取、JS 处理、DOM 创建、Layout/Paint 与滚动帧率；记录现有节点数及是否包含图片/复杂子组件。'],
+['原理','分页了为什么滚动仍可能卡？','每页仍可能太大；节点复杂、图片解码、频繁同步布局/事件回调都可能造成掉帧，分页只控制数据批次不保证可见 DOM 少。'],
+['方案','虚拟列表如何只渲染可视区？','基于 scrollTop、容器高度、行高计算 start/end，加 overscan；总高度用占位层维持滚动条，实际只渲染窗口内节点。'],
+['边界','每行高度不固定、滚动快速跳转怎么办？','测量已渲染高度并维护偏移索引/估算，动态修正滚动锚点；overscan 要权衡白屏与 DOM 数量，注意焦点和可访问性。'],
+['验证','怎样量化虚拟列表收益与副作用？','对比 DOM 数、长任务、滚动掉帧、内存、初始化耗时；同时验证键盘导航、焦点、快速跳转和可见内容正确性。']]},
+{id:'S04',group:'性能与浏览器',priority:'P2',title:'版本发布后线上白屏，怎么止损并定位？',origin:'基于前端异常监控与上线场景设计的模拟追问',url:refs.summary,chain:'影响范围 → 止损 → 根因归类 → 监控与回滚 → 防复发',tags:['白屏','监控','Source Map','灰度'],related:[['browser.html','浏览器 · 资源加载'],['webpack-vite.html','构建 · chunk'],['network.html','网络 · 状态码']],lab:'故意让动态 import 的 chunk 返回 404，模拟灰度版本；观察 console/network 并实现可见错误提示。',qs:[
+['澄清与定位','发现白屏后，你要先确认什么？','看影响范围、开始时间、版本/渠道/浏览器分布；区分全站/个别路由，确认是否持续扩大，优先保留用户可用性。'],
+['止损','为什么可能要先回滚而不是在线改代码？','若与刚发布版本高度相关且影响大，先暂停放量/回滚/关闭问题功能降低损失；同时保留日志与版本信息供根因分析。'],
+['原理','如何区分 JS 异常、接口故障、静态资源 404？','检查 window error/unhandledrejection、路由与 JS stack、Network 状态、chunk 请求和接口失败率；Source Map 定位原始源码位置。'],
+['边界','只监听 window.onerror 就能覆盖全部白屏吗？','不能。资源错误、Promise 拒绝、框架错误、空容器、接口降级失败都需要分层监控；白屏检测还可能误报，应结合路由/业务状态。'],
+['验证','怎么确保回滚真正生效、不会下一次再出问题？','对比版本白屏率、异常率、核心转化与页面可达性；完善 CI、灰度监控、旧 chunk 留存、应急开关和演练。']]},
+{id:'S05',group:'Vue与认证',priority:'P1',title:'Vue 组件从 template 到屏幕，经历了什么？',origin:'用户提供的面经（render / AST 连续追问）；编译概念参考公开材料',url:refs.vue,chain:'组件实例 → 模板编译 → AST → render/VNode → patch/更新',tags:['Vue','AST','render','PatchFlag'],related:[['vue.html','Vue · 响应式/编译'],['javascript.html','JS · 执行上下文']],lab:'打开 https://play.vuejs.org/ ，写一个带 {{ count }}、v-if、@click 的组件，查看编译结果，改模板再比较 PatchFlag。',qs:[
+['主链路','一个 Vue 组件如何从模板显示到页面？','SFC 通常在构建期编译 template 得到 render；运行时创建组件实例、执行 render 生成 VNode，renderer patch 创建 DOM 并挂载。数据变化后重跑相关 render 和 patch。'],
+['原理','render 函数是怎么来的？每次响应式更新都重新编译吗？','通常通过 parse → transform → codegen 在构建期生成；更新只重新执行 render/patch，不会每次都重新编译模板。运行时模板需带编译器的构建版本。'],
+['深入','AST 是怎样从 template 中生成的？','解析器读取模板语法，识别开始/结束标签、属性、文本、插值和指令，建立带类型、子节点及位置信息的结构树；随后 transform 处理语义和优化，codegen 输出 render 代码。'],
+['边界','如果完全不写 template，只写 render() 可以吗？','可以直接返回 VNode；但通常不再享有模板编译器自动提供的相同静态分析优化，需按具体 render 写法评价。'],
+['验证','怎样观察静态提升、PatchFlag 是否真的生成？','用 Vue 官方 Playground 查看编译结果，比较静态元素与动态插值，修改模板并观察生成的 render 代码与动态标记。']]},
+{id:'S06',group:'Vue与认证',priority:'P2',title:'Vue 状态改变了，界面却不更新，你怎么查？',origin:'基于公开 Vue 响应式面经及实际开发常见问题改编',url:refs.vue,chain:'确认变化 → 代理链路 → track/trigger → scheduler → DOM 时机',tags:['Vue','reactive','track','nextTick'],related:[['vue.html','Vue · 响应式'],['browser.html','浏览器 · Event Loop']],lab:'创建 reactive({count:0})，故意解构 count 并更新；对比 toRef 与 nextTick，记录实际 DOM 更新时机。',qs:[
+['定位','状态变了但 UI 不变，你先排查哪几层？','确认读写的是否同一份状态、模板绑定是否正确、异步结果是否覆盖、组件是否缓存/卸载，再看是否绕过代理或解构丢失响应性。'],
+['原理','为什么 reactive 对象解构出 number 后可能不更新？','const {count}=state 拿到普通 number，之后不再通过 state.count 的 Proxy getter/setter 建立连接；可用 toRef/toRefs 保持引用。'],
+['深入','Vue 从属性修改到 DOM 更新的过程是什么？','依赖读取时 track，写入时 trigger，调度器合并去重 effect，执行 render 得到新 VNode，patch 实际 DOM。'],
+['边界','使用 nextTick 就能修复所有“不更新”吗？','不能。nextTick 只等待已经排入的 DOM 更新；没有建立响应性、变量取错或旧请求覆盖时，等待也不会修复数据流。'],
+['验证','如何证明是响应式丢失而不是渲染延迟？','输出状态和绑定值、对比原 Proxy/toRef，await nextTick 后检查 DOM；最小复现验证不同访问方式。']]},
+{id:'S07',group:'Vue与认证',priority:'P1',title:'两个子域如何免登录？换成不同根域又怎么办？',origin:'用户水滴真实面试题（主题）；后续问题为训练整理',url:'',chain:'确认域关系 → Cookie Domain → Origin → SSO → 安全验证',tags:['Cookie','SameSite','SSO','CORS'],related:[['browser.html','浏览器 · 存储'],['network.html','网络 · Cookie/跨域']],lab:'用本机映射的两个测试子域验证 Domain Cookie 的请求携带；对比 localStorage 的 origin 隔离。勿使用真实登录凭证。',qs:[
+['澄清','先确认两个域名的什么信息？','判断是 www.example.com/admin.example.com 这类同可注册域下子域，还是 a.com/b.com 不同站点；核查 HTTPS、认证和会话机制。'],
+['方案','同根域子域怎样共享 Cookie 登录态？','服务端在合法范围内设置 Domain=example.com 的认证 Cookie，并合理配置 Path、Secure、HttpOnly、SameSite；各子域服务端验证该会话。'],
+['原理','localStorage 能像 Cookie 一样配置 Domain 吗？','不能。localStorage 按 origin（协议、主机、端口）隔离，子域不同就是不同 origin；Cookie 的 Domain 规则与 origin 不是一套机制。'],
+['扩展','如果是 a.com 与 b.com，直接共享 Cookie 行吗？','不能设置无关根域的 Cookie。通常用统一身份提供方的标准登录重定向和一次性 code/ticket，再由各业务域建立自己的会话。'],
+['边界','共享父域 Cookie 有哪些安全与架构代价？','扩大 Cookie 发送范围，子域安全问题可能增加风险；需约束不可信子域、Session 权限、CSRF 防护，并考虑是否真的应共享同一会话。']]},
+{id:'S08',group:'前端工程',priority:'P1',title:'搜索框旧请求后返回，覆盖了用户最新搜索结果，怎么处理？',origin:'基于请求竞态常见前端面试场景的训练改编',url:'',chain:'还原竞态 → 防抖 → 取消 → 版本校验 → 一致性测试',tags:['AbortController','Promise','requestId','竞态'],related:[['javascript.html','JS · Promise'],['network.html','网络 · fetch/取消']],lab:'构造 A 请求 800ms、B 请求 100ms；先触发 A 后触发 B，观察旧结果覆盖，再加入 requestId 和 abort 处理。',qs:[
+['定位','用户输入 A 后马上改成 B，为什么页面最终显示 A？','A 的网络/服务端处理耗时更久，返回顺序与发起顺序相反；若无归属校验，旧响应后到会覆盖新状态。'],
+['原理','只加 300ms 防抖就彻底解决了吗？','不行。防抖减少请求数量，但一旦 A 已发送，B 仍可能先完成；必须处理在途请求与过期响应。'],
+['方案','AbortController 和 requestId 各自解决什么？','abort 用于取消客户端不再需要的请求/流；requestId 或递增 version 在回写前判断是否仍属最新意图，避免旧结果覆盖。两者可组合。'],
+['边界','前端 abort 后服务端计算就一定停了吗？','不保证。网络取消与业务计算取消不同；服务端需支持任务取消或幂等/资源释放机制。'],
+['验证','怎样用测试复现并覆盖竞态？','模拟乱序、超时、取消失败、多次快速输入；断言只有最新 requestId 能更新 UI，loading/error 也不能被旧请求污染。']]},
+{id:'S09',group:'前端工程',priority:'P2',title:'灰度发布后异常率上升，怎样停、退、证实恢复？',origin:'结合用户已有灰度/监控面试问题改编',url:'',chain:'稳定分桶 → 指标对照 → kill switch → 回滚与缓存 → 复盘',tags:['A/B Test','监控','Hash','CI/CD'],related:[['webpack-vite.html','构建 · 缓存/发布'],['browser.html','浏览器 · 性能']],lab:'模拟 experimentId+userId 稳定分桶，切换 variant；实现 kill switch 并记录曝光与错误事件。',qs:[
+['设计','用户为什么要稳定落在同一实验组？','稳定分桶避免同用户反复切换体验与数据污染，可对 userId+experimentId 做稳定 Hash，但需处理匿名/登录身份切换。'],
+['定位','放量后出错率升高，你先比较什么？','按实验组、客户端版本、渠道、地域和时间窗口对照曝光、错误率、转化；确认样本和归因，不把所有同时发生的异常都归因灰度。'],
+['方案','kill switch 和回滚有什么区别？','kill switch 在配置层快速停止高风险能力或强制稳定 variant；代码回滚撤回部署产物。两者生效范围和速度取决于缓存/客户端配置刷新。'],
+['边界','客户端离线/配置缓存未过期时如何让开关生效？','配置 TTL、轮询/推送、版本与优先级控制，提供明确的失效与兜底策略；无法保证所有离线客户端瞬时更新。'],
+['验证','怎么判断确实恢复正常？','监控版本/分组错误率、页面可用性、核心转化、开关到达率并对比基线；保留发布与回滚事件做时间关联。']]},
+{id:'S10',group:'AI Native',priority:'P1',title:'AI 流式回答乱码、断句或重复，你从哪里排查？',origin:'公开 AI 前端面经涉及 SSE、断线与流式问题；具体追问为训练改编',url:refs.byte,chain:'协议选择 → 字节解码 → SSE 分帧 → 断线恢复 → 一致性',tags:['SSE','TextDecoder','ReadableStream','幂等'],related:[['network.html','网络 · SSE'],['javascript.html','JS · 异步']],lab:'用 fetch+ReadableStream 测试故意拆开的 UTF-8 字节和跨 chunk 的 SSE 空行；验证 TextDecoder streaming 与消息缓冲。',qs:[
+['定位','模型回答出现半个汉字、乱行，你先检查什么？','区分上游模型原始数据、代理缓冲、UTF-8 解码和前端 SSE 消息拼接；Network chunk 边界不是字符/事件边界。'],
+['原理','为什么一个 chunk 不等于一个 token 或一条 SSE 消息？','底层网络流任意分块，UTF-8 多字节字符及 data: 行都可能跨 chunk；使用 TextDecoder(stream:true) 并维护文本 buffer 按空行分帧。'],
+['方案','原生 EventSource 和 fetch POST 流有何区别？','EventSource 通常 GET、自动重连和事件解析；聊天常需要 POST body/自定义认证头，用 fetch 读 ReadableStream 时须自行实现解析、重连和 abort。'],
+['边界','断线后带 Last-Event-ID 就一定不丢不重吗？','不一定。服务端必须存储可重放事件和序号；客户端做去重、顺序校验。EventSource 有自动重连机制，但 fetch 流不自动继承它。'],
+['验证','怎样测试半包、重复包、断线与网关缓冲？','人为拆字符/事件边界、注入断线与重复序号，验证 UI 恢复、内容去重、结束事件；检查反向代理 buffering 与超时配置。']]},
+{id:'S11',group:'AI Native',priority:'P1',title:'AI 正在生成，点取消又马上生成，旧流不能覆盖新流，如何设计？',origin:'用户曲一线真实追问主题；公开 AI 前端面经也出现停止/刷新场景',url:refs.ai,chain:'状态机 → abort → 后端 task → 旧流隔离 → 异常兜底',tags:['SSE','AbortController','状态机','taskId'],related:[['network.html','网络 · SSE'],['javascript.html','JS · 并发']],lab:'构造两个带 taskId 的模拟流；取消旧任务并立即新建，故意让旧流迟到，验证 version guard 不允许污染最新 UI。',qs:[
+['设计','生成/取消按钮有哪些状态，如何避免重复触发？','至少 idle、generating、cancelling，并明确事件和允许的状态转移；把 UI 状态与当前 taskId 绑定。'],
+['原理','调用 controller.abort() 就等于后端停止推理了吗？','不等于。它中断客户端请求/读取；后端是否取消推理取决于服务端能否收到断开信号及是否有独立 cancel API。'],
+['方案','用户立即重新生成，旧流晚到怎么办？','每次生成分配 taskId/requestVersion，所有 token、error、done 更新前都检查是否属于当前任务；旧任务回调一律忽略。'],
+['边界','后端取消失败或已经产生计费怎么办？','展示任务取消状态而非承诺模型一定停止；后端做取消幂等和资源治理，明确已产生 token/费用不可回滚的边界。'],
+['验证','你会覆盖哪些竞态测试？','取消后立即再发、旧 done 晚到、断线后重试、重复点击、取消接口失败，断言旧任务不能修改新任务的正文/loading/error。']]},
+{id:'S12',group:'AI Native',priority:'P3',title:'AI Coding 做完需求，怎么证明功能真的正确？',origin:'用户提供的面经（需求实现与验证）；具体层级为训练改编',url:'',chain:'验收标准 → 小步实现 → 代码审查 → 自动化测试 → 回归',tags:['AI Coding','测试','质量门禁','需求'],related:[['typescript.html','TS · 类型边界'],['webpack-vite.html','构建 · CI/质量']],lab:'给一个搜索框需求写正常/空输入/乱序/失败四条验收标准，再用 AI 生成代码并手动编写至少一条回归测试。',qs:[
+['澄清','接到“做一个搜索功能”，你怎么给 AI 下达任务？','先说明输入输出、数据源、交互、loading/empty/error、权限、性能与验收示例，要求先拆解方案和变更范围。'],
+['过程','AI 一次生成很多代码，你如何限制风险？','拆成小步骤、限制可修改文件、要求解释关键取舍，保留可运行基线；对生成差异做人工 Review。'],
+['原理','TypeScript 编译通过就意味着业务正确吗？','不意味着。TS 主要做静态类型检查，无法证明运行时后端数据、安全、业务规则或交互符合预期。'],
+['边界','AI 写的测试也全部通过，就可以完全放心吗？','不能。测试与实现可能共享同一错误假设；还需独立验收用例、真实接口契约、异常与回归测试，必要时人工探索。'],
+['验证','怎么向面试官展示 AI Coding 的实际交付质量？','展示需求-方案-代码 diff-测试-验收证据链，标明 AI 贡献与人工修正，不虚构提效比例。']]}
+];
+const storageKey='leanfrontend-scenario-practiced-v1';
+let practiced=[];try{const saved=JSON.parse(localStorage.getItem(storageKey)||'[]');practiced=Array.isArray(saved)?saved:[]}catch(e){practiced=[]}
+const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+function draw(){const text=document.getElementById('search').value.trim().toLowerCase(),group=document.getElementById('group').value,priority=document.getElementById('priority').value;const shown=tracks.filter(t=>(group==='all'||group===t.group)&&(priority==='all'||priority===t.priority)&&[t.title,t.chain,t.tags.join(' '),t.qs.map(q=>q[1]).join(' ')].join(' ').toLowerCase().includes(text));let last='';document.getElementById('app').innerHTML=shown.map(t=>{let heading='';if(t.group!==last){last=t.group;heading='<h2 class="topic">'+esc(last)+' <small>· 场景训练</small></h2>'}return heading+'<article class="card" id="'+t.id+'"><div class="card-head" role="button" tabindex="0" aria-expanded="false" onclick="toggle(this)" onkeydown="if(event.key===\'Enter\'||event.key===\' \'){event.preventDefault();toggle(this)}"><div><span class="badge '+t.priority.toLowerCase()+'">'+t.priority+' · 复习顺序</span><span class="badge">'+t.id+'</span><h3>'+esc(t.title)+'</h3><div class="source">来源：'+esc(t.origin)+(t.url?' · <a href="'+esc(t.url)+'" target="_blank" rel="noopener noreferrer" onclick="event.stopPropagation()">查看公开参考</a>':'')+'</div></div><span class="arrow">⌄</span></div><div class="body"><div class="chain"><b>连续追问路线：</b>'+esc(t.chain)+'</div>'+t.qs.map((q,i)=>'<section class="level"><header><b>L'+(i+1)+'</b><strong>'+esc(q[0])+'</strong></header><p>'+esc(q[1])+'</p><details><summary>先回答，再看参考思路</summary><p>'+esc(q[2])+'</p></details></section>').join('')+'<div class="relation"><b>关联基础题：</b> '+t.related.map(link=>'<a href="'+esc(link[0])+'">'+esc(link[1])+' ↗</a>').join('')+'</div><div class="lab"><b>最小实践：</b>'+esc(t.lab)+'</div><div class="progress"><button type="button" aria-pressed="'+practiced.includes(t.id)+'" onclick="mark(\''+t.id+'\')">'+(practiced.includes(t.id)?'✓ 已完成一轮':'标记：已闭卷练一轮')+'</button><small class="muted">仅标记练习，不代表已经掌握</small></div></div></article>'}).join('');document.getElementById('empty').style.display=shown.length?'none':'block';document.getElementById('count').textContent=practiced.length+' / 12'}
+function toggle(el){const card=el.closest('.card');card.classList.toggle('open');el.setAttribute('aria-expanded',String(card.classList.contains('open')))}
+function mark(id){practiced=practiced.includes(id)?practiced.filter(x=>x!==id):[...practiced,id];try{localStorage.setItem(storageKey,JSON.stringify(practiced))}catch(e){}draw();const card=document.getElementById(id);if(card){card.classList.add('open');card.querySelector('.card-head').setAttribute('aria-expanded','true')}}
+['search','group','priority'].forEach(id=>document.getElementById(id).addEventListener(id==='search'?'input':'change',draw));document.getElementById('collapse').onclick=()=>document.querySelectorAll('.card.open').forEach(c=>{c.classList.remove('open');c.querySelector('.card-head').setAttribute('aria-expanded','false')});document.getElementById('reset').onclick=()=>{if(confirm('确定清空当前浏览器的场景练习记录吗？')){practiced=[];try{localStorage.removeItem(storageKey)}catch(e){}draw()}};draw();
+</script>
+</body></html>
